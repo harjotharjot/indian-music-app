@@ -4,6 +4,18 @@
     classes = {};
     objectVersion = 56;
     objects = {
+        F00000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/OrientationTests.swift; sourceTree = SOURCE_ROOT; };
+        F00000000000000000000002 = {isa = PBXBuildFile; fileRef = F00000000000000000000001; };
+        F00000000000000000000003 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = IndianMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        F00000000000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (F00000000000000000000002); runOnlyForDeploymentPostprocessing = 0; };
+        F00000000000000000000005 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        F00000000000000000000006 = {isa = PBXContainerItemProxy; containerPortal = A0000000000000000000000D; proxyType = 1; remoteGlobalIDString = A0000000000000000000000C; remoteInfo = IndianMusic; };
+        F00000000000000000000007 = {isa = PBXTargetDependency; target = A0000000000000000000000C; targetProxy = F00000000000000000000006; };
+        F00000000000000000000008 = {isa = PBXNativeTarget; buildConfigurationList = F00000000000000000000009; buildPhases = (F00000000000000000000004,F00000000000000000000005); buildRules = (); dependencies = (F00000000000000000000007); name = IndianMusicUITests; productName = IndianMusicUITests; productReference = F00000000000000000000003; productType = "com.apple.product-type.bundle.ui-testing"; };
+        F00000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (F0000000000000000000000A,F0000000000000000000000B); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+        F0000000000000000000000A = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_BUNDLE_IDENTIFIER = com.harjotharjot.indianmusic.uitests; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = IndianMusic;}; name = Debug; };
+        F0000000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_BUNDLE_IDENTIFIER = com.harjotharjot.indianmusic.uitests; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = IndianMusic;}; name = Release; };
+
         B00000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanpuraSettings.swift; sourceTree = "<group>"; };
         C00000000000000000000001 = {isa = PBXBuildFile; fileRef = B00000000000000000000001; };
         B00000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeAudioGraph.swift; sourceTree = "<group>"; };
@@ -25,7 +37,7 @@
         A00000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndianMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
         A00000000000000000000006 = {
             isa = PBXGroup;
-            children = (A00000000000000000000007, A00000000000000000000015, A00000000000000000000008);
+            children = (F00000000000000000000001, A00000000000000000000007, A00000000000000000000015, A00000000000000000000008);
             sourceTree = "<group>";
         };
         A00000000000000000000007 = {
@@ -36,7 +48,7 @@
         };
         A00000000000000000000008 = {
             isa = PBXGroup;
-            children = (A00000000000000000000005);
+            children = (A00000000000000000000005,F00000000000000000000003);
             name = Products;
             sourceTree = "<group>";
         };
@@ -71,7 +83,7 @@
             productRefGroup = A00000000000000000000008;
             projectDirPath = "";
             projectRoot = "";
-            targets = (A0000000000000000000000C);
+            targets = (A0000000000000000000000C,F00000000000000000000008);
         };
         A0000000000000000000000F = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000011, A00000000000000000000012); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
         A00000000000000000000010 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000013, A00000000000000000000014); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };

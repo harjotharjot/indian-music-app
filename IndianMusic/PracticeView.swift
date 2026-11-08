@@ -73,18 +73,18 @@ struct PracticeView: View {
     private var landscapeContent: some View {
         VStack(spacing: 6) {
             HStack(spacing: 10) {
-                Button(audio.harmoniumEnabled ? "Keyboard off" : "Enable harmonium") {
+                Button(audio.harmoniumEnabled ? "Off" : "Enable") {
                     audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
                 }.buttonStyle(.borderedProminent)
-                Button("Release keys", action: audio.releaseKeys).buttonStyle(.bordered)
+                Button(action:audio.releaseKeys) { Image(systemName:"hand.raised.fill") }.buttonStyle(.bordered).accessibilityLabel("Release all keys")
                 Picker("Register",selection: $audio.harmonium.octave) {
                     Text("C2").tag(2); Text("C3").tag(3)
                     if !audio.harmonium.twoOctaves { Text("C4").tag(4) }
-                }.pickerStyle(.segmented).frame(maxWidth:180)
+                }.pickerStyle(.segmented).frame(maxWidth:140)
                 Toggle("2 octaves",isOn:$audio.harmonium.twoOctaves).toggleStyle(.button)
                 Spacer(minLength:0)
                 Button { audio.releaseKeys(); showControls=true } label: {
-                    Label("Controls",systemImage:"slider.horizontal.3")
+                    Image(systemName:"slider.horizontal.3")
                 }
             }.font(.subheadline)
             HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
@@ -97,10 +97,10 @@ struct PracticeView: View {
                 Toggle("Sargam",isOn:$audio.harmonium.showSargam).toggleStyle(.button)
                 Spacer()
                 if let message=audio.message { Text(message).lineLimit(1).foregroundStyle(.secondary) }
-                Button(audio.isPlaying ? "Pause tanpura" : "Play tanpura",action:audio.toggle)
+                Button(action:audio.toggle) { Label("Tanpura",systemImage:audio.isPlaying ? "pause.fill":"play.fill") }
                 Picker("Tanpura",selection:$audio.settings.pattern) {
                     ForEach(TanpuraPattern.allCases) { Text($0.title).tag($0) }
-                }.pickerStyle(.segmented).frame(width:140)
+                }.pickerStyle(.segmented).frame(width:110)
             }.font(.caption)
         }.padding(.horizontal,12).padding(.vertical,4)
     }

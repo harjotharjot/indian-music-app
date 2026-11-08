@@ -99,7 +99,7 @@ struct ContentView: View {
                     Label(audio.isPlaying ? "Pause tanpura" : "Play tanpura",
                           systemImage:audio.isPlaying ? "pause.circle.fill":"play.circle.fill")
                         .font(.title3.bold()).frame(maxWidth:.infinity,minHeight:34)
-                }.buttonStyle(.borderedProminent)
+                }.buttonStyle(.borderedProminent).accessibilityIdentifier("tanpura.playPause")
                 Picker("Tuning",selection:$audio.settings.pattern) {
                     ForEach(TanpuraPattern.allCases) { Text($0.title).tag($0) }
                 }.pickerStyle(.segmented)
