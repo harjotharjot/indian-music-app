@@ -1,6 +1,6 @@
 # Phase 3 — shared audio engine and tanpura
 
-Version **0.3.0 (3)**. Native SwiftUI, iOS 16+, no third-party runtime dependencies.
+Version **0.3.1 (4)**. Native SwiftUI, iOS 16+, no third-party runtime dependencies.
 The existing bundle identifier is unchanged, so SideStore can install this as an
 update. Harmonium, tabla, microphone tuning and the recording library are not
 implemented in this phase.
@@ -34,7 +34,8 @@ from the Phase 2 MP3 previews; decoding them does not restore lossless quality.
 
 - Pa uses the previously trimmed recording, with the user-reported speech removed.
   Only source seconds 2–26 are used, well before the reported speech region.
-- Ma also uses source seconds 2–26. Each excerpt is rotated after its first two
+- Ma uses source seconds **16–40**, excluding user-reported speech at seconds
+  **5–13**, with a three-second margin after that interval. Each excerpt is rotated after its first two
   seconds and the tail is crossfaded with the head using FFmpeg's `acrossfade`.
   Resulting buffers are **22 seconds**, stereo 48-kHz PCM16, peak normalized to
   -6 dBFS for mixing headroom. They remain acoustic recordings with overlapping
@@ -43,7 +44,7 @@ from the Phase 2 MP3 previews; decoding them does not restore lossless quality.
   confidence >=0.9, around the creator's documented 138-Hz reference. Octaves are
   folded only for this offline source-calibration task; candidates farther than
   100 cents from that reference are excluded. This is not the live tuner.
-- Estimated Sa: Pa **138.7726 Hz**, Ma **138.7949 Hz**. The metadata retains the
+- Estimated Sa: Pa **138.7726 Hz**, Ma **138.9065 Hz**. The metadata retains the
   supporting frame count and 10th–90th-percentile spread. These are mixed-string
   estimates, not calibrated ground truth. Individual strings beat and drift.
 - The displayed target Hz and one-cent controls are mathematically precise; this
@@ -114,3 +115,12 @@ https://github.com/harjotharjot/indian-music-app/actions/runs/42527095445
 
 [Download the v0.3.0 IPA artifact](https://github.com/harjotharjot/indian-music-app/actions/runs/42527095445/artifacts/13636365432)
 (GitHub sign-in required).
+
+## v0.3.1 Ma speech correction
+
+The user identified speech at seconds 5–13 in the original Ma preview. v0.3.0's
+2–26-second excerpt included it. The Ma loop and its reference pitch are now
+regenerated from seconds 16–40. The Pa WAV is byte-for-byte unchanged. Source
+metadata records exclusion intervals; packaging verifies hashes and rejects
+excerpts that overlap known speech. This excludes the reported speech, but does
+not constitute independent listening approval of the new section.

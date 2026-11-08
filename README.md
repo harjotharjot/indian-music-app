@@ -1,7 +1,7 @@
 # Indian Music for iPhone
 
 Private native SwiftUI app, built with GitHub Actions and installed using SideStore.
-Requires **iOS 16 or later**. Current version: **0.3.0 — tanpura prototype**.
+Requires **iOS 16 or later**. Current version: **0.3.1 — tanpura prototype**.
 
 ## Current features
 

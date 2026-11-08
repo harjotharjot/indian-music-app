@@ -64,7 +64,7 @@ struct ContentView: View {
                 }
                 Section {
                     Button("Sound credits") { showCredits = true }
-                    Text("Version 0.3.0 · Tanpura prototype")
+                    Text("Version 0.3.1 · Tanpura prototype")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }
@@ -76,7 +76,7 @@ struct ContentView: View {
                         Link("Pa recording · Acoustic Tanpura 4", destination: URL(string: "https://freesound.org/people/sankalp/sounds/153263/")!)
                         Link("Ma recording · Acoustic Tanpura 5", destination: URL(string: "https://freesound.org/people/sankalp/sounds/153265/")!)
                         Link("CC BY 4.0 license", destination: URL(string: "https://creativecommons.org/licenses/by/4.0/")!)
-                        Text("Adapted from MP3 previews: selected excerpts, crossfaded loop joins, level adjustment and playback transposition. Speech at the end of the original Pa preview is excluded.")
+                        Text("Adapted from MP3 previews: selected excerpts, crossfaded loop joins, level adjustment and playback transposition. Reported speech in both original recordings is excluded.")
                     }
                     .navigationTitle("Sound credits")
                     .toolbar { Button("Done") { showCredits = false } }

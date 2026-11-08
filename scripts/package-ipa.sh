@@ -7,6 +7,8 @@ test -d "$app"
 plutil -lint "$app/Info.plist"
 python3 - "$app" <<'PY'
 import pathlib
+import json
+import hashlib
 import plistlib
 import sys
 
@@ -19,10 +21,17 @@ assert info['CFBundleIdentifier'] == 'com.harjotharjot.indianmusic', info
 assert info['CFBundleSupportedPlatforms'] == ['iPhoneOS'], info
 assert info['UIDeviceFamily'] == [1], info
 assert info['MinimumOSVersion'] == '16.0', info
-assert info['CFBundleShortVersionString'] == '0.3.0', info
+assert info['CFBundleShortVersionString'] == '0.3.1', info
 assert 'audio' in info['UIBackgroundModes'], info
 for name in ['tanpura_pa.wav', 'tanpura_ma.wav', 'tanpura-sources.json']:
     assert (app / 'Sounds' / name).is_file(), name
+sources = json.loads((app / 'Sounds' / 'tanpura-sources.json').read_text())
+for source in sources:
+    sound = app / 'Sounds' / source['file']
+    assert hashlib.sha256(sound.read_bytes()).hexdigest() == source['sha256'], source['file']
+    start, end = source['sourceExcerptSeconds']
+    for left, right in source['excludedSourceIntervalsSeconds']:
+        assert end <= left or start >= right, 'Source excerpt overlaps reported speech'
 assert (app / info['CFBundleExecutable']).is_file(), info
 assert not (app / 'embedded.mobileprovision').exists()
 assert not (app / '_CodeSignature').exists()

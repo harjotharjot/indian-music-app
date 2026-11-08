@@ -8,6 +8,11 @@
       138.51216735839844,
       138.93016357421874
     ],
+    "sourceExcerptSeconds": [
+      2,
+      26
+    ],
+    "excludedSourceIntervalsSeconds": [],
     "durationSeconds": 22.0,
     "sampleRate": 48000,
     "channels": 2,
@@ -21,30 +26,40 @@
     "license": "CC-BY-4.0",
     "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
     "modifications": "Source seconds 2\u201326; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
-    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa source previously trimmed to remove user-reported speech."
+    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa tail was trimmed; Ma source seconds 5\u201313 contain user-reported speech and are excluded with margin."
   },
   {
     "pattern": "ma",
     "file": "tanpura_ma.wav",
-    "referenceHz": 138.7948760986328,
-    "calibrationSupportFrames": 101,
+    "referenceHz": 138.90650939941406,
+    "calibrationSupportFrames": 122,
     "calibrationP10P90Hz": [
-      138.66526794433594,
-      138.939453125
+      138.67243194580078,
+      139.1011184692383
+    ],
+    "sourceExcerptSeconds": [
+      16,
+      40
+    ],
+    "excludedSourceIntervalsSeconds": [
+      [
+        4.5,
+        13.5
+      ]
     ],
     "durationSeconds": 22.0,
     "sampleRate": 48000,
     "channels": 2,
     "peakDBFS": -5.99994884152935,
-    "boundaryJump": 0.02618408203125,
-    "adjacentStepP999": 0.1021728515625,
-    "sha256": "e03a291248545c66af4dda15173134762f255acfb95e1c5ae97dc16c85bc477a",
+    "boundaryJump": 0.006439208984375,
+    "adjacentStepP999": 0.100860595703125,
+    "sha256": "55ed17a3abb5923453f8aa95ffef299a00a918cdc878155007879999223d9ec1",
     "sourceSha256": "c7901f3f5638f94f2a4819dba4134d0491d52824b1a373b9e2fc239c6b287e81",
     "sourceURL": "https://freesound.org/people/sankalp/sounds/153265/",
     "creator": "Sankalp Gulati (sankalp)",
     "license": "CC-BY-4.0",
     "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
-    "modifications": "Source seconds 2\u201326; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
-    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa source previously trimmed to remove user-reported speech."
+    "modifications": "Source seconds 16\u201340; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
+    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa tail was trimmed; Ma source seconds 5\u201313 contain user-reported speech and are excluded with margin."
   }
 ]

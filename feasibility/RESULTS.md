@@ -18,6 +18,14 @@ integrity were verified; speech removal is based on the user's timestamp, not
 independent listening. This is an audition excerpt, not an accepted seamless loop.
 The existing CI artifact still contains the original untrimmed recording.
 
+## Subsequent Ma audition correction
+
+The user identified speech at seconds **5–13** of the original Ma preview. The
+v0.3.0 loop used seconds 2–26 and therefore included that speech. v0.3.1 uses
+seconds **16–40**, outside the reported interval. The unmodified original remains
+research input and is unsuitable for direct looping. Numerical checks did not
+identify the speech; this correction relies on user audition.
+
 ## Passed
 
 - Downloaded and decoded 24 attributed files, about 10 MB: seven harmonium WAVs,
