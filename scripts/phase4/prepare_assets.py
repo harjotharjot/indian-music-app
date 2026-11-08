@@ -16,8 +16,8 @@ def pitch(y,expected):
  assert len(f)>10
  return float(np.median(f)),np.percentile(f,[10,90]).tolist()
 
-def tanpuras():
- inputs=[('pa',Path('/workspace/attachments/2aa8745a-cfcc-4574-b54e-6de74543a2f6/c tanpura sa pa.mp3')),('ma',Path('/workspace/attachments/d25f451a-4419-4527-a905-d9abe958fea4/c tanpura sa ma clipped.mp3'))]
+def tanpuras(pa,ma):
+ inputs=[('pa',pa),('ma',ma)]
  manifest=[]
  for pattern,source in inputs:
   # Choose 60 seconds well inside each long recording; preserve stereo and realistic cycles.
@@ -63,11 +63,20 @@ def harmonium():
   measured,_=pitch(data[30000:110000],expected);error=1200*np.log2(measured/expected)
   assert abs(error)<4,(note,error)
   rows.append(dict(note=note,midi=midi,sourceURL='https://freesound.org/people/donyaquick/sounds/330410/',downloadURL=f'https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/{PIN}/samples/harmonium/{path.name}',sourceSha256=hashlib.sha256(path.read_bytes()).hexdigest(),referenceHzBefore=ref,referenceSpreadHz=spread,pitchCorrectionCents=float(1200*np.log2(ratio)),measuredPreparedErrorCents=float(error),trimmedLeadingSeconds=onset/48000,loopStartFrame=26400,loopEndFrame=120000))
-  tsv.append(f'{midi} {pcm} 26400 120000')
+  rows[-1]['includedInSoundfont'] = midi not in [37,38,40,42]
+  if rows[-1]['includedInSoundfont']: tsv.append(f'{midi} {pcm} 26400 120000')
+  else: rows[-1]['exclusionReason'] = 'Octave-ambiguous low-register source in native sampler checks; neighboring recorded notes cover this key within one semitone.'
  (WORK/'samples.tsv').write_text('\n'.join(tsv)+'\n')
  (OUT/'harmonium-sources.json').write_text(json.dumps(dict(creator='donyaquick; WAV distribution by nbrosowsky/tonejs-instruments',license='CC0-1.0',licenseURL='https://creativecommons.org/publicdomain/zero/1.0/',upstreamCommit=PIN,writer='SF2cute 3c5fc83b6ba3d1feb377f9c86021fd77499eb7c0 (zlib/libpng license), build-time only',modifications='Trim leading silence; retune each recorded note to A440 equal temperament using FFmpeg; retain attack; crossfade sustain join; -12 dBFS peak; 80-ms sampler release.',notes=rows),indent=2)+'\n')
  print('Harmonium',len(rows),'samples; worst prepared median cents',max(abs(r['measuredPreparedErrorCents']) for r in rows),flush=True)
 
 if __name__=='__main__':
- if '--harmonium-only' not in sys.argv:tanpuras()
+ import argparse
+ parser=argparse.ArgumentParser()
+ parser.add_argument('--pa',type=Path);parser.add_argument('--ma',type=Path)
+ parser.add_argument('--harmonium-only',action='store_true')
+ args=parser.parse_args()
+ if not args.harmonium_only:
+  if args.pa is None or args.ma is None:parser.error('--pa and --ma must name the user-supplied originals')
+  tanpuras(args.pa,args.ma)
  harmonium()

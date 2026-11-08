@@ -28,6 +28,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Measure rendered pitch with existing aubio
+        shell: bash
         run: |
           python -m venv build/pitch-venv
           source build/pitch-venv/bin/activate
