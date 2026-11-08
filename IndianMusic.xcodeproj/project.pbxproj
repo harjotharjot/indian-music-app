@@ -4,6 +4,14 @@
     classes = {};
     objectVersion = 56;
     objects = {
+        B00000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanpuraSettings.swift; sourceTree = "<group>"; };
+        C00000000000000000000001 = {isa = PBXBuildFile; fileRef = B00000000000000000000001; };
+        B00000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanpuraGraph.swift; sourceTree = "<group>"; };
+        C00000000000000000000002 = {isa = PBXBuildFile; fileRef = B00000000000000000000002; };
+        B00000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCoordinator.swift; sourceTree = "<group>"; };
+        C00000000000000000000003 = {isa = PBXBuildFile; fileRef = B00000000000000000000003; };
+        B00000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+        C00000000000000000000004 = {isa = PBXBuildFile; fileRef = B00000000000000000000004; };
         A00000000000000000000001 = {isa = PBXBuildFile; fileRef = A00000000000000000000003; };
         A00000000000000000000002 = {isa = PBXBuildFile; fileRef = A00000000000000000000004; };
         A00000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndianMusicApp.swift; sourceTree = "<group>"; };
@@ -16,7 +24,7 @@
         };
         A00000000000000000000007 = {
             isa = PBXGroup;
-            children = (A00000000000000000000003, A00000000000000000000004);
+            children = (A00000000000000000000003, A00000000000000000000004, B00000000000000000000001, B00000000000000000000002, B00000000000000000000003, B00000000000000000000004);
             path = IndianMusic;
             sourceTree = "<group>";
         };
@@ -29,11 +37,11 @@
         A00000000000000000000009 = {
             isa = PBXSourcesBuildPhase;
             buildActionMask = 2147483647;
-            files = (A00000000000000000000001, A00000000000000000000002);
+            files = (A00000000000000000000001, A00000000000000000000002, C00000000000000000000001, C00000000000000000000002, C00000000000000000000003);
             runOnlyForDeploymentPostprocessing = 0;
         };
         A0000000000000000000000A = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
-        A0000000000000000000000B = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        A0000000000000000000000B = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (C00000000000000000000004); runOnlyForDeploymentPostprocessing = 0; };
         A0000000000000000000000C = {
             isa = PBXNativeTarget;
             buildConfigurationList = A00000000000000000000010;

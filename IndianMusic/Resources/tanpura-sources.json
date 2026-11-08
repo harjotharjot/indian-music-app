@@ -1,0 +1,50 @@
+[
+  {
+    "pattern": "pa",
+    "file": "tanpura_pa.wav",
+    "referenceHz": 138.7725830078125,
+    "calibrationSupportFrames": 607,
+    "calibrationP10P90Hz": [
+      138.51216735839844,
+      138.93016357421874
+    ],
+    "durationSeconds": 22.0,
+    "sampleRate": 48000,
+    "channels": 2,
+    "peakDBFS": -5.99994884152935,
+    "boundaryJump": 0.023773193359375,
+    "adjacentStepP999": 0.1219482421875,
+    "sha256": "24f7152a83695bc0364d963805bf8dbb7a08883ef7bbe1aab9ba11a40c91b3b3",
+    "sourceSha256": "03454509fbf4aab38eab163da4fd64a804a8cfdf59152731eacd0d971fde35ad",
+    "sourceURL": "https://freesound.org/people/sankalp/sounds/153263/",
+    "creator": "Sankalp Gulati (sankalp)",
+    "license": "CC-BY-4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Source seconds 2\u201326; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
+    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa source previously trimmed to remove user-reported speech."
+  },
+  {
+    "pattern": "ma",
+    "file": "tanpura_ma.wav",
+    "referenceHz": 138.7948760986328,
+    "calibrationSupportFrames": 101,
+    "calibrationP10P90Hz": [
+      138.66526794433594,
+      138.939453125
+    ],
+    "durationSeconds": 22.0,
+    "sampleRate": 48000,
+    "channels": 2,
+    "peakDBFS": -5.99994884152935,
+    "boundaryJump": 0.02618408203125,
+    "adjacentStepP999": 0.1021728515625,
+    "sha256": "e03a291248545c66af4dda15173134762f255acfb95e1c5ae97dc16c85bc477a",
+    "sourceSha256": "c7901f3f5638f94f2a4819dba4134d0491d52824b1a373b9e2fc239c6b287e81",
+    "sourceURL": "https://freesound.org/people/sankalp/sounds/153265/",
+    "creator": "Sankalp Gulati (sankalp)",
+    "license": "CC-BY-4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Source seconds 2\u201326; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
+    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa source previously trimmed to remove user-reported speech."
+  }
+]

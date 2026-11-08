@@ -20,6 +20,8 @@ jobs:
           xcode-select -p
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
+      - name: Test tuning and render both tanpuras across loop boundaries
+        run: bash scripts/test-phase3.sh
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |
@@ -37,6 +39,8 @@ jobs:
             build | tee build.log
       - name: Validate and package IPA
         run: bash scripts/package-ipa.sh
+      - name: Launch app in iPhone simulator
+        run: bash scripts/simulator-smoke.sh
       - name: Upload unsigned IPA and validation report
         uses: actions/upload-artifact@v4
         with:
@@ -47,3 +51,11 @@ jobs:
             build/IndianMusic-unsigned.ipa.sha256
           if-no-files-found: error
           retention-days: 30
+      - name: Upload test reports and simulator screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Phase3-tests
+          path: build/tests/
+          retention-days: 30
+          if-no-files-found: error
