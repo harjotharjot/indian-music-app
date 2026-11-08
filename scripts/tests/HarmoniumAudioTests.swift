@@ -47,10 +47,10 @@ struct HarmoniumAudioTests {
             }
         }
         graph.applyHarmonium(hs,cents:0)
-        graph.setNotes([48,52,55,60,64,67])
+        graph.setNotes([48,52,55,58,61,65])
         precondition(graph.activeNotes.count==6)
         _=try render(48000,file:"chord.wav")
-        graph.setNotes([48,55,60,64,67]);precondition(graph.activeNotes.count==5)
+        graph.setNotes([48,55,58,61,65]);precondition(graph.activeNotes.count==5)
         _=try render(48000)
         graph.allNotesOff();let quiet=try render(24000)
         precondition(quiet.suffix(4096).allSatisfy { abs($0)<0.00001 })
@@ -62,6 +62,13 @@ struct HarmoniumAudioTests {
         _=try render(48000*4,file:"mixed.wav")
         graph.setGain(0,for:.pa);graph.setGain(1,for:.ma);ts.cents=17;graph.apply(ts)
         graph.setNotes([50,53,57]);_=try render(48000*4)
+        graph.harmoniumMixer.outputVolume = 0
+        let droneOnly = try render(24000)
+        precondition(droneOnly.map { abs($0) }.max()! > 0.001)
+        graph.setVolume(0)
+        let muted = try render(24000)
+        precondition(muted.suffix(4096).allSatisfy { abs($0) < 0.00001 })
+        graph.harmoniumMixer.outputVolume = 0.45
         graph.allNotesOff();graph.stopTanpura();_=try render(24000)
         for _ in 0..<20 { graph.setNotes([48,55]);_=try render(512);graph.allNotesOff();_=try render(512) }
         graph.allNotesOff();_=try render(24000)
