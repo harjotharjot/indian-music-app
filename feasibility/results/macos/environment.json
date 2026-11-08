@@ -1,0 +1,14 @@
+{
+  "python": "3.11.9",
+  "platform": "macOS-15.8.2-arm64-arm-64bit",
+  "numpy": "1.26.4",
+  "scipy": "1.14.1",
+  "librosa": "0.10.2.post1",
+  "aubio": "0.4.9",
+  "sample_rate": 48000,
+  "frame": 4096,
+  "hop": 512,
+  "fmin": 60.0,
+  "fmax": 2200.0,
+  "note": "librosa pYIN uses 10-cent bins; default aubio tolerance; no octave correction or smoothing"
+}

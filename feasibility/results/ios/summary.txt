@@ -1,0 +1,3 @@
+PASS: upstream aubio ad5cf975aed08cc4562dd008cf9f83b12b82ffb8 built as arm64 iOS static library.
+Upstream deployment minimum: 16.4. No device execution or Swift linking tested.
+Desktop benchmark uses released aubio 0.4.9; this source revision is a separate compatibility probe.

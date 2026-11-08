@@ -54,3 +54,9 @@ offline after installation. Keep the bundle identifier stable for future updates
 Report installation errors exactly as displayed.
 
 **Wait for confirmation of successful installation and launch before Phase 2.**
+
+## Phase 2 research
+
+Audio feasibility work is documented in [feasibility/RESULTS.md](feasibility/RESULTS.md),
+with raw measured results, reproducible benchmarks and source/licensing records.
+The app remains the Phase 1 installation proof.

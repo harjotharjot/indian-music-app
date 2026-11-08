@@ -1,0 +1,2210 @@
+[
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.75
+    ],
+    "peak": 0.6539023518562317,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.007810888296031872,
+    "p95_abs_cents": 0.014773131588068294,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.706608235836029,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.0035656042545240043,
+    "p95_abs_cents": 0.0066222098137388085,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7382377982139587,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.005105826676111002,
+    "p95_abs_cents": 0.01156009500504885,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7104091048240662,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.004677445183139305,
+    "p95_abs_cents": 0.006847910320054619,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7326855063438416,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.012679454476635465,
+    "p95_abs_cents": 0.03482731699057598,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.25,
+      2.76
+    ],
+    "peak": 0.7043996453285217,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.01496930979923339,
+    "p95_abs_cents": 0.017259162093107114,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7390351295471191,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.011987457047698921,
+    "p95_abs_cents": 0.05170971971098049,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.25,
+      2.75
+    ],
+    "peak": 0.7018332481384277,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.012022033839132128,
+    "p95_abs_cents": 0.014095565158715486,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7186896204948425,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.02753849149314342,
+    "p95_abs_cents": 0.04204422467919052,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.25,
+      2.75
+    ],
+    "peak": 0.7011305689811707,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.018383171099199208,
+    "p95_abs_cents": 0.01897767389341012,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7573741674423218,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.020611428486574362,
+    "p95_abs_cents": 0.03823485503120038,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.75
+    ],
+    "peak": 0.7004940509796143,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.019931421294847398,
+    "p95_abs_cents": 0.021518104326596038,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.6895033717155457,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.00857769417404827,
+    "p95_abs_cents": 0.015039779471829641,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.75
+    ],
+    "peak": 0.7203789949417114,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.00898157521179696,
+    "p95_abs_cents": 0.01100097898721546,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7552034258842468,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.028867343272017985,
+    "p95_abs_cents": 0.051655572911805496,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_sine.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7005611658096313,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.028357915933059467,
+    "p95_abs_cents": 0.0316352291890322,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.6171326637268066,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.0037354158163364626,
+    "p95_abs_cents": 0.008846736021594115,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7347180843353271,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.019358008221690842,
+    "p95_abs_cents": 0.30668668043766034,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7934159636497498,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.004820239026163915,
+    "p95_abs_cents": 0.009104048832558796,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.25,
+      2.76
+    ],
+    "peak": 0.7911459803581238,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.03494947643154888,
+    "p95_abs_cents": 0.3786665214914131,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7630569934844971,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.01446045332274831,
+    "p95_abs_cents": 0.02554076927076187,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7351583242416382,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.02832673881773253,
+    "p95_abs_cents": 0.18251489347737054,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.5153998732566833,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.013234625555732106,
+    "p95_abs_cents": 0.016035709174276203,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7346693277359009,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.015053511538535421,
+    "p95_abs_cents": 0.13019720920902927,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.524375319480896,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.01885877335066939,
+    "p95_abs_cents": 0.02208097516442681,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7346410751342773,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.020642280630886276,
+    "p95_abs_cents": 0.35637263276548103,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7042208313941956,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.01970475217171134,
+    "p95_abs_cents": 0.025711473909630907,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7370684742927551,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.023671457543238985,
+    "p95_abs_cents": 0.13580079093864866,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.6279475092887878,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.00938545615532393,
+    "p95_abs_cents": 0.0142320201287536,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7544316053390503,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.010193217759712877,
+    "p95_abs_cents": 0.018674691852118674,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 3.0,
+    "output_seconds": 4.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.6025641560554504,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=144000 outputFrames=192000",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.03158428655003595,
+    "p95_abs_cents": 0.03754456592772254,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_reed.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 3.0,
+    "output_seconds": 3.0,
+    "input_active_span": [
+      0.25,
+      2.75
+    ],
+    "output_active_span": [
+      0.24,
+      2.76
+    ],
+    "peak": 0.7421145439147949,
+    "finite": true,
+    "render_log": "",
+    "coverage_pct": 100.0,
+    "median_abs_cents": 0.032772947893306474,
+    "p95_abs_cents": 0.12786321088074898,
+    "gross_error_pct": 0.0,
+    "octave_error_pct": 0.0,
+    "frames": 159
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.01
+    ],
+    "peak": 0.5111874938011169,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.0
+    ],
+    "peak": 0.581787109375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.02,
+      6.01
+    ],
+    "peak": 0.6718580722808838,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.0
+    ],
+    "peak": 0.6083984375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.02,
+      6.01
+    ],
+    "peak": 0.4999990165233612,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.0
+    ],
+    "peak": 0.498504638671875,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5845776796340942,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.0
+    ],
+    "peak": 0.568756103515625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.6158837080001831,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.592987060546875,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.01
+    ],
+    "peak": 0.5249285101890564,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.639739990234375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.01
+    ],
+    "peak": 0.5564935803413391,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.552734375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.01,
+      6.01
+    ],
+    "peak": 0.6059348583221436,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_harmonium_A3.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.545654296875,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.02
+    ],
+    "peak": 0.2522730827331543,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.251251220703125,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.02
+    ],
+    "peak": 0.26548296213150024,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.262237548828125,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2817409336566925,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.296875,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2523197531700134,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.295562744140625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2613798677921295,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.2760009765625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2769480347633362,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.270172119140625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2694132328033447,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.300567626953125,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.2628403902053833,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_tanpura_pa.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.274261474609375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.18265078961849213,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.218536376953125,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.21449659764766693,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.226287841796875,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.18465638160705566,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.212493896484375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.21286793053150177,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.203460693359375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.18075332045555115,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.2054443359375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.22477048635482788,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.209808349609375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.19205765426158905,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.191986083984375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.21264909207820892,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_voice_scale.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.01,
+      5.26
+    ],
+    "output_active_span": [
+      0.01,
+      5.26
+    ],
+    "peak": 0.214599609375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5428181290626526,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.48431396484375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.627913773059845,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.616485595703125,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5343249440193176,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.61773681640625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5834875106811523,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.631500244140625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5628901720046997,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.612396240234375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5753852128982544,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.6029052734375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.5549889206886292,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.55859375,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 1.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.6147640943527222,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=24002 outputFrames=72002"
+  },
+  {
+    "file": "shift_tabla_Da_Test01.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 0.5000416666666667,
+    "output_seconds": 0.5000416666666667,
+    "input_active_span": [
+      0.0,
+      0.5
+    ],
+    "output_active_span": [
+      0.0,
+      0.5
+    ],
+    "peak": 0.75445556640625,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5745017528533936,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": -600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.5871093273162842,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.551430881023407,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": -300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.6318462491035461,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5779868960380554,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": -100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.5963373184204102,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5599619746208191,
+    "finite": true,
+    "render_log": "rate=1.0 cents=-17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": -17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.6120954155921936,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.6050161719322205,
+    "finite": true,
+    "render_log": "rate=1.0 cents=17.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": 17,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.6422873139381409,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5667110085487366,
+    "finite": true,
+    "render_log": "rate=1.0 cents=100.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": 100,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.5642203688621521,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.6477342844009399,
+    "finite": true,
+    "render_log": "rate=1.0 cents=300.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": 300,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.5964963436126709,
+    "finite": true,
+    "render_log": ""
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "apple",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 7.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.01
+    ],
+    "peak": 0.5735464096069336,
+    "finite": true,
+    "render_log": "rate=1.0 cents=600.0 reportedLatency=0.0 inputFrames=288000 outputFrames=336000"
+  },
+  {
+    "file": "shift_recorded_mix.wav",
+    "engine": "rubberband_r3",
+    "cents": 600,
+    "input_seconds": 6.0,
+    "output_seconds": 6.0,
+    "input_active_span": [
+      0.0,
+      6.0
+    ],
+    "output_active_span": [
+      0.0,
+      6.0
+    ],
+    "peak": 0.669518232345581,
+    "finite": true,
+    "render_log": ""
+  }
+]
