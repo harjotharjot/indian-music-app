@@ -21,7 +21,10 @@ jobs:
           python -m venv build/audio-venv
           source build/audio-venv/bin/activate
           pip install 'numpy==1.26.4' 'setuptools<81' wheel
-          ARCHFLAGS="-arch arm64" CFLAGS="-Wno-error=incompatible-function-pointer-types" pip install --no-build-isolation -r feasibility/requirements.txt
+          mkdir -p build/empty-pkgconfig
+          PKG_CONFIG_LIBDIR="$PWD/build/empty-pkgconfig" PKG_CONFIG_PATH="$PWD/build/empty-pkgconfig" \
+            ARCHFLAGS="-arch arm64" CFLAGS="-Wno-error=incompatible-function-pointer-types" \
+            pip install --no-build-isolation -r feasibility/requirements.txt
       - name: Fetch attributed samples and test existing pitch detectors
         run: |
           source build/audio-venv/bin/activate

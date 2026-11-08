@@ -7,7 +7,7 @@ mkdir -p build feasibility/results/ios
 (
   cd build/aubio
   bash scripts/get_waf.sh
-  python waf configure --with-target-platform=ios --nodeps --enable-static --disable-shared --disable-tests --disable-examples
+  python waf configure --with-target-platform=ios --nodeps --disable-tests --disable-examples
   python waf build
 )
 archive=build/aubio/build/src/libaubio.a
