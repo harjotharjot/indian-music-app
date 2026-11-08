@@ -103,18 +103,17 @@ Further instruments should follow evaluation of this tanpura build.
 
 ## Recorded validation
 
-[Native test measurements](phase3-validation.txt) and
+[v0.3.0 baseline test measurements](phase3-validation.txt) and
 [simulator launch screenshot](phase3-iphone.png) are saved with the source.
 A top-level `Resources` directory interfered with iOS's bundle lookup during
 simulator testing; samples now live in `Sounds`, and packaging checks reject the
 reserved top-level name. Device output stays unsigned; simulator builds use an
 ad-hoc signature. No Apple signing credentials were added to CI.
 
-Final source verification run:
+Historical v0.3.0 source verification run:
 https://github.com/harjotharjot/indian-music-app/actions/runs/42527095445
 
-[Download the v0.3.0 IPA artifact](https://github.com/harjotharjot/indian-music-app/actions/runs/42527095445/artifacts/13636365432)
-(GitHub sign-in required).
+The v0.3.0 IPA is superseded because its Ma loop includes the reported speech.
 
 ## v0.3.1 Ma speech correction
 
@@ -124,3 +123,13 @@ regenerated from seconds 16–40. The Pa WAV is byte-for-byte unchanged. Source
 metadata records exclusion intervals; packaging verifies hashes and rejects
 excerpts that overlap known speech. This excludes the reported speech, but does
 not constitute independent listening approval of the new section.
+
+The v0.3.1 [verification run passed](https://github.com/harjotharjot/indian-music-app/actions/runs/42528690224):
+native tuning tests, both 60-second loop renders and restart checks, sample hash
+and source-exclusion checks, unsigned arm64 IPA packaging, and simulator install/launch.
+Ma's minimum rendered block RMS was 0.02843 and peak 0.38155 at 1.25× / +37 cents;
+no silent blocks, nonfinite samples or clipping were found. These are numerical
+checks, not a listening confirmation.
+
+[Download the corrected v0.3.1 IPA](https://github.com/harjotharjot/indian-music-app/actions/runs/42528690224/artifacts/13636398069)
+(GitHub sign-in required). Install as an update using SideStore.
