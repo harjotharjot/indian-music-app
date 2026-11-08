@@ -1,0 +1,24 @@
+Native settings test (macOS runner, Xcode 16.4):
+PASS: frequency, one-cent tuning, all 12 keys in two octaves, pitch range,
+persistence and invalid-value clamping.
+
+Native graph tests (same graph as the app, offline rendering):
+PASS: Pa, 60 seconds, speed 0.75, +37 cents.
+Minimum block RMS: 0.0274073664; peak: 0.4191058278; restart passed.
+PASS: Ma, 60 seconds, speed 1.25, +37 cents.
+Minimum block RMS: 0.0240752377; peak: 0.3832102120; restart passed.
+
+These measurements establish finite, non-silent output without clipping across
+repeated loop joins. They do not establish perceived loop quality, exact tuning
+of the recorded strings, or background behavior on the physical iPhone.
+
+Successful final source build: 7da8e49
+https://github.com/harjotharjot/indian-music-app/actions/runs/42527095445
+
+Latest native reports:
+PASS: pa 60-second shared-graph render at speed 0.75, +37 cents; min block RMS=0.027407366419850046, peak=0.4191058278083801, restart passed.
+PASS: ma 60-second shared-graph render at speed 1.25, +37 cents; min block RMS=0.02407523769254683, peak=0.3832102119922638, restart passed.
+PASS: frequency, one-cent tuning, all 12 keys in two octaves, pitch range, persistence and invalid-value clamping.
+
+Simulator process launch:
+com.harjotharjot.indianmusic: 4162
