@@ -13,6 +13,7 @@ mkdir -p build feasibility/results/ios
 archive=build/aubio/build/src/libaubio.a
 test -f "$archive"
 xcrun lipo -info "$archive"
+test "$(xcrun lipo -archs "$archive")" = arm64
 xcrun otool -l "$archive" > feasibility/results/ios/aubio-load-commands.txt
 # The upstream cross-build currently targets iOS 16.4; don't imply iOS 16.0 support.
 python - <<'PY'

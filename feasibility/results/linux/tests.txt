@@ -1,0 +1,11 @@
+test_download_integrity (test_audio.AudioTests.test_download_integrity) ... ok
+test_octave_metric_does_not_hide_errors (test_audio.AudioTests.test_octave_metric_does_not_hide_errors) ... ok
+test_sample_decoding (test_audio.AudioTests.test_sample_decoding) ... ok
+test_yin_clean_reference (test_audio.AudioTests.test_yin_clean_reference) ... ok
+test_yin_silence (test_audio.AudioTests.test_yin_silence) ... ok
+test_yinfast_confidence_rejection (test_audio.AudioTests.test_yinfast_confidence_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.710s
+
+OK

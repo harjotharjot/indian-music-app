@@ -1,0 +1,1224 @@
+{
+  "synthetic": [
+    {
+      "case": "sine_65.4064_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0015823337097315368,
+      "p95_abs_cents": 0.006533614939043875,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_65.4064_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0015823337097315368,
+      "p95_abs_cents": 0.006533614939043875,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_65.4064_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0011697263017513696,
+      "p95_abs_cents": 0.0022012446256038836,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_65.4064_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0011697263017513696,
+      "p95_abs_cents": 0.0022012446256038836,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_65.4064_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0011697263017513696,
+      "p95_abs_cents": 0.002717003547929286,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_65.4064_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0011697263017513696,
+      "p95_abs_cents": 0.002717003547929286,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_65.4064_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002424773460853845,
+      "p95_abs_cents": 0.0055991088207830095,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_65.4064_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002424773460853845,
+      "p95_abs_cents": 0.0055991088207830095,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_65.4064_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.001574592292595348,
+      "p95_abs_cents": 0.0028743841700527755,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_65.4064_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.001574592292595348,
+      "p95_abs_cents": 0.0028743841700527755,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_65.4064_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.001574592292595348,
+      "p95_abs_cents": 0.0026744162288819375,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_65.4064_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.001574592292595348,
+      "p95_abs_cents": 0.0026744162288819375,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_82.4069_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0018130332017853071,
+      "p95_abs_cents": 0.004572957746132356,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_82.4069_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0018130332017853071,
+      "p95_abs_cents": 0.004572957746132356,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_82.4069_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002444296734803796,
+      "p95_abs_cents": 0.004818572342309976,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_82.4069_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002444296734803796,
+      "p95_abs_cents": 0.004818572342309976,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_82.4069_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002444296734803796,
+      "p95_abs_cents": 0.004572957777106549,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_82.4069_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.002444296734803796,
+      "p95_abs_cents": 0.004572957777106549,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_82.4069_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0015358044070808146,
+      "p95_abs_cents": 0.004154595892278311,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_82.4069_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0015358044070808146,
+      "p95_abs_cents": 0.004154595892278311,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_82.4069_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0021706633130690605,
+      "p95_abs_cents": 0.0032816658384496864,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_82.4069_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0021706633130690605,
+      "p95_abs_cents": 0.0032816658384496864,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_82.4069_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0021706633130690605,
+      "p95_abs_cents": 0.003043593927092049,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_82.4069_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0021706633130690605,
+      "p95_abs_cents": 0.003043593927092049,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_110_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.004278041026115217,
+      "p95_abs_cents": 0.006547410988131293,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_110_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.004278041026115217,
+      "p95_abs_cents": 0.006547410988131293,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_110_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.00329669093144276,
+      "p95_abs_cents": 0.005627396428361511,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_110_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.00329669093144276,
+      "p95_abs_cents": 0.005627396428361511,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_110_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.00329669093144276,
+      "p95_abs_cents": 0.005504727823076644,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_110_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.00329669093144276,
+      "p95_abs_cents": 0.005504727823076644,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_110_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0036394364913260565,
+      "p95_abs_cents": 0.0053635087136376745,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_110_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0036394364913260565,
+      "p95_abs_cents": 0.0053635087136376745,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_110_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.004709550487072527,
+      "p95_abs_cents": 0.006314720215511053,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_110_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.004709550487072527,
+      "p95_abs_cents": 0.006314720215511053,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_110_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0045906489647824615,
+      "p95_abs_cents": 0.006611973698864598,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_110_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.0045906489647824615,
+      "p95_abs_cents": 0.006611973698864598,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_220_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016544870272228687,
+      "p95_abs_cents": 0.018752890301624373,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_220_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016544870272228687,
+      "p95_abs_cents": 0.018752890301624373,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_220_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016176866659739022,
+      "p95_abs_cents": 0.02096090641106671,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_220_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016176866659739022,
+      "p95_abs_cents": 0.02096090641106671,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_220_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016176866659739022,
+      "p95_abs_cents": 0.020838238861637364,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_220_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.016176866659739022,
+      "p95_abs_cents": 0.020838238861637364,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_220_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.018145369924275605,
+      "p95_abs_cents": 0.019274925212938124,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_220_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.018145369924275605,
+      "p95_abs_cents": 0.019274925212938124,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_220_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.01885877335066939,
+      "p95_abs_cents": 0.02302028747545673,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_220_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.01885877335066939,
+      "p95_abs_cents": 0.02302028747545673,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_220_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.01885877335066939,
+      "p95_abs_cents": 0.02284193707022367,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_220_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.01885877335066939,
+      "p95_abs_cents": 0.02284193707022367,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_440_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.02832094457709382,
+      "p95_abs_cents": 0.029486280906799056,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_440_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.02832094457709382,
+      "p95_abs_cents": 0.029486280906799056,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_440_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.03261428507493355,
+      "p95_abs_cents": 0.038318278071307714,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_440_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.03261428507493355,
+      "p95_abs_cents": 0.038318278071307714,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_440_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.03261428507493355,
+      "p95_abs_cents": 0.038134278602914407,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_440_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.03261428507493355,
+      "p95_abs_cents": 0.038134278602914407,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_440_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07390885116454748,
+      "p95_abs_cents": 0.07509781841421889,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_440_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07390885116454748,
+      "p95_abs_cents": 0.07509781841421889,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_440_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07497892172611192,
+      "p95_abs_cents": 0.07848637051424556,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_440_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07497892172611192,
+      "p95_abs_cents": 0.07848637051424556,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_440_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07497892172611192,
+      "p95_abs_cents": 0.07860526692083504,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_440_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.07497892172611192,
+      "p95_abs_cents": 0.07860526692083504,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_880_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.20433917488704698,
+      "p95_abs_cents": 0.2103492375174828,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_880_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.20433917488704698,
+      "p95_abs_cents": 0.2103492375174828,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_880_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.1302542401613699,
+      "p95_abs_cents": 0.14509599684219826,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_880_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.1302542401613699,
+      "p95_abs_cents": 0.14509599684219826,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_880_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.1301315803559285,
+      "p95_abs_cents": 0.14460536229137447,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_880_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.1301315803559285,
+      "p95_abs_cents": 0.14460536229137447,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_880_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29599376444795544,
+      "p95_abs_cents": 0.30015461245397707,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_880_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29599376444795544,
+      "p95_abs_cents": 0.30015461245397707,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_880_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29504271207014166,
+      "p95_abs_cents": 0.31109163153252406,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_880_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29504271207014166,
+      "p95_abs_cents": 0.31109163153252406,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_880_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29492383048593923,
+      "p95_abs_cents": 0.3102594690979799,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_880_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.29492383048593923,
+      "p95_abs_cents": 0.3102594690979799,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_1760_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.9862080179063839,
+      "p95_abs_cents": 0.9866984145206588,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_1760_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.9862080179063839,
+      "p95_abs_cents": 0.9866984145206588,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_1760_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.5288527039129883,
+      "p95_abs_cents": 0.5815834642783579,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_1760_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.5288527039129883,
+      "p95_abs_cents": 0.5815834642783579,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_1760_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.5282395459879439,
+      "p95_abs_cents": 0.5794987903308682,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_1760_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.5282395459879439,
+      "p95_abs_cents": 0.5794987903308682,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_1760_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.1724041808818522,
+      "p95_abs_cents": 1.1871379653223657,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_1760_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.1724041808818522,
+      "p95_abs_cents": 1.1871379653223657,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_1760_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.0986145513193224,
+      "p95_abs_cents": 1.1282614785608884,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_1760_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.0986145513193224,
+      "p95_abs_cents": 1.1282614785608884,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_1760_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.098139245604441,
+      "p95_abs_cents": 1.1263008754089188,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_1760_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.098139245604441,
+      "p95_abs_cents": 1.1263008754089188,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_2093.01_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.7977722230297788,
+      "p95_abs_cents": 0.8023088107551669,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_2093.01_-37",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.7977722230297788,
+      "p95_abs_cents": 0.8023088107551669,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_2093.01_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.3981481433923009,
+      "p95_abs_cents": 1.4205138955458734,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_2093.01_-37",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.3981481433923009,
+      "p95_abs_cents": 1.4205138955458734,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_2093.01_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.398354280684241,
+      "p95_abs_cents": 1.419998558758536,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_2093.01_-37",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.398354280684241,
+      "p95_abs_cents": 1.419998558758536,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_2093.01_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.082099105983461,
+      "p95_abs_cents": 1.0945892652608873,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "sine_2093.01_+17",
+      "kind": "sine",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 1.082099105983461,
+      "p95_abs_cents": 1.0945892652608873,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_2093.01_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.10357725120606302,
+      "p95_abs_cents": 0.13077477121041914,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "reed_2093.01_+17",
+      "kind": "reed",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.10357725120606302,
+      "p95_abs_cents": 0.13077477121041914,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_2093.01_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.10497711305755346,
+      "p95_abs_cents": 0.1309747545473388,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "missing_fundamental_2093.01_+17",
+      "kind": "missing_fundamental",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.10497711305755346,
+      "p95_abs_cents": 0.1309747545473388,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "vibrato_110",
+      "kind": "vibrato",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 8.879683294398408,
+      "p95_abs_cents": 13.245835380527051,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "vibrato_110",
+      "kind": "vibrato",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 8.879683294398408,
+      "p95_abs_cents": 13.245835380527051,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "noise_20db_110",
+      "kind": "noise_20db",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.4665548570209292,
+      "p95_abs_cents": 1.0256256507225903,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "noise_20db_110",
+      "kind": "noise_20db",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0,
+      "median_abs_cents": 0.4665548570209292,
+      "p95_abs_cents": 1.0256256507225903,
+      "gross_error_pct": 0.0,
+      "octave_error_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "silence",
+      "kind": "silence",
+      "method": "aubio_yinfast",
+      "false_voiced_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "silence",
+      "kind": "silence",
+      "method": "aubio_yinfast_conf90",
+      "false_voiced_pct": 0.0,
+      "frames": 51
+    },
+    {
+      "case": "noise_only",
+      "kind": "noise_only",
+      "method": "aubio_yinfast",
+      "false_voiced_pct": 37.254901960784316,
+      "frames": 51
+    },
+    {
+      "case": "noise_only",
+      "kind": "noise_only",
+      "method": "aubio_yinfast_conf90",
+      "false_voiced_pct": 0.0,
+      "frames": 51
+    }
+  ],
+  "real": [
+    {
+      "file": "harmonium_A2.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_A2.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 99.85855728429985
+    },
+    {
+      "file": "harmonium_A3.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_A3.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_A4.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_A4.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C2.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C2.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 98.86845827439888
+    },
+    {
+      "file": "harmonium_C3.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C3.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 99.85855728429985
+    },
+    {
+      "file": "harmonium_C4.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C4.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C5.wav",
+      "method": "aubio_yinfast",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "harmonium_C5.wav",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 100.0
+    },
+    {
+      "file": "voice_male.mp3",
+      "method": "aubio_yinfast",
+      "coverage_pct": 95.23809523809523
+    },
+    {
+      "file": "voice_male.mp3",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 83.80952380952381
+    },
+    {
+      "file": "voice_scale.mp3",
+      "method": "aubio_yinfast",
+      "coverage_pct": 55.16265912305516
+    },
+    {
+      "file": "voice_scale.mp3",
+      "method": "aubio_yinfast_conf90",
+      "coverage_pct": 54.73833097595474
+    }
+  ]
+}

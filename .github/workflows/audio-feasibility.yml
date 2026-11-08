@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['feasibility/**', '.github/workflows/audio-feasibility.yml']
+    paths: ['feasibility/*.py', 'feasibility/*.sh', 'feasibility/requirements.txt', 'feasibility/swift/**', '.github/workflows/audio-feasibility.yml']
 permissions:
   contents: read
 jobs:
@@ -29,8 +29,12 @@ jobs:
         run: |
           source build/audio-venv/bin/activate
           python feasibility/fetch_samples.py
-          python -m unittest discover -s feasibility -p 'test_*.py' -v
+          mkdir -p feasibility/results/macos
+          python -m unittest discover -s feasibility -p 'test_*.py' -v 2>&1 | tee feasibility/results/macos/tests.txt
+          mkdir -p feasibility/results/macos
+          pip freeze > feasibility/results/macos/pip-freeze.txt
           python feasibility/benchmark.py --output feasibility/results/macos
+          python feasibility/confidence.py --output feasibility/results/macos
       - name: Compile Apple harness and check iOS API availability
         run: |
           xcodebuild -version > feasibility/results/macos/xcode.txt
@@ -44,6 +48,7 @@ jobs:
           source build/audio-venv/bin/activate
           rubberband --version > feasibility/results/macos/rubberband-version.txt 2>&1
           python feasibility/shifts.py --native "$PWD/build/native-shift"
+          python feasibility/summarize.py
       - name: Upload research results and listening files
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,6 +59,7 @@ jobs:
             feasibility/samples.json
             feasibility/generated/*.wav
             feasibility/licenses/
+            feasibility/assets/
           retention-days: 30
           if-no-files-found: error
   ios-aubio-build:

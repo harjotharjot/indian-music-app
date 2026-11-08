@@ -17,13 +17,16 @@ METHODS = ['aubio_yin', 'aubio_yinfft', 'aubio_yinfast', 'librosa_yin', 'librosa
 def detect(y, method):
     y = np.asarray(y, dtype=np.float32)
     if method.startswith('aubio_'):
-        detector = aubio.pitch(method.removeprefix('aubio_'), FRAME, HOP, SR)
+        detector = aubio.pitch(method.removeprefix('aubio_').removesuffix('_conf90'), FRAME, HOP, SR)
         detector.set_unit('Hz')
         detector.set_silence(-50)
         # Upstream defaults: YIN tolerance .15; YINFFT .85. Do not tune on test set.
         values, times = [], []
         for start in range(0, len(y)-HOP+1, HOP):
-            values.append(float(detector(y[start:start+HOP])[0]))
+            value = float(detector(y[start:start+HOP])[0])
+            if method.endswith('_conf90') and detector.get_confidence() < .9:
+                value = float('nan')
+            values.append(value)
             times.append((start + HOP - FRAME/2) / SR)
         values = np.array(values)
         times = np.array(times)

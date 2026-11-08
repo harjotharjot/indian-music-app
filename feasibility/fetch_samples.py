@@ -46,6 +46,7 @@ def harmonium(note):
     return result
 
 def main():
+    expected = json.loads((ROOT/'samples.json').read_text()) if (ROOT/'samples.json').exists() else []
     ASSETS.mkdir(exist_ok=True)
     specs = [
         ('tanpura_pa', 'sankalp', 153263, 'CC-BY-4.0', 'tanpura', 'pa SA SA sa; about 138 Hz'),
@@ -79,6 +80,8 @@ def main():
                       quality='original dataset WAV', modifications='none')
         entries.append(result)
     entries.sort(key=lambda item: item['file'])
+    if expected:
+        assert {e['file']:e['sha256'] for e in entries} == {e['file']:e['sha256'] for e in expected}, 'Upstream sample content changed; review before updating manifest'
     (ROOT / 'samples.json').write_text(json.dumps(entries, indent=2) + '\n')
     print(f'Downloaded {len(entries)} samples, {sum(e["bytes"] for e in entries)} bytes')
 
