@@ -1,0 +1,8 @@
+PASS: pa 160-second shared-graph render at speed 0.75, +37 cents; min block RMS=0.02788626927944934, peak=0.24751757085323334, restart passed.
+PASS: ma 160-second shared-graph render at speed 1.25, +37 cents; min block RMS=0.021503101996195012, peak=0.2064361423254013, restart passed.
+PASS: frequency, one-cent tuning, all 12 keys in two octaves, pitch range, persistence and invalid-value clamping.
+PASS: chord ledger, duplicate fingers, slides, cancellation, all 12 Sa labels, geometry, octave clamping and persistence
+PASS: 111 tuned key renders; released voices silent; six-note chord; eight-second sustain; simultaneous tanpura; rapid all-notes-off stress
+PASS: 111 native sampler pitches; worst median cents 0.8892020717078937
+Render-only onset, ms median/max: 0.6875 5.3125
+PASS: six distinct chord fundamentals, sustained-loop RMS floor 0.003748956136405468

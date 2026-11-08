@@ -1,0 +1,29 @@
+{
+  "chord": [
+    {
+      "note": 48,
+      "powerRelativeToSolo": 1.0031367540359497
+    },
+    {
+      "note": 52,
+      "powerRelativeToSolo": 1.0025405883789062
+    },
+    {
+      "note": 55,
+      "powerRelativeToSolo": 1.0016549825668335
+    },
+    {
+      "note": 58,
+      "powerRelativeToSolo": 1.0034462213516235
+    },
+    {
+      "note": 61,
+      "powerRelativeToSolo": 0.9970844984054565
+    },
+    {
+      "note": 65,
+      "powerRelativeToSolo": 0.997371256351471
+    }
+  ],
+  "heldMinimum100msRMS": 0.003748956136405468
+}

@@ -1,47 +1,40 @@
 # Indian Music for iPhone
 
-Private native SwiftUI app, built with GitHub Actions and installed using SideStore.
-Requires **iOS 16 or later**. Current version: **0.3.1 — tanpura prototype**.
+Private native SwiftUI app built with GitHub Actions and installed with SideStore.
+Requires **iOS 16+**. Current version: **0.4.0 — sampled harmonium and tanpura**.
 
-## Current features
+## Features
 
-Acoustic Pa/Ma tanpura, all 12 Sa keys in two registers, one-cent fine tuning,
-independent speed and volume, saved settings, background playback and lock-screen
-play/pause controls. No accounts or backend. The samples are bundled for offline use.
+- Recorded harmonium, multitouch chords, one/two visible octaves and C2–C5 navigation.
+- All 12 Sa references, optional sargam and shared one-cent fine tuning.
+- User-supplied C-scale Pa/Ma tanpuras, independent speed and volume, saved settings,
+  background playback and lock-screen transport.
+- Independent instrument volumes in one native audio engine, with separate dry buses
+  reserved for future recording. Recording and microphone access are not implemented.
 
-Harmonium, tabla, microphone tuner and the recording library are planned later.
+Tap **Enable harmonium** before playing. Piano pitches remain fixed; Sa changes
+reference labels and the drone, while cents fine tuning shifts both instruments.
 
 ## Build and install
 
-Push app changes to `main`, or open **Actions → Build unsigned iPhone IPA → Run
-workflow**. The workflow runs native audio/settings checks, builds and validates an
-unsigned arm64 iPhoneOS app, and tests installation/launch in an iPhone simulator.
-It uses the `macos-15` runner's available Xcode and logs the exact version.
-No Apple signing credentials are required in GitHub.
+App/source changes on `main` automatically run **Build unsigned iPhone IPA**.
+The workflow tests native audio and pitch, builds an unsigned arm64 device IPA,
+checks asset hashes, then installs/launches a simulator build. It uses an available
+Xcode on `macos-15`; no Apple signing credentials are stored in CI.
 
-1. On iPhone, sign in to GitHub in Safari and open the latest successful build run.
-2. Under **Artifacts**, download **IndianMusic-unsigned-IPA**. Request the desktop
-   website if needed to see artifacts.
-3. Open **Files → Downloads**, tap the downloaded ZIP and locate
-   `IndianMusic-unsigned.ipa` in the extracted folder. Do not unzip the IPA itself.
-4. Connect to Wi-Fi, enable LocalDevVPN and open **SideStore → My Apps → +**.
-5. Select the IPA and wait for signing/installation. Install over the existing app
-   to preserve settings. Open **Indian Music**, then tap **Play tanpura**.
+1. On iPhone, sign in to GitHub in Safari and open the successful build run.
+2. Download **IndianMusic-unsigned-IPA** under Artifacts.
+3. Extract the downloaded ZIP in Files; leave `IndianMusic-unsigned.ipa` intact.
+4. Connect to Wi-Fi, enable LocalDevVPN, then select the IPA using
+   **SideStore → My Apps → +**. Install over the existing app to preserve settings.
 
-If SideStore is not installed, follow its current [prerequisites](https://docs.sidestore.io/docs/installation/prerequisites)
-and [installation guide](https://docs.sidestore.io/docs/installation/install).
-Initial setup supports Windows/Linux. Enable Developer Mode and trust the developer
-profile if requested. Free Apple accounts normally require refreshing within seven
-days and allow three active apps including SideStore. Build artifacts expire in
-30 days; rebuild if necessary.
+See SideStore's current [installation guide](https://docs.sidestore.io/docs/installation/install)
+if initial setup is needed; Windows/Linux can do it. Free-account refresh rules
+still apply. Artifacts expire after 30 days and can be rebuilt via Run workflow.
 
-## Documentation and validation
+[Phase 4 sources, measured checks, architecture and phone checklist](docs/PHASE4.md)
 
-- [Phase 3 implementation, sources, tests and phone checklist](docs/PHASE3.md)
-- [Phase 2 measured findings and limitations](feasibility/RESULTS.md)
-- [Bundled sample provenance](IndianMusic/Sounds/tanpura-sources.json)
-
-CI tests do not replace listening or background playback checks on the physical
-phone. Tanpura previews are CC BY 4.0 recordings by Sankalp Gulati; attribution and
-license links appear in the app's Sound credits. The Pa loop excludes the speech
-reported at the end of its original recording.
+Historical research: [Phase 2](feasibility/RESULTS.md), [Phase 3](docs/PHASE3.md).
+Phase 3 passed the user's phone tests. Phase 4 performance and sound quality still
+need real-iPhone testing. No tabla, microphone tuner, recording or library features
+are included in this phase.
