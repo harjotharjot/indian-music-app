@@ -32,6 +32,8 @@ for source in sources:
     start, end = source['sourceExcerptSeconds']
     for left, right in source['excludedSourceIntervalsSeconds']:
         assert end <= left or start >= right, 'Source excerpt overlaps reported speech'
+harmonium = json.loads((app / 'Sounds' / 'harmonium-sources.json').read_text())
+assert hashlib.sha256((app / 'Sounds' / 'harmonium.sf2').read_bytes()).hexdigest() == harmonium['soundfontSHA256']
 assert (app / info['CFBundleExecutable']).is_file(), info
 assert not (app / 'embedded.mobileprovision').exists()
 assert not (app / '_CodeSignature').exists()

@@ -20,7 +20,10 @@
       130.80072174072265
     ],
     "modifications": "Seconds 30\u201390; rotate first 3 seconds into a 3-second tail crossfade; -9 dBFS peak; stereo PCM16 48 kHz.",
-    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments."
+    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments.",
+    "boundaryJump": 0.006591796875,
+    "adjacentStepP999": 0.0250244140625,
+    "peakDBFS": -9.000392326786972
   },
   {
     "pattern": "ma",
@@ -43,6 +46,9 @@
       131.3262908935547
     ],
     "modifications": "Seconds 30\u201390; rotate first 3 seconds into a 3-second tail crossfade; -9 dBFS peak; stereo PCM16 48 kHz.",
-    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments."
+    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments.",
+    "boundaryJump": 0.001068115234375,
+    "adjacentStepP999": 0.017852783203125,
+    "peakDBFS": -9.000392326786972
   }
 ]

@@ -1,4 +1,4 @@
-"""Measure actual Apple sampler renders with established aubio YINFAST."""
+"""Measure actual Apple sampler renders with established range-constrained librosa YIN."""
 import json,sys
 from pathlib import Path
 import numpy as np
