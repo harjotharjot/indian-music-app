@@ -13,6 +13,7 @@ import sys
 app = pathlib.Path(sys.argv[1])
 with (app / 'Info.plist').open('rb') as stream:
     info = plistlib.load(stream)
+assert not (app / 'Resources').exists(), 'Reserved legacy Resources folder at bundle root'
 assert info['CFBundlePackageType'] == 'APPL', info
 assert info['CFBundleIdentifier'] == 'com.harjotharjot.indianmusic', info
 assert info['CFBundleSupportedPlatforms'] == ['iPhoneOS'], info

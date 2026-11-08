@@ -79,8 +79,10 @@ final class TanpuraGraph {
             voice.player.stop()
             voice.player.scheduleBuffer(voice.buffer, at: nil, options: .loops)
         }
-        engine.prepare()
-        try engine.start()
+        if !engine.isRunning {
+            engine.prepare()
+            try engine.start()
+        }
         for voice in voices.values { voice.player.play() }
     }
     func stop() {

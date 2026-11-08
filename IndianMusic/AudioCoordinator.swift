@@ -88,7 +88,7 @@ final class AudioCoordinator: ObservableObject {
         resumeAfterInterruption = false
         guard isPlaying else { return }
         isPlaying = false
-        rampGains(stopAfter: true)
+        rampGains()
         updateNowPlaying()
     }
 
@@ -100,7 +100,7 @@ final class AudioCoordinator: ObservableObject {
         updateNowPlaying()
     }
 
-    private func rampGains(stopAfter: Bool = false) {
+    private func rampGains() {
         gainTask?.cancel()
         guard let graph else { return }
         let startVolume = graph.volume()
@@ -119,7 +119,7 @@ final class AudioCoordinator: ObservableObject {
                 do { try await Task.sleep(nanoseconds: 10_000_000) } catch { return }
             }
             guard !Task.isCancelled, let self else { return }
-            if stopAfter && !self.isPlaying {
+            if !self.isPlaying {
                 self.graph?.stop()
                 try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
             }
