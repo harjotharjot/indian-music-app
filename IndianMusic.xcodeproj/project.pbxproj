@@ -1,0 +1,89 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 56;
+    objects = {
+        A00000000000000000000001 = {isa = PBXBuildFile; fileRef = A00000000000000000000003; };
+        A00000000000000000000002 = {isa = PBXBuildFile; fileRef = A00000000000000000000004; };
+        A00000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndianMusicApp.swift; sourceTree = "<group>"; };
+        A00000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+        A00000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndianMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        A00000000000000000000006 = {
+            isa = PBXGroup;
+            children = (A00000000000000000000007, A00000000000000000000015, A00000000000000000000008);
+            sourceTree = "<group>";
+        };
+        A00000000000000000000007 = {
+            isa = PBXGroup;
+            children = (A00000000000000000000003, A00000000000000000000004);
+            path = IndianMusic;
+            sourceTree = "<group>";
+        };
+        A00000000000000000000008 = {
+            isa = PBXGroup;
+            children = (A00000000000000000000005);
+            name = Products;
+            sourceTree = "<group>";
+        };
+        A00000000000000000000009 = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (A00000000000000000000001, A00000000000000000000002);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        A0000000000000000000000A = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        A0000000000000000000000B = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        A0000000000000000000000C = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = A00000000000000000000010;
+            buildPhases = (A00000000000000000000009, A0000000000000000000000A, A0000000000000000000000B);
+            buildRules = ();
+            dependencies = ();
+            name = IndianMusic;
+            productName = IndianMusic;
+            productReference = A00000000000000000000005;
+            productType = "com.apple.product-type.application";
+        };
+        A0000000000000000000000D = {
+            isa = PBXProject;
+            attributes = {BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 1640; };
+            buildConfigurationList = A0000000000000000000000F;
+            compatibilityVersion = "Xcode 14.0";
+            developmentRegion = en;
+            hasScannedForEncodings = 0;
+            knownRegions = (en, Base);
+            mainGroup = A00000000000000000000006;
+            productRefGroup = A00000000000000000000008;
+            projectDirPath = "";
+            projectRoot = "";
+            targets = (A0000000000000000000000C);
+        };
+        A0000000000000000000000F = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000011, A00000000000000000000012); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+        A00000000000000000000010 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000013, A00000000000000000000014); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+        A00000000000000000000011 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };
+            name = Debug;
+        };
+        A00000000000000000000012 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; VALIDATE_PRODUCT = YES; };
+            name = Release;
+        };
+        A00000000000000000000013 = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = A00000000000000000000015;
+            buildSettings = {};
+            name = Debug;
+        };
+        A00000000000000000000014 = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = A00000000000000000000015;
+            buildSettings = {};
+            name = Release;
+        };
+        A00000000000000000000015 = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = SOURCE_ROOT; };
+    };
+    rootObject = A0000000000000000000000D;
+}
