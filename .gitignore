@@ -3,3 +3,7 @@ build/
 build.log
 *.xcuserstate
 xcuserdata/
+feasibility/generated/
+feasibility/.build/
+feasibility/__pycache__/
+feasibility/assets/

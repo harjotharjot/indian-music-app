@@ -1,0 +1,75 @@
+name: Phase 2 audio feasibility
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['feasibility/**', '.github/workflows/audio-feasibility.yml']
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install research tools
+        run: |
+          brew install rubberband ffmpeg
+          python -m venv build/audio-venv
+          source build/audio-venv/bin/activate
+          pip install 'numpy==1.26.4' 'setuptools<81' wheel
+          pip install --no-build-isolation -r feasibility/requirements.txt
+      - name: Fetch attributed samples and test existing pitch detectors
+        run: |
+          source build/audio-venv/bin/activate
+          python feasibility/fetch_samples.py
+          python -m unittest discover -s feasibility -p 'test_*.py' -v
+          python feasibility/benchmark.py --output feasibility/results/macos
+      - name: Compile Apple harness and check iOS API availability
+        run: |
+          xcodebuild -version > feasibility/results/macos/xcode.txt
+          xcrun swiftc -parse-as-library feasibility/swift/NativeShift.swift -o build/native-shift
+          xcrun --sdk iphoneos swiftc -parse-as-library -typecheck \
+            -target arm64-apple-ios16.0 \
+            -sdk "$(xcrun --sdk iphoneos --show-sdk-path)" \
+            feasibility/swift/NativeShift.swift
+      - name: Compare native TimePitch with Rubber Band R3
+        run: |
+          source build/audio-venv/bin/activate
+          rubberband --version > feasibility/results/macos/rubberband-version.txt 2>&1
+          python feasibility/shifts.py --native "$PWD/build/native-shift"
+      - name: Upload research results and listening files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Phase2-audio-feasibility
+          path: |
+            feasibility/results/macos/
+            feasibility/samples.json
+            feasibility/generated/*.wav
+            feasibility/licenses/
+          retention-days: 30
+          if-no-files-found: error
+  ios-aubio-build:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cross-compile upstream aubio for arm64 iOS
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p feasibility/results/ios
+          bash feasibility/check-ios-aubio.sh 2>&1 | tee feasibility/results/ios/build.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Phase2-ios-compatibility
+          path: feasibility/results/ios/
+          retention-days: 30
