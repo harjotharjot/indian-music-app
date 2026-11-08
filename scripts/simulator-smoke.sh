@@ -19,9 +19,10 @@ xcrun simctl boot "$simulator_id" || true
 xcrun simctl bootstatus "$simulator_id" -b
 xcodebuild -project IndianMusic.xcodeproj -scheme IndianMusic -configuration Debug \
   -sdk iphonesimulator -destination "platform=iOS Simulator,id=$simulator_id" \
-  -derivedDataPath build/Simulator CODE_SIGNING_ALLOWED=NO build > build/tests/simulator-build.log 2>&1
+  -derivedDataPath build/Simulator CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual build > build/tests/simulator-build.log 2>&1
 cp build/Simulator/Build/Products/Debug-iphonesimulator/IndianMusic.app/Info.plist build/tests/simulator-Info.plist
 /usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" build/tests/simulator-Info.plist
+codesign --verify --verbose build/Simulator/Build/Products/Debug-iphonesimulator/IndianMusic.app
 xcrun simctl install "$simulator_id" build/Simulator/Build/Products/Debug-iphonesimulator/IndianMusic.app
 xcrun simctl launch "$simulator_id" com.harjotharjot.indianmusic | tee build/tests/simulator-launch.txt
 # Give SwiftUI time to draw the initial form before capture.
