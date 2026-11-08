@@ -32,7 +32,7 @@ xcrun simctl terminate "$simulator_id" com.harjotharjot.indianmusic
 xcodebuild test -project IndianMusic.xcodeproj -scheme IndianMusic -configuration Debug \
   -sdk iphonesimulator -destination "platform=iOS Simulator,id=$simulator_id" \
   -derivedDataPath build/Simulator -resultBundlePath build/tests/Orientation.xcresult \
-  -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual \
-  > build/tests/orientation-tests.log 2>&1
+  -parallel-testing-enabled NO -test-timeouts-enabled YES -maximum-test-execution-time-allowance 120 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual \
+  2>&1 | tee build/tests/orientation-tests.log
 xcrun xcresulttool export attachments --path build/tests/Orientation.xcresult --output-path build/tests/orientation-screenshots
 xcrun simctl shutdown "$simulator_id"
