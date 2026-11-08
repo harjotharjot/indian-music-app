@@ -172,6 +172,8 @@ final class AudioCoordinator: ObservableObject {
             Task { @MainActor [weak self] in
                 guard let self else { return }
                 let resume = self.isPlaying
+                self.interrupted = false
+                self.resumeAfterInterruption = false
                 self.stopImmediately()
                 self.loadGraph()
                 if resume { self.play() }
