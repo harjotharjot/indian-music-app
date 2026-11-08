@@ -2,7 +2,9 @@
 
 Sample files are research inputs, not bundled in the iPhone app. `samples.json`
 contains each creator, exact source URL, download URL, license URL, SHA-256 and
-modification status. Files have not been edited; decoded/resampled test excerpts
+modification status. Original downloaded files have not been edited; the Pa
+tanpura derivative in `curated/` removes the final 3.5 seconds and adds a 50-ms
+end fade, with separate attribution and checksums. Decoded/resampled test excerpts
 and shifted derivatives are in CI artifacts only. All redistributed derivatives
 remain attributed to the source creator. MP3 previews are explicitly identified.
 

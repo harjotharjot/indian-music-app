@@ -4,6 +4,20 @@ Measured on Linux and GitHub's macOS 15 arm64 runner (Xcode 16.4, SDK 18.5).
 The iPhone app has not changed. The user confirmed Phase 1 installation and launch;
 no phone audio test is claimed here.
 
+## Tanpura correction after user audition
+
+The user heard a man speaking in the final three seconds of `tanpura_pa.mp3`.
+The raw recording is **not suitable for looping as-is**; numerical checks did not
+screen for speech. The original remains unchanged for reproducibility.
+
+[Trimmed audition WAV](curated/tanpura_pa_trimmed.wav) removes the final **3.5
+seconds**, including a half-second margin, and applies a 50-ms end fade. The
+result is **34.972721 seconds**. [Edit provenance](curated/tanpura_pa_trimmed.json)
+records the checksums, source, license and exact operation. Duration and source
+integrity were verified; speech removal is based on the user's timestamp, not
+independent listening. This is an audition excerpt, not an accepted seamless loop.
+The existing CI artifact still contains the original untrimmed recording.
+
 ## Passed
 
 - Downloaded and decoded 24 attributed files, about 10 MB: seven harmonium WAVs,

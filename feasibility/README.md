@@ -104,7 +104,10 @@ must handle latency and output length explicitly; this harness is not that featu
   decoded successfully without clipping; their nominal labels are not calibration.
   Need original-master verification, tuning offsets, sustain-loop editing, attacks,
   releases and chord listening. No sampler patch was constructed.
-- **Tanpura:** prefer Sankalp Gulati's acoustic Pa/Ma recordings for continued
+- **Tanpura:** the user subsequently reported speech in the final three seconds
+  of the Pa recording. Use the [trimmed audition candidate](curated/tanpura_pa_trimmed.wav)
+  for review; never loop the raw Pa recording unchanged. See [the correction](RESULTS.md).
+  Otherwise, prefer Sankalp Gulati's acoustic Pa/Ma recordings for continued
   audition. They preserve actual jawari but contain overlapping strings. Independent
   speed control and clean loops are unproven, and MP3 previews are inadequate as a
   final master decision. No custom physical-model synthesis is justified yet.

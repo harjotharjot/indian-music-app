@@ -1,0 +1,17 @@
+{
+  "file": "tanpura_pa_trimmed.wav",
+  "source_file": "tanpura_pa.mp3",
+  "source_url": "https://freesound.org/people/sankalp/sounds/153263/",
+  "creator": "Sankalp Gulati (sankalp)",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "source_sha256": "7aaa5121283fe3230a47294e06388ef26a81b12fba2c9998e093aea474f97bac",
+  "sha256": "03454509fbf4aab38eab163da4fd64a804a8cfdf59152731eacd0d971fde35ad",
+  "source_duration_seconds": 38.47272108843537,
+  "output_duration_seconds": 34.97272108843537,
+  "removed_tail_seconds": 3.5,
+  "end_fade_seconds": 0.05,
+  "reason": "User reported speech in the final 3 seconds; remove an additional 0.5-second margin.",
+  "verification": "Source checksum and output duration verified; no independent listening confirmation; not a seamless loop.",
+  "quality": "Decoded from Freesound HQ MP3 preview; WAV does not recover original lossless quality."
+}
