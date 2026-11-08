@@ -6,6 +6,7 @@ Requires **iOS 16+**. Current version: **0.4.0 — sampled harmonium and tanpura
 ## Features
 
 - Recorded harmonium, multitouch chords, one/two visible octaves and C2–C5 navigation.
+- Portrait and landscape layouts; instrument switcher follows the charging-port edge.
 - All 12 Sa references, optional sargam and shared one-cent fine tuning.
 - User-supplied C-scale Pa/Ma tanpuras, independent speed and volume, saved settings,
   background playback and lock-screen transport.
@@ -19,7 +20,8 @@ reference labels and the drone, while cents fine tuning shifts both instruments.
 
 App/source changes on `main` automatically run **Build unsigned iPhone IPA**.
 The workflow tests native audio and pitch, builds an unsigned arm64 device IPA,
-checks asset hashes, then installs/launches a simulator build. It uses an available
+checks asset hashes, then installs/launches a simulator build and tests both screens
+in portrait and both landscape directions. It uses an available
 Xcode on `macos-15`; no Apple signing credentials are stored in CI.
 
 1. On iPhone, sign in to GitHub in Safari and open the successful build run.

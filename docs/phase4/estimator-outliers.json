@@ -1,0 +1,6 @@
+{
+  "frames": 5661,
+  "grossErrorOver50CentsPercent": 1.554495672142731,
+  "octaveSizedOutliersPercent": 1.554495672142731,
+  "note": "Offline reanalysis of final sampler WAVs; no octave folding; excludes unvoiced frames"
+}

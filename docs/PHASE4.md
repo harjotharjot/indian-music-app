@@ -18,6 +18,9 @@ checks. Phase 4 changes require new phone testing; CI results are not device res
 - Separate harmonium and tanpura monitor volumes, playing together in one engine.
   Tanpura transport, settings, cents, speed and background playback remain available
   in the Tanpura tab. Existing settings keys are retained across the update.
+- Portrait and landscape layouts for both instruments. The switcher is anchored
+  to the charging-port edge: bottom in portrait, the corresponding side in landscape.
+  It stays outside scrolling content.
 - Explicit keyboard enable preloads/starts the already constructed engine before
   playing. The session requests a 5.333-ms IO buffer; the actual route may differ.
 - Notes are released when the app becomes inactive, the keyboard disappears,
@@ -119,7 +122,9 @@ constraints, not an implemented recorder.
 - Render-only onset is measured at a -80 dBFS sample threshold. It can include
   recording noise and excludes finger dispatch, hardware buffers, converters,
   speaker/headphone transport and Bluetooth. It is not touch-to-sound latency.
-- Device IPA validation, asset hashes, simulator install/launch and screenshot.
+- Device IPA validation, asset hashes, simulator install/launch, and UI tests of both
+  instruments in portrait and both landscape directions, asserting the switcher
+  follows the charging-port edge and remains tappable.
 
 No physical-iPhone latency, touch polyphony, CPU/thermal/battery, background regression
 or perceived reed/loop quality is claimed until the user tests this version.
@@ -152,21 +157,30 @@ without downloading or regenerating sounds.
 4. Try one/two octaves, C2/C3/C4 navigation, all Sa keys, optional sargam and ±1/±37 cents.
 5. Start tanpura while playing. Independently mute each volume; check that the other
    instrument continues. Listen to both replacement tanpuras across a minute-long join.
-6. Background/lock the app: keyboard notes should stop; a playing tanpura should
+6. Rotate both screens in both landscape directions. The switcher should remain
+   on the charging-port side; portrait should put it at the bottom. Check that
+   rotation/tab changes release held notes.
+7. Background/lock the app: keyboard notes should stop; a playing tanpura should
    continue. Check lock-screen controls, headphone disconnection and interruptions.
-7. Report perceived delay, missed releases, pitch mismatch, harsh loops or distortion,
+8. Report perceived delay, missed releases, pitch mismatch, harsh loops or distortion,
    along with phone model and audio route (speaker/wired/Bluetooth).
 
 Stop after Phase 4 and wait for these real-iPhone results before adding other features.
 
 ## Final measured results
 
-[Successful verification run](https://github.com/harjotharjot/indian-music-app/actions/runs/42533659863)
-for source commit `87a7ccc` passed all checks, including the mandatory pitch gate.
+[Audio measurement run](https://github.com/harjotharjot/indian-music-app/actions/runs/42533659863)
+for source commit `87a7ccc` passed the mandatory pitch gate. The final orientation
+verification run, linked below, repeats these audio checks with the same assets.
 
-- **111/111 rendered key/tuning cases passed**; worst clip median absolute pitch
+- **111/111 rendered key/tuning cases passed the median-error criterion**; worst clip median absolute pitch
   error was **0.8893 cents**. This is offline audio analysis, not a claim of one-cent
   accuracy on every instantaneous sample or physical-iPhone verification.
+- Instantaneous estimator ambiguity remains: reanalysis found octave-sized outliers
+  in approximately **1.55% of voiced frames**, and the worst clip p95 error was
+  approximately **1201 cents**. The sub-cent median does not erase those outliers.
+  These results do not prove sample-by-sample F0 accuracy; reeds/overtones and the
+  detector need further evaluation before any live tuner accuracy claim.
 - All six chord fundamentals were present. Power relative to corresponding isolated
   notes ranged from approximately **0.997 to 1.004**.
 - Eight-second held-note minimum 100-ms RMS was **0.00375**, with no silent loop
@@ -176,13 +190,20 @@ for source commit `87a7ccc` passed all checks, including the mandatory pitch gat
   latency or physical touch-to-sound latency**.
 - Both replacement tanpuras passed 160-second renders, restarts and loop-gap checks.
   The shared engine passed simultaneous instrument, fader and rapid-note stress checks.
-- Device arm64 IPA validation, simulator installation and launch passed. The
-  [launch screenshot](phase4/iphone.png) shows the keyboard UI; simulator touch
-  playing was not automated.
+- Device arm64 IPA validation, simulator installation and launch passed. Both
+  instrument screens pass automated rotation and switcher-placement checks.
+  Simulator touch playing was not automated.
 
 [Raw pitch results](phase4/harmonium-pitch-results.json) ·
 [Polyphony/sustain measurements](phase4/harmonium-polyphony-results.json) ·
-[Native test transcript](phase4/validation.txt)
+[Native test transcript](phase4/validation.txt) ·
+[Estimator outlier analysis](phase4/estimator-outliers.json)
 
-[Download v0.4.0 unsigned IPA ZIP](https://github.com/harjotharjot/indian-music-app/actions/runs/42533659863/artifacts/13637888293)
+[Final successful build and rotation checks](https://github.com/harjotharjot/indian-music-app/actions/runs/42535362022)
+(source `90caf43`). [UI test transcript](phase4/orientation-tests.log).
+Screenshots: [harmonium landscape](phase4/harmonium-landscape-port-right.png),
+[tanpura landscape](phase4/tanpura-landscape-port-left.png),
+[harmonium portrait](phase4/harmonium-portrait.png).
+
+[Download v0.4.0 unsigned IPA ZIP](https://github.com/harjotharjot/indian-music-app/actions/runs/42535362022/artifacts/13639038319)
 (GitHub sign-in required; install through SideStore as an update).
