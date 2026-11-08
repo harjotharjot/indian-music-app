@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 struct HarmoniumSettings: Codable, Equatable {
     var volume: Double = 0.6

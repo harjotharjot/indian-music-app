@@ -91,8 +91,7 @@ final class AudioCoordinator: ObservableObject {
             rampGains()
             updateNowPlaying()
         } catch {
-            graph.stop()
-            isPlaying = false
+            stopImmediately()
             message = "Playback could not start: \(error.localizedDescription)"
             try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
             updateNowPlaying()
