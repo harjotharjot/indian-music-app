@@ -3,6 +3,7 @@ name: Build unsigned iPhone IPA
 on:
   push:
     branches: [main]
+    paths: ['IndianMusic/**', 'IndianMusic.xcodeproj/**', 'App.xcconfig', 'scripts/**', '.github/workflows/build-ipa.yml']
   workflow_dispatch:
 
 permissions:

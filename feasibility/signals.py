@@ -13,7 +13,7 @@ WORK = ROOT / 'generated'
 
 def tone(frequency, kind='sine', duration=1.0, seed=42):
     t = np.arange(round(SR * duration)) / SR
-    f = np.full(len(t), frequency)
+    f = np.full(len(t), frequency, dtype=float)
     if kind == 'vibrato':
         f *= 2 ** (25 * np.sin(2 * np.pi * 5 * t) / 1200)
     phase = 2 * np.pi * np.cumsum(f) / SR
@@ -58,6 +58,18 @@ def prepare_shifts():
             name = 'shift_' + source.stem + '.wav'
             subprocess.run(['ffmpeg','-v','error','-y','-i',str(source),'-t','6','-ar',str(SR),'-ac','1',str(WORK/name)], check=True)
             rows.append({'file': name, 'f0': None, 'role': file.split('_')[0]})
+    # A reproducible mixed-recording stress fixture, not a full performance dataset.
+    parts = []
+    for item in rows:
+        if item['role'] in ['harmonium', 'voice', 'tabla']:
+            y, _ = sf.read(WORK/item['file'])
+            y = np.pad(y, (0, max(0, 6*SR-len(y))))[:6*SR]
+            parts.append(y)
+    if parts:
+        mix = sum(parts)
+        mix *= .7 / max(np.max(np.abs(mix)), 1e-9)
+        sf.write(WORK/'shift_recorded_mix.wav', mix, SR, subtype='FLOAT')
+        rows.append({'file':'shift_recorded_mix.wav','f0':None,'role':'mixed recordings'})
     (WORK / 'shift_inputs.json').write_text(json.dumps(rows, indent=2))
 
 if __name__ == '__main__':

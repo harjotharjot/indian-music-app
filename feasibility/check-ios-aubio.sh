@@ -6,6 +6,7 @@ mkdir -p build feasibility/results/ios
  git -C build/aubio checkout ad5cf975aed08cc4562dd008cf9f83b12b82ffb8
 (
   cd build/aubio
+  bash scripts/get_waf.sh
   python waf configure --with-target-platform=ios --nodeps --enable-static --disable-shared --disable-tests --disable-examples
   python waf build
 )
