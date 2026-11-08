@@ -21,9 +21,9 @@ assert info['CFBundleIdentifier'] == 'com.harjotharjot.indianmusic', info
 assert info['CFBundleSupportedPlatforms'] == ['iPhoneOS'], info
 assert info['UIDeviceFamily'] == [1], info
 assert info['MinimumOSVersion'] == '16.0', info
-assert info['CFBundleShortVersionString'] == '0.3.1', info
+assert info['CFBundleShortVersionString'] == '0.4.0', info
 assert 'audio' in info['UIBackgroundModes'], info
-for name in ['tanpura_pa.wav', 'tanpura_ma.wav', 'tanpura-sources.json']:
+for name in ['tanpura_pa.wav', 'tanpura_ma.wav', 'tanpura-sources.json', 'harmonium.sf2', 'harmonium-sources.json']:
     assert (app / 'Sounds' / name).is_file(), name
 sources = json.loads((app / 'Sounds' / 'tanpura-sources.json').read_text())
 for source in sources:

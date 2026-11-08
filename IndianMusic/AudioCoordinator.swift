@@ -1,6 +1,7 @@
 import AVFoundation
 import Combine
 import MediaPlayer
+import UIKit
 
 @MainActor
 final class AudioCoordinator: ObservableObject {
@@ -12,14 +13,26 @@ final class AudioCoordinator: ObservableObject {
                 UserDefaults.standard.set(data, forKey: Self.settingsKey)
             }
             graph?.apply(settings)
+            graph?.applyHarmonium(harmonium, cents: settings.cents)
             rampGains()
             updateNowPlaying()
         }
     }
+    @Published var harmonium: HarmoniumSettings {
+        didSet {
+            let safe = harmonium.validated()
+            if safe != harmonium { harmonium = safe }
+            if oldValue.octave != harmonium.octave || oldValue.twoOctaves != harmonium.twoOctaves { releaseKeys() }
+            if let data = try? JSONEncoder().encode(harmonium) { UserDefaults.standard.set(data, forKey: "harmonium.settings.v1") }
+            graph?.applyHarmonium(harmonium, cents: settings.cents)
+        }
+    }
+    @Published private(set) var harmoniumEnabled = false
+    @Published private(set) var keyboardEpoch = 0
     @Published private(set) var isPlaying = false
     @Published private(set) var message: String?
     private static let settingsKey = "tanpura.settings.v1"
-    private var graph: TanpuraGraph?
+    private var graph: PracticeAudioGraph?
     private var observers: [NSObjectProtocol] = []
     private var commands: [(MPRemoteCommand, Any)] = []
     private var gainTask: Task<Void, Never>?
@@ -33,6 +46,9 @@ final class AudioCoordinator: ObservableObject {
         } else {
             settings = TanpuraSettings()
         }
+        if let data = UserDefaults.standard.data(forKey: "harmonium.settings.v1"),
+           let saved = try? JSONDecoder().decode(HarmoniumSettings.self, from: data) { harmonium = saved.validated() }
+        else { harmonium = HarmoniumSettings() }
         loadGraph()
         observeAudioChanges()
         installRemoteCommands()
@@ -41,10 +57,11 @@ final class AudioCoordinator: ObservableObject {
     private func loadGraph() {
         do {
             guard let resources = Bundle.main.resourceURL?.appendingPathComponent("Sounds") else {
-                throw TanpuraGraph.GraphError.invalidResource("bundle")
+                throw PracticeAudioGraph.GraphError.invalidResource("bundle")
             }
-            graph = try TanpuraGraph(resources: resources)
+            graph = try PracticeAudioGraph(resources: resources)
             graph?.apply(settings)
+            graph?.applyHarmonium(harmonium, cents: settings.cents)
             message = nil
         } catch {
             graph = nil
@@ -62,9 +79,7 @@ final class AudioCoordinator: ObservableObject {
         guard let graph else { return }
         do {
             // This app owns one session and one engine; no microphone permission needed.
-            let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .default)
-            try session.setActive(true)
+            try activateSession()
             graph.apply(settings)
             graph.setVolume(0)
             for pattern in TanpuraPattern.allCases {
@@ -93,6 +108,8 @@ final class AudioCoordinator: ObservableObject {
     }
 
     private func stopImmediately() {
+        releaseKeys()
+        harmoniumEnabled = false
         gainTask?.cancel()
         graph?.setVolume(0)
         graph?.stop()
@@ -120,14 +137,57 @@ final class AudioCoordinator: ObservableObject {
             }
             guard !Task.isCancelled, let self else { return }
             if !self.isPlaying {
-                self.graph?.stop()
-                try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+                self.graph?.stopTanpura()
+                if !self.harmoniumEnabled {
+                    self.graph?.engine.stop()
+                    try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+                }
             }
         }
     }
 
+    private func activateSession() throws {
+        let session = AVAudioSession.sharedInstance()
+        try session.setCategory(.playback, mode: .default)
+        // A request, not a claim of measured physical-device latency.
+        try session.setPreferredIOBufferDuration(0.005333)
+        try session.setActive(true)
+    }
+    func enableHarmonium() {
+        guard !interrupted else { return }
+        if graph == nil { loadGraph() }
+        guard let graph else { return }
+        do {
+            try activateSession()
+            graph.applyHarmonium(harmonium, cents: settings.cents)
+            try graph.startEngine()
+            harmoniumEnabled = true
+            message = nil
+        } catch { message = "Keyboard could not start: \(error.localizedDescription)" }
+    }
+    func disableHarmonium() {
+        releaseKeys()
+        harmoniumEnabled = false
+        if !isPlaying {
+            graph?.engine.stop()
+            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+    }
+    func setHarmoniumKeys(_ notes: Set<Int>) {
+        guard harmoniumEnabled, !interrupted else { return }
+        graph?.setNotes(notes)
+    }
+    func releaseKeys() {
+        graph?.allNotesOff()
+        keyboardEpoch += 1
+    }
+
     private func observeAudioChanges() {
         let center = NotificationCenter.default
+        observers.append(center.addObserver(forName: UIApplication.willResignActiveNotification,
+                                             object: nil, queue: .main) { [weak self] _ in
+            Task { @MainActor [weak self] in self?.disableHarmonium() }
+        })
         observers.append(center.addObserver(forName: AVAudioSession.interruptionNotification,
                                              object: nil, queue: .main) { [weak self] note in
             let type = (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt)
@@ -182,9 +242,12 @@ final class AudioCoordinator: ObservableObject {
     }
 
     private func recoverStoppedEngine() {
-        guard isPlaying, !interrupted, graph?.engine.isRunning == false else { return }
+        guard (isPlaying || harmoniumEnabled), !interrupted, graph?.engine.isRunning == false else { return }
+        let drone = isPlaying
+        let keyboard = harmoniumEnabled
         stopImmediately()
-        play()
+        if drone { play() }
+        if keyboard { enableHarmonium() }
     }
 
     private func installRemoteCommands() {

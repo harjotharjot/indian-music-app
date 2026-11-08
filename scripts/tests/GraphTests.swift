@@ -9,7 +9,7 @@ struct GraphTests {
             fatalError("Invalid render format")
         }
         for pattern in TanpuraPattern.allCases {
-            let graph = try TanpuraGraph(resources: resources)
+            let graph = try PracticeAudioGraph(resources: resources)
             try graph.engine.enableManualRenderingMode(.offline, format: format, maximumFrameCount: 4096)
             var settings = TanpuraSettings()
             settings.pattern = pattern
@@ -21,7 +21,7 @@ struct GraphTests {
             graph.setVolume(0.8)
             try graph.play()
             let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: 4096)!
-            let total: AVAudioFramePosition = 48_000 * 60
+            let total: AVAudioFramePosition = 48_000 * 160
             var minRMS = Double.greatestFiniteMagnitude
             var peak = 0.0
             var stalled = 0
@@ -65,7 +65,7 @@ struct GraphTests {
             }
             precondition(energy > 1, "Restart did not produce audio")
             graph.stop()
-            print("PASS: \(pattern.rawValue) 60-second shared-graph render at speed \(settings.speed), +37 cents; min block RMS=\(minRMS), peak=\(peak), restart passed.")
+            print("PASS: \(pattern.rawValue) 160-second shared-graph render at speed \(settings.speed), +37 cents; min block RMS=\(minRMS), peak=\(peak), restart passed.")
         }
     }
 }

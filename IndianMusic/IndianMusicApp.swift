@@ -6,8 +6,10 @@ struct IndianMusicApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(audio)
+            TabView {
+                PracticeView().tabItem { Label("Harmonium", systemImage: "pianokeys") }
+                ContentView().tabItem { Label("Tanpura", systemImage: "waveform") }
+            }.environmentObject(audio)
         }
     }
 }

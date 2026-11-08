@@ -22,6 +22,19 @@ jobs:
           xcrun --sdk iphoneos --show-sdk-version
       - name: Test tuning and render both tanpuras across loop boundaries
         run: bash scripts/test-phase3.sh
+      - name: Test sampled harmonium and simultaneous audio
+        run: bash scripts/test-phase4.sh
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Measure rendered pitch with existing aubio
+        run: |
+          python -m venv build/pitch-venv
+          source build/pitch-venv/bin/activate
+          pip install 'numpy==1.26.4' 'setuptools<81' wheel
+          mkdir -p build/empty-pkgconfig
+          PKG_CONFIG_LIBDIR="$PWD/build/empty-pkgconfig" PKG_CONFIG_PATH="$PWD/build/empty-pkgconfig" ARCHFLAGS="-arch arm64" CFLAGS="-Wno-error=incompatible-function-pointer-types" pip install --no-build-isolation -r feasibility/requirements.txt
+          python scripts/phase4/check_rendered_audio.py build/tests/audio | tee build/tests/pitch-summary.txt
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |
@@ -55,7 +68,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Phase3-tests
+          name: Phase4-tests
           path: build/tests/
           retention-days: 30
           if-no-files-found: error

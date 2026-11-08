@@ -2,64 +2,47 @@
   {
     "pattern": "pa",
     "file": "tanpura_pa.wav",
-    "referenceHz": 138.7725830078125,
-    "calibrationSupportFrames": 607,
-    "calibrationP10P90Hz": [
-      138.51216735839844,
-      138.93016357421874
-    ],
+    "referenceHz": 130.65655517578125,
+    "durationSeconds": 57.0,
     "sourceExcerptSeconds": [
-      2,
-      26
+      30,
+      90
     ],
     "excludedSourceIntervalsSeconds": [],
-    "durationSeconds": 22.0,
-    "sampleRate": 48000,
-    "channels": 2,
-    "peakDBFS": -5.99994884152935,
-    "boundaryJump": 0.023773193359375,
-    "adjacentStepP999": 0.1219482421875,
-    "sha256": "24f7152a83695bc0364d963805bf8dbb7a08883ef7bbe1aab9ba11a40c91b3b3",
-    "sourceSha256": "03454509fbf4aab38eab163da4fd64a804a8cfdf59152731eacd0d971fde35ad",
-    "sourceURL": "https://freesound.org/people/sankalp/sounds/153263/",
-    "creator": "Sankalp Gulati (sankalp)",
-    "license": "CC-BY-4.0",
-    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
-    "modifications": "Source seconds 2\u201326; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
-    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa tail was trimmed; Ma source seconds 5\u201313 contain user-reported speech and are excluded with margin."
+    "sha256": "5d8d73c52008aeaf2f8f41798ca5ec355591d0c87eb3f4ab73b786cb21ae4986",
+    "sourceSha256": "b9ad541cb62701919e7ca09d00e9aa35595f9af37d071a29700e63ff6a5224db",
+    "sourceFile": "c tanpura sa pa.mp3",
+    "sourceURL": null,
+    "creator": "User-supplied recording; original creator not specified",
+    "license": "Not specified; supplied for this private app, no public redistribution license assumed",
+    "calibrationP10P90Hz": [
+      130.5773132324219,
+      130.80072174072265
+    ],
+    "modifications": "Seconds 30\u201390; rotate first 3 seconds into a 3-second tail crossfade; -9 dBFS peak; stereo PCM16 48 kHz.",
+    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments."
   },
   {
     "pattern": "ma",
     "file": "tanpura_ma.wav",
-    "referenceHz": 138.90650939941406,
-    "calibrationSupportFrames": 122,
-    "calibrationP10P90Hz": [
-      138.67243194580078,
-      139.1011184692383
-    ],
+    "referenceHz": 131.00041961669922,
+    "durationSeconds": 57.0,
     "sourceExcerptSeconds": [
-      16,
-      40
+      30,
+      90
     ],
-    "excludedSourceIntervalsSeconds": [
-      [
-        4.5,
-        13.5
-      ]
+    "excludedSourceIntervalsSeconds": [],
+    "sha256": "77f97f32332ebc425ef69b8aae784bd6b812be3c5e13f7045b7ba3cf3b1436ac",
+    "sourceSha256": "f33bf61669271d018ed8c8fe0644edb889d82efb3c7e225910f0353f83fd7739",
+    "sourceFile": "c tanpura sa ma clipped.mp3",
+    "sourceURL": null,
+    "creator": "User-supplied recording; original creator not specified",
+    "license": "Not specified; supplied for this private app, no public redistribution license assumed",
+    "calibrationP10P90Hz": [
+      130.76203155517578,
+      131.3262908935547
     ],
-    "durationSeconds": 22.0,
-    "sampleRate": 48000,
-    "channels": 2,
-    "peakDBFS": -5.99994884152935,
-    "boundaryJump": 0.006439208984375,
-    "adjacentStepP999": 0.100860595703125,
-    "sha256": "55ed17a3abb5923453f8aa95ffef299a00a918cdc878155007879999223d9ec1",
-    "sourceSha256": "c7901f3f5638f94f2a4819dba4134d0491d52824b1a373b9e2fc239c6b287e81",
-    "sourceURL": "https://freesound.org/people/sankalp/sounds/153265/",
-    "creator": "Sankalp Gulati (sankalp)",
-    "license": "CC-BY-4.0",
-    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
-    "modifications": "Source seconds 16\u201340; rotate past first 2 seconds and crossfade tail with head for 2 seconds; normalize peak to -6 dBFS; PCM16 stereo 48kHz.",
-    "limitations": "Derived from MP3 preview; approximate Sa from mixed strings; no independent listening approval. Pa tail was trimmed; Ma source seconds 5\u201313 contain user-reported speech and are excluded with margin."
+    "modifications": "Seconds 30\u201390; rotate first 3 seconds into a 3-second tail crossfade; -9 dBFS peak; stereo PCM16 48 kHz.",
+    "limitations": "C reference estimated from mixed-string recording. No independent listening confirmation. Original MP3 uploads remain in session attachments."
   }
 ]

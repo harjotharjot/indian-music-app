@@ -1,0 +1,656 @@
+{
+  "creator": "donyaquick; WAV distribution by nbrosowsky/tonejs-instruments",
+  "license": "CC0-1.0",
+  "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "upstreamCommit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "writer": "SF2cute 3c5fc83b6ba3d1feb377f9c86021fd77499eb7c0 (zlib/libpng license), build-time only",
+  "modifications": "Trim leading silence; retune each recorded note to A440 equal temperament using FFmpeg; retain attack; crossfade sustain join; -12 dBFS peak; 80-ms sampler release.",
+  "notes": [
+    {
+      "note": "A2",
+      "midi": 45,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/A2.wav",
+      "sourceSha256": "8827022150f0ce2daad6d90706a76705b00fcd43dc47530d05394ac0cc908c0c",
+      "referenceHzBefore": 110.55317687988281,
+      "referenceSpreadHz": [
+        110.51993789672852,
+        110.58316192626953
+      ],
+      "pitchCorrectionCents": -8.684351514069384,
+      "measuredPreparedErrorCents": 0.0021613515285728007,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "A3",
+      "midi": 57,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/A3.wav",
+      "sourceSha256": "2610383aba1382b3c18a322ab20e1828faadb89301f2698d8ba713876a8e2231",
+      "referenceHzBefore": 221.1815185546875,
+      "referenceSpreadHz": [
+        221.1384735107422,
+        221.2079315185547
+      ],
+      "pitchCorrectionCents": -9.272782089077873,
+      "measuredPreparedErrorCents": 0.01488925579758533,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "A4",
+      "midi": 69,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/A4.wav",
+      "sourceSha256": "bfb1802891a5a5af671016100f0795f58f6f1739383b47d033ab038513d847a8",
+      "referenceHzBefore": 442.5704040527344,
+      "referenceSpreadHz": [
+        442.4753845214844,
+        442.6279815673828
+      ],
+      "pitchCorrectionCents": -10.08414417094061,
+      "measuredPreparedErrorCents": -0.08693659854100293,
+      "trimmedLeadingSeconds": 0.025,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "As2",
+      "midi": 46,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/As2.wav",
+      "sourceSha256": "46537799425bc7d28836f6bab882926c9e65e6d12725fd8aa7165d80170f2e3f",
+      "referenceHzBefore": 116.99639511108398,
+      "referenceSpreadHz": [
+        116.97165756225586,
+        117.03375625610352
+      ],
+      "pitchCorrectionCents": -6.752665368093635,
+      "measuredPreparedErrorCents": -0.042403705719320256,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "As3",
+      "midi": 58,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/As3.wav",
+      "sourceSha256": "1402c4e53751d3ec1c4230c7558f2ce405119d83f14298b3035a8d2eb2c4e1ca",
+      "referenceHzBefore": 234.05130004882812,
+      "referenceSpreadHz": [
+        234.00826416015624,
+        234.11263427734374
+      ],
+      "pitchCorrectionCents": -7.185505806643255,
+      "measuredPreparedErrorCents": -0.0859262886275177,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "As4",
+      "midi": 70,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/As4.wav",
+      "sourceSha256": "77f7d79f451c550428333346c19f493a7f5d5f5271bf5e271b54cd888bd35e3c",
+      "referenceHzBefore": 468.5628356933594,
+      "referenceSpreadHz": [
+        468.50676879882815,
+        468.63341064453124
+      ],
+      "pitchCorrectionCents": -8.886808251571733,
+      "measuredPreparedErrorCents": -0.056004395343745204,
+      "trimmedLeadingSeconds": 0.035,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "B2",
+      "midi": 47,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/B2.wav",
+      "sourceSha256": "fda678ca8fee721099ed990b747ed74c880f669d1ad60ddc294c9c9e82c794d0",
+      "referenceHzBefore": 124.06438827514648,
+      "referenceSpreadHz": [
+        124.0093864440918,
+        124.13102798461914
+      ],
+      "pitchCorrectionCents": -8.302644001048064,
+      "measuredPreparedErrorCents": -0.20155393134151284,
+      "trimmedLeadingSeconds": 0.0,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "B3",
+      "midi": 59,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/B3.wav",
+      "sourceSha256": "9c84fe97dd9e44a1c44ebd693ff2c8ac35c5d16d8f022cabbbccfec3d8a2cbc5",
+      "referenceHzBefore": 248.27288055419922,
+      "referenceSpreadHz": [
+        248.2237319946289,
+        248.31044921875
+      ],
+      "pitchCorrectionCents": -9.30778877285482,
+      "measuredPreparedErrorCents": -0.04033163625586013,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "B4",
+      "midi": 71,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/B4.wav",
+      "sourceSha256": "4793294e08c7193fe09cfeebf10ec4037176efa9df1d98468520ed2b96f08e5a",
+      "referenceHzBefore": 496.7146911621094,
+      "referenceSpreadHz": [
+        496.6322387695312,
+        496.8378479003906
+      ],
+      "pitchCorrectionCents": -9.896672510340604,
+      "measuredPreparedErrorCents": 0.11376230375672583,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "C2",
+      "midi": 36,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/C2.wav",
+      "sourceSha256": "6f9f71e8f4babdc0ec1ece438c7d7a38b5fbd3330ca674168ccf402961c74402",
+      "referenceHzBefore": 65.44900131225586,
+      "referenceSpreadHz": [
+        65.39545974731445,
+        65.47966537475585
+      ],
+      "pitchCorrectionCents": -1.127471503145896,
+      "measuredPreparedErrorCents": -0.0025290712885010155,
+      "trimmedLeadingSeconds": 0.0,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "C3",
+      "midi": 48,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/C3.wav",
+      "sourceSha256": "282bd24bfbfd68b7f609272da7b0c5f406de72b4741c5b5c51f5451a50dfcc3c",
+      "referenceHzBefore": 131.18484497070312,
+      "referenceSpreadHz": [
+        131.1687042236328,
+        131.23562469482422
+      ],
+      "pitchCorrectionCents": -4.917047503873961,
+      "measuredPreparedErrorCents": 0.0005000536316761202,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "C4",
+      "midi": 60,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/C4.wav",
+      "sourceSha256": "aee5e70b43e8b241fe1f48446243a0f718915e12c3b921a790d1bff0884907b9",
+      "referenceHzBefore": 262.72105407714844,
+      "referenceSpreadHz": [
+        262.6799652099609,
+        262.80829162597655
+      ],
+      "pitchCorrectionCents": -7.233956164470552,
+      "measuredPreparedErrorCents": -0.046149057815437836,
+      "trimmedLeadingSeconds": 0.035,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "C5",
+      "midi": 72,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/C5.wav",
+      "sourceSha256": "173d05c404c832fa51030795f9b12325762dbbdcc4ec5d3875bd3afbbdd31540",
+      "referenceHzBefore": 526.687744140625,
+      "referenceSpreadHz": [
+        526.5613525390625,
+        526.7983032226563
+      ],
+      "pitchCorrectionCents": -11.333238083194605,
+      "measuredPreparedErrorCents": -0.08552915630250553,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Cs2",
+      "midi": 37,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Cs2.wav",
+      "sourceSha256": "4723d9d5de59d450d942c26eb02c789d9e5dbc59ae7b47d007f9726b2bf5c942",
+      "referenceHzBefore": 69.3624267578125,
+      "referenceSpreadHz": [
+        69.31335906982422,
+        69.43827362060547
+      ],
+      "pitchCorrectionCents": -1.6673070179350908,
+      "measuredPreparedErrorCents": -0.0709935474679191,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Cs3",
+      "midi": 49,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Cs3.wav",
+      "sourceSha256": "936b0878446db4d075f6167c416aed4b90f01fbb58169a118703f27c69169f79",
+      "referenceHzBefore": 138.90802764892578,
+      "referenceSpreadHz": [
+        138.8739242553711,
+        138.9435272216797
+      ],
+      "pitchCorrectionCents": -3.951743509477008,
+      "measuredPreparedErrorCents": -0.01647844383910746,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Cs4",
+      "midi": 61,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Cs4.wav",
+      "sourceSha256": "681af0f5f84f19e44f44439910a0dbd67b3f5e244eb37378f5ddf18e4618ba54",
+      "referenceHzBefore": 278.2292022705078,
+      "referenceSpreadHz": [
+        278.21222229003905,
+        278.26812133789065
+      ],
+      "pitchCorrectionCents": -6.524391070868498,
+      "measuredPreparedErrorCents": 0.00944421999793578,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Cs5",
+      "midi": 73,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Cs5.wav",
+      "sourceSha256": "e0ec8497dbdd824d61621b6b8c8efd3aa712d37ebf379ea51bfaa0a419551de8",
+      "referenceHzBefore": 557.0396118164062,
+      "referenceSpreadHz": [
+        556.9557250976562,
+        557.1702758789063
+      ],
+      "pitchCorrectionCents": -8.331679276720202,
+      "measuredPreparedErrorCents": -0.20185586343968887,
+      "trimmedLeadingSeconds": 0.045,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "D2",
+      "midi": 38,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/D2.wav",
+      "sourceSha256": "3f5d0388a9d32e6fc8f8566683feff48b5cc02882f83e3520545d2c469c11895",
+      "referenceHzBefore": 73.6573371887207,
+      "referenceSpreadHz": [
+        73.63009719848633,
+        73.71222229003907
+      ],
+      "pitchCorrectionCents": -5.677149024743507,
+      "measuredPreparedErrorCents": 0.07104206901922142,
+      "trimmedLeadingSeconds": 0.025,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "D3",
+      "midi": 50,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/D3.wav",
+      "sourceSha256": "32017bec88a9f3ebd66f7c52a1e27a6e66a310e99fd0f05f85fbbe725602da58",
+      "referenceHzBefore": 147.44498443603516,
+      "referenceSpreadHz": [
+        147.4115432739258,
+        147.52912445068358
+      ],
+      "pitchCorrectionCents": -7.207868838835962,
+      "measuredPreparedErrorCents": -0.15241073350094553,
+      "trimmedLeadingSeconds": 0.0,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "D4",
+      "midi": 62,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/D4.wav",
+      "sourceSha256": "d30f6603662a38b5c9796783feae53134a8c2e800e312f32098ceec108d0a965",
+      "referenceHzBefore": 295.0615692138672,
+      "referenceSpreadHz": [
+        295.02708740234374,
+        295.11643371582034
+      ],
+      "pitchCorrectionCents": -8.215003641441704,
+      "measuredPreparedErrorCents": 0.06996265620686336,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "D5",
+      "midi": 74,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/D5.wav",
+      "sourceSha256": "0e8f3b67dcc0dd811ae00f5d3c81512fea7dc43261804fa24b50b266f61c1085",
+      "referenceHzBefore": 590.9520874023438,
+      "referenceSpreadHz": [
+        590.8991455078125,
+        591.0350463867187
+      ],
+      "pitchCorrectionCents": -10.64517048271392,
+      "measuredPreparedErrorCents": -0.13090979354855684,
+      "trimmedLeadingSeconds": 0.025,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Ds2",
+      "midi": 39,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Ds2.wav",
+      "sourceSha256": "c8734cf63e5956631b3b51056b3f44b89505b70df80ba52a976e60819761eced",
+      "referenceHzBefore": 78.01129150390625,
+      "referenceSpreadHz": [
+        77.97238464355469,
+        78.07869720458984
+      ],
+      "pitchCorrectionCents": -5.1016066773478315,
+      "measuredPreparedErrorCents": 0.5013815467941516,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Ds3",
+      "midi": 51,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Ds3.wav",
+      "sourceSha256": "e9809c98babe334e6f64c2d8eef3c23156c68582ff6ed03729a6ca764d7e8c3e",
+      "referenceHzBefore": 155.8949737548828,
+      "referenceSpreadHz": [
+        155.85621643066406,
+        155.939453125
+      ],
+      "pitchCorrectionCents": -3.6850689340662584,
+      "measuredPreparedErrorCents": -0.06996436697626611,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Ds4",
+      "midi": 63,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Ds4.wav",
+      "sourceSha256": "71037fe4d733b2d777b51bbb93f6d889d26a2533b021336c7955a0a65b1ef9c8",
+      "referenceHzBefore": 312.49510192871094,
+      "referenceSpreadHz": [
+        312.44182739257815,
+        312.5674621582031
+      ],
+      "pitchCorrectionCents": -7.596063952161084,
+      "measuredPreparedErrorCents": 0.055527164832357,
+      "trimmedLeadingSeconds": 0.025,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "E2",
+      "midi": 40,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/E2.wav",
+      "sourceSha256": "728e5ef2a804287b4bf2f90c3e0b4f9519696b022a9311a3f6a5d02fb1c487fc",
+      "referenceHzBefore": 82.6839714050293,
+      "referenceSpreadHz": [
+        82.64916687011718,
+        82.75732498168945
+      ],
+      "pitchCorrectionCents": -5.81127928539901,
+      "measuredPreparedErrorCents": 0.13410442658923197,
+      "trimmedLeadingSeconds": 0.045,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "E3",
+      "midi": 52,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/E3.wav",
+      "sourceSha256": "aee6771544ba291fd7cebb68c0f32621c8debea14f88dc704a294a4f50f83295",
+      "referenceHzBefore": 165.5098876953125,
+      "referenceSpreadHz": [
+        165.47767639160156,
+        165.56777954101562
+      ],
+      "pitchCorrectionCents": -7.29666035878305,
+      "measuredPreparedErrorCents": -0.04997395413199289,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "E4",
+      "midi": 64,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/E4.wav",
+      "sourceSha256": "b3c8de3d9d40130a821913dceef6d13624d3d7fc643cdcba113e8f477767b025",
+      "referenceHzBefore": 331.47198486328125,
+      "referenceSpreadHz": [
+        331.39562072753904,
+        331.55548706054685
+      ],
+      "pitchCorrectionCents": -9.660102758916391,
+      "measuredPreparedErrorCents": -0.052538527801992155,
+      "trimmedLeadingSeconds": 0.035,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "F2",
+      "midi": 41,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/F2.wav",
+      "sourceSha256": "89653420b592782e2e7d93692a67070d3a91d6adc463e0e887ce9510aab208f6",
+      "referenceHzBefore": 87.6933364868164,
+      "referenceSpreadHz": [
+        87.65146331787109,
+        87.74017028808593
+      ],
+      "pitchCorrectionCents": -7.642723352446829,
+      "measuredPreparedErrorCents": 0.1929251694226327,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "F3",
+      "midi": 53,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/F3.wav",
+      "sourceSha256": "80008cf0980aa96938686ec5d991bd1b5325300208bdea3ded7f99907fffb66c",
+      "referenceHzBefore": 175.20314025878906,
+      "referenceSpreadHz": [
+        175.17982482910156,
+        175.2306671142578
+      ],
+      "pitchCorrectionCents": -5.83013153096223,
+      "measuredPreparedErrorCents": 0.0086704979198832,
+      "trimmedLeadingSeconds": 0.035,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "F4",
+      "midi": 65,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/F4.wav",
+      "sourceSha256": "e63223c76b93f2ccee844dca2303f2f839a030639cd423a03c9429b5803197c6",
+      "referenceHzBefore": 350.4728240966797,
+      "referenceSpreadHz": [
+        350.4072570800781,
+        350.5694244384766
+      ],
+      "pitchCorrectionCents": -6.158868711098115,
+      "measuredPreparedErrorCents": -0.07211729070599249,
+      "trimmedLeadingSeconds": 0.075,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Fs2",
+      "midi": 42,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Fs2.wav",
+      "sourceSha256": "1aa3430351921a91ea46266d89ba3dd751d7770764248ceda94abd17eac123d6",
+      "referenceHzBefore": 92.82806396484375,
+      "referenceSpreadHz": [
+        92.75335083007812,
+        92.88465881347656
+      ],
+      "pitchCorrectionCents": -6.155293310256548,
+      "measuredPreparedErrorCents": 0.19458284780789178,
+      "trimmedLeadingSeconds": 0.065,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Fs3",
+      "midi": 54,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Fs3.wav",
+      "sourceSha256": "eb02f94958526ae608b9d2107badd9820c8a3ac56bc4e91b6c0982a597197967",
+      "referenceHzBefore": 186.78634643554688,
+      "referenceSpreadHz": [
+        186.7566375732422,
+        186.837158203125
+      ],
+      "pitchCorrectionCents": -16.662573769321174,
+      "measuredPreparedErrorCents": -0.006888895195255216,
+      "trimmedLeadingSeconds": 0.005,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "G2",
+      "midi": 43,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/G2.wav",
+      "sourceSha256": "ea267962b5f43002acb5de8d4666d1c30f8235b43e267eeccd943bef87625db0",
+      "referenceHzBefore": 98.34239196777344,
+      "referenceSpreadHz": [
+        98.29337081909179,
+        98.39095687866211
+      ],
+      "pitchCorrectionCents": -6.058192892917115,
+      "measuredPreparedErrorCents": -0.21612567066590738,
+      "trimmedLeadingSeconds": 0.035,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "G3",
+      "midi": 55,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/G3.wav",
+      "sourceSha256": "3c11ec2b2c85762b2dfcf7805e1e45991a9ae18e5cbbe162caaf66141e713f60",
+      "referenceHzBefore": 196.76858520507812,
+      "referenceSpreadHz": [
+        196.7174072265625,
+        196.83628845214844
+      ],
+      "pitchCorrectionCents": -6.795660784872127,
+      "measuredPreparedErrorCents": -0.09717172552593298,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "G4",
+      "midi": 67,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/G4.wav",
+      "sourceSha256": "1d72a1c3711c89221b96d4d1de336111d7492a0a27335fccedabfdf670b4cf73",
+      "referenceHzBefore": 393.5723876953125,
+      "referenceSpreadHz": [
+        393.52508239746095,
+        393.62245788574216
+      ],
+      "pitchCorrectionCents": -6.9505804211312485,
+      "measuredPreparedErrorCents": -0.03914673294747518,
+      "trimmedLeadingSeconds": 0.045,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Gs2",
+      "midi": 44,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Gs2.wav",
+      "sourceSha256": "11e399ba89c5ac62651d6cd91046a9a7aeda324c2203bf8979b90e37f5c719fe",
+      "referenceHzBefore": 104.10394287109375,
+      "referenceSpreadHz": [
+        104.08036956787109,
+        104.14996109008788
+      ],
+      "pitchCorrectionCents": -4.625424502925209,
+      "measuredPreparedErrorCents": 0.2061615450585743,
+      "trimmedLeadingSeconds": 0.065,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Gs3",
+      "midi": 56,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Gs3.wav",
+      "sourceSha256": "60dbe56b67caa78298f0b0da63bae255b1591ad9d0fd3b5c230865c3009e3ef8",
+      "referenceHzBefore": 208.33465576171875,
+      "referenceSpreadHz": [
+        208.3221893310547,
+        208.34869384765625
+      ],
+      "pitchCorrectionCents": -5.679187608114233,
+      "measuredPreparedErrorCents": -0.0006780952701430947,
+      "trimmedLeadingSeconds": 0.015,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    },
+    {
+      "note": "Gs4",
+      "midi": 68,
+      "sourceURL": "https://freesound.org/people/donyaquick/sounds/330410/",
+      "downloadURL": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Gs4.wav",
+      "sourceSha256": "137f794c133b8b3fd41cc31ba235b68d0ad7c9c21a4d52cef30b8af052fcea51",
+      "referenceHzBefore": 417.22691345214844,
+      "referenceSpreadHz": [
+        417.1440826416016,
+        417.3112548828125
+      ],
+      "pitchCorrectionCents": -7.994438738342769,
+      "measuredPreparedErrorCents": -0.17306334160624307,
+      "trimmedLeadingSeconds": 0.025,
+      "loopStartFrame": 26400,
+      "loopEndFrame": 120000
+    }
+  ]
+}
