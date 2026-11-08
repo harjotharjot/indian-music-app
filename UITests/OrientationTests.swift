@@ -13,6 +13,7 @@ final class OrientationTests: XCTestCase {
             for instrument in ["harmonium","tanpura"] {
                 let button=app.buttons["switch.\(instrument)"]
                 XCTAssertTrue(button.waitForExistence(timeout:10))
+                XCTAssertTrue(button.isHittable)
                 button.tap()
                 sleep(1)
                 let window=app.windows.firstMatch.frame
@@ -27,7 +28,7 @@ final class OrientationTests: XCTestCase {
                 }
                 if instrument == "tanpura" { XCTAssertTrue(app.buttons["tanpura.playPause"].exists) }
                 else { XCTAssertTrue(app.otherElements["harmonium.keyboard"].exists) }
-                let attachment=XCTAttachment(screenshot:app.screenshot())
+                let attachment=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
                 attachment.name="\(instrument)-\(deviceOrientation.rawValue)"
                 attachment.lifetime = .keepAlways
                 add(attachment)
