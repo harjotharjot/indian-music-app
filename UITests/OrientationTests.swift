@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 final class OrientationTests: XCTestCase {
     func testSwitcherTracksChargingPortInBothScreens() {
