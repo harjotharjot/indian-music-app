@@ -10,7 +10,7 @@
         C00000000000000000000002 = {isa = PBXBuildFile; fileRef = B00000000000000000000002; };
         B00000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCoordinator.swift; sourceTree = "<group>"; };
         C00000000000000000000003 = {isa = PBXBuildFile; fileRef = B00000000000000000000003; };
-        B00000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+        B00000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
         C00000000000000000000004 = {isa = PBXBuildFile; fileRef = B00000000000000000000004; };
         A00000000000000000000001 = {isa = PBXBuildFile; fileRef = A00000000000000000000003; };
         A00000000000000000000002 = {isa = PBXBuildFile; fileRef = A00000000000000000000004; };

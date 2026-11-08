@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT/'feasibility'))
 from benchmark import read_audio,detect
 import numpy as np
 import soundfile as sf
-out=ROOT/'IndianMusic/Resources';out.mkdir(exist_ok=True)
+out=ROOT/'IndianMusic/Sounds';out.mkdir(exist_ok=True)
 manifest=[]
 for pattern,source in [('pa',ROOT/'feasibility/curated/tanpura_pa_trimmed.wav'),('ma',ROOT/'feasibility/assets/tanpura_ma.mp3')]:
     y=read_audio(source)[2*48000:26*48000]

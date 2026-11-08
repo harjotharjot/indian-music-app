@@ -21,7 +21,7 @@ assert info['MinimumOSVersion'] == '16.0', info
 assert info['CFBundleShortVersionString'] == '0.3.0', info
 assert 'audio' in info['UIBackgroundModes'], info
 for name in ['tanpura_pa.wav', 'tanpura_ma.wav', 'tanpura-sources.json']:
-    assert (app / 'Resources' / name).is_file(), name
+    assert (app / 'Sounds' / name).is_file(), name
 assert (app / info['CFBundleExecutable']).is_file(), info
 assert not (app / 'embedded.mobileprovision').exists()
 assert not (app / '_CodeSignature').exists()

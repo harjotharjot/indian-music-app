@@ -40,7 +40,7 @@ final class AudioCoordinator: ObservableObject {
 
     private func loadGraph() {
         do {
-            guard let resources = Bundle.main.resourceURL?.appendingPathComponent("Resources") else {
+            guard let resources = Bundle.main.resourceURL?.appendingPathComponent("Sounds") else {
                 throw TanpuraGraph.GraphError.invalidResource("bundle")
             }
             graph = try TanpuraGraph(resources: resources)
