@@ -100,6 +100,21 @@ struct HarmoniumAudioTests {
         for _ in 0..<20 { graph.setNotes([48,55]);_=try render(512);graph.allNotesOff();_=try render(512) }
         graph.allNotesOff();_=try render(24000)
         precondition(graph.activeNotes.isEmpty)
+        graph.allNotesOff(); graph.stopTanpura(); _=try render(24000)
+        hs.volume=0.6; graph.applyHarmonium(hs,cents:0)
+        graph.setNotes([48]); _=try render(48000*4,file:"balance_harmonium.wav")
+        graph.allNotesOff(); _=try render(24000)
+        ts=TanpuraSettings();graph.apply(ts);graph.setVolume(0.6)
+        for pattern in TanpuraPattern.allCases {
+            graph.setGain(pattern == .pa ? 1:0,for:.pa)
+            graph.setGain(pattern == .ma ? 1:0,for:.ma)
+            try graph.play()
+            _=try render(48000*12,file:"balance_\(pattern.rawValue).wav")
+        }
+        hs.volume=1;graph.applyHarmonium(hs,cents:0);graph.setVolume(1)
+        graph.setNotes(Set(36...72))
+        _=try render(48000*4,file:"maximum-polyphony.wav")
+        graph.allNotesOff()
         graph.stop()
         print("PASS: 111 tuned key renders; released voices silent; six-note chord; eight-second sustain; simultaneous tanpura; rapid all-notes-off stress")
     }

@@ -127,7 +127,7 @@ final class PracticeAudioGraph {
         harmoniumMixer.outputVolume = Float(settings.validated().volume)
     }
     func setNotes(_ notes: Set<Int>) {
-        let safe = Set(notes.filter { (36...84).contains($0) })
+        let safe = Set(notes.filter { (36...72).contains($0) })
         for note in activeNotes.subtracting(safe) { sampler.stopNote(UInt8(note), onChannel: 0) }
         for note in safe.subtracting(activeNotes) { sampler.startNote(UInt8(note), withVelocity: 90, onChannel: 0) }
         activeNotes = safe

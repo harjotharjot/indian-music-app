@@ -3,6 +3,7 @@ import SwiftUI
 struct PracticeView: View {
     @EnvironmentObject private var audio: AudioCoordinator
     @State private var showControls = false
+    @State private var navigating = false
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -27,7 +28,7 @@ struct PracticeView: View {
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
                     navigationSlider
                     HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
-                                      enabled: audio.harmoniumEnabled, epoch: audio.keyboardEpoch,
+                                      enabled: audio.harmoniumEnabled && !navigating, epoch: audio.keyboardEpoch,
                                       onChange: audio.setHarmoniumKeys)
                         .frame(height: 220)
                         .accessibilityIdentifier("harmonium.keyboard")
@@ -78,7 +79,7 @@ struct PracticeView: View {
             }.font(.subheadline)
             navigationSlider
             HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
-                              enabled:audio.harmoniumEnabled,epoch:audio.keyboardEpoch,
+                              enabled:audio.harmoniumEnabled && !navigating,epoch:audio.keyboardEpoch,
                               onChange:audio.setHarmoniumKeys)
                 .frame(maxWidth:.infinity,maxHeight:.infinity)
                 .accessibilityIdentifier("harmonium.keyboard")
@@ -97,7 +98,7 @@ struct PracticeView: View {
     private var navigationSlider: some View {
         Slider(value: Binding(get: { audio.harmonium.navigation },
                               set: { audio.harmonium.navigationPosition = $0 }), in: 0...1,
-               onEditingChanged: { editing in if editing { audio.releaseKeys() } })
+               onEditingChanged: { editing in navigating = editing; audio.releaseKeys() })
             .accessibilityLabel("Keyboard range")
             .accessibilityIdentifier("harmonium.navigation")
             .accessibilityValue("\(Int(audio.harmonium.navigation * 100)) percent")

@@ -37,7 +37,9 @@ jobs:
           PKG_CONFIG_LIBDIR="$PWD/build/empty-pkgconfig" PKG_CONFIG_PATH="$PWD/build/empty-pkgconfig" ARCHFLAGS="-arch arm64" CFLAGS="-Wno-error=incompatible-function-pointer-types" pip install --no-build-isolation -r feasibility/requirements.txt
           python scripts/phase4/check_rendered_audio.py build/tests/audio | tee build/tests/pitch-summary.txt
       - name: Check Phase 4.1 sampler lifecycle and attacks
-        run: build/pitch-venv/bin/python scripts/phase4/check_phase41.py build/tests/audio
+        run: |
+          build/pitch-venv/bin/pip install pyloudnorm==0.1.1
+          build/pitch-venv/bin/python scripts/phase4/check_phase41.py build/tests/audio
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |

@@ -30,3 +30,12 @@ for note in range(36,73):
 report=dict(lifecycleSpectralDistances=rows,unrestoredSpectralDistance=distance(read(folder/'lifecycle_unrestored.wav')),attacks=attacks)
 (folder.parent/'phase41-results.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS: 37 tonal attacks and 333 short/repeated notes')
+
+import pyloudnorm as pyln
+meter=pyln.Meter(48000)
+levels={name:float(meter.integrated_loudness(read(folder/f"balance_{name}.wav"))) for name in ["harmonium","pa","ma"]}
+report['loudnessLUFS']=levels
+report['maximumPolyphonyPeak']=float(np.max(abs(read(folder/'maximum-polyphony.wav'))))
+(folder.parent/'phase41-results.json').write_text(json.dumps(report,indent=2)+'\n')
+print('Equal 60% slider loudness LUFS:',levels)
+print('Maximum 37-note polyphony plus tanpura peak:',report['maximumPolyphonyPeak'])

@@ -16,6 +16,7 @@ final class OrientationTests: XCTestCase {
                 XCTAssertTrue(button.isHittable)
                 button.tap()
                 sleep(1)
+                XCTAssertEqual(button.value as? String,"Selected")
                 let window=app.windows.firstMatch.frame
                 let frame=button.frame
                 if deviceOrientation == .portrait {
