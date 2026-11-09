@@ -7,3 +7,6 @@ feasibility/generated/
 feasibility/.build/
 feasibility/__pycache__/
 feasibility/assets/
+
+__pycache__/
+*.pyc

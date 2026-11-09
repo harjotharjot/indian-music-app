@@ -111,7 +111,9 @@ final class KeybedView: UIControl {
         for id in Array(activeFingerIDs) where slideFilter.accepted[id] == nil { ledger.move(id,note:nil) }
         slideTimer?.invalidate(); slideTimer=nil
         if let deadline=slideFilter.nextDeadline {
-            let timer=Timer(timeInterval:max(0.001,deadline-now),repeats:false) { [weak self] _ in self?.updateSlides() }
+            let timer=Timer(timeInterval:max(0.001,deadline-now),repeats:false) { [weak self] _ in
+                Task { @MainActor [weak self] in self?.updateSlides() }
+            }
             slideTimer=timer;RunLoop.main.add(timer,forMode:.common)
         }
         changed()
