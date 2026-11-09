@@ -1,8 +1,13 @@
 import SwiftUI
 import UIKit
+import CoreMotion
+import Combine
 
 @main
 struct IndianMusicApp: App {
+    @UIApplicationDelegateAdaptor(PracticeAppDelegate.self) private var delegate
+    @StateObject private var fullscreen = PracticeFullscreenController.shared
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var audio = AudioCoordinator()
     @State private var activeInstrument = 0
     @State private var orientation = UIInterfaceOrientation.portrait
@@ -26,6 +31,8 @@ struct IndianMusicApp: App {
             .ignoresSafeArea(.container, edges: orientation.isLandscape ? (orientation == .landscapeLeft ? .leading : .trailing) : [])
             .background(SceneOrientationReader(orientation:$orientation).frame(width:0,height:0))
             .environmentObject(audio)
+            .environmentObject(fullscreen)
+            .onChange(of:scenePhase) { phase in fullscreen.setForeground(phase == .active) }
             .onChange(of:activeInstrument) { _ in audio.releaseKeys() }
         }
     }
@@ -57,7 +64,7 @@ struct IndianMusicApp: App {
         Button { activeInstrument=value } label: {
             VStack(spacing:3) {
                 Group {
-                    if value == 1 { TanpuraGlyph().fill().frame(width:20,height:25) }
+                    if value == 1 { TanpuraGlyph().fill().frame(width:20,height:25).rotationEffect(.degrees(45)).frame(width:28,height:28) }
                     else { Image(systemName:symbol).font(.title3) }
                 }
                 if !vertical { Text(title).font(.caption2) }
@@ -113,6 +120,7 @@ private struct SceneOrientationReader: UIViewControllerRepresentable {
             coordinator.animate(alongsideTransition:nil) { [weak self] _ in self?.report() }
         }
         func report() {
+            PracticeFullscreenController.shared.connect(view.window?.windowScene)
             guard let value=view.window?.windowScene?.interfaceOrientation,value != .unknown,value != last else { return }
             last=value
             DispatchQueue.main.async { [weak self] in self?.changed?(value) }
@@ -133,5 +141,99 @@ private struct TanpuraGlyph: Shape {
         p.addEllipse(in:CGRect(x:rect.minX+rect.width*0.16,y:rect.minY+rect.height*0.60,
             width:rect.width*0.68,height:rect.height*0.39))
         return p
+    }
+}
+
+@MainActor
+final class PracticeAppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        PracticeFullscreenController.shared.supportedOrientations
+    }
+}
+
+@MainActor
+final class PracticeFullscreenController: ObservableObject {
+    static let shared=PracticeFullscreenController()
+    @Published private(set) var isForced=false
+    @Published private(set) var message: String?
+    var supportedOrientations: UIInterfaceOrientationMask { isForced ? .landscape:.allButUpsideDown }
+    private weak var scene: UIWindowScene?
+    private var state=PracticeFullscreenState()
+    private let motion=CMMotionManager()
+    private var timer: Timer?
+    private var foreground=true
+    private var lastMotion: TimeInterval = 0
+    private var requested: UIInterfaceOrientationMask = .landscapeRight
+    private var requestSerial=0
+
+    func connect(_ value: UIWindowScene?) { if let value { scene=value } }
+    func enter() {
+        state.enter();isForced=true;message=nil
+        requested = scene?.interfaceOrientation == .landscapeLeft ? .landscapeLeft:.landscapeRight
+        rotate(to:requested);startObserving()
+    }
+    func exit() {
+        state.exit();isForced=false;message=nil;stopObserving();rotate(to:.portrait)
+    }
+    func setForeground(_ active: Bool) {
+        foreground=active
+        if active && isForced { startObserving() } else { stopObserving() }
+    }
+    private func rotate(to mask: UIInterfaceOrientationMask) {
+        guard let windowScene=scene ?? UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first(where:{ $0.activationState == .foregroundActive }) else { return }
+        requestSerial+=1;let serial=requestSerial
+        windowScene.windows.forEach { $0.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations() }
+        windowScene.requestGeometryUpdate(.iOS(interfaceOrientations:mask)) { [weak self] error in
+            Task { @MainActor [weak self] in
+                guard let self,self.requestSerial==serial else { return }
+                print("Practice rotation request failed: \(error.localizedDescription)")
+                self.state.exit();self.isForced=false;self.stopObserving()
+                self.message="Full screen could not rotate. Tap to try again."
+            }
+        }
+    }
+    private func startObserving() {
+        stopObserving();guard isForced && foreground else { return }
+        state.resetObservation();lastMotion=0
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        if motion.isDeviceMotionAvailable {
+            motion.deviceMotionUpdateInterval=0.2
+            motion.startDeviceMotionUpdates(using:.xArbitraryZVertical,to:.main) { [weak self] data,_ in
+                guard let g=data?.gravity else { return }
+                let pose=PracticePhysicalPose.gravity(x:g.x,y:g.y,z:g.z)
+                Task { @MainActor [weak self] in
+                    self?.lastMotion=ProcessInfo.processInfo.systemUptime
+                    self?.observe(pose)
+                }
+            }
+        }
+        // Simulator/sensor-unavailable fallback. Gravity remains the real-device
+        // source when portrait lock prevents UIDevice orientation notifications.
+        let timer=Timer(timeInterval:0.2,repeats:true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                guard let self,ProcessInfo.processInfo.systemUptime-self.lastMotion>1 else { return }
+                let pose: PracticePhysicalPose
+                switch UIDevice.current.orientation {
+                case .portrait:pose = .portrait
+                case .landscapeLeft:pose = .landscapeRight
+                case .landscapeRight:pose = .landscapeLeft
+                default:pose = .uncertain
+                }
+                self.observe(pose)
+            }
+        }
+        self.timer=timer;RunLoop.main.add(timer,forMode:.common)
+    }
+    private func stopObserving() {
+        if timer != nil { UIDevice.current.endGeneratingDeviceOrientationNotifications() }
+        timer?.invalidate();timer=nil;motion.stopDeviceMotionUpdates()
+    }
+    private func observe(_ pose: PracticePhysicalPose) {
+        guard isForced && foreground else { return }
+        if state.observe(pose,time:ProcessInfo.processInfo.systemUptime) { exit();return }
+        if let physical=state.confirmedLandscape {
+            let side: UIInterfaceOrientationMask = physical == .landscapeLeft ? .landscapeLeft:.landscapeRight
+            if side != requested { requested=side;rotate(to:side) }
+        }
     }
 }

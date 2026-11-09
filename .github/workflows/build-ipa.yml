@@ -44,6 +44,8 @@ jobs:
           build/pitch-venv/bin/python scripts/phase4/check_phase41.py build/tests/audio
       - name: Audit actual loop boundaries and long three-bank comparisons
         run: build/pitch-venv/bin/python scripts/phase4/check_phase42.py build/tests/comparisons
+      - name: Verify isolated F sharp interpolation guard repair
+        run: build/pitch-venv/bin/python scripts/phase4/check_phase43.py build/tests
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |
@@ -78,6 +80,13 @@ jobs:
         with:
           name: Harmonium-attack-and-loop-comparisons
           path: build/tests/listening/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload F sharp click comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fsharp-click-before-and-after
+          path: build/tests/fsharp-listening/
           if-no-files-found: error
           retention-days: 30
       - name: Upload test reports and simulator screenshot

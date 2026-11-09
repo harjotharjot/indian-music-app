@@ -1,0 +1,14 @@
+{
+  "sourceSHA256": "3c967d9d1fa8851eac1ed113cbc81736b4126583f24de8d641a82441f99264d4",
+  "outputSHA256": "1b73cc771039b99055964b4f41a5eab41792ab20dab621b68f03156d403af054",
+  "changes": [
+    {
+      "root": 54,
+      "loopStart": 4482563,
+      "loopEnd": 4740728,
+      "frames": 64,
+      "oldFirstSample": 0,
+      "newFirstSample": -12520
+    }
+  ]
+}

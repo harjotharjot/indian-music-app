@@ -60,7 +60,7 @@ struct KeyboardGeometry {
     }
     init(position: Double, width: CGFloat, height: CGFloat) {
         // Stable key widths; navigation changes only the viewport translation.
-        let whiteWidth = max(44, width / 16)
+        let whiteWidth = max(44, height / 4.05)
         let content = KeyboardGeometry(start:36,span:36,width:22*whiteWidth,height:height)
         let offset = CGFloat(min(1,max(0,position))) * max(0,22*whiteWidth-width)
         keys = content.keys.map { Key(note:$0.note, frame:$0.frame.offsetBy(dx:-offset,dy:0), black:$0.black) }
@@ -69,16 +69,19 @@ struct KeyboardGeometry {
     private var viewport: CGRect? = nil
     func note(at point: CGPoint) -> Int? {
         if let viewport, !viewport.contains(point) { return nil }
-        // Visible black bodies always own their full height, including the tips.
-        if let black=keys.first(where: { $0.black && $0.frame.contains(point) }) { return black.note }
-        // Three points of horizontal forgiveness, clipped at the actual lower
-        // edge. No invisible extension below the bottom corners or group-wide
-        // black ownership of distant white-key space.
-        let candidates=keys.filter { key in
-            key.black && point.y >= key.frame.minY && point.y < key.frame.maxY &&
-            point.x >= key.frame.minX-3 && point.x < key.frame.maxX+3
+        guard let firstWhite=keys.first(where:{ !$0.black }), let lastWhite=keys.last(where:{ !$0.black }),
+            point.y>=0,point.y<firstWhite.frame.height,
+            point.x>=firstWhite.frame.minX,point.x<lastWhite.frame.maxX else { return nil }
+        let blacks=keys.filter { $0.black }
+        if let first=blacks.first, point.y < first.frame.maxY {
+            // The entire upper region belongs to black keys. Adjacent territories
+            // meet at their center midpoint, including across B/C and E/F gaps.
+            for index in 0..<(blacks.count-1) {
+                let boundary=(blacks[index].frame.midX+blacks[index+1].frame.midX)/2
+                if point.x < boundary { return blacks[index].note }
+            }
+            return blacks.last?.note
         }
-        if let black=candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) }) { return black.note }
         let whites=keys.filter { !$0.black }
         guard let first=whites.first, point.y>=0, point.y<first.frame.height else { return nil }
         // One canonical coordinate transform avoids infinitesimal gaps between
@@ -130,4 +133,38 @@ struct SlideIntentFilter<ID: Hashable> {
     }
     mutating func end(_ id: ID) { fingers.removeValue(forKey:id) }
     mutating func cancelAll() { fingers.removeAll() }
+}
+
+// Independent of interface orientation: physical gravity still changes while
+// iOS portrait lock is on. Only an actual landscape -> portrait movement exits.
+enum PracticePhysicalPose: Equatable {
+    case portrait, landscapeLeft, landscapeRight, uncertain
+    var isLandscape: Bool { self == .landscapeLeft || self == .landscapeRight }
+    static func gravity(x: Double,y: Double,z: Double) -> Self {
+        guard abs(z)<0.65 else { return .uncertain }
+        if y < -0.82 && abs(x)<0.42 { return .portrait }
+        if abs(x)>0.82 && abs(y)<0.42 { return x>0 ? .landscapeLeft:.landscapeRight }
+        return .uncertain
+    }
+}
+struct PracticeFullscreenState {
+    private(set) var active=false
+    private(set) var portraitReturnArmed=false
+    private(set) var confirmedLandscape: PracticePhysicalPose?
+    private var pose: PracticePhysicalPose = .uncertain
+    private var since: TimeInterval = 0
+    mutating func enter() { active=true;portraitReturnArmed=false;confirmedLandscape=nil;resetObservation() }
+    mutating func exit() { active=false;portraitReturnArmed=false;confirmedLandscape=nil;resetObservation() }
+    mutating func resetObservation() { pose = .uncertain;since=0 }
+    mutating func observe(_ value: PracticePhysicalPose,time: TimeInterval) -> Bool {
+        guard active else { return false }
+        if value != pose { pose=value;since=time }
+        if value.isLandscape && time-since>=0.35 {
+            portraitReturnArmed=true;confirmedLandscape=value
+        }
+        if value == .portrait && portraitReturnArmed && time-since>=0.5 {
+            exit();return true
+        }
+        return false
+    }
 }

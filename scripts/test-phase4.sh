@@ -19,3 +19,8 @@ git show 8ec81ba:IndianMusic/Sounds/harmonium.sf2 > build/phase41-sounds/harmoni
 build/tests/harmonium-comparisons "$PWD/build/baseline-sounds" "$PWD/build/tests/comparisons/phase40"
 build/tests/harmonium-comparisons "$PWD/build/phase41-sounds" "$PWD/build/tests/comparisons/phase41"
 build/tests/harmonium-comparisons "$PWD/IndianMusic/Sounds" "$PWD/build/tests/comparisons/corrected"
+
+mkdir -p build/phase42-accepted-sounds
+cp IndianMusic/Sounds/* build/phase42-accepted-sounds/
+git show 40d8eeb:IndianMusic/Sounds/harmonium.sf2 > build/phase42-accepted-sounds/harmonium.sf2
+build/tests/harmonium-comparisons "$PWD/build/phase42-accepted-sounds" "$PWD/build/tests/fsharp-before" 42,54,66

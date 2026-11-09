@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PracticeView: View {
     @EnvironmentObject private var audio: AudioCoordinator
+    @EnvironmentObject private var fullscreen: PracticeFullscreenController
     @State private var showControls = false
     @State private var navigating = false
     var body: some View {
@@ -26,12 +27,6 @@ struct PracticeView: View {
                         Button("Release keys", action: audio.releaseKeys).buttonStyle(.bordered)
                     }
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
-                    navigationSlider
-                    HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
-                                      enabled: audio.harmoniumEnabled && !navigating, epoch: audio.keyboardEpoch,
-                                      onChange: audio.setHarmoniumKeys)
-                        .frame(height: 220)
-                        .accessibilityIdentifier("harmonium.keyboard")
                     Toggle("Sargam labels", isOn: $audio.harmonium.showSargam)
                     Text("Sa follows the selected key. Lowercase notes are komal; Mā is tivra Ma.")
                         .font(.caption).foregroundStyle(.secondary)
@@ -62,7 +57,20 @@ struct PracticeView: View {
                             }.pickerStyle(.segmented)
                         }
                     }
+                    navigationSlider
+                    HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
+                                      enabled: audio.harmoniumEnabled && !navigating, epoch: audio.keyboardEpoch,
+                                      onChange: audio.setHarmoniumKeys)
+                        .frame(height: 220)
+                        .accessibilityIdentifier("harmonium.keyboard")
                 }.padding()
+            }
+            .toolbar {
+                ToolbarItem(placement:.navigationBarTrailing) {
+                    Button { audio.releaseKeys();fullscreen.enter() } label: {
+                        Label("Full screen",systemImage:"arrow.up.left.and.arrow.down.right")
+                    }.accessibilityIdentifier("harmonium.fullscreen")
+                }
             }
     }
     private var landscapeContent: some View {
@@ -72,17 +80,16 @@ struct PracticeView: View {
                     audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
                 }.buttonStyle(.borderedProminent).accessibilityIdentifier("harmonium.enable")
                 Button(action:audio.releaseKeys) { Text("Release keys") }.buttonStyle(.bordered).accessibilityLabel("Release all keys")
+                if fullscreen.isForced {
+                    Button { audio.releaseKeys();fullscreen.exit() } label: {
+                        Image(systemName:"arrow.down.right.and.arrow.up.left")
+                    }.accessibilityLabel("Exit full screen").accessibilityIdentifier("harmonium.exitFullscreen")
+                }
                 Spacer(minLength:0)
                 Button { audio.releaseKeys(); showControls=true } label: {
                     Image(systemName:"slider.horizontal.3")
                 }
             }.font(.subheadline)
-            navigationSlider
-            HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
-                              enabled:audio.harmoniumEnabled && !navigating,epoch:audio.keyboardEpoch,
-                              onChange:audio.setHarmoniumKeys)
-                .frame(maxWidth:.infinity,maxHeight:.infinity)
-                .accessibilityIdentifier("harmonium.keyboard")
             HStack {
                 Text("Sa \(audio.settings.saName) · \(audio.settings.cents,specifier:"%+.0f") cents")
                 Toggle("Sargam",isOn:$audio.harmonium.showSargam).toggleStyle(.button)
@@ -93,6 +100,14 @@ struct PracticeView: View {
                     ForEach(TanpuraPattern.allCases) { Text($0.title).tag($0) }
                 }.pickerStyle(.segmented).frame(width:110)
             }.font(.caption)
+            if let message=fullscreen.message { Text(message).font(.caption).foregroundStyle(.secondary) }
+            navigationSlider
+            HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
+                              enabled:audio.harmoniumEnabled && !navigating,epoch:audio.keyboardEpoch,
+                              onChange:audio.setHarmoniumKeys)
+                .frame(maxWidth:.infinity,maxHeight:.infinity)
+                .accessibilityIdentifier("harmonium.keyboard")
+
         }.padding(.horizontal,12).padding(.vertical,4)
     }
     private var navigationSlider: some View {

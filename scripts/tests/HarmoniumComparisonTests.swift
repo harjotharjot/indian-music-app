@@ -37,7 +37,8 @@ struct HarmoniumComparisonTests {
                 }
             }
         }
-        for note in 36...72 {
+        let notes=CommandLine.arguments.count>3 ? CommandLine.arguments[3].split(separator:",").compactMap { Int($0) } : Array(36...72)
+        for note in notes {
             let settings:[String:Any]=[AVFormatIDKey:kAudioFormatLinearPCM,AVSampleRateKey:48000,
                 AVNumberOfChannelsKey:1,AVLinearPCMBitDepthKey:16,AVLinearPCMIsFloatKey:false]
             let file=try AVAudioFile(forWriting:output.appendingPathComponent("note_\(note).wav"),settings:settings,
@@ -46,6 +47,6 @@ struct HarmoniumComparisonTests {
             graph.setNotes([]);try render(24000)
         }
         graph.stop()
-        print("PASS: 37 native 32-second sustain comparisons, including transposed zones")
+        print("PASS: \(notes.count) native 32-second sustain comparisons, including transposed zones")
     }
 }
