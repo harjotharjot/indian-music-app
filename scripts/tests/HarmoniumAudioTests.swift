@@ -62,6 +62,16 @@ struct HarmoniumAudioTests {
             graph.allNotesOff(); _=try render(12000)
         }
 
+        // While tanpura is scheduled, keyboard disable releases voices without
+        // stopping/reallocating the shared engine. Mute its monitor for comparison.
+        graph.setVolume(0); graph.setGain(1,for:.pa); try graph.play()
+        graph.applyHarmonium(hs,cents:0)
+        for cycle in 0..<50 {
+            graph.allNotesOff(); _=try render(12000)
+            precondition(graph.engine.isRunning)
+            graph.setNotes([48]); _=try render(48000,file:"lifecycle_drone_\(cycle).wav")
+        }
+        graph.allNotesOff(); graph.stopTanpura(); _=try render(24000)
         // Every playable key, both cents directions, actual Apple sampler renders.
         for note in 36...72 {
             for cents in [-37.0,0,37] {

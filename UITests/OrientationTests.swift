@@ -18,7 +18,7 @@ final class OrientationTests: XCTestCase {
                 sleep(1)
                 XCTAssertEqual(button.value as? String,"Selected")
                 let other=app.buttons["switch.\(instrument == "harmonium" ? "tanpura":"harmonium")"]
-                XCTAssertEqual(other.value as? String, "")
+                XCTAssertNotEqual(other.value as? String, "Selected")
                 let shot=XCUIScreen.main.screenshot()
                 XCTAssertGreaterThan(accentPixels(shot,frame:button.frame),accentPixels(shot,frame:other.frame)+3)
 

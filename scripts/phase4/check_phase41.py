@@ -15,6 +15,8 @@ def distance(y): return float(np.sum(abs(fingerprint(y)-b)))
 for i in range(50):
  d=distance(read(folder/f'lifecycle_{i}.wav')); assert d<.15,(i,d)
  rows.append(d)
+drone_distances=[distance(read(folder/f'lifecycle_drone_{i}.wav')) for i in range(50)]
+assert max(drone_distances)<.15, max(drone_distances)
 print('Unrestored restart spectral distance:',distance(read(folder/'lifecycle_unrestored.wav')))
 print('50 restored restart cycles; maximum spectral distance:',max(rows))
 attacks=[]
@@ -27,7 +29,7 @@ for note in range(36,73):
    tap=read(folder/f'tap_{note}_{duration}_{rep}.wav')
    assert np.sqrt(np.mean(tap**2)) > stable*.2,(note,duration,rep)
  attacks.append(dict(note=note,onset10msWindow=int(onset[0]),sustainedRMS=float(stable)))
-report=dict(lifecycleSpectralDistances=rows,unrestoredSpectralDistance=distance(read(folder/'lifecycle_unrestored.wav')),attacks=attacks)
+report=dict(lifecycleSpectralDistances=rows,liveEngineSpectralDistances=drone_distances,unrestoredSpectralDistance=distance(read(folder/'lifecycle_unrestored.wav')),attacks=attacks)
 (folder.parent/'phase41-results.json').write_text(json.dumps(report,indent=2)+'\n')
 print('PASS: 37 tonal attacks and 333 short/repeated notes')
 
