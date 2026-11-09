@@ -7,7 +7,7 @@ struct HarmoniumAudioTests {
         let resources=URL(fileURLWithPath:CommandLine.arguments[1])
         let destination=URL(fileURLWithPath:CommandLine.arguments[2])
         try FileManager.default.createDirectory(at:destination,withIntermediateDirectories:true)
-        var graph=try PracticeAudioGraph(resources:resources)
+        let graph=try PracticeAudioGraph(resources:resources)
         let format=AVAudioFormat(standardFormatWithSampleRate:48000,channels:2)!
         try graph.engine.enableManualRenderingMode(.offline,format:format,maximumFrameCount:4096)
         try graph.startEngine()
@@ -33,18 +33,16 @@ struct HarmoniumAudioTests {
             }
             return result
         }
+        // Render the old bank in its own process: Apple's sampler caches SF2
+        // sample identities across instances, invalidating same-process auditions.
         if CommandLine.arguments.count > 3 {
-            let current=graph
-            graph=try PracticeAudioGraph(resources:URL(fileURLWithPath:CommandLine.arguments[3]))
-            try graph.engine.enableManualRenderingMode(.offline,format:format,maximumFrameCount:4096)
-            try graph.startEngine()
             var baselineSettings=HarmoniumSettings(); baselineSettings.volume=0.45
             graph.applyHarmonium(baselineSettings,cents:0)
             for note in 36...72 {
                 graph.setNotes([note]); _=try render(48000,file:"before_\(note).wav")
                 graph.setNotes([]); _=try render(24000)
             }
-            graph.stop(); graph=current
+            graph.stop(); return
         }
         var hs=HarmoniumSettings();hs.volume=0.45
         graph.applyHarmonium(hs,cents:0)
