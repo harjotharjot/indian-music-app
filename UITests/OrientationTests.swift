@@ -19,8 +19,11 @@ final class OrientationTests: XCTestCase {
                 XCTAssertEqual(button.value as? String,"Selected")
                 let other=app.buttons["switch.\(instrument == "harmonium" ? "tanpura":"harmonium")"]
                 XCTAssertNotEqual(other.value as? String, "Selected")
-                let shot=XCUIScreen.main.screenshot()
-                XCTAssertGreaterThan(accentPixels(shot,frame:button.frame),accentPixels(shot,frame:other.frame)+3)
+                let selectedShot=button.screenshot(), otherShot=other.screenshot()
+                let selectedAttachment=XCTAttachment(screenshot:selectedShot)
+                selectedAttachment.name="selected-\(instrument)-\(deviceOrientation.rawValue)"
+                selectedAttachment.lifetime = .keepAlways; add(selectedAttachment)
+                XCTAssertGreaterThan(accentPixels(selectedShot),accentPixels(otherShot)+3)
 
                 let window=app.windows.firstMatch.frame
                 let frame=button.frame
@@ -54,27 +57,20 @@ final class OrientationTests: XCTestCase {
         }
         XCUIDevice.shared.orientation = .portrait
     }
-    private func accentPixels(_ screenshot: XCUIScreenshot, frame: CGRect) -> Int {
-        let image=screenshot.image
-        guard let cg=image.cgImage else { return 0 }
+    private func accentPixels(_ screenshot: XCUIScreenshot) -> Int {
+        guard let cg=screenshot.image.cgImage else { return 0 }
         let width=cg.width, height=cg.height
         var bytes=[UInt8](repeating:0,count:width*height*4)
-        let scale=CGFloat(width)/XCUIApplication().windows.firstMatch.frame.width
-        let count=bytes.withUnsafeMutableBytes { raw -> Int in
+        return bytes.withUnsafeMutableBytes { raw -> Int in
             guard let context=CGContext(data:raw.baseAddress,width:width,height:height,
                 bitsPerComponent:8,bytesPerRow:width*4,space:CGColorSpaceCreateDeviceRGB(),
                 bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue) else { return 0 }
             context.draw(cg,in:CGRect(x:0,y:0,width:CGFloat(width),height:CGFloat(height)))
             var total=0
-            for y in max(0,Int(frame.minY*scale))..<min(height,Int(frame.maxY*scale)) {
-                for x in max(0,Int(frame.minX*scale))..<min(width,Int(frame.maxX*scale)) {
-                    let i=(y*width+x)*4
-                    if Int(raw[i+2]) > Int(raw[i])+45 && Int(raw[i+2]) > Int(raw[i+1])+15 { total += 1 }
-                }
+            for i in stride(from:0,to:raw.count,by:4) {
+                if Int(raw[i+2]) > Int(raw[i])+45 && Int(raw[i+2]) > Int(raw[i+1])+15 { total += 1 }
             }
             return total
         }
-        return count
     }
-
 }
