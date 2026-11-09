@@ -42,6 +42,8 @@ jobs:
         run: |
           build/pitch-venv/bin/pip install pyloudnorm==0.1.1
           build/pitch-venv/bin/python scripts/phase4/check_phase41.py build/tests/audio
+      - name: Audit actual loop boundaries and long three-bank comparisons
+        run: build/pitch-venv/bin/python scripts/phase4/check_phase42.py build/tests/comparisons
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |
@@ -69,6 +71,13 @@ jobs:
             build/IndianMusic-unsigned.ipa
             build/validation.txt
             build/IndianMusic-unsigned.ipa.sha256
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload equal-loudness C, C sharp and D sharp audition files
+        uses: actions/upload-artifact@v4
+        with:
+          name: Harmonium-attack-and-loop-comparisons
+          path: build/tests/listening/
           if-no-files-found: error
           retention-days: 30
       - name: Upload test reports and simulator screenshot
