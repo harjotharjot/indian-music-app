@@ -49,7 +49,15 @@ final class OrientationTests: XCTestCase {
 
                     let slider=app.sliders["harmonium.navigation"]
                     XCTAssertTrue(slider.exists)
+                    if deviceOrientation == .portrait {
+                        for _ in 0..<3 where !slider.isHittable { app.swipeUp() }
+                    }
                     slider.adjust(toNormalizedSliderPosition:0.3)
+                    if deviceOrientation != .portrait {
+                        let keyboard=app.otherElements["harmonium.keyboard"].frame
+                        XCTAssertLessThan(app.buttons["harmonium.enable"].frame.maxY,keyboard.minY)
+                        XCTAssertLessThan(slider.frame.maxY,keyboard.minY+1)
+                    }
                 }
                 let attachment=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
                 attachment.name="\(instrument)-\(deviceOrientation.rawValue)"
@@ -58,6 +66,23 @@ final class OrientationTests: XCTestCase {
             }
         }
         XCUIDevice.shared.orientation = .portrait
+    }
+    func testManualFullscreenAcrossTabsAndPhysicalPortraitReturn() {
+        let app=XCUIApplication();continueAfterFailure=false
+        XCUIDevice.shared.orientation = .portrait;app.launch()
+        let full=app.buttons["harmonium.fullscreen"]
+        XCTAssertTrue(full.waitForExistence(timeout:10));full.tap()
+        let landscape=NSPredicate { _,_ in app.windows.firstMatch.frame.width>app.windows.firstMatch.frame.height }
+        XCTAssertEqual(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:landscape,object:nil)],timeout:10),.completed)
+        sleep(1)
+        app.buttons["switch.tanpura"].tap();sleep(1)
+        XCTAssertTrue(landscape.evaluate(with:nil),"Full-screen mode persists across tabs while phone is upright")
+        XCUIDevice.shared.orientation = .landscapeLeft;sleep(2)
+        XCUIDevice.shared.orientation = .portrait
+        let portrait=NSPredicate { _,_ in app.windows.firstMatch.frame.height>app.windows.firstMatch.frame.width }
+        XCTAssertEqual(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:portrait,object:nil)],timeout:10),.completed)
+        app.buttons["switch.harmonium"].tap()
+        XCTAssertTrue(app.buttons["harmonium.fullscreen"].exists)
     }
     private func accentPixels(_ screenshot: XCUIScreenshot) -> Int {
         guard let cg=screenshot.image.cgImage else { return 0 }
