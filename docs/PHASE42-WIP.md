@@ -1,5 +1,8 @@
 # Harmonium correction — paused checkpoint
 
+Historical pause record, superseded by the completed build and results in
+[PHASE42.md](PHASE42.md).
+
 User requested stopping to conserve tokens. This is unfinished, unvalidated work.
 No correction IPA or GitHub Actions build has been started for these changes.
 

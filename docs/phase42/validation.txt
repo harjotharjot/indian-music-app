@@ -1,0 +1,22 @@
+build	Test tuning and render both tanpuras across loop boundaries	2026-11-09T06:59:10.5349150Z PASS: frequency, one-cent tuning, all 12 keys in two octaves, pitch range, persistence and invalid-value clamping.
+build	Test tuning and render both tanpuras across loop boundaries	2026-11-09T06:59:20.2746070Z PASS: pa 160-second shared-graph render at speed 0.75, +37 cents; min block RMS=0.012456338337586213, peak=0.1105620265007019, restart passed.
+build	Test tuning and render both tanpuras across loop boundaries	2026-11-09T06:59:20.2754300Z PASS: ma 160-second shared-graph render at speed 1.25, +37 cents; min block RMS=0.009605082375469223, peak=0.09221162647008896, restart passed.
+build	Test sampled harmonium and simultaneous audio	2026-11-09T06:59:21.0253620Z PASS: chord ledger, duplicate fingers, slides, cancellation, all 12 Sa labels, exact black-key boundary sweeps, filtered crossings, glissandi, cancellation, octave clamping and persistence
+build	Test sampled harmonium and simultaneous audio	2026-11-09T06:59:35.8815540Z PASS: 111 tuned key renders; released voices silent; six-note chord; eight-second sustain; simultaneous tanpura; rapid all-notes-off stress
+build	Test sampled harmonium and simultaneous audio	2026-11-09T06:59:52.5742430Z PASS: 37 native 32-second sustain comparisons, including transposed zones
+build	Test sampled harmonium and simultaneous audio	2026-11-09T07:00:08.9624420Z PASS: 37 native 32-second sustain comparisons, including transposed zones
+build	Test sampled harmonium and simultaneous audio	2026-11-09T07:00:23.8238030Z PASS: 37 native 32-second sustain comparisons, including transposed zones
+build	Measure rendered pitch with existing aubio	2026-11-09T07:01:11.2624270Z PASS: 111 native sampler pitches; worst median cents 0.8893733132205368
+build	Measure rendered pitch with existing aubio	2026-11-09T07:01:11.2626460Z PASS: six distinct chord fundamentals, sustained-loop RMS floor 0.008890826255083084
+build	Check Phase 4.1 sampler lifecycle and attacks	2026-11-09T07:01:13.5070890Z 50 restored restart cycles; maximum spectral distance: 0.0
+build	Check Phase 4.1 sampler lifecycle and attacks	2026-11-09T07:01:13.5071460Z PASS: 37 recorded attack envelopes and 333 finite short/repeated notes; no artificial onset-speed target
+build	Check Phase 4.1 sampler lifecycle and attacks	2026-11-09T07:01:13.5072000Z Equal 60% slider loudness LUFS: {'harmonium': -36.47904601899056, 'pa': -34.03010927937856, 'ma': -37.136604858947585}
+build	Check Phase 4.1 sampler lifecycle and attacks	2026-11-09T07:01:13.5072380Z Maximum 37-note polyphony plus tanpura peak: 0.9236898720264435
+build	Audit actual loop boundaries and long three-bank comparisons	2026-11-09T07:01:26.2767760Z PASS: actual SF2 loop headers, preserved reed prefixes, bounded crossfade cancellation
+build	Audit actual loop boundaries and long three-bank comparisons	2026-11-09T07:01:26.2768560Z PASS: 111 native 32-second holds; every playable/transposed key, >=3 wraps each
+build	Audit actual loop boundaries and long three-bank comparisons	2026-11-09T07:01:26.2769450Z Minimum native repeats: 5
+build	Audit actual loop boundaries and long three-bank comparisons	2026-11-09T07:01:26.2769720Z Minimum restored source attack correlation: 0.9999998641275014
+build	Audit actual loop boundaries and long three-bank comparisons	2026-11-09T07:01:26.2770100Z Listening files: 9 32-second equal-loudness comparisons
+build	Validate and package IPA	2026-11-09T07:01:40.6537090Z PASS: IPA contains Payload/IndianMusic.app with an arm64 executable.
+build	Validate and package IPA	2026-11-09T07:01:40.8196860Z PASS: arm64 iPhoneOS executable, application metadata, unsigned bundle.
+build	Launch app in iPhone simulator	2026-11-09T07:04:20.4804530Z Test Case '-[IndianMusicUITests.OrientationTests testSwitcherTracksChargingPortInBothScreens]' passed (29.906 seconds).
