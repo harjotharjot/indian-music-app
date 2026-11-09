@@ -1,0 +1,300 @@
+{
+  "lifecycleSpectralDistances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "liveEngineSpectralDistances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "unrestoredSpectralDistance": 1.7250808176337018,
+  "attacks": [
+    {
+      "note": 36,
+      "onset10msWindow": 6,
+      "sustainedRMS": 0.010960713604855597
+    },
+    {
+      "note": 37,
+      "onset10msWindow": 5,
+      "sustainedRMS": 0.010930611383360926
+    },
+    {
+      "note": 38,
+      "onset10msWindow": 10,
+      "sustainedRMS": 0.011393345913206109
+    },
+    {
+      "note": 39,
+      "onset10msWindow": 9,
+      "sustainedRMS": 0.011404412495175067
+    },
+    {
+      "note": 40,
+      "onset10msWindow": 9,
+      "sustainedRMS": 0.011621639850629039
+    },
+    {
+      "note": 41,
+      "onset10msWindow": 10,
+      "sustainedRMS": 0.011568030846326674
+    },
+    {
+      "note": 42,
+      "onset10msWindow": 10,
+      "sustainedRMS": 0.011805043586700224
+    },
+    {
+      "note": 43,
+      "onset10msWindow": 6,
+      "sustainedRMS": 0.012799876776100411
+    },
+    {
+      "note": 44,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.012223518198544532
+    },
+    {
+      "note": 45,
+      "onset10msWindow": 9,
+      "sustainedRMS": 0.012887879621832425
+    },
+    {
+      "note": 46,
+      "onset10msWindow": 5,
+      "sustainedRMS": 0.01164005266596485
+    },
+    {
+      "note": 47,
+      "onset10msWindow": 6,
+      "sustainedRMS": 0.013242656341332521
+    },
+    {
+      "note": 48,
+      "onset10msWindow": 10,
+      "sustainedRMS": 0.011334955269374796
+    },
+    {
+      "note": 49,
+      "onset10msWindow": 8,
+      "sustainedRMS": 0.011250583769512148
+    },
+    {
+      "note": 50,
+      "onset10msWindow": 7,
+      "sustainedRMS": 0.011475089446691214
+    },
+    {
+      "note": 51,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.011532815629790734
+    },
+    {
+      "note": 52,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.013586691626462947
+    },
+    {
+      "note": 53,
+      "onset10msWindow": 6,
+      "sustainedRMS": 0.012696006191923894
+    },
+    {
+      "note": 54,
+      "onset10msWindow": 11,
+      "sustainedRMS": 0.013063949703586725
+    },
+    {
+      "note": 55,
+      "onset10msWindow": 8,
+      "sustainedRMS": 0.012019813531561396
+    },
+    {
+      "note": 56,
+      "onset10msWindow": 7,
+      "sustainedRMS": 0.009879481448967104
+    },
+    {
+      "note": 57,
+      "onset10msWindow": 5,
+      "sustainedRMS": 0.011272538017333059
+    },
+    {
+      "note": 58,
+      "onset10msWindow": 6,
+      "sustainedRMS": 0.012153937578991188
+    },
+    {
+      "note": 59,
+      "onset10msWindow": 5,
+      "sustainedRMS": 0.010923699901313871
+    },
+    {
+      "note": 60,
+      "onset10msWindow": 5,
+      "sustainedRMS": 0.013829764343959317
+    },
+    {
+      "note": 61,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.008565882528064022
+    },
+    {
+      "note": 62,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.014306411511227296
+    },
+    {
+      "note": 63,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.013994823629286196
+    },
+    {
+      "note": 64,
+      "onset10msWindow": 3,
+      "sustainedRMS": 0.012052866553722369
+    },
+    {
+      "note": 65,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.017914084194010103
+    },
+    {
+      "note": 66,
+      "onset10msWindow": 4,
+      "sustainedRMS": 0.01813754051357887
+    },
+    {
+      "note": 67,
+      "onset10msWindow": 3,
+      "sustainedRMS": 0.011787999709664933
+    },
+    {
+      "note": 68,
+      "onset10msWindow": 3,
+      "sustainedRMS": 0.012571514159547577
+    },
+    {
+      "note": 69,
+      "onset10msWindow": 3,
+      "sustainedRMS": 0.013847436173496926
+    },
+    {
+      "note": 70,
+      "onset10msWindow": 3,
+      "sustainedRMS": 0.010146862280335402
+    },
+    {
+      "note": 71,
+      "onset10msWindow": 8,
+      "sustainedRMS": 0.014104704096258676
+    },
+    {
+      "note": 72,
+      "onset10msWindow": 2,
+      "sustainedRMS": 0.013359306332566961
+    }
+  ],
+  "loudnessLUFS": {
+    "harmonium": -36.47904601899056,
+    "pa": -34.03010927937856,
+    "ma": -37.136604858947585
+  },
+  "maximumPolyphonyPeak": 0.9236898720264435
+}
