@@ -27,6 +27,7 @@ struct PracticeView: View {
                         Button("Release keys", action: audio.releaseKeys).buttonStyle(.bordered)
                     }
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
+                    if let message=fullscreen.message { Text(message).font(.caption).foregroundStyle(.secondary) }
                     Toggle("Sargam labels", isOn: $audio.harmonium.showSargam)
                     Text("Sa follows the selected key. Lowercase notes are komal; Mā is tivra Ma.")
                         .font(.caption).foregroundStyle(.secondary)
@@ -61,7 +62,8 @@ struct PracticeView: View {
                     HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
                                       enabled: audio.harmoniumEnabled && !navigating, epoch: audio.keyboardEpoch,
                                       onChange: audio.setHarmoniumKeys)
-                        .frame(height: 220)
+                        .aspectRatio(8.0/4.05,contentMode:.fit)
+                        .frame(maxHeight:220)
                         .accessibilityIdentifier("harmonium.keyboard")
                 }.padding()
             }

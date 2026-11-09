@@ -33,6 +33,9 @@ struct IndianMusicApp: App {
             .environmentObject(audio)
             .environmentObject(fullscreen)
             .onChange(of:scenePhase) { phase in fullscreen.setForeground(phase == .active) }
+            .onChange(of:fullscreen.actualOrientation) { value in
+                if value != .unknown && value != orientation { orientation=value }
+            }
             .onChange(of:activeInstrument) { _ in audio.releaseKeys() }
         }
     }
@@ -155,6 +158,7 @@ final class PracticeAppDelegate: NSObject, UIApplicationDelegate {
 final class PracticeFullscreenController: ObservableObject {
     static let shared=PracticeFullscreenController()
     @Published private(set) var isForced=false
+    @Published private(set) var actualOrientation=UIInterfaceOrientation.unknown
     @Published private(set) var message: String?
     var supportedOrientations: UIInterfaceOrientationMask { isForced ? .landscape:.allButUpsideDown }
     private weak var scene: UIWindowScene?
@@ -166,7 +170,10 @@ final class PracticeFullscreenController: ObservableObject {
     private var requested: UIInterfaceOrientationMask = .landscapeRight
     private var requestSerial=0
 
-    func connect(_ value: UIWindowScene?) { if let value { scene=value } }
+    func connect(_ value: UIWindowScene?) { if let value { scene=value;syncOrientation() } }
+    private func syncOrientation() {
+        if let value=scene?.interfaceOrientation,value != actualOrientation { actualOrientation=value }
+    }
     func enter() {
         state.enter();isForced=true;message=nil
         requested = scene?.interfaceOrientation == .landscapeLeft ? .landscapeLeft:.landscapeRight
@@ -177,12 +184,18 @@ final class PracticeFullscreenController: ObservableObject {
     }
     func setForeground(_ active: Bool) {
         foreground=active
-        if active && isForced { startObserving() } else { stopObserving() }
+        if active && isForced {
+            if scene?.interfaceOrientation.isLandscape != true { rotate(to:requested) }
+            startObserving()
+        } else { stopObserving() }
     }
     private func rotate(to mask: UIInterfaceOrientationMask) {
         guard let windowScene=scene ?? UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first(where:{ $0.activationState == .foregroundActive }) else { return }
+        scene=windowScene
         requestSerial+=1;let serial=requestSerial
         windowScene.windows.forEach { $0.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations() }
+        // A locked-device half-turn need not deliver UIDevice/layout callbacks.
+        DispatchQueue.main.asyncAfter(deadline:.now()+0.6) { [weak self] in self?.syncOrientation() }
         windowScene.requestGeometryUpdate(.iOS(interfaceOrientations:mask)) { [weak self] error in
             Task { @MainActor [weak self] in
                 guard let self,self.requestSerial==serial else { return }
@@ -212,6 +225,7 @@ final class PracticeFullscreenController: ObservableObject {
         let timer=Timer(timeInterval:0.2,repeats:true) { [weak self] _ in
             Task { @MainActor [weak self] in
                 guard let self,ProcessInfo.processInfo.systemUptime-self.lastMotion>1 else { return }
+                if self.motion.isDeviceMotionAvailable && self.lastMotion==0 { return }
                 let pose: PracticePhysicalPose
                 switch UIDevice.current.orientation {
                 case .portrait:pose = .portrait
