@@ -78,7 +78,13 @@ struct KeyboardGeometry {
             key.black && point.y >= key.frame.minY && point.y < key.frame.maxY &&
             point.x >= key.frame.minX-3 && point.x < key.frame.maxX+3
         }
-        return candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) })?.note ?? keys.first(where: { !$0.black && $0.frame.contains(point) })?.note
+        if let black=candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) }) { return black.note }
+        let whites=keys.filter { !$0.black }
+        guard let first=whites.first, point.y>=0, point.y<first.frame.height else { return nil }
+        // One canonical coordinate transform avoids infinitesimal gaps between
+        // separately translated CGRects at shared white-key borders.
+        let index=Int(floor((point.x-first.frame.minX)/first.frame.width))
+        return whites.indices.contains(index) ? whites[index].note:nil
     }
 }
 

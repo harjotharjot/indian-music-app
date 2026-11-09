@@ -6,28 +6,37 @@ import argparse, hashlib, json, subprocess
 from pathlib import Path
 import numpy as np
 import soundfile as sf
-from scipy.signal import correlate, find_peaks, welch
+from scipy.signal import correlate, find_peaks, windows
 
 SR=48000
 
+# This is Welch's one-segment 4096-point periodic-Hann spectrum, cached and
+# vectorized for offline loop-point search. It does not process runtime audio.
+WINDOW=windows.hann(4096,sym=False)
+FREQUENCIES=np.fft.rfftfreq(4096,1/SR)
+EDGES=np.geomspace(40,16000,25)
+VALID=(FREQUENCIES>=40)&(FREQUENCIES<16000)
+BINS=np.searchsorted(EDGES,FREQUENCIES[VALID],side='right')-1
+
 def spectral_shape(x):
-    f,p=welch(x,SR,nperseg=4096,noverlap=2048)
-    bands=np.histogram(f,bins=np.geomspace(40,16000,25),weights=p)[0]
+    a=x[:4096];p=abs(np.fft.rfft((a-a.mean())*WINDOW))**2
+    bands=np.bincount(BINS,weights=p[VALID],minlength=24)
     return bands/(bands.sum()+1e-30)
 
-def seam_measurements(y,start,end,n):
-    # Compare the actual baked crossfade with the recorded material AFTER the
-    # return. A phase/level match alone can still reset the reed's harmonic mix.
-    before=y[end-4800:end].copy()
-    a=np.linspace(0,1,n)
+def seam_measurements(y,start,end,n,cache):
+    before=y[end-4800:end].copy();a=np.linspace(0,1,n)
     before[-n:]=before[-n:]*(1-a)+y[start-n:start]*a
-    after=y[start:start+4800]
-    spectral=float(np.sum(abs(spectral_shape(before)-spectral_shape(after))))
-    level=abs(float(20*np.log10(np.sqrt(np.mean(after*after)/np.mean(before*before)))))
+    if start not in cache:
+        after=y[start:start+4800]
+        cache[start]=(spectral_shape(after),np.mean(after*after))
+    post,energy=cache[start]
+    spectral=float(np.sum(abs(spectral_shape(before)-post)))
+    level=abs(float(20*np.log10(np.sqrt(energy/np.mean(before*before)))))
     return spectral,level
 
 def choose_loop(y, hz):
     best=None
+    cache={}
     for fade_seconds in sorted(set([max(.015,3/hz), max(.03,4/hz), max(.045,6/hz)])):
         n=round(fade_seconds*SR)
         half_period=round(SR/hz*4)
@@ -55,7 +64,7 @@ def choose_loop(y, hz):
                 slope=abs(20*np.log10(rms(y[end:end+w])/rms(y[end-w:end]))-
                           20*np.log10(rms(y[start:start+w])/rms(y[start-w:start])))
                 if corr < .72: continue
-                spectral,seam_level=seam_measurements(y,start,end,n)
+                spectral,seam_level=seam_measurements(y,start,end,n,cache)
                 if seam_level > .6: continue
                 score=(1-corr)*10+spectral*50+seam_level*5+level*.22+body_db*.12+slope*.10-duration*.015
                 row=dict(start=start,end=end,fade=n,correlation=corr,fadeLevelDifferenceDB=level,
@@ -64,11 +73,14 @@ def choose_loop(y, hz):
     # A few multi-reed recordings decorrelate over time. Search their entire
     # later sustain rather than forcing an arbitrary millisecond grid match.
     if best['correlation'] < .98 or best['spectralDistance'] > .15:
+        # Some reeds have a natural beat period outside the original search.
+        # Expand the duration only when timbre cannot be matched there.
+        minimum,maximum=(2.0,8.0) if best['spectralDistance']>.2 else (3.5,6.0)
         for fade_seconds in [max(.015,3/hz), max(.03,4/hz), max(.045,6/hz)]:
             n=round(fade_seconds*SR)
-            for seconds in np.arange(1.25,min(4.51,len(y)/SR-3.75),.1):
+            for seconds in np.arange(1.25,min(4.51,len(y)/SR-minimum-.25),.1):
                 start=round(seconds*SR); head=y[start-n:start]
-                lo=start+round(3.5*SR)-n; hi=min(start+6*SR,len(y)-SR//5)
+                lo=start+round(minimum*SR)-n; hi=min(start+round(maximum*SR),len(y)-SR//5)
                 search=y[lo:hi];dots=correlate(search,head,mode='valid',method='fft')
                 cs=np.r_[0,np.cumsum(search*search)];eng=cs[n:]-cs[:-n]
                 cc=dots/np.sqrt(np.maximum(np.dot(head,head)*eng,1e-25))
@@ -82,7 +94,7 @@ def choose_loop(y, hz):
                               20*np.log10(rms(y[start:start+w])/rms(y[start-w:start])))
                     duration=(end-start)/SR
                     if corr < .72: continue
-                    spectral,seam_level=seam_measurements(y,start,end,n)
+                    spectral,seam_level=seam_measurements(y,start,end,n,cache)
                     if seam_level > .6: continue
                     score=(1-corr)*10+spectral*50+seam_level*5+level*.22+body_db*.12+slope*.10-duration*.015
                     if score<best['score']:
@@ -99,6 +111,9 @@ def main():
     args=ap.parse_args();args.work.mkdir(parents=True,exist_ok=True)
     manifest=json.loads(args.manifest.read_text());rows=[];tsv=[]
     for source in manifest['notes']:
+        if source['midi']==50:
+            source['includedInSoundfont']=False
+            source['exclusionReason']='D3 recording has a persistent spectral reset at candidate loop returns; nearest retained C#3 reed covers D3 by one-semitone transposition.'
         if not source['includedInSoundfont']:continue
         raw=args.raw/(source['note']+'.wav')
         assert hashlib.sha256(raw.read_bytes()).hexdigest()==source['sourceSha256'],raw

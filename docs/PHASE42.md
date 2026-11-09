@@ -40,10 +40,15 @@ The new preparation selects later, longer sustained material per recorded zone,
 using established correlation/phase alignment, level/envelope matching and spectral
 matching of the actual baked return before crossfading. A first native audit
 rejected D3 for a timbre reset despite its small level change; selection was
-refined rather than weakening that check. Loops last roughly **3.5–6 seconds**, rather than 1.95 seconds. The
+refined rather than weakening that check. Loops last roughly **2–8 seconds** when the recording allows, rather than imposing a
+fixed 1.95-second loop. The
 end blends into material immediately *before* the chosen loop start, then continues
 through that start. Unity-sum fades avoid the level boost of an equal-power fade
 on strongly correlated reed material. Fade lengths vary with the recording.
+D3's recording could not provide a sufficiently consistent timbral return under
+the joint phase/level constraints, so that key uses the retained C#3 reed sample
+transposed up one semitone. This is the existing nearest-neighbor sampler method
+already used for other unsuitable/missing zones.
 Only the end blend is edited; the remaining recorded sustain and its natural
 movement are retained. No bellows modulation, compressor, or live looping DSP
 was added. SciPy supplies correlation; FFmpeg supplies resampling/fades; SF2cute

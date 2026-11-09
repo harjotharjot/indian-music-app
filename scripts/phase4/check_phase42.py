@@ -26,7 +26,10 @@ def read(path):
  assert np.isfinite(y).all() and np.max(abs(y))<.999
  return y
 bank_audit=[]
-for old,previous,new in zip(banks['phase40'],banks['phase41'],banks['corrected']):
+old_by_root={z['root']:z for z in banks['phase40']}
+previous_by_root={z['root']:z for z in banks['phase41']}
+for new in banks['corrected']:
+ old=old_by_root[new['root']];previous=previous_by_root[new['root']]
  # Phase 4.1 changed sample start/gain, but not the looped recording itself.
  a=old['pcm'][old['relativeLoopStart']:old['relativeLoopEnd']]
  b=previous['pcm'][previous['relativeLoopStart']:previous['relativeLoopEnd']]
@@ -35,7 +38,7 @@ for old,previous,new in zip(banks['phase40'],banks['phase41'],banks['corrected']
  x=old['pcm'][2400:21600];y=new['pcm'][2368:21632]
  corr=best_corr(x,y);assert corr>.999,"Recorded buildup changed"
  sr=new['sampleRate'];s,e=new['relativeLoopStart'],new['relativeLoopEnd']
- assert s/sr>=1.2 and 3.4<(e-s)/sr<6.1
+ assert s/sr>=1.2 and 1.9<(e-s)/sr<8.1
  jump=abs(new['pcm'][e-1]-new['pcm'][s])
  ordinary=np.percentile(abs(np.diff(new['pcm'][s:e])),99.9)
  assert jump<ordinary*1.2,(new['name'],jump,ordinary)
@@ -93,9 +96,16 @@ for note in range(36,73):
    sf.write(listening/f'{name}_{note}_32s.wav',y*gain,48000,subtype='PCM_16')
   # Full per-key comparison remains lossless, at its original monitor gain.
   sf.write(folder/name/f'note_{note}.flac',y,48000,subtype='PCM_16')
- # A real playback test of restored recorded buildup, including transposed zones.
- c=best_corr(clips['phase40'][2400:21600],clips['corrected'][2368:21632])
- assert c>.995,(note,'native attack differs from original reed',c)
+ # Same-recording playback comparisons validate every unchanged source route.
+ # D3 intentionally switches to the already-audited C#3 donor (one semitone).
+ old_zone=zone_for_note(banks['phase40'],note)
+ new_zone=zone_for_note(banks['corrected'],note)
+ assert abs(new_zone['root']-note)<=1
+ if old_zone['root']==new_zone['root']:
+  c=best_corr(clips['phase40'][2400:21600],clips['corrected'][2368:21632])
+  assert c>.995,(note,'native attack differs from original reed',c)
+ else:
+  assert note==50 and new_zone['root']==49,(note,'unexpected donor replacement')
  for name in banks:(folder/name/f'note_{note}.wav').unlink()
 (listening/'README.txt').write_text('32-second mono PCM16 Apple-sampler renders, matched to -30 LUFS by constant gain.\n48=C3, 49=C#3, 51=D#3. phase40=original bank, phase41=aggressively trimmed bank, corrected=natural attacks and new loops.\nListen to the opening and several complete repetitions. Metrics do not certify perceptual seamlessness.\n')
 report=dict(bankAudit=bank_audit,preparation=prep,renderedLoops=rows,

@@ -348,7 +348,8 @@
       "trimmedLeadingSeconds": 0.0,
       "loopStartFrame": 165600,
       "loopEndFrame": 342269,
-      "includedInSoundfont": true
+      "includedInSoundfont": false,
+      "exclusionReason": "D3 recording has a persistent spectral reset at candidate loop returns; nearest retained C#3 reed covers D3 by one-semitone transposition."
     },
     {
       "note": "D4",
@@ -546,7 +547,7 @@
       "measuredPreparedErrorCents": -0.07211729070599249,
       "trimmedLeadingSeconds": 0.075,
       "loopStartFrame": 213600,
-      "loopEndFrame": 469192,
+      "loopEndFrame": 328345,
       "includedInSoundfont": true
     },
     {
@@ -695,7 +696,7 @@
       "includedInSoundfont": true
     }
   ],
-  "soundfontSHA256": "88cb2b6ee3d8ba69fe662ba86aefb9b1862bc59b6f4a311c76cc18d2841cd9bc",
+  "soundfontSHA256": "3c967d9d1fa8851eac1ed113cbc81736b4126583f24de8d641a82441f99264d4",
   "phase41": "See phase41-attacks.json: sustained-reed onset selection, 6ms fade, sustained RMS gain calibration; source pitch and sustain loops retained.",
   "phase42": "Natural Phase 4.0 reed attacks restored with 45ms transient fade; longer phase/level-matched sustain loops and unity-sum crossfades. See phase42-preparation.json."
 }

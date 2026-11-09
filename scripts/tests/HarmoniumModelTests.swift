@@ -26,7 +26,10 @@ struct HarmoniumModelTests {
                         for x in [key.frame.minX+0.01,key.frame.midX,key.frame.maxX-0.01] where x>=0 && x<width {
                             precondition(g.note(at:CGPoint(x:x,y:key.frame.maxY-0.01))==key.note,"Black tip must remain black: w=\(width) h=\(height) pos=\(position) key=\(key.note) x=\(x) got=\(String(describing:g.note(at:CGPoint(x:x,y:key.frame.maxY-0.01))))")
                             let below=CGPoint(x:x,y:key.frame.maxY+0.01)
-                            precondition(g.note(at:below)==g.keys.first(where:{ !$0.black && $0.frame.contains(below) })?.note,"No extension below the visible tip")
+                            let belowNote=g.note(at:below)
+                            precondition(belowNote != nil && ![1,3,6,8,10].contains(belowNote!%12),"No extension or hole below the visible tip")
+                            let edgeNote=g.note(at:CGPoint(x:x,y:key.frame.maxY))
+                            precondition(edgeNote != nil && ![1,3,6,8,10].contains(edgeNote!%12),"Exact lower boundary belongs to white")
                         }
                         for side in [-1.0,1.0] {
                             let edge=side<0 ? key.frame.minX:key.frame.maxX
