@@ -69,7 +69,6 @@ struct KeyboardGeometry {
     private var viewport: CGRect? = nil
     func note(at point: CGPoint) -> Int? {
         if let viewport, !viewport.contains(point) { return nil }
-        guard let white = keys.first(where: { !$0.black && $0.frame.contains(point) }) else { return nil }
         // Visible black bodies always own their full height, including the tips.
         if let black=keys.first(where: { $0.black && $0.frame.contains(point) }) { return black.note }
         // Three points of horizontal forgiveness, clipped at the actual lower
@@ -79,7 +78,7 @@ struct KeyboardGeometry {
             key.black && point.y >= key.frame.minY && point.y < key.frame.maxY &&
             point.x >= key.frame.minX-3 && point.x < key.frame.maxX+3
         }
-        return candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) })?.note ?? white.note
+        return candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) })?.note ?? keys.first(where: { !$0.black && $0.frame.contains(point) })?.note
     }
 }
 

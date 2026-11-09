@@ -24,7 +24,7 @@ struct HarmoniumModelTests {
                     let g=KeyboardGeometry(position:position,width:width,height:height)
                     for key in g.keys where key.black {
                         for x in [key.frame.minX+0.01,key.frame.midX,key.frame.maxX-0.01] where x>=0 && x<width {
-                            precondition(g.note(at:CGPoint(x:x,y:key.frame.maxY-0.01))==key.note,"Black tip must remain black")
+                            precondition(g.note(at:CGPoint(x:x,y:key.frame.maxY-0.01))==key.note,"Black tip must remain black: w=\(width) h=\(height) pos=\(position) key=\(key.note) x=\(x) got=\(String(describing:g.note(at:CGPoint(x:x,y:key.frame.maxY-0.01))))")
                             let below=CGPoint(x:x,y:key.frame.maxY+0.01)
                             precondition(g.note(at:below)==g.keys.first(where:{ !$0.black && $0.frame.contains(below) })?.note,"No extension below the visible tip")
                         }
