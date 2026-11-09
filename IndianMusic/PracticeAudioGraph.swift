@@ -59,6 +59,7 @@ final class PracticeAudioGraph {
         engine.mainMixerNode.outputVolume = 0.8
         try sampler.loadSoundBankInstrument(at: resources.appendingPathComponent("harmonium.sf2"),
                                            program: 0, bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB), bankLSB: 0)
+        sampler.masterGain = 5
         harmoniumMixer.outputVolume = 0.6
         for source in sources {
             guard source.referenceHz.isFinite, (120...145).contains(source.referenceHz) else {
@@ -108,9 +109,12 @@ final class PracticeAudioGraph {
             try engine.start()
             // Engine resource allocation can reset the sampler instrument. Restore the
             // recorded bank after allocation, before accepting any keyboard notes.
+            let tuning = sampler.globalTuning
             do {
                 try sampler.loadSoundBankInstrument(at: soundBankURL, program: 0,
                     bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB), bankLSB: 0)
+                sampler.globalTuning = tuning
+                sampler.masterGain = 5
             } catch { engine.stop(); throw error }
         }
     }
@@ -137,8 +141,10 @@ final class PracticeAudioGraph {
         sampler.sendController(123, withValue: 0, onChannel: 0)
         sampler.sendController(120, withValue: 0, onChannel: 0)
     }
-    func setVolume(_ volume: Float) { tanpuraMixer.outputVolume = volume }
-    func volume() -> Float { tanpuraMixer.outputVolume }
+    // K-weighted equal-fader calibration: +5 dB reeds, -7 dB drone monitor.
+    private let tanpuraCalibration: Float = 0.4466836
+    func setVolume(_ volume: Float) { tanpuraMixer.outputVolume = volume * tanpuraCalibration }
+    func volume() -> Float { tanpuraMixer.outputVolume / tanpuraCalibration }
     func setGain(_ gain: Float, for pattern: TanpuraPattern) { voices[pattern]?.player.volume = gain }
     func gain(for pattern: TanpuraPattern) -> Float { voices[pattern]?.player.volume ?? 0 }
 }

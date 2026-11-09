@@ -37,5 +37,6 @@ levels={name:float(meter.integrated_loudness(read(folder/f"balance_{name}.wav"))
 report['loudnessLUFS']=levels
 report['maximumPolyphonyPeak']=float(np.max(abs(read(folder/'maximum-polyphony.wav'))))
 (folder.parent/'phase41-results.json').write_text(json.dumps(report,indent=2)+'\n')
+assert max(levels.values())-min(levels.values()) < 3.5, levels
 print('Equal 60% slider loudness LUFS:',levels)
 print('Maximum 37-note polyphony plus tanpura peak:',report['maximumPolyphonyPeak'])

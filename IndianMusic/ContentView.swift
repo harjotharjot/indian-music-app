@@ -87,7 +87,7 @@ struct ContentView: View {
                 }
                 Section {
                     Button("Sound credits") { showCredits = true }
-                    Text("Version 0.4.0 · Practice instruments")
+                    Text("Version 0.4.1 · Practice instruments")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }

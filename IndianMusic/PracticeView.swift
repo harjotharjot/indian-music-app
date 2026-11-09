@@ -22,7 +22,7 @@ struct PracticeView: View {
                     HStack {
                         Button(audio.harmoniumEnabled ? "Turn keyboard off" : "Enable harmonium") {
                             audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
-                        }.buttonStyle(.borderedProminent)
+                        }.buttonStyle(.borderedProminent).accessibilityIdentifier("harmonium.enable")
                         Button("Release all keys", action: audio.releaseKeys).buttonStyle(.bordered)
                     }
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
@@ -70,7 +70,7 @@ struct PracticeView: View {
             HStack(spacing: 10) {
                 Button(audio.harmoniumEnabled ? "Off" : "Enable") {
                     audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
-                }.buttonStyle(.borderedProminent)
+                }.buttonStyle(.borderedProminent).accessibilityIdentifier("harmonium.enable")
                 Button(action:audio.releaseKeys) { Text("Release keys") }.buttonStyle(.bordered).accessibilityLabel("Release all keys")
                 Spacer(minLength:0)
                 Button { audio.releaseKeys(); showControls=true } label: {
