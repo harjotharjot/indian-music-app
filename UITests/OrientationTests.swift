@@ -76,6 +76,7 @@ final class OrientationTests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:landscape,object:nil)],timeout:10),.completed)
         sleep(1)
         app.buttons["switch.tanpura"].tap();sleep(1)
+        XCTAssertTrue(app.buttons["tanpura.exitFullscreen"].isHittable)
         XCTAssertTrue(landscape.evaluate(with:nil),"Full-screen mode persists across tabs while phone is upright")
         XCUIDevice.shared.orientation = .landscapeLeft;sleep(2)
         XCUIDevice.shared.orientation = .portrait

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var audio: AudioCoordinator
+    @EnvironmentObject private var fullscreen: PracticeFullscreenController
     @State private var showCredits = false
 
     var body: some View {
@@ -12,6 +13,15 @@ struct ContentView: View {
             }
             .navigationTitle("Tanpura")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                if fullscreen.isForced {
+                    ToolbarItem(placement:.navigationBarTrailing) {
+                        Button { audio.releaseKeys();fullscreen.exit() } label: {
+                            Label("Exit full screen",systemImage:"arrow.down.right.and.arrow.up.left")
+                        }.accessibilityIdentifier("tanpura.exitFullscreen")
+                    }
+                }
+            }
             .sheet(isPresented: $showCredits) {
                 NavigationStack {
                     List {
