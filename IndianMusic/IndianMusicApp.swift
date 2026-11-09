@@ -85,7 +85,28 @@ private struct SceneOrientationReader: UIViewControllerRepresentable {
     final class ReaderController: UIViewController {
         var changed: ((UIInterfaceOrientation)->Void)?
         private var last: UIInterfaceOrientation?
-        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); report() }
+        private var orientationObserver: NSObjectProtocol?
+        deinit {
+            if let orientationObserver {
+                NotificationCenter.default.removeObserver(orientationObserver)
+                UIDevice.current.endGeneratingDeviceOrientationNotifications()
+            }
+        }
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            if orientationObserver == nil {
+                UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+                orientationObserver = NotificationCenter.default.addObserver(
+                    forName:UIDevice.orientationDidChangeNotification, object:nil, queue:.main
+                ) { [weak self] _ in
+                    // A 180-degree landscape rotation has the same size/insets and
+                    // need not cause layout callbacks. Read the window scene after
+                    // its transition; raw device orientation is only the signal.
+                    DispatchQueue.main.asyncAfter(deadline:.now()+0.5) { [weak self] in self?.report() }
+                }
+            }
+            report()
+        }
         override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); report() }
         override func viewWillTransition(to size: CGSize,with coordinator: UIViewControllerTransitionCoordinator) {
             super.viewWillTransition(to:size,with:coordinator)
