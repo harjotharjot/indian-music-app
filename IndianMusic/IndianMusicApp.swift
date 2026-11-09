@@ -15,7 +15,6 @@ struct IndianMusicApp: App {
                         instrument
                         if orientation != .landscapeLeft { Divider(); switcher(vertical:true) }
                     }
-                    .ignoresSafeArea(.container, edges: orientation == .landscapeLeft ? .leading : .trailing)
                 } else {
                     VStack(spacing:0) {
                         instrument
@@ -24,6 +23,7 @@ struct IndianMusicApp: App {
                     }
                 }
             }
+            .ignoresSafeArea(.container, edges: orientation.isLandscape ? (orientation == .landscapeLeft ? .leading : .trailing) : [])
             .background(SceneOrientationReader(orientation:$orientation).frame(width:0,height:0))
             .environmentObject(audio)
             .onChange(of:activeInstrument) { _ in audio.releaseKeys() }
