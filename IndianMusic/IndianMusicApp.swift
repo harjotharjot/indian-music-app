@@ -15,6 +15,7 @@ struct IndianMusicApp: App {
                         instrument
                         if orientation != .landscapeLeft { Divider(); switcher(vertical:true) }
                     }
+                    .ignoresSafeArea(.container, edges: orientation == .landscapeLeft ? .leading : .trailing)
                 } else {
                     VStack(spacing:0) {
                         instrument

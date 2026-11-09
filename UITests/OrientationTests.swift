@@ -34,10 +34,12 @@ final class OrientationTests: XCTestCase {
                     XCTAssertLessThanOrEqual(frame.width,52)
                     // Device and interface landscape orientation names are opposite.
                     XCTAssertGreaterThan(frame.midX,window.maxX-window.width/3)
+                    XCTAssertLessThan(window.maxX-frame.maxX,4)
                 } else {
                     XCTAssertLessThan(app.buttons["switch.harmonium"].frame.midY,app.buttons["switch.tanpura"].frame.midY)
                     XCTAssertLessThanOrEqual(frame.width,52)
                     XCTAssertLessThan(frame.midX,window.minX+window.width/3)
+                    XCTAssertLessThan(frame.minX-window.minX,4)
                 }
                 if instrument == "tanpura" { XCTAssertTrue(app.buttons["tanpura.playPause"].exists) }
                 else {

@@ -23,7 +23,7 @@ struct PracticeView: View {
                         Button(audio.harmoniumEnabled ? "Turn keyboard off" : "Enable harmonium") {
                             audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
                         }.buttonStyle(.borderedProminent).accessibilityIdentifier("harmonium.enable")
-                        Button("Release all keys", action: audio.releaseKeys).buttonStyle(.bordered)
+                        Button("Release keys", action: audio.releaseKeys).buttonStyle(.bordered)
                     }
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
                     navigationSlider
