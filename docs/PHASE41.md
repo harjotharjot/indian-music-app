@@ -54,6 +54,10 @@ levels do not imply equal loudness for every note/chord, register or phone route
   accent/unselected gray style and background as Harmonium. VoiceOver names remain.
 - Port right: Tanpura above Harmonium. Port left: Harmonium above Tanpura.
   Portrait keeps labeled Harmonium-left/Tanpura-right bottom navigation.
+  The root extends to the charging-port edge to reclaim padding; the rail stays
+  above instrument navigation containers. Orientation-change notifications trigger
+  a window-scene read after the transition, including 180-degree turns that do
+  not resize the view. Device orientation is a signal, not the source of tab order.
 
 ## Verification
 
@@ -61,7 +65,9 @@ The macOS workflow compiles/renders the real production graph, compares 50 stopp
 engine restarts and 50 cycles with the engine running/tanpura scheduled, renders
 37 keys × three tunings, 333 short/repeated taps, sustain, chords, releases,
 independent faders, both long tanpura loop checks, and maximum-polyphony mixing.
-Phase 4.0 and corrected samples are rendered for before/after audition.
+Phase 4.0 and corrected samples are rendered in separate processes for before/after
+audition, avoiding shared sampler sample caches. A C3 early-energy comparison
+rejects identical or unimproved audition output.
 
 The attack gate uses sustained-relative 10-ms energy windows and requires sound
 in short taps. It cannot certify perceptual authenticity or absence of mechanical
@@ -94,3 +100,44 @@ Install over the current app using SideStore; do not uninstall first.
 
 Report phone model, audio route and the failing note/action. Bluetooth adds latency;
 no physical touch-to-sound latency, battery or thermal result is claimed by CI.
+
+## Delivered build and measured results
+
+[Successful build](https://github.com/harjotharjot/indian-music-app/actions/runs/42542905615)
+for app/test source `bd524d7`:
+[unsigned IPA ZIP](https://github.com/harjotharjot/indian-music-app/actions/runs/42542905615/artifacts/13642143110) ·
+[full test/audio artifact](https://github.com/harjotharjot/indian-music-app/actions/runs/42542905615/artifacts/13642272001).
+Extract the ZIP and install the `.ipa` through SideStore over the existing app.
+
+- 50 stopped-engine restart cycles and 50 live-engine cycles with tanpura scheduled
+  matched the initial normalized sampler spectrum (maximum L1 distance 0).
+  The deliberately unrestored restart reproduced distance 1.66288.
+- All 111 note/tuning cases passed; worst clip median absolute pitch error
+  0.8180 cents. This is a median estimator result, not instantaneous accuracy.
+- 37 attack cases and 333 short/repeated taps passed. First 50-ms C3 RMS relative
+  to sustained reed RMS improved from 0.1080 to 0.6313. This is energy evidence,
+  not an authenticity rating or measured physical touch latency.
+- Equal 60% reference levels: harmonium C3 -36.39 LUFS, Sa–Pa -34.03 LUFS,
+  Sa–Ma -37.14 LUFS. The 37-note maximum-volume chord plus tanpura peaked at
+  0.66575 full scale without clipping. Chords differ in perceived loudness from
+  solo notes; phone listening is still required.
+- Both 160-second tanpura loop/speed/tuning renders and restarts passed.
+- Simulator passed both instruments in portrait and both landscape directions:
+  rail edge, tab order, taps, continuous slider interaction, and dynamic icon colors.
+- Unsigned arm64 iPhoneOS IPA packaging and asset hashes passed.
+
+[Before: v0.4.0 simulator, one octave](phase41/before-landscape.png) ·
+[After: port right](phase41/after-landscape-port-right.png) ·
+[After: port left](phase41/after-landscape-port-left.png) ·
+[After: portrait](phase41/after-portrait.png) ·
+[Tanpura selected](phase41/tanpura-landscape-port-right.png).
+Screenshots are unmodified simulator captures; the app still follows system light/dark mode.
+
+[Lifecycle/attack/loudness data](phase41/phase41-results.json) ·
+[Pitch data](phase41/harmonium-pitch-results.json) ·
+[Polyphony/sustain data](phase41/harmonium-polyphony-results.json) ·
+[Validation summary](phase41/validation.txt).
+
+Remaining acceptance is real-iPhone listening and touch testing using the checklist
+above, especially natural attacks, subjective balance, physical latency and background
+behavior. Phase 4.1 stops here for that test; CI does not certify those device results.

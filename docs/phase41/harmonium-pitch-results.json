@@ -1,0 +1,668 @@
+[
+  {
+    "file": "note_36_-37.wav",
+    "medianAbsCents": 0.6415766039116031,
+    "p95AbsCents": 1.1374113621583137,
+    "firstAboveMinus80dBMilliseconds": 0.2916666666666667
+  },
+  {
+    "file": "note_36_0.wav",
+    "medianAbsCents": 0.5850099947107797,
+    "p95AbsCents": 1.1060788417587977,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_36_37.wav",
+    "medianAbsCents": 0.5738394710651661,
+    "p95AbsCents": 1.0712415890051394,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_37_-37.wav",
+    "medianAbsCents": 0.576214387963404,
+    "p95AbsCents": 1.054164129558668,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_37_0.wav",
+    "medianAbsCents": 0.5747973158647772,
+    "p95AbsCents": 1.0731041467810973,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_37_37.wav",
+    "medianAbsCents": 0.562734827278439,
+    "p95AbsCents": 1.0643439159273855,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_38_-37.wav",
+    "medianAbsCents": 0.8180037196111716,
+    "p95AbsCents": 1.0061343345032399,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_38_0.wav",
+    "medianAbsCents": 0.7983434165897831,
+    "p95AbsCents": 1.0192255293885588,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_38_37.wav",
+    "medianAbsCents": 0.7741177552368582,
+    "p95AbsCents": 0.998706881626912,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_39_-37.wav",
+    "medianAbsCents": 0.7864122481533496,
+    "p95AbsCents": 1.046489579981029,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_39_0.wav",
+    "medianAbsCents": 0.7234327143307064,
+    "p95AbsCents": 1.013456047073158,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_39_37.wav",
+    "medianAbsCents": 0.7587501609550232,
+    "p95AbsCents": 1.0256031892338235,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_40_-37.wav",
+    "medianAbsCents": 0.7126457496047937,
+    "p95AbsCents": 0.9988211872084026,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_40_0.wav",
+    "medianAbsCents": 0.7444518596094039,
+    "p95AbsCents": 1.002711662967094,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_40_37.wav",
+    "medianAbsCents": 0.6994502364062183,
+    "p95AbsCents": 1.0406525097028663,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_41_-37.wav",
+    "medianAbsCents": 0.41327554191500726,
+    "p95AbsCents": 1200.49895570344,
+    "firstAboveMinus80dBMilliseconds": 0.5416666666666666
+  },
+  {
+    "file": "note_41_0.wav",
+    "medianAbsCents": 0.3898154529008329,
+    "p95AbsCents": 1200.6897390315198,
+    "firstAboveMinus80dBMilliseconds": 0.5416666666666666
+  },
+  {
+    "file": "note_41_37.wav",
+    "medianAbsCents": 0.3953055518418435,
+    "p95AbsCents": 1200.0084573906588,
+    "firstAboveMinus80dBMilliseconds": 0.5208333333333334
+  },
+  {
+    "file": "note_42_-37.wav",
+    "medianAbsCents": 0.38609203271498804,
+    "p95AbsCents": 1200.7645260659408,
+    "firstAboveMinus80dBMilliseconds": 0.5208333333333334
+  },
+  {
+    "file": "note_42_0.wav",
+    "medianAbsCents": 0.3933195198610942,
+    "p95AbsCents": 1199.8827509657267,
+    "firstAboveMinus80dBMilliseconds": 0.5
+  },
+  {
+    "file": "note_42_37.wav",
+    "medianAbsCents": 0.41279975317413864,
+    "p95AbsCents": 1200.0127558357526,
+    "firstAboveMinus80dBMilliseconds": 0.5
+  },
+  {
+    "file": "note_43_-37.wav",
+    "medianAbsCents": 0.365692667107602,
+    "p95AbsCents": 0.8281372583949744,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_43_0.wav",
+    "medianAbsCents": 0.3591478779482914,
+    "p95AbsCents": 0.9140300471519698,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_43_37.wav",
+    "medianAbsCents": 0.38481082811885775,
+    "p95AbsCents": 0.9529392244048251,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_44_-37.wav",
+    "medianAbsCents": 0.5041987482161904,
+    "p95AbsCents": 0.7387571572032121,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_44_0.wav",
+    "medianAbsCents": 0.4687892040755887,
+    "p95AbsCents": 0.692266019816187,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_44_37.wav",
+    "medianAbsCents": 0.43559423284575394,
+    "p95AbsCents": 0.7275796499243083,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_45_-37.wav",
+    "medianAbsCents": 0.40904579939452035,
+    "p95AbsCents": 0.7482044333914246,
+    "firstAboveMinus80dBMilliseconds": 0.1875
+  },
+  {
+    "file": "note_45_0.wav",
+    "medianAbsCents": 0.39265032573326625,
+    "p95AbsCents": 0.7742837107071625,
+    "firstAboveMinus80dBMilliseconds": 0.1875
+  },
+  {
+    "file": "note_45_37.wav",
+    "medianAbsCents": 0.3664821016265133,
+    "p95AbsCents": 0.799718014731413,
+    "firstAboveMinus80dBMilliseconds": 0.1875
+  },
+  {
+    "file": "note_46_-37.wav",
+    "medianAbsCents": 0.3143425160690709,
+    "p95AbsCents": 0.8168941769064659,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_46_0.wav",
+    "medianAbsCents": 0.31277056898366595,
+    "p95AbsCents": 0.8128346367877055,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_46_37.wav",
+    "medianAbsCents": 0.3095809761632319,
+    "p95AbsCents": 0.8100488341394321,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_47_-37.wav",
+    "medianAbsCents": 0.390453933177741,
+    "p95AbsCents": 0.6302828355170065,
+    "firstAboveMinus80dBMilliseconds": 0.5625
+  },
+  {
+    "file": "note_47_0.wav",
+    "medianAbsCents": 0.4071282212237405,
+    "p95AbsCents": 0.6674559010112275,
+    "firstAboveMinus80dBMilliseconds": 0.5416666666666666
+  },
+  {
+    "file": "note_47_37.wav",
+    "medianAbsCents": 0.4226636504026448,
+    "p95AbsCents": 0.6876045442563435,
+    "firstAboveMinus80dBMilliseconds": 0.5416666666666666
+  },
+  {
+    "file": "note_48_-37.wav",
+    "medianAbsCents": 0.18794079614297557,
+    "p95AbsCents": 0.4390747509506404,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_48_0.wav",
+    "medianAbsCents": 0.1927177323386772,
+    "p95AbsCents": 0.44245415761347495,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_48_37.wav",
+    "medianAbsCents": 0.16207939632448437,
+    "p95AbsCents": 0.4136840560751987,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_49_-37.wav",
+    "medianAbsCents": 0.14911746158161837,
+    "p95AbsCents": 0.5484419739532085,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_49_0.wav",
+    "medianAbsCents": 0.15153824699518828,
+    "p95AbsCents": 0.530545644993138,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_49_37.wav",
+    "medianAbsCents": 0.13764860748358482,
+    "p95AbsCents": 0.53991080066334,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_50_-37.wav",
+    "medianAbsCents": 0.15698939645286195,
+    "p95AbsCents": 0.3962628125472913,
+    "firstAboveMinus80dBMilliseconds": 0.1875
+  },
+  {
+    "file": "note_50_0.wav",
+    "medianAbsCents": 0.17631164154060017,
+    "p95AbsCents": 0.3625932021427685,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_50_37.wav",
+    "medianAbsCents": 0.18052747513226614,
+    "p95AbsCents": 0.38252215223059827,
+    "firstAboveMinus80dBMilliseconds": 0.16666666666666666
+  },
+  {
+    "file": "note_51_-37.wav",
+    "medianAbsCents": 0.11893639739759924,
+    "p95AbsCents": 0.3793380036037629,
+    "firstAboveMinus80dBMilliseconds": 0.75
+  },
+  {
+    "file": "note_51_0.wav",
+    "medianAbsCents": 0.12822380836768646,
+    "p95AbsCents": 0.3912350273752028,
+    "firstAboveMinus80dBMilliseconds": 0.7291666666666666
+  },
+  {
+    "file": "note_51_37.wav",
+    "medianAbsCents": 0.12750780245326793,
+    "p95AbsCents": 0.3916786119652951,
+    "firstAboveMinus80dBMilliseconds": 0.7083333333333334
+  },
+  {
+    "file": "note_52_-37.wav",
+    "medianAbsCents": 0.21663870457018905,
+    "p95AbsCents": 0.3325762882846496,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_52_0.wav",
+    "medianAbsCents": 0.19720638603263332,
+    "p95AbsCents": 0.3337748756057872,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_52_37.wav",
+    "medianAbsCents": 0.20581213739384369,
+    "p95AbsCents": 0.34531367413817315,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_53_-37.wav",
+    "medianAbsCents": 0.17071121796802174,
+    "p95AbsCents": 0.34984247483074793,
+    "firstAboveMinus80dBMilliseconds": 0.5208333333333334
+  },
+  {
+    "file": "note_53_0.wav",
+    "medianAbsCents": 0.15535220447165776,
+    "p95AbsCents": 0.33059895713055665,
+    "firstAboveMinus80dBMilliseconds": 0.5208333333333334
+  },
+  {
+    "file": "note_53_37.wav",
+    "medianAbsCents": 0.15718533259839318,
+    "p95AbsCents": 0.3320896029288418,
+    "firstAboveMinus80dBMilliseconds": 0.5
+  },
+  {
+    "file": "note_54_-37.wav",
+    "medianAbsCents": 0.1977327196773862,
+    "p95AbsCents": 0.5799426882812313,
+    "firstAboveMinus80dBMilliseconds": 0.4583333333333333
+  },
+  {
+    "file": "note_54_0.wav",
+    "medianAbsCents": 0.1580322747216492,
+    "p95AbsCents": 0.5931146211824367,
+    "firstAboveMinus80dBMilliseconds": 0.4583333333333333
+  },
+  {
+    "file": "note_54_37.wav",
+    "medianAbsCents": 0.14459551072047602,
+    "p95AbsCents": 0.5220667064319147,
+    "firstAboveMinus80dBMilliseconds": 0.4375
+  },
+  {
+    "file": "note_55_-37.wav",
+    "medianAbsCents": 0.15765889252984472,
+    "p95AbsCents": 0.4150143421834007,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_55_0.wav",
+    "medianAbsCents": 0.16685831550321606,
+    "p95AbsCents": 0.4338183990096519,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_55_37.wav",
+    "medianAbsCents": 0.21033556048739271,
+    "p95AbsCents": 0.4862425181196414,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_56_-37.wav",
+    "medianAbsCents": 0.0774349953260308,
+    "p95AbsCents": 0.19157839861301895,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_56_0.wav",
+    "medianAbsCents": 0.08587789104071307,
+    "p95AbsCents": 0.18712804022696883,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_56_37.wav",
+    "medianAbsCents": 0.08196945654806471,
+    "p95AbsCents": 0.19546177594154213,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_57_-37.wav",
+    "medianAbsCents": 0.08015990464541325,
+    "p95AbsCents": 0.2755819242548738,
+    "firstAboveMinus80dBMilliseconds": 0.3333333333333333
+  },
+  {
+    "file": "note_57_0.wav",
+    "medianAbsCents": 0.06932517347315639,
+    "p95AbsCents": 0.28662232628593265,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_57_37.wav",
+    "medianAbsCents": 0.08687229547586904,
+    "p95AbsCents": 0.2824276435784656,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_58_-37.wav",
+    "medianAbsCents": 0.11923905113508493,
+    "p95AbsCents": 0.37280653135373065,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_58_0.wav",
+    "medianAbsCents": 0.12513389836868932,
+    "p95AbsCents": 0.3556006551431653,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_58_37.wav",
+    "medianAbsCents": 0.14626227566347094,
+    "p95AbsCents": 0.33543284491464853,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_59_-37.wav",
+    "medianAbsCents": 0.17794792716888563,
+    "p95AbsCents": 0.41180834537241773,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_59_0.wav",
+    "medianAbsCents": 0.1964094187034276,
+    "p95AbsCents": 0.4302814204548176,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_59_37.wav",
+    "medianAbsCents": 0.1982847649060887,
+    "p95AbsCents": 0.43675660406793554,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_60_-37.wav",
+    "medianAbsCents": 0.20565634410995776,
+    "p95AbsCents": 0.33010688800288635,
+    "firstAboveMinus80dBMilliseconds": 0.3541666666666667
+  },
+  {
+    "file": "note_60_0.wav",
+    "medianAbsCents": 0.20707010634962272,
+    "p95AbsCents": 0.32306797399899345,
+    "firstAboveMinus80dBMilliseconds": 0.3333333333333333
+  },
+  {
+    "file": "note_60_37.wav",
+    "medianAbsCents": 0.1986592997752939,
+    "p95AbsCents": 0.32937216569613925,
+    "firstAboveMinus80dBMilliseconds": 0.3333333333333333
+  },
+  {
+    "file": "note_61_-37.wav",
+    "medianAbsCents": 0.28176465314618243,
+    "p95AbsCents": 0.38869120010092084,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_61_0.wav",
+    "medianAbsCents": 0.3086958705471443,
+    "p95AbsCents": 0.4090394279140575,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_61_37.wav",
+    "medianAbsCents": 0.2709760459365531,
+    "p95AbsCents": 0.38457868616653823,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_62_-37.wav",
+    "medianAbsCents": 0.11659922828624256,
+    "p95AbsCents": 0.4999529239069692,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_62_0.wav",
+    "medianAbsCents": 0.11619466251952547,
+    "p95AbsCents": 0.5321036690434223,
+    "firstAboveMinus80dBMilliseconds": 0.2916666666666667
+  },
+  {
+    "file": "note_62_37.wav",
+    "medianAbsCents": 0.11196706878518238,
+    "p95AbsCents": 0.5003965677173852,
+    "firstAboveMinus80dBMilliseconds": 0.2916666666666667
+  },
+  {
+    "file": "note_63_-37.wav",
+    "medianAbsCents": 0.17173433507436434,
+    "p95AbsCents": 0.2691063308953113,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_63_0.wav",
+    "medianAbsCents": 0.12168316013148563,
+    "p95AbsCents": 0.34016759051979206,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_63_37.wav",
+    "medianAbsCents": 0.13890763675871762,
+    "p95AbsCents": 0.29969751766579045,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_64_-37.wav",
+    "medianAbsCents": 0.2569349255557789,
+    "p95AbsCents": 0.675210938111877,
+    "firstAboveMinus80dBMilliseconds": 0.3333333333333333
+  },
+  {
+    "file": "note_64_0.wav",
+    "medianAbsCents": 0.2662624949329649,
+    "p95AbsCents": 0.6879360090919041,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_64_37.wav",
+    "medianAbsCents": 0.2644548654580571,
+    "p95AbsCents": 0.700689484725673,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_65_-37.wav",
+    "medianAbsCents": 0.12574498667452982,
+    "p95AbsCents": 0.23663827780813468,
+    "firstAboveMinus80dBMilliseconds": 0.22916666666666666
+  },
+  {
+    "file": "note_65_0.wav",
+    "medianAbsCents": 0.14649205779954133,
+    "p95AbsCents": 0.2542540144259179,
+    "firstAboveMinus80dBMilliseconds": 0.22916666666666666
+  },
+  {
+    "file": "note_65_37.wav",
+    "medianAbsCents": 0.14586483552099688,
+    "p95AbsCents": 0.28813785384568036,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_66_-37.wav",
+    "medianAbsCents": 0.13968360796261012,
+    "p95AbsCents": 0.2861824588160583,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_66_0.wav",
+    "medianAbsCents": 0.141807449808532,
+    "p95AbsCents": 0.29318300098130057,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_66_37.wav",
+    "medianAbsCents": 0.12975005059034858,
+    "p95AbsCents": 0.2483792153060487,
+    "firstAboveMinus80dBMilliseconds": 0.20833333333333334
+  },
+  {
+    "file": "note_67_-37.wav",
+    "medianAbsCents": 0.23245927955092818,
+    "p95AbsCents": 0.42801283599494566,
+    "firstAboveMinus80dBMilliseconds": 0.3125
+  },
+  {
+    "file": "note_67_0.wav",
+    "medianAbsCents": 0.18903355333789879,
+    "p95AbsCents": 0.4049091996789211,
+    "firstAboveMinus80dBMilliseconds": 0.2916666666666667
+  },
+  {
+    "file": "note_67_37.wav",
+    "medianAbsCents": 0.15962248991560438,
+    "p95AbsCents": 0.36088343135794093,
+    "firstAboveMinus80dBMilliseconds": 0.2916666666666667
+  },
+  {
+    "file": "note_68_-37.wav",
+    "medianAbsCents": 0.15092123396135,
+    "p95AbsCents": 0.36587787365307417,
+    "firstAboveMinus80dBMilliseconds": 0.22916666666666666
+  },
+  {
+    "file": "note_68_0.wav",
+    "medianAbsCents": 0.10571898169110243,
+    "p95AbsCents": 0.28639653622540073,
+    "firstAboveMinus80dBMilliseconds": 0.22916666666666666
+  },
+  {
+    "file": "note_68_37.wav",
+    "medianAbsCents": 0.16588219828229125,
+    "p95AbsCents": 0.37218637414003675,
+    "firstAboveMinus80dBMilliseconds": 0.22916666666666666
+  },
+  {
+    "file": "note_69_-37.wav",
+    "medianAbsCents": 0.28463878384152796,
+    "p95AbsCents": 0.37416731998760855,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_69_0.wav",
+    "medianAbsCents": 0.2358664280945835,
+    "p95AbsCents": 0.3120146841734112,
+    "firstAboveMinus80dBMilliseconds": 0.2708333333333333
+  },
+  {
+    "file": "note_69_37.wav",
+    "medianAbsCents": 0.3297170463590423,
+    "p95AbsCents": 0.40279680571726667,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_70_-37.wav",
+    "medianAbsCents": 0.38148648913075367,
+    "p95AbsCents": 0.4468402005810793,
+    "firstAboveMinus80dBMilliseconds": 0.7708333333333334
+  },
+  {
+    "file": "note_70_0.wav",
+    "medianAbsCents": 0.299150212669443,
+    "p95AbsCents": 0.3819333732826914,
+    "firstAboveMinus80dBMilliseconds": 0.7708333333333334
+  },
+  {
+    "file": "note_70_37.wav",
+    "medianAbsCents": 0.2482979372961095,
+    "p95AbsCents": 0.32220120471504055,
+    "firstAboveMinus80dBMilliseconds": 0.75
+  },
+  {
+    "file": "note_71_-37.wav",
+    "medianAbsCents": 0.27913208287087576,
+    "p95AbsCents": 0.7629974145755969,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_71_0.wav",
+    "medianAbsCents": 0.2840772338764146,
+    "p95AbsCents": 0.7381105556244376,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_71_37.wav",
+    "medianAbsCents": 0.2735192877222903,
+    "p95AbsCents": 0.7403219789163996,
+    "firstAboveMinus80dBMilliseconds": 0.3958333333333333
+  },
+  {
+    "file": "note_72_-37.wav",
+    "medianAbsCents": 0.1945702001877418,
+    "p95AbsCents": 0.4904868768636633,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_72_0.wav",
+    "medianAbsCents": 0.21943792914522153,
+    "p95AbsCents": 0.4728630875146038,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  },
+  {
+    "file": "note_72_37.wav",
+    "medianAbsCents": 0.2177379869717634,
+    "p95AbsCents": 0.4697168255941019,
+    "firstAboveMinus80dBMilliseconds": 0.25
+  }
+]
