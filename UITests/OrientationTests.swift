@@ -59,8 +59,12 @@ final class OrientationTests: XCTestCase {
                         XCTAssertLessThan(slider.frame.maxY,keyboard.minY+1)
                         if deviceOrientation == .landscapeLeft {
                             XCTAssertLessThan(keyboard.minX-window.minX,40,"Notch-side keyboard margin must be reclaimed")
+                            XCTAssertLessThanOrEqual(keyboard.maxX,frame.minX,"Keyboard must not extend behind the switcher")
+                            XCTAssertLessThan(app.buttons["harmonium.settings"].frame.maxX,frame.minX)
                         } else {
                             XCTAssertLessThan(window.maxX-keyboard.maxX,40,"Notch-side keyboard margin must be reclaimed")
+                            XCTAssertGreaterThanOrEqual(keyboard.minX,frame.maxX,"Keyboard must not extend behind the switcher")
+                            XCTAssertGreaterThan(app.buttons["harmonium.enable"].frame.minX,frame.maxX)
                         }
                     }
                 }
