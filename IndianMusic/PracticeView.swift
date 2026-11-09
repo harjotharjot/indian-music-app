@@ -9,7 +9,7 @@ struct PracticeView: View {
         NavigationStack {
             GeometryReader { geometry in
                 if geometry.size.width > geometry.size.height { landscapeContent }
-                else { portraitContent }
+                else { portraitContent(size:geometry.size) }
             }
             .navigationTitle("Harmonium")
             .navigationBarTitleDisplayMode(.inline)
@@ -17,7 +17,8 @@ struct PracticeView: View {
             .sheet(isPresented: $showControls) { controlsSheet }
         }
     }
-    private var portraitContent: some View {
+    private func portraitContent(size: CGSize) -> some View {
+        VStack(spacing:6) {
             ScrollView {
                 VStack(spacing: 16) {
                     HStack {
@@ -58,16 +59,31 @@ struct PracticeView: View {
                             }.pickerStyle(.segmented)
                         }
                     }
-                    navigationSlider
-                    HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
-                                      enabled: audio.harmoniumEnabled && !navigating, epoch: audio.keyboardEpoch,
-                                      onChange: audio.setHarmoniumKeys)
-                        .aspectRatio(8.0/4.05,contentMode:.fit)
-                        .frame(maxHeight:220)
-                        .accessibilityIdentifier("harmonium.keyboard")
+                    GroupBox("Tanpura speed") {
+                        VStack {
+                            Text("\(audio.settings.speed,specifier:"%.2f")×")
+                            Slider(value:$audio.settings.speed,in:0.75...1.25,step:0.01)
+                                .accessibilityLabel("Tanpura speed").accessibilityIdentifier("harmonium.speed")
+                        }
+                    }
                 }.padding()
             }
+            .frame(maxHeight:.infinity)
+            .accessibilityIdentifier("harmonium.settingsScroll")
+            navigationSlider.padding(.horizontal,16)
+            HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
+                              enabled:audio.harmoniumEnabled && !navigating,epoch:audio.keyboardEpoch,
+                              onChange:audio.setHarmoniumKeys)
+                .frame(height:min(220,(size.width-32)/8*4.05))
+                .padding(.horizontal,16)
+                .accessibilityIdentifier("harmonium.keyboard")
+        }.padding(.bottom,4)
             .toolbar {
+                ToolbarItem(placement:.navigationBarTrailing) {
+                    Button { audio.releaseKeys();showControls=true } label: {
+                        Image(systemName:"slider.horizontal.3")
+                    }.accessibilityLabel("Practice settings").accessibilityIdentifier("harmonium.settings")
+                }
                 ToolbarItem(placement:.navigationBarTrailing) {
                     Button { audio.releaseKeys();fullscreen.enter() } label: {
                         Label("Full screen",systemImage:"arrow.up.left.and.arrow.down.right")
@@ -90,7 +106,7 @@ struct PracticeView: View {
                 Spacer(minLength:0)
                 Button { audio.releaseKeys(); showControls=true } label: {
                     Image(systemName:"slider.horizontal.3")
-                }
+                }.accessibilityLabel("Practice settings").accessibilityIdentifier("harmonium.settings")
             }.font(.subheadline)
             HStack {
                 Text("Sa \(audio.settings.saName) · \(audio.settings.cents,specifier:"%+.0f") cents")
@@ -110,7 +126,9 @@ struct PracticeView: View {
                 .frame(maxWidth:.infinity,maxHeight:.infinity)
                 .accessibilityIdentifier("harmonium.keyboard")
 
-        }.padding(.horizontal,12).padding(.vertical,4)
+        }.padding(.leading,fullscreen.actualOrientation == .landscapeLeft ? 8:24)
+         .padding(.trailing,fullscreen.actualOrientation == .landscapeLeft ? 24:8)
+         .padding(.vertical,4)
     }
     private var navigationSlider: some View {
         Slider(value: Binding(get: { audio.harmonium.navigation },
@@ -141,6 +159,7 @@ struct PracticeView: View {
                 Section("Tanpura speed") {
                     Text("\(audio.settings.speed,specifier:"%.2f")×")
                     Slider(value:$audio.settings.speed,in:0.75...1.25,step:0.01)
+                        .accessibilityLabel("Tanpura speed").accessibilityIdentifier("harmonium.speed.sheet")
                 }
             }.navigationTitle("Practice controls")
                 .toolbar { Button("Done") { showControls=false } }

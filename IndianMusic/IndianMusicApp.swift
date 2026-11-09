@@ -28,7 +28,7 @@ struct IndianMusicApp: App {
                     }
                 }
             }
-            .ignoresSafeArea(.container, edges: orientation.isLandscape ? (orientation == .landscapeLeft ? .leading : .trailing) : [])
+            .ignoresSafeArea(.container, edges: orientation.isLandscape ? (activeInstrument == 0 ? .horizontal : (orientation == .landscapeLeft ? .leading : .trailing)) : [])
             .background(SceneOrientationReader(orientation:$orientation).frame(width:0,height:0))
             .environmentObject(audio)
             .environmentObject(fullscreen)
@@ -186,6 +186,11 @@ final class PracticeFullscreenController: ObservableObject {
     }
     func exit() {
         state.exit();isForced=false;message=nil;stopObserving();rotate(to:.portrait)
+        let serial=requestSerial
+        DispatchQueue.main.asyncAfter(deadline:.now()+0.8) { [weak self] in
+            guard let self,!self.isForced,self.requestSerial==serial else { return }
+            self.restoreAutomaticRotation()
+        }
     }
     func setForeground(_ active: Bool) {
         foreground=active
@@ -193,6 +198,17 @@ final class PracticeFullscreenController: ObservableObject {
             if scene?.interfaceOrientation.isLandscape != true { rotate(to:requested) }
             startObserving()
         } else { stopObserving() }
+    }
+    private func restoreAutomaticRotation() {
+        guard !isForced, let windowScene=scene else { return }
+        requestSerial+=1
+        windowScene.windows.forEach { $0.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations() }
+        // Clear the one-orientation scene preference used to leave full screen,
+        // as well as restoring the app mask. Ordinary rotations remain automatic.
+        windowScene.requestGeometryUpdate(.iOS(interfaceOrientations:.allButUpsideDown)) { error in
+            print("Restore automatic rotation: \(error.localizedDescription)")
+        }
+        DispatchQueue.main.asyncAfter(deadline:.now()+0.5) { [weak self] in self?.syncOrientation() }
     }
     private func rotate(to mask: UIInterfaceOrientationMask) {
         guard let windowScene=scene ?? UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first(where:{ $0.activationState == .foregroundActive }) else { return }

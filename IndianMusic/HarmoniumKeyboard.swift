@@ -56,14 +56,7 @@ final class KeybedView: UIControl {
     override func didMoveToWindow() {
         super.didMoveToWindow()
         if window == nil { releaseAll(); return }
-        var ancestor = superview
-        while let view = ancestor {
-            if let scroll = view as? UIScrollView {
-                scroll.delaysContentTouches = false
-                scroll.canCancelContentTouches = false
-            }
-            ancestor = view.superview
-        }
+
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -124,7 +117,12 @@ final class KeybedView: UIControl {
         for key in keys.filter({ !$0.black }) + keys.filter({ $0.black }) {
             let pressed = ledger.notes.contains(key.note)
             (pressed ? UIColor.systemBlue : key.black ? UIColor(white: 0.12, alpha: 1) : UIColor.white).setFill()
-            let path = UIBezierPath(rect: key.frame.insetBy(dx: 0.5, dy: 0.5)); path.fill()
+            let face=key.frame.insetBy(dx:0.5,dy:0.5)
+            let radius=face.width*0.48
+            let path=key.black ? UIBezierPath(roundedRect:face,
+                byRoundingCorners:[.bottomLeft,.bottomRight],cornerRadii:CGSize(width:radius,height:radius))
+                : UIBezierPath(rect:face)
+            path.fill()
             UIColor.gray.setStroke(); path.lineWidth = 0.5; path.stroke()
             let western = ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"][key.note%12]
             let label = settings.showSargam ? HarmoniumSettings.sargam(note: key.note, sa: sa) : western
