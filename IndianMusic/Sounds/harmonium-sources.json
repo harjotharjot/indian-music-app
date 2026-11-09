@@ -20,8 +20,8 @@
       "pitchCorrectionCents": -8.684351514069384,
       "measuredPreparedErrorCents": 0.0021613515285728007,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 132000,
-      "loopEndFrame": 317399,
+      "loopStartFrame": 180000,
+      "loopEndFrame": 368889,
       "includedInSoundfont": true
     },
     {
@@ -38,8 +38,8 @@
       "pitchCorrectionCents": -9.272782089077873,
       "measuredPreparedErrorCents": 0.01488925579758533,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 114000,
-      "loopEndFrame": 365249,
+      "loopStartFrame": 108000,
+      "loopEndFrame": 293500,
       "includedInSoundfont": true
     },
     {
@@ -56,8 +56,8 @@
       "pitchCorrectionCents": -10.08414417094061,
       "measuredPreparedErrorCents": -0.08693659854100293,
       "trimmedLeadingSeconds": 0.025,
-      "loopStartFrame": 102000,
-      "loopEndFrame": 294251,
+      "loopStartFrame": 96000,
+      "loopEndFrame": 288033,
       "includedInSoundfont": true
     },
     {
@@ -74,8 +74,8 @@
       "pitchCorrectionCents": -6.752665368093635,
       "measuredPreparedErrorCents": -0.042403705719320256,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 84000,
-      "loopEndFrame": 341530,
+      "loopStartFrame": 79200,
+      "loopEndFrame": 248019,
       "includedInSoundfont": true
     },
     {
@@ -92,8 +92,8 @@
       "pitchCorrectionCents": -7.185505806643255,
       "measuredPreparedErrorCents": -0.0859262886275177,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 84000,
-      "loopEndFrame": 251993,
+      "loopStartFrame": 184800,
+      "loopEndFrame": 357942,
       "includedInSoundfont": true
     },
     {
@@ -110,8 +110,8 @@
       "pitchCorrectionCents": -8.886808251571733,
       "measuredPreparedErrorCents": -0.056004395343745204,
       "trimmedLeadingSeconds": 0.035,
-      "loopStartFrame": 66000,
-      "loopEndFrame": 324404,
+      "loopStartFrame": 60000,
+      "loopEndFrame": 329629,
       "includedInSoundfont": true
     },
     {
@@ -129,7 +129,7 @@
       "measuredPreparedErrorCents": -0.20155393134151284,
       "trimmedLeadingSeconds": 0.0,
       "loopStartFrame": 108000,
-      "loopEndFrame": 311341,
+      "loopEndFrame": 308234,
       "includedInSoundfont": true
     },
     {
@@ -146,8 +146,8 @@
       "pitchCorrectionCents": -9.30778877285482,
       "measuredPreparedErrorCents": -0.04033163625586013,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 66000,
-      "loopEndFrame": 276370,
+      "loopStartFrame": 60000,
+      "loopEndFrame": 275230,
       "includedInSoundfont": true
     },
     {
@@ -164,8 +164,8 @@
       "pitchCorrectionCents": -9.896672510340604,
       "measuredPreparedErrorCents": 0.11376230375672583,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 120000,
-      "loopEndFrame": 359626,
+      "loopStartFrame": 78000,
+      "loopEndFrame": 317626,
       "includedInSoundfont": true
     },
     {
@@ -182,8 +182,8 @@
       "pitchCorrectionCents": -1.127471503145896,
       "measuredPreparedErrorCents": -0.0025290712885010155,
       "trimmedLeadingSeconds": 0.0,
-      "loopStartFrame": 126000,
-      "loopEndFrame": 366399,
+      "loopStartFrame": 74400,
+      "loopEndFrame": 322497,
       "includedInSoundfont": true
     },
     {
@@ -200,8 +200,8 @@
       "pitchCorrectionCents": -4.917047503873961,
       "measuredPreparedErrorCents": 0.0005000536316761202,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 90000,
-      "loopEndFrame": 336496,
+      "loopStartFrame": 136800,
+      "loopEndFrame": 375234,
       "includedInSoundfont": true
     },
     {
@@ -218,8 +218,8 @@
       "pitchCorrectionCents": -7.233956164470552,
       "measuredPreparedErrorCents": -0.046149057815437836,
       "trimmedLeadingSeconds": 0.035,
-      "loopStartFrame": 126000,
-      "loopEndFrame": 378718,
+      "loopStartFrame": 120000,
+      "loopEndFrame": 377303,
       "includedInSoundfont": true
     },
     {
@@ -236,8 +236,8 @@
       "pitchCorrectionCents": -11.333238083194605,
       "measuredPreparedErrorCents": -0.08552915630250553,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 90000,
-      "loopEndFrame": 354114,
+      "loopStartFrame": 64800,
+      "loopEndFrame": 338214,
       "includedInSoundfont": true
     },
     {
@@ -273,8 +273,8 @@
       "pitchCorrectionCents": -3.951743509477008,
       "measuredPreparedErrorCents": -0.01647844383910746,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 60000,
-      "loopEndFrame": 244902,
+      "loopStartFrame": 141600,
+      "loopEndFrame": 314044,
       "includedInSoundfont": true
     },
     {
@@ -291,8 +291,8 @@
       "pitchCorrectionCents": -6.524391070868498,
       "measuredPreparedErrorCents": 0.00944421999793578,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 60000,
-      "loopEndFrame": 270146,
+      "loopStartFrame": 213600,
+      "loopEndFrame": 388077,
       "includedInSoundfont": true
     },
     {
@@ -309,8 +309,8 @@
       "pitchCorrectionCents": -8.331679276720202,
       "measuredPreparedErrorCents": -0.20185586343968887,
       "trimmedLeadingSeconds": 0.045,
-      "loopStartFrame": 120000,
-      "loopEndFrame": 372199,
+      "loopStartFrame": 93600,
+      "loopEndFrame": 347443,
       "includedInSoundfont": true
     },
     {
@@ -346,8 +346,8 @@
       "pitchCorrectionCents": -7.207868838835962,
       "measuredPreparedErrorCents": -0.15241073350094553,
       "trimmedLeadingSeconds": 0.0,
-      "loopStartFrame": 60000,
-      "loopEndFrame": 341898,
+      "loopStartFrame": 165600,
+      "loopEndFrame": 342269,
       "includedInSoundfont": true
     },
     {
@@ -364,8 +364,8 @@
       "pitchCorrectionCents": -8.215003641441704,
       "measuredPreparedErrorCents": 0.06996265620686336,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 108000,
-      "loopEndFrame": 306553,
+      "loopStartFrame": 72000,
+      "loopEndFrame": 311476,
       "includedInSoundfont": true
     },
     {
@@ -382,8 +382,8 @@
       "pitchCorrectionCents": -10.64517048271392,
       "measuredPreparedErrorCents": -0.13090979354855684,
       "trimmedLeadingSeconds": 0.025,
-      "loopStartFrame": 90000,
-      "loopEndFrame": 353705,
+      "loopStartFrame": 78000,
+      "loopEndFrame": 341705,
       "includedInSoundfont": true
     },
     {
@@ -400,8 +400,8 @@
       "pitchCorrectionCents": -5.1016066773478315,
       "measuredPreparedErrorCents": 0.5013815467941516,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 90000,
-      "loopEndFrame": 304600,
+      "loopStartFrame": 146400,
+      "loopEndFrame": 378216,
       "includedInSoundfont": true
     },
     {
@@ -418,8 +418,8 @@
       "pitchCorrectionCents": -3.6850689340662584,
       "measuredPreparedErrorCents": -0.06996436697626611,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 78000,
-      "loopEndFrame": 251368,
+      "loopStartFrame": 103200,
+      "loopEndFrame": 285205,
       "includedInSoundfont": true
     },
     {
@@ -436,8 +436,8 @@
       "pitchCorrectionCents": -7.596063952161084,
       "measuredPreparedErrorCents": 0.055527164832357,
       "trimmedLeadingSeconds": 0.025,
-      "loopStartFrame": 78000,
-      "loopEndFrame": 270423,
+      "loopStartFrame": 72000,
+      "loopEndFrame": 269514,
       "includedInSoundfont": true
     },
     {
@@ -473,8 +473,8 @@
       "pitchCorrectionCents": -7.29666035878305,
       "measuredPreparedErrorCents": -0.04997395413199289,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 165600,
-      "loopEndFrame": 333872,
+      "loopStartFrame": 160800,
+      "loopEndFrame": 329072,
       "includedInSoundfont": true
     },
     {
@@ -491,8 +491,8 @@
       "pitchCorrectionCents": -9.660102758916391,
       "measuredPreparedErrorCents": -0.052538527801992155,
       "trimmedLeadingSeconds": 0.035,
-      "loopStartFrame": 126000,
-      "loopEndFrame": 372420,
+      "loopStartFrame": 156000,
+      "loopEndFrame": 416615,
       "includedInSoundfont": true
     },
     {
@@ -509,8 +509,8 @@
       "pitchCorrectionCents": -7.642723352446829,
       "measuredPreparedErrorCents": 0.1929251694226327,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 114000,
-      "loopEndFrame": 390796,
+      "loopStartFrame": 170400,
+      "loopEndFrame": 343286,
       "includedInSoundfont": true
     },
     {
@@ -528,7 +528,7 @@
       "measuredPreparedErrorCents": 0.0086704979198832,
       "trimmedLeadingSeconds": 0.035,
       "loopStartFrame": 60000,
-      "loopEndFrame": 244952,
+      "loopEndFrame": 347046,
       "includedInSoundfont": true
     },
     {
@@ -546,7 +546,7 @@
       "measuredPreparedErrorCents": -0.07211729070599249,
       "trimmedLeadingSeconds": 0.075,
       "loopStartFrame": 213600,
-      "loopEndFrame": 471116,
+      "loopEndFrame": 469192,
       "includedInSoundfont": true
     },
     {
@@ -582,8 +582,8 @@
       "pitchCorrectionCents": -16.662573769321174,
       "measuredPreparedErrorCents": -0.006888895195255216,
       "trimmedLeadingSeconds": 0.005,
-      "loopStartFrame": 126000,
-      "loopEndFrame": 348550,
+      "loopStartFrame": 184800,
+      "loopEndFrame": 442965,
       "includedInSoundfont": true
     },
     {
@@ -600,8 +600,8 @@
       "pitchCorrectionCents": -6.058192892917115,
       "measuredPreparedErrorCents": -0.21612567066590738,
       "trimmedLeadingSeconds": 0.035,
-      "loopStartFrame": 114000,
-      "loopEndFrame": 282445,
+      "loopStartFrame": 170400,
+      "loopEndFrame": 349123,
       "includedInSoundfont": true
     },
     {
@@ -618,8 +618,8 @@
       "pitchCorrectionCents": -6.795660784872127,
       "measuredPreparedErrorCents": -0.09717172552593298,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 72000,
-      "loopEndFrame": 353836,
+      "loopStartFrame": 194400,
+      "loopEndFrame": 446136,
       "includedInSoundfont": true
     },
     {
@@ -636,8 +636,8 @@
       "pitchCorrectionCents": -6.9505804211312485,
       "measuredPreparedErrorCents": -0.03914673294747518,
       "trimmedLeadingSeconds": 0.045,
-      "loopStartFrame": 108000,
-      "loopEndFrame": 354437,
+      "loopStartFrame": 102000,
+      "loopEndFrame": 353580,
       "includedInSoundfont": true
     },
     {
@@ -654,8 +654,8 @@
       "pitchCorrectionCents": -4.625424502925209,
       "measuredPreparedErrorCents": 0.2061615450585743,
       "trimmedLeadingSeconds": 0.065,
-      "loopStartFrame": 102000,
-      "loopEndFrame": 312223,
+      "loopStartFrame": 64800,
+      "loopEndFrame": 327468,
       "includedInSoundfont": true
     },
     {
@@ -672,8 +672,8 @@
       "pitchCorrectionCents": -5.679187608114233,
       "measuredPreparedErrorCents": -0.0006780952701430947,
       "trimmedLeadingSeconds": 0.015,
-      "loopStartFrame": 208800,
-      "loopEndFrame": 496551,
+      "loopStartFrame": 102000,
+      "loopEndFrame": 270164,
       "includedInSoundfont": true
     },
     {
@@ -691,11 +691,11 @@
       "measuredPreparedErrorCents": -0.17306334160624307,
       "trimmedLeadingSeconds": 0.025,
       "loopStartFrame": 96000,
-      "loopEndFrame": 324402,
+      "loopEndFrame": 329603,
       "includedInSoundfont": true
     }
   ],
-  "soundfontSHA256": "96756f2ad371d517efb776410a756ec7f7318738d676982eb7a8bdff53df7c86",
+  "soundfontSHA256": "88cb2b6ee3d8ba69fe662ba86aefb9b1862bc59b6f4a311c76cc18d2841cd9bc",
   "phase41": "See phase41-attacks.json: sustained-reed onset selection, 6ms fade, sustained RMS gain calibration; source pitch and sustain loops retained.",
   "phase42": "Natural Phase 4.0 reed attacks restored with 45ms transient fade; longer phase/level-matched sustain loops and unity-sum crossfades. See phase42-preparation.json."
 }

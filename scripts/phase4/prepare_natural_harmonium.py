@@ -6,9 +6,25 @@ import argparse, hashlib, json, subprocess
 from pathlib import Path
 import numpy as np
 import soundfile as sf
-from scipy.signal import correlate, find_peaks
+from scipy.signal import correlate, find_peaks, welch
 
 SR=48000
+
+def spectral_shape(x):
+    f,p=welch(x,SR,nperseg=4096,noverlap=2048)
+    bands=np.histogram(f,bins=np.geomspace(40,16000,25),weights=p)[0]
+    return bands/(bands.sum()+1e-30)
+
+def seam_measurements(y,start,end,n):
+    # Compare the actual baked crossfade with the recorded material AFTER the
+    # return. A phase/level match alone can still reset the reed's harmonic mix.
+    before=y[end-4800:end].copy()
+    a=np.linspace(0,1,n)
+    before[-n:]=before[-n:]*(1-a)+y[start-n:start]*a
+    after=y[start:start+4800]
+    spectral=float(np.sum(abs(spectral_shape(before)-spectral_shape(after))))
+    level=abs(float(20*np.log10(np.sqrt(np.mean(after*after)/np.mean(before*before)))))
+    return spectral,level
 
 def choose_loop(y, hz):
     best=None
@@ -38,13 +54,16 @@ def choose_loop(y, hz):
                 body_db=abs(20*np.log10(rms(y[end-w:end])/rms(y[start-w:start])))
                 slope=abs(20*np.log10(rms(y[end:end+w])/rms(y[end-w:end]))-
                           20*np.log10(rms(y[start:start+w])/rms(y[start-w:start])))
-                score=(1-corr)*35+level*.22+body_db*.12+slope*.10-duration*.015
+                if corr < .72: continue
+                spectral,seam_level=seam_measurements(y,start,end,n)
+                if seam_level > .6: continue
+                score=(1-corr)*10+spectral*50+seam_level*5+level*.22+body_db*.12+slope*.10-duration*.015
                 row=dict(start=start,end=end,fade=n,correlation=corr,fadeLevelDifferenceDB=level,
-                         bodyLevelDifferenceDB=float(body_db),envelopeSlopeDifferenceDB=float(slope),score=float(score))
+                         bodyLevelDifferenceDB=float(body_db),envelopeSlopeDifferenceDB=float(slope),spectralDistance=spectral,seamLevelDifferenceDB=seam_level,score=float(score))
                 if best is None or score<best['score']:best=row
     # A few multi-reed recordings decorrelate over time. Search their entire
     # later sustain rather than forcing an arbitrary millisecond grid match.
-    if best['correlation'] < .98:
+    if best['correlation'] < .98 or best['spectralDistance'] > .15:
         for fade_seconds in [max(.015,3/hz), max(.03,4/hz), max(.045,6/hz)]:
             n=round(fade_seconds*SR)
             for seconds in np.arange(1.25,min(4.51,len(y)/SR-3.75),.1):
@@ -54,7 +73,7 @@ def choose_loop(y, hz):
                 cs=np.r_[0,np.cumsum(search*search)];eng=cs[n:]-cs[:-n]
                 cc=dots/np.sqrt(np.maximum(np.dot(head,head)*eng,1e-25))
                 peaks,_=find_peaks(cc,distance=max(1,round(SR/hz/2)))
-                for ix in peaks[np.argsort(cc[peaks])[-12:]]:
+                for ix in peaks[np.argsort(cc[peaks])[-64:]]:
                     end=lo+int(ix)+n;tail=y[end-n:end];corr=float(cc[ix])
                     level=abs(float(20*np.log10(np.sqrt(np.mean(tail*tail)/np.mean(head*head)))))
                     w=SR//5
@@ -62,10 +81,13 @@ def choose_loop(y, hz):
                     slope=abs(20*np.log10(rms(y[end:end+w])/rms(y[end-w:end]))-
                               20*np.log10(rms(y[start:start+w])/rms(y[start-w:start])))
                     duration=(end-start)/SR
-                    score=(1-corr)*35+level*.22+body_db*.12+slope*.10-duration*.015
+                    if corr < .72: continue
+                    spectral,seam_level=seam_measurements(y,start,end,n)
+                    if seam_level > .6: continue
+                    score=(1-corr)*10+spectral*50+seam_level*5+level*.22+body_db*.12+slope*.10-duration*.015
                     if score<best['score']:
                         best=dict(start=start,end=end,fade=n,correlation=corr,fadeLevelDifferenceDB=level,
-                            bodyLevelDifferenceDB=float(body_db),envelopeSlopeDifferenceDB=float(slope),score=float(score))
+                            bodyLevelDifferenceDB=float(body_db),envelopeSlopeDifferenceDB=float(slope),spectralDistance=spectral,seamLevelDifferenceDB=seam_level,score=float(score))
     assert best is not None
     return best
 

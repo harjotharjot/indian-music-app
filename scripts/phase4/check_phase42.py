@@ -54,7 +54,7 @@ for zone in prep['zones']:
 def spectrum(y):
  f,p=welch(y,48000,nperseg=min(4096,len(y)),noverlap=min(2048,len(y)//2-1))
  edges=np.geomspace(40,16000,25)
- a=np.array([p[(f>=lo)&(f<hi)].sum() for lo,hi in zip(edges[:-1],edges[1:])])
+ a=np.histogram(f,bins=edges,weights=p)[0]
  return a/(a.sum()+1e-30)
 def changes(y,t):
  i=round(t*48000);w=4800
@@ -78,8 +78,8 @@ for note in range(36,73):
   level95=float(np.percentile([m[0] for m in natural],95))
   spectral95=float(np.percentile([m[1] for m in natural],95))
   if name=='corrected':
-   assert max(m[0] for m in metrics)<max(3,level95+1),(note,'seam level',metrics,level95)
-   assert max(m[1] for m in metrics)<max(.45,spectral95*1.5),(note,'seam spectrum',metrics,spectral95)
+   assert max(m[0] for m in metrics)<max(1.0,level95*1.5),(note,'seam level',metrics,level95)
+   assert max(m[1] for m in metrics)<max(.25,spectral95*1.5),(note,'seam spectrum',metrics,spectral95)
    blocks=y[24000:len(y)//4800*4800].reshape(-1,4800)
    assert np.sqrt(np.mean(blocks*blocks,axis=1)).min()>1e-4,(note,'silent sustain')
   rows.append(dict(note=note,bank=name,root=z['root'],loopPeriodSeconds=period,
