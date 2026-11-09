@@ -1,0 +1,28 @@
+Source 0e29539; build 42663376761; v0.4.4 (9)
+Test Case '-[IndianMusicUITests.OrientationTests testManualFullscreenAcrossTabsAndPhysicalPortraitReturn]' started.
+Test Case '-[IndianMusicUITests.OrientationTests testManualFullscreenAcrossTabsAndPhysicalPortraitReturn]' passed (18.097 seconds).
+Test Case '-[IndianMusicUITests.OrientationTests testPortraitKeyboardStaysVisibleWhileSettingsScrollToSpeed]' started.
+Test Case '-[IndianMusicUITests.OrientationTests testPortraitKeyboardStaysVisibleWhileSettingsScrollToSpeed]' passed (11.675 seconds).
+Test Case '-[IndianMusicUITests.OrientationTests testSwitcherTracksChargingPortInBothScreens]' started.
+Test Case '-[IndianMusicUITests.OrientationTests testSwitcherTracksChargingPortInBothScreens]' passed (29.150 seconds).
+	 Executed 3 tests, with 0 failures (0 unexpected) in 58.923 (58.924) seconds
+	 Executed 3 tests, with 0 failures (0 unexpected) in 58.923 (58.924) seconds
+	 Executed 3 tests, with 0 failures (0 unexpected) in 58.923 (58.925) seconds
+** TEST SUCCEEDED **
+PASS: frequency, one-cent tuning, all 12 keys in two octaves, pitch range, persistence and invalid-value clamping.
+PASS: pa 160-second shared-graph render at speed 0.75, +37 cents; min block RMS=0.012456338337586213, peak=0.1105620265007019, restart passed.
+PASS: ma 160-second shared-graph render at speed 1.25, +37 cents; min block RMS=0.009605082375469223, peak=0.09221162647008896, restart passed.
+PASS: chord ledger, duplicate fingers, slides, cancellation, all 12 Sa labels, exact black-key boundary sweeps, filtered crossings, glissandi, cancellation, octave clamping and persistence
+PASS: 111 tuned key renders; released voices silent; six-note chord; eight-second sustain; simultaneous tanpura; rapid all-notes-off stress
+PASS: 37 native 32-second sustain comparisons, including transposed zones
+PASS: 37 native 32-second sustain comparisons, including transposed zones
+PASS: 37 native 32-second sustain comparisons, including transposed zones
+PASS: 3 native 32-second sustain comparisons, including transposed zones
+PASS: 111 native sampler pitches; worst median cents 0.8893733132205368
+PASS: six distinct chord fundamentals, sustained-loop RMS floor 0.008890826255083084
+PASS: 37 recorded attack envelopes and 333 finite short/repeated notes; no artificial onset-speed target
+PASS: actual SF2 loop headers, preserved reed prefixes, bounded crossfade cancellation
+PASS: 111 native 32-second holds; every playable/transposed key, >=3 wraps each
+PASS: F#3 click reproduced and reduced; F#2/F#4 and all unrelated bank samples unchanged
+PASS: IPA contains Payload/IndianMusic.app with an arm64 executable.
+PASS: arm64 iPhoneOS executable, application metadata, unsigned bundle.

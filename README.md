@@ -1,7 +1,7 @@
 # Indian Music for iPhone
 
 Private native SwiftUI app built with GitHub Actions and installed with SideStore.
-Requires **iOS 16+**. Current version: **0.4.3 — sampled harmonium and tanpura**.
+Requires **iOS 16+**. Current version: **0.4.4 — sampled harmonium and tanpura**.
 
 ## Features
 
@@ -34,7 +34,7 @@ See SideStore's current [installation guide](https://docs.sidestore.io/docs/inst
 if initial setup is needed; Windows/Linux can do it. Free-account refresh rules
 still apply. Artifacts expire after 30 days and can be rebuilt via Run workflow.
 
-[F♯ correction, midpoint hit regions, full screen and iPhone checklist](docs/PHASE43.md) · [Phase 4 architecture and sources](docs/PHASE4.md)
+[Portrait access, rotation and keyboard finish](docs/PHASE44.md) · [F♯ correction and midpoint hit regions](docs/PHASE43.md) · [Phase 4 architecture and sources](docs/PHASE4.md)
 
 Historical research: [Phase 2](feasibility/RESULTS.md), [Phase 3](docs/PHASE3.md).
 Phase 3 passed the user's phone tests. Phase 4 performance and sound quality still
