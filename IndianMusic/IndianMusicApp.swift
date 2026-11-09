@@ -170,7 +170,12 @@ final class PracticeFullscreenController: ObservableObject {
     private var requested: UIInterfaceOrientationMask = .landscapeRight
     private var requestSerial=0
 
-    func connect(_ value: UIWindowScene?) { if let value { scene=value;syncOrientation() } }
+    func connect(_ value: UIWindowScene?) {
+        if let value {
+            scene=value
+            DispatchQueue.main.async { [weak self] in self?.syncOrientation() }
+        }
+    }
     private func syncOrientation() {
         if let value=scene?.interfaceOrientation,value != actualOrientation { actualOrientation=value }
     }
