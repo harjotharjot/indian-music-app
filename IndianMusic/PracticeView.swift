@@ -11,6 +11,7 @@ struct PracticeView: View {
                 if geometry.size.width > geometry.size.height { landscapeContent }
                 else { portraitContent(size:geometry.size) }
             }
+            .ignoresSafeArea(.container,edges:fullscreen.actualOrientation.isLandscape ? .horizontal:[])
             .navigationTitle("Harmonium")
             .navigationBarTitleDisplayMode(.inline)
             .onDisappear { audio.releaseKeys() }
