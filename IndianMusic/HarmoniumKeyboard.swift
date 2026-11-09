@@ -23,7 +23,7 @@ final class KeybedView: UIControl {
     private var lastSize = CGSize.zero
     private var ledger = TouchNoteLedger<ObjectIdentifier>()
     private var geometry: KeyboardGeometry {
-        KeyboardGeometry(start: settings.startNote, span: settings.span, width: bounds.width, height: bounds.height)
+        KeyboardGeometry(position: settings.navigation, width: bounds.width, height: bounds.height)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +37,7 @@ final class KeybedView: UIControl {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     func configure(settings: HarmoniumSettings, sa: Int, enabled: Bool, epoch: Int) {
-        if self.settings.startNote != settings.startNote || self.settings.span != settings.span || self.epoch != epoch || !enabled {
+        if self.settings.navigation != settings.navigation || self.settings.startNote != settings.startNote || self.settings.span != settings.span || self.epoch != epoch || !enabled {
             releaseAll()
         }
         self.settings = settings; self.sa = sa; self.epoch = epoch
@@ -91,7 +91,7 @@ final class KeybedView: UIControl {
             let label = settings.showSargam ? HarmoniumSettings.sargam(note: key.note, sa: sa) : western
             let paragraph = NSMutableParagraphStyle(); paragraph.alignment = .center
             let color: UIColor = pressed || key.black ? .white : .black
-            let attrs: [NSAttributedString.Key: Any] = [.font:UIFont.systemFont(ofSize: settings.twoOctaves ? 10 : 13, weight: .medium),.foregroundColor:color,.paragraphStyle:paragraph]
+            let attrs: [NSAttributedString.Key: Any] = [.font:UIFont.systemFont(ofSize: 11, weight: .medium),.foregroundColor:color,.paragraphStyle:paragraph]
             (label as NSString).draw(in: CGRect(x:key.frame.minX, y:key.frame.maxY-31, width:key.frame.width, height:24), withAttributes:attrs)
         }
     }

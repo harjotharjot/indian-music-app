@@ -6,11 +6,14 @@ struct HarmoniumSettings: Codable, Equatable {
     var octave: Int = 3
     var twoOctaves = false
     var showSargam = true
+    var navigationPosition: Double? = nil
+    var navigation: Double { min(1, max(0, navigationPosition ?? Double(octave - 2) / 2)) }
     var startNote: Int { (octave + 1) * 12 }
     var span: Int { twoOctaves ? 24 : 12 }
     func validated() -> Self {
         var value = self
         value.volume = volume.isFinite ? min(1, max(0, volume)) : 0.6
+        if let position = navigationPosition { value.navigationPosition = position.isFinite ? min(1,max(0,position)) : 0 }
         value.octave = min(twoOctaves ? 3 : 4, max(2, octave))
         return value
     }
@@ -46,7 +49,7 @@ struct KeyboardGeometry {
             let black = isBlack(note)
             let frame: CGRect
             if black {
-                frame = CGRect(x: CGFloat(whiteIndex)*w-w*0.32, y: 0, width: w*0.64, height: height*0.62)
+                frame = CGRect(x: CGFloat(whiteIndex)*w-w*0.28, y: 0, width: w*0.56, height: height*0.61)
             } else {
                 frame = CGRect(x: CGFloat(whiteIndex)*w, y: 0, width: w, height: height)
                 whiteIndex += 1
@@ -55,8 +58,27 @@ struct KeyboardGeometry {
         }
         keys = result
     }
+    init(position: Double, width: CGFloat, height: CGFloat) {
+        // Stable key widths; navigation changes only the viewport translation.
+        let whiteWidth = max(44, width / 16)
+        let content = KeyboardGeometry(start:36,span:36,width:22*whiteWidth,height:height)
+        let offset = CGFloat(min(1,max(0,position))) * max(0,22*whiteWidth-width)
+        keys = content.keys.map { Key(note:$0.note, frame:$0.frame.offsetBy(dx:-offset,dy:0), black:$0.black) }
+        viewport = CGRect(x:0,y:0,width:width,height:height)
+    }
+    private var viewport: CGRect? = nil
     func note(at point: CGPoint) -> Int? {
-        keys.first { $0.black && $0.frame.contains(point) }?.note ??
-        keys.first { !$0.black && $0.frame.contains(point) }?.note
+        if let viewport, !viewport.contains(point) { return nil }
+        guard let white = keys.first(where: { !$0.black && $0.frame.contains(point) }) else { return nil }
+        let height = white.frame.height
+        if point.y >= height * 0.5 { return white.note }
+        let pc=white.note % 12
+        let groupStart = white.note - (pc <= 4 ? pc : pc-5)
+        let whites=keys.filter { !$0.black && $0.note >= groupStart && $0.note <= groupStart+(pc <= 4 ? 4:6) }
+        let blacks=keys.filter { $0.black && $0.note > groupStart && $0.note < groupStart+(pc <= 4 ? 4:6) }
+        guard let first=whites.first, !blacks.isEmpty else { return nil }
+        let regionWidth=CGFloat(whites.count)*first.frame.width / CGFloat(blacks.count)
+        let index=min(blacks.count-1,max(0,Int((point.x-first.frame.minX)/regionWidth)))
+        return blacks[index].note
     }
 }

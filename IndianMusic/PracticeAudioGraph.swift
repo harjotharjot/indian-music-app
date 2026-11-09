@@ -18,6 +18,7 @@ final class PracticeAudioGraph {
     let harmoniumMixer = AVAudioMixerNode() // monitor fader
     let sampler = AVAudioUnitSampler()
     private(set) var activeNotes: Set<Int> = []
+    private let soundBankURL: URL
     private var voices: [TanpuraPattern: Voice] = [:]
 
     private struct Voice {
@@ -36,6 +37,7 @@ final class PracticeAudioGraph {
     }
 
     init(resources: URL) throws {
+        soundBankURL = resources.appendingPathComponent("harmonium.sf2")
         let metadata = try Data(contentsOf: resources.appendingPathComponent("tanpura-sources.json"))
         let sources = try JSONDecoder().decode([TanpuraSource].self, from: metadata)
         guard sources.count == 2, Set(sources.map(\.pattern)) == Set(TanpuraPattern.allCases) else {
@@ -101,7 +103,16 @@ final class PracticeAudioGraph {
         for voice in voices.values { voice.player.play() }
     }
     func startEngine() throws {
-        if !engine.isRunning { engine.prepare(); try engine.start() }
+        if !engine.isRunning {
+            engine.prepare()
+            try engine.start()
+            // Engine resource allocation can reset the sampler instrument. Restore the
+            // recorded bank after allocation, before accepting any keyboard notes.
+            do {
+                try sampler.loadSoundBankInstrument(at: soundBankURL, program: 0,
+                    bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB), bankLSB: 0)
+            } catch { engine.stop(); throw error }
+        }
     }
     func stopTanpura() {
         for voice in voices.values { voice.player.stop() }

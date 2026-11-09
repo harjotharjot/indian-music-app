@@ -695,5 +695,6 @@
       "includedInSoundfont": true
     }
   ],
-  "soundfontSHA256": "37a73754747f3ec746059c014af8ea82c2eaa44a20f2ab986ee9215a7d294602"
+  "soundfontSHA256": "a7d65b44424e366b36259fd6a00577ec00ec529f83acbbf6af90bd2020dd2f1f",
+  "phase41": "See phase41-attacks.json: sustained-reed onset selection, 6ms fade, sustained RMS gain calibration; source pitch and sustain loops retained."
 }

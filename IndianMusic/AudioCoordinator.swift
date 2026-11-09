@@ -22,7 +22,7 @@ final class AudioCoordinator: ObservableObject {
         didSet {
             let safe = harmonium.validated()
             if safe != harmonium { harmonium = safe }
-            if oldValue.octave != harmonium.octave || oldValue.twoOctaves != harmonium.twoOctaves { releaseKeys() }
+            if oldValue.navigation != harmonium.navigation || oldValue.octave != harmonium.octave || oldValue.twoOctaves != harmonium.twoOctaves { releaseKeys() }
             if let data = try? JSONEncoder().encode(harmonium) { UserDefaults.standard.set(data, forKey: "harmonium.settings.v1") }
             graph?.applyHarmonium(harmonium, cents: settings.cents)
         }

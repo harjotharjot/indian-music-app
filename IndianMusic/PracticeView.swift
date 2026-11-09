@@ -25,13 +25,7 @@ struct PracticeView: View {
                         Button("Release all keys", action: audio.releaseKeys).buttonStyle(.bordered)
                     }
                     if let message = audio.message { Text(message).font(.footnote).foregroundStyle(.secondary) }
-                    HStack {
-                        Picker("Register", selection: $audio.harmonium.octave) {
-                            Text("C2").tag(2); Text("C3").tag(3)
-                            if !audio.harmonium.twoOctaves { Text("C4").tag(4) }
-                        }.pickerStyle(.segmented)
-                        Toggle("2 octaves", isOn: $audio.harmonium.twoOctaves).fixedSize()
-                    }
+                    navigationSlider
                     HarmoniumKeyboard(settings: audio.harmonium, sa: audio.settings.key,
                                       enabled: audio.harmoniumEnabled, epoch: audio.keyboardEpoch,
                                       onChange: audio.setHarmoniumKeys)
@@ -76,17 +70,13 @@ struct PracticeView: View {
                 Button(audio.harmoniumEnabled ? "Off" : "Enable") {
                     audio.harmoniumEnabled ? audio.disableHarmonium() : audio.enableHarmonium()
                 }.buttonStyle(.borderedProminent)
-                Button(action:audio.releaseKeys) { Image(systemName:"hand.raised.fill") }.buttonStyle(.bordered).accessibilityLabel("Release all keys")
-                Picker("Register",selection: $audio.harmonium.octave) {
-                    Text("C2").tag(2); Text("C3").tag(3)
-                    if !audio.harmonium.twoOctaves { Text("C4").tag(4) }
-                }.pickerStyle(.segmented).frame(maxWidth:140)
-                Toggle("2 octaves",isOn:$audio.harmonium.twoOctaves).toggleStyle(.button)
+                Button(action:audio.releaseKeys) { Text("Release keys") }.buttonStyle(.bordered).accessibilityLabel("Release all keys")
                 Spacer(minLength:0)
                 Button { audio.releaseKeys(); showControls=true } label: {
                     Image(systemName:"slider.horizontal.3")
                 }
             }.font(.subheadline)
+            navigationSlider
             HarmoniumKeyboard(settings:audio.harmonium,sa:audio.settings.key,
                               enabled:audio.harmoniumEnabled,epoch:audio.keyboardEpoch,
                               onChange:audio.setHarmoniumKeys)
@@ -103,6 +93,15 @@ struct PracticeView: View {
                 }.pickerStyle(.segmented).frame(width:110)
             }.font(.caption)
         }.padding(.horizontal,12).padding(.vertical,4)
+    }
+    private var navigationSlider: some View {
+        Slider(value: Binding(get: { audio.harmonium.navigation },
+                              set: { audio.harmonium.navigationPosition = $0 }), in: 0...1,
+               onEditingChanged: { editing in if editing { audio.releaseKeys() } })
+            .accessibilityLabel("Keyboard range")
+            .accessibilityIdentifier("harmonium.navigation")
+            .accessibilityValue("\(Int(audio.harmonium.navigation * 100)) percent")
+            .frame(height: 30)
     }
     private var controlsSheet: some View {
         NavigationStack {

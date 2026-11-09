@@ -35,29 +35,38 @@ struct IndianMusicApp: App {
     private func switcher(vertical: Bool) -> some View {
         Group {
             if vertical {
-                VStack(spacing:16) {
-                    switchButton(0,title:"Harmonium",symbol:"pianokeys")
-                    switchButton(1,title:"Tanpura",symbol:"waveform")
-                }.frame(width:82).frame(maxHeight:.infinity)
+                VStack(spacing:4) {
+                    if orientation == .landscapeRight {
+                        switchButton(1,title:"Tanpura",symbol:"tanpura",vertical:true)
+                        switchButton(0,title:"Harmonium",symbol:"pianokeys",vertical:true)
+                    } else {
+                        switchButton(0,title:"Harmonium",symbol:"pianokeys",vertical:true)
+                        switchButton(1,title:"Tanpura",symbol:"tanpura",vertical:true)
+                    }
+                }.frame(width:50).frame(maxHeight:.infinity)
             } else {
                 HStack(spacing:16) {
                     switchButton(0,title:"Harmonium",symbol:"pianokeys")
-                    switchButton(1,title:"Tanpura",symbol:"waveform")
+                    switchButton(1,title:"Tanpura",symbol:"tanpura")
                 }.frame(height:52).padding(.horizontal,16)
             }
         }.background(.bar)
     }
-    private func switchButton(_ value: Int,title: String,symbol: String) -> some View {
+    private func switchButton(_ value: Int,title: String,symbol: String, vertical: Bool = false) -> some View {
         Button { activeInstrument=value } label: {
             VStack(spacing:3) {
-                Image(systemName:symbol).font(.title3)
-                Text(title).font(.caption2)
+                Group {
+                    if value == 1 { TanpuraGlyph().fill().frame(width:20,height:25) }
+                    else { Image(systemName:symbol).font(.title3) }
+                }
+                if !vertical { Text(title).font(.caption2) }
             }
             .frame(maxWidth:.infinity,minHeight:46)
             .foregroundStyle(activeInstrument == value ? Color.accentColor : Color.secondary)
             .background(activeInstrument == value ? Color.accentColor.opacity(0.1) : Color.clear)
             .clipShape(RoundedRectangle(cornerRadius:8))
         }
+        .accessibilityLabel(title)
         .accessibilityIdentifier(value == 0 ? "switch.harmonium" : "switch.tanpura")
         .accessibilityValue(activeInstrument == value ? "Selected" : "")
     }
@@ -86,5 +95,21 @@ private struct SceneOrientationReader: UIViewControllerRepresentable {
             last=value
             DispatchQueue.main.async { [weak self] in self?.changed?(value) }
         }
+    }
+}
+
+// A monochrome Shape inherits exactly the same foreground selection style as SF Symbols.
+private struct TanpuraGlyph: Shape {
+    func path(in rect: CGRect) -> Path {
+        var p=Path()
+        func box(_ x:CGFloat,_ y:CGFloat,_ w:CGFloat,_ h:CGFloat) {
+            p.addRoundedRect(in:CGRect(x:rect.minX+x*rect.width,y:rect.minY+y*rect.height,
+                width:w*rect.width,height:h*rect.height),cornerSize:CGSize(width:2,height:2))
+        }
+        box(0.39,0.02,0.22,0.72)
+        box(0.23,0.12,0.54,0.06); box(0.23,0.24,0.54,0.06)
+        p.addEllipse(in:CGRect(x:rect.minX+rect.width*0.16,y:rect.minY+rect.height*0.60,
+            width:rect.width*0.68,height:rect.height*0.39))
+        return p
     }
 }

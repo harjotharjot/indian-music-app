@@ -1,0 +1,244 @@
+{
+  "sourceSHA256": "37a73754747f3ec746059c014af8ea82c2eaa44a20f2ab986ee9215a7d294602",
+  "outputSHA256": "a7d65b44424e366b36259fd6a00577ec00ec529f83acbbf6af90bd2020dd2f1f",
+  "zones": [
+    {
+      "sample": "Reed36",
+      "trimMilliseconds": 190.0,
+      "sustainRMSBefore": 0.04248287488746233,
+      "gainDB": 6.020599913279624,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed39",
+      "trimMilliseconds": 180.0,
+      "sustainRMSBefore": 0.048776858019487036,
+      "gainDB": 4.824102081712731,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed41",
+      "trimMilliseconds": 180.0,
+      "sustainRMSBefore": 0.05037389157854246,
+      "gainDB": 4.5442684525407415,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed43",
+      "trimMilliseconds": 160.0,
+      "sustainRMSBefore": 0.051147268501251064,
+      "gainDB": 4.411929607285007,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed44",
+      "trimMilliseconds": 90.0,
+      "sustainRMSBefore": 0.05267350045665046,
+      "gainDB": 4.156534900699047,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed45",
+      "trimMilliseconds": 170.0,
+      "sustainRMSBefore": 0.05268061734880715,
+      "gainDB": 4.155361400484329,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed46",
+      "trimMilliseconds": 120.0,
+      "sustainRMSBefore": 0.05742652652716306,
+      "gainDB": 3.4061275432530556,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed47",
+      "trimMilliseconds": 120.0,
+      "sustainRMSBefore": 0.05382649424852884,
+      "gainDB": 3.9684566166900486,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed48",
+      "trimMilliseconds": 220.0,
+      "sustainRMSBefore": 0.052888523326676345,
+      "gainDB": 4.121149684788682,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed49",
+      "trimMilliseconds": 170.0,
+      "sustainRMSBefore": 0.051009614207046174,
+      "gainDB": 4.435337736030121,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed50",
+      "trimMilliseconds": 130.0,
+      "sustainRMSBefore": 0.08116296676566741,
+      "gainDB": 0.40122024424803393,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed51",
+      "trimMilliseconds": 80.0,
+      "sustainRMSBefore": 0.04874175705649434,
+      "gainDB": 4.830354900288414,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed52",
+      "trimMilliseconds": 90.0,
+      "sustainRMSBefore": 0.07542872493336146,
+      "gainDB": 1.0376431872467187,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed53",
+      "trimMilliseconds": 160.0,
+      "sustainRMSBefore": 0.05178349228041463,
+      "gainDB": 4.304551795873962,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed54",
+      "trimMilliseconds": 160.0,
+      "sustainRMSBefore": 0.047172810367665,
+      "gainDB": 5.1145435033377975,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed55",
+      "trimMilliseconds": 180.0,
+      "sustainRMSBefore": 0.06528242421751368,
+      "gainDB": 2.292453048897662,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed56",
+      "trimMilliseconds": 90.0,
+      "sustainRMSBefore": 0.04668461004876801,
+      "gainDB": 5.204903803372504,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed57",
+      "trimMilliseconds": 80.0,
+      "sustainRMSBefore": 0.060826447145419474,
+      "gainDB": 2.9065295104264024,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed58",
+      "trimMilliseconds": 120.0,
+      "sustainRMSBefore": 0.06014433335688958,
+      "gainDB": 3.004484204214723,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed59",
+      "trimMilliseconds": 100.0,
+      "sustainRMSBefore": 0.06581735436977482,
+      "gainDB": 2.221570090852643,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed60",
+      "trimMilliseconds": 270.0,
+      "sustainRMSBefore": 0.07840293602935215,
+      "gainDB": 0.7017319857320139,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed61",
+      "trimMilliseconds": 50.0,
+      "sustainRMSBefore": 0.055080555567926216,
+      "gainDB": 3.7684122722512257,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed62",
+      "trimMilliseconds": 80.0,
+      "sustainRMSBefore": 0.07529778624696525,
+      "gainDB": 1.052734351456445,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed63",
+      "trimMilliseconds": 80.0,
+      "sustainRMSBefore": 0.0915468004108289,
+      "gainDB": -0.6444848892267395,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed64",
+      "trimMilliseconds": 50.0,
+      "sustainRMSBefore": 0.0704298552319599,
+      "gainDB": 1.6332426002019993,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed65",
+      "trimMilliseconds": 100.0,
+      "sustainRMSBefore": 0.10294117192643633,
+      "gainDB": -1.6634036484516708,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed67",
+      "trimMilliseconds": 50.0,
+      "sustainRMSBefore": 0.07180757976139804,
+      "gainDB": 1.464972728379936,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed68",
+      "trimMilliseconds": 160.0,
+      "sustainRMSBefore": 0.07088812891232812,
+      "gainDB": 1.5769082477263276,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed69",
+      "trimMilliseconds": 380.0,
+      "sustainRMSBefore": 0.07179663875602829,
+      "gainDB": 1.4662962600468483,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed70",
+      "trimMilliseconds": 0.0,
+      "sustainRMSBefore": 0.08257105069256476,
+      "gainDB": 0.25182229624920915,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed71",
+      "trimMilliseconds": 140.0,
+      "sustainRMSBefore": 0.07398032721168264,
+      "gainDB": 1.20605355731151,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed72",
+      "trimMilliseconds": 30.0,
+      "sustainRMSBefore": 0.0816279213307515,
+      "gainDB": 0.35160376917522446,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed73",
+      "trimMilliseconds": 110.0,
+      "sustainRMSBefore": 0.07093491683343153,
+      "gainDB": 1.5711772364974368,
+      "fadeMilliseconds": 6
+    },
+    {
+      "sample": "Reed74",
+      "trimMilliseconds": 60.0,
+      "sustainRMSBefore": 0.09219367035970981,
+      "gainDB": -0.7056435896037871,
+      "fadeMilliseconds": 6
+    }
+  ]
+}

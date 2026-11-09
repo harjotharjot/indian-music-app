@@ -34,6 +34,21 @@ struct HarmoniumAudioTests {
             return result
         }
         var hs=HarmoniumSettings();hs.volume=0.45
+        graph.applyHarmonium(hs,cents:0)
+        graph.setNotes([48]); _=try render(48000,file:"lifecycle_initial.wav")
+        graph.allNotesOff(); _=try render(24000)
+        graph.engine.stop(); graph.engine.prepare(); try graph.engine.start()
+        graph.setNotes([48]); _=try render(48000,file:"lifecycle_unrestored.wav")
+        graph.allNotesOff(); _=try render(24000)
+        for cycle in 0..<50 {
+            graph.stop()
+            try graph.startEngine()
+            graph.applyHarmonium(hs,cents:0)
+            graph.setNotes([48])
+            _=try render(48000,file:"lifecycle_\(cycle).wav")
+            graph.allNotesOff(); _=try render(12000)
+        }
+
         // Every playable key, both cents directions, actual Apple sampler renders.
         for note in 36...72 {
             for cents in [-37.0,0,37] {
@@ -44,6 +59,18 @@ struct HarmoniumAudioTests {
                 graph.setNotes([])
                 let tail=try render(24000)
                 precondition(tail.suffix(4096).allSatisfy { abs($0)<0.00001 },"Stuck note \(note)")
+            }
+        }
+        graph.applyHarmonium(hs,cents:0)
+        for note in 36...72 {
+            graph.setNotes([note]); _=try render(48000*3,file:"sustain_\(note).wav")
+            graph.setNotes([]); _=try render(24000)
+            for duration in [2400,4800,9600] {
+                for repeatIndex in 0..<3 {
+                    graph.setNotes([note])
+                    _=try render(duration,file:"tap_\(note)_\(duration)_\(repeatIndex).wav")
+                    graph.setNotes([]); _=try render(12000)
+                }
             }
         }
         graph.applyHarmonium(hs,cents:0)
