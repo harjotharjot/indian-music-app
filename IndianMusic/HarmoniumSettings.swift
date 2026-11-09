@@ -70,15 +70,59 @@ struct KeyboardGeometry {
     func note(at point: CGPoint) -> Int? {
         if let viewport, !viewport.contains(point) { return nil }
         guard let white = keys.first(where: { !$0.black && $0.frame.contains(point) }) else { return nil }
-        let height = white.frame.height
-        if point.y >= height * 0.5 { return white.note }
-        let pc=white.note % 12
-        let groupStart = white.note - (pc <= 4 ? pc : pc-5)
-        let whites=keys.filter { !$0.black && $0.note >= groupStart && $0.note <= groupStart+(pc <= 4 ? 4:6) }
-        let blacks=keys.filter { $0.black && $0.note > groupStart && $0.note < groupStart+(pc <= 4 ? 4:6) }
-        guard let first=whites.first, !blacks.isEmpty else { return nil }
-        let regionWidth=CGFloat(whites.count)*first.frame.width / CGFloat(blacks.count)
-        let index=min(blacks.count-1,max(0,Int((point.x-first.frame.minX)/regionWidth)))
-        return blacks[index].note
+        // Visible black bodies always own their full height, including the tips.
+        if let black=keys.first(where: { $0.black && $0.frame.contains(point) }) { return black.note }
+        // Three points of horizontal forgiveness, clipped at the actual lower
+        // edge. No invisible extension below the bottom corners or group-wide
+        // black ownership of distant white-key space.
+        let candidates=keys.filter { key in
+            key.black && point.y >= key.frame.minY && point.y < key.frame.maxY &&
+            point.x >= key.frame.minX-3 && point.x < key.frame.maxX+3
+        }
+        return candidates.min(by: { abs($0.frame.midX-point.x)<abs($1.frame.midX-point.x) })?.note ?? white.note
     }
+}
+
+// Taps are immediate. Only a change of note under an existing finger is filtered.
+// Very brief crossings keep the previous note; a deliberate glissando that stays
+// in each region for >=18 ms still plays every note. No delayed note survives lift.
+struct SlideIntentFilter<ID: Hashable> {
+    private struct Finger {
+        var accepted: Int?
+        var candidate: Int?
+        var deadline: TimeInterval?
+        var point: CGPoint
+        var time: TimeInterval
+    }
+    private var fingers: [ID: Finger] = [:]
+    var nextDeadline: TimeInterval? { fingers.values.compactMap(\.deadline).min() }
+    var accepted: [ID: Int] { fingers.compactMapValues(\.accepted) }
+    mutating func begin(_ id: ID, note: Int?, point: CGPoint, time: TimeInterval) {
+        fingers[id] = Finger(accepted:note,candidate:nil,deadline:nil,point:point,time:time)
+    }
+    mutating func move(_ id: ID, note: Int?, point: CGPoint, time: TimeInterval) {
+        guard var finger=fingers[id] else { return }
+        let dt=max(0.001,time-finger.time)
+        let speed=Double(hypot(point.x-finger.point.x,point.y-finger.point.y))/dt
+        finger.point=point; finger.time=time
+        if note == nil {
+            finger.accepted=nil; finger.candidate=nil; finger.deadline=nil
+        } else if note == finger.accepted {
+            finger.candidate=nil; finger.deadline=nil
+        } else if note != finger.candidate {
+            finger.candidate=note
+            let dwell: TimeInterval = speed < 180 ? 0.006 : speed < 1000 ? 0.012 : 0.018
+            finger.deadline=time+dwell
+        }
+        fingers[id]=finger
+    }
+    mutating func advance(to time: TimeInterval) {
+        for id in Array(fingers.keys) {
+            guard var finger=fingers[id],let deadline=finger.deadline,deadline<=time else { continue }
+            finger.accepted=finger.candidate; finger.candidate=nil; finger.deadline=nil
+            fingers[id]=finger
+        }
+    }
+    mutating func end(_ id: ID) { fingers.removeValue(forKey:id) }
+    mutating func cancelAll() { fingers.removeAll() }
 }

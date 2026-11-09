@@ -22,6 +22,9 @@ final class KeybedView: UIControl {
     private var epoch = -1
     private var lastSize = CGSize.zero
     private var ledger = TouchNoteLedger<ObjectIdentifier>()
+    private var slideFilter = SlideIntentFilter<ObjectIdentifier>()
+    private var slideTimer: Timer?
+    private var activeFingerIDs: Set<ObjectIdentifier> = []
     private var geometry: KeyboardGeometry {
         KeyboardGeometry(position: settings.navigation, width: bounds.width, height: bounds.height)
     }
@@ -46,6 +49,7 @@ final class KeybedView: UIControl {
         setNeedsDisplay()
     }
     func releaseAll() {
+        slideTimer?.invalidate(); slideTimer=nil; slideFilter.cancelAll(); activeFingerIDs.removeAll()
         guard !ledger.notes.isEmpty else { ledger.cancelAll(); return }
         ledger.cancelAll(); onChange?([]); setNeedsDisplay()
     }
@@ -66,18 +70,51 @@ final class KeybedView: UIControl {
         if lastSize != bounds.size { releaseAll(); lastSize = bounds.size; setNeedsDisplay() }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { ledger.begin(ObjectIdentifier(touch), note: geometry.note(at: touch.location(in: self))) }
+        for touch in touches {
+            let id=ObjectIdentifier(touch), point=touch.location(in:self)
+            let note=geometry.note(at:point)
+            activeFingerIDs.insert(id)
+            slideFilter.begin(id,note:note,point:point,time:touch.timestamp)
+            ledger.begin(id,note:note)
+        }
         changed()
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { ledger.move(ObjectIdentifier(touch), note: geometry.note(at: touch.location(in: self))) }
-        changed()
+        for touch in touches {
+            let id=ObjectIdentifier(touch)
+            // Coalesced samples preserve the actual path/velocity of fast slides.
+            for sample in event?.coalescedTouches(for:touch) ?? [touch] {
+                let point=sample.location(in:self)
+                slideFilter.move(id,note:geometry.note(at:point),point:point,time:sample.timestamp)
+            }
+        }
+        updateSlides()
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { ledger.end(ObjectIdentifier(touch)) }; changed()
+        finish(touches)
     }
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { ledger.end(ObjectIdentifier(touch)) }; changed()
+        finish(touches)
+    }
+    private func finish(_ touches: Set<UITouch>) {
+        for touch in touches {
+            let id=ObjectIdentifier(touch); slideFilter.end(id); ledger.end(id); activeFingerIDs.remove(id)
+        }
+        updateSlides()
+    }
+    private func updateSlides() {
+        let now=ProcessInfo.processInfo.systemUptime
+        slideFilter.advance(to:now)
+        for (id,note) in slideFilter.accepted { ledger.move(id,note:note) }
+        // Fingers outside the keyboard must release immediately, while remaining
+        // tracked for a deliberate re-entry (as before).
+        for id in Array(activeFingerIDs) where slideFilter.accepted[id] == nil { ledger.move(id,note:nil) }
+        slideTimer?.invalidate(); slideTimer=nil
+        if let deadline=slideFilter.nextDeadline {
+            let timer=Timer(timeInterval:max(0.001,deadline-now),repeats:false) { [weak self] _ in self?.updateSlides() }
+            slideTimer=timer;RunLoop.main.add(timer,forMode:.common)
+        }
+        changed()
     }
     private func changed() { onChange?(ledger.notes); setNeedsDisplay() }
     override func draw(_ rect: CGRect) {

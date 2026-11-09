@@ -10,3 +10,12 @@ cp IndianMusic/Sounds/* build/baseline-sounds/
 git show b5bf10d:IndianMusic/Sounds/harmonium.sf2 > build/baseline-sounds/harmonium.sf2
 build/tests/harmonium-audio "$PWD/build/baseline-sounds" "$PWD/build/tests/audio" baseline | tee build/tests/baseline-audio.txt
 build/tests/harmonium-audio "$PWD/IndianMusic/Sounds" "$PWD/build/tests/audio" | tee build/tests/harmonium-audio.txt
+
+# Three independent Apple-sampler processes, with the same fixed graph and gains.
+xcrun swiftc -parse-as-library IndianMusic/TanpuraSettings.swift IndianMusic/HarmoniumSettings.swift IndianMusic/PracticeAudioGraph.swift scripts/tests/HarmoniumComparisonTests.swift -o build/tests/harmonium-comparisons
+mkdir -p build/phase41-sounds
+cp IndianMusic/Sounds/* build/phase41-sounds/
+git show 8ec81ba:IndianMusic/Sounds/harmonium.sf2 > build/phase41-sounds/harmonium.sf2
+build/tests/harmonium-comparisons "$PWD/build/baseline-sounds" "$PWD/build/tests/comparisons/phase40"
+build/tests/harmonium-comparisons "$PWD/build/phase41-sounds" "$PWD/build/tests/comparisons/phase41"
+build/tests/harmonium-comparisons "$PWD/IndianMusic/Sounds" "$PWD/build/tests/comparisons/corrected"
