@@ -11,9 +11,9 @@ struct IndianMusicApp: App {
             GeometryReader { geometry in
                 if geometry.size.width > geometry.size.height {
                     HStack(spacing:0) {
-                        if orientation == .landscapeLeft { switcher(vertical:true); Divider() }
+                        if orientation == .landscapeLeft { switcher(vertical:true).zIndex(1); Divider() }
                         instrument
-                        if orientation != .landscapeLeft { Divider(); switcher(vertical:true) }
+                        if orientation != .landscapeLeft { Divider(); switcher(vertical:true).zIndex(1) }
                     }
                 } else {
                     VStack(spacing:0) {
