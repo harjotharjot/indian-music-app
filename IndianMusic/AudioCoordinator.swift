@@ -310,6 +310,21 @@ final class AudioCoordinator: ObservableObject {
         if drums { startTabla() }
     }
 
+    #if DEBUG
+    // Only present in simulator regression launches; absent from the release IPA.
+    func testAudioNotification(_ action:Int) {
+        let center=NotificationCenter.default
+        if action==2 {
+            graph?.engine.stop()
+            center.post(name:.AVAudioEngineConfigurationChange,object:graph?.engine)
+        } else {
+            center.post(name:AVAudioSession.interruptionNotification,object:AVAudioSession.sharedInstance(),
+                userInfo:[AVAudioSessionInterruptionTypeKey:action==0 ? AVAudioSession.InterruptionType.began.rawValue:AVAudioSession.InterruptionType.ended.rawValue,
+                          AVAudioSessionInterruptionOptionKey:AVAudioSession.InterruptionOptions.shouldResume.rawValue])
+        }
+    }
+    #endif
+
     private func installRemoteCommands() {
         let center = MPRemoteCommandCenter.shared()
         commands.append((center.playCommand, center.playCommand.addTarget { [weak self] _ in

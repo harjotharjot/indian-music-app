@@ -51,6 +51,15 @@ struct TablaView:View {
                         Text("Tempo and taal changes take effect at the next unscheduled matra. Stroke tails ring naturally across beats and cycles.")
                             .font(.caption).foregroundStyle(.secondary)
                         if let message=audio.message { Text(message).font(.caption).foregroundStyle(.secondary) }
+                        #if DEBUG
+                        if ProcessInfo.processInfo.arguments.contains("--phase5-audio-regression") {
+                            HStack {
+                                Button("Begin interruption") { audio.testAudioNotification(0) }.accessibilityIdentifier("tabla.testBegin")
+                                Button("End interruption") { audio.testAudioNotification(1) }.accessibilityIdentifier("tabla.testEnd")
+                                Button("Recover engine") { audio.testAudioNotification(2) }.accessibilityIdentifier("tabla.testRecover")
+                            }
+                        }
+                        #endif
                     }.padding(16)
                 }
             }

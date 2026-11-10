@@ -113,7 +113,7 @@ final class TablaSequencer {
             guard let index=voices.firstIndex(where:{$0.freeAt<=event.frame}) else {
                 voiceExhaustions+=1;continue
             }
-            voices[index].player.scheduleBuffer(buffer,at:AVAudioTime(sampleTime:event.frame,sampleRate:rate),options:[])
+            voices[index].player.scheduleBuffer(buffer,at:AVAudioTime(sampleTime:event.frame,atRate:rate),options:[])
             voices[index].freeAt=event.frame+Int64(buffer.frameLength)
         }
     }

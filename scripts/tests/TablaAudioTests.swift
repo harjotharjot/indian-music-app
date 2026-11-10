@@ -47,6 +47,11 @@ import Foundation
             graph.tabla.stop()
         }
         try JSONEncoder().encode(results).write(to:destination.appendingPathComponent("renders.json"))
+        graph.tabla.start(TablaSettings(taal:.dadra,bpm:80,volume:1),automatic:false)
+        _=try render(60000,file:"pause-first.wav")
+        graph.tabla.pause();_=try render(48000,file:"pause-silence.wav")
+        graph.tabla.start(TablaSettings(taal:.dadra,bpm:80,volume:1),automatic:false)
+        _=try render(144000,file:"pause-second.wav");graph.tabla.stop()
         // Native long-run scheduling at an awkward tempo, with every refill at audio-block boundaries.
         graph.tabla.start(TablaSettings(taal:.ektaal,bpm:137),automatic:false)
         precondition(tryCheckRender(300*48000)>0.005)

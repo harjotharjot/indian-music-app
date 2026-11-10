@@ -158,6 +158,7 @@ final class OrientationTests: XCTestCase {
         app.sliders["tabla.volume"].adjust(toNormalizedSliderPosition:0.35)
         let tempo=app.staticTexts["tabla.bpmLabel"].label
         let volume=app.sliders["tabla.volume"].value as? String
+        app.buttons["tabla.taal"].tap();app.buttons["Jhaptal · 10"].tap()
         app.buttons["switch.tanpura"].tap();app.buttons["tanpura.playPause"].tap()
         XCUIDevice.shared.press(.home);sleep(2);app.activate()
         app.buttons["switch.tabla"].tap();XCTAssertTrue(play.label.contains("Pause"))
@@ -165,7 +166,24 @@ final class OrientationTests: XCTestCase {
         app.terminate();app.launch();app.buttons["switch.tabla"].tap()
         XCTAssertEqual(app.staticTexts["tabla.bpmLabel"].label,tempo)
         XCTAssertEqual(app.sliders["tabla.volume"].value as? String,volume)
+        XCTAssertTrue(app.buttons["tabla.taal"].label.contains("Jhaptal"))
         XCTAssertTrue(play.label.contains("Start"))
+    }
+    func testSharedAccompanimentInterruptionAndEngineRecovery() {
+        let app=XCUIApplication();continueAfterFailure=false
+        app.launchArguments=["--phase5-audio-regression"]
+        XCUIDevice.shared.orientation = .portrait;app.launch()
+        app.buttons["switch.tanpura"].tap();app.buttons["tanpura.playPause"].tap()
+        app.buttons["switch.tabla"].tap();app.buttons["tabla.playPause"].tap()
+        for _ in 0..<4 where !app.buttons["tabla.testBegin"].isHittable { app.swipeUp() }
+        app.buttons["tabla.testBegin"].tap();sleep(1)
+        XCTAssertTrue(app.buttons["tabla.playPause"].label.contains("Start"))
+        app.buttons["tabla.testEnd"].tap();sleep(1)
+        XCTAssertTrue(app.buttons["tabla.playPause"].label.contains("Pause"))
+        app.buttons["tabla.testRecover"].tap();sleep(1)
+        XCTAssertTrue(app.buttons["tabla.playPause"].label.contains("Pause"))
+        app.buttons["switch.tanpura"].tap()
+        XCTAssertTrue(app.buttons["tanpura.playPause"].label.contains("Pause"))
     }
     private func accentPixels(_ screenshot: XCUIScreenshot) -> Int {
         guard let cg=screenshot.image.cgImage else { return 0 }

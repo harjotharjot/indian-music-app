@@ -22,6 +22,8 @@ jobs:
           xcode-select -p
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
+      - name: Test six taals and native shared-engine tabla transport
+        run: bash scripts/test-phase5.sh
       - name: Test tuning and render both tanpuras across loop boundaries
         run: bash scripts/test-phase3.sh
       - name: Test sampled harmonium and simultaneous audio
@@ -46,9 +48,8 @@ jobs:
         run: build/pitch-venv/bin/python scripts/phase4/check_phase42.py build/tests/comparisons
       - name: Verify isolated F sharp interpolation guard repair
         run: build/pitch-venv/bin/python scripts/phase4/check_phase43.py build/tests
-      - name: Test six taals and native shared-engine tabla transport
+      - name: Verify actual tabla waveforms against independent reference patterns
         run: |
-          bash scripts/test-phase5.sh
           build/pitch-venv/bin/python -m pip install soundfile==0.13.1
           build/pitch-venv/bin/python scripts/phase5/check_renders.py build/tests/tabla
       - name: Build arm64 iPhone application without signing

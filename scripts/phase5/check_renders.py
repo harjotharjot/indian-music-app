@@ -37,6 +37,12 @@ for name,(beats,starts,khali) in patterns.items():
  assert np.max(abs(actual))<1 and np.sqrt(np.mean(actual**2))>.005
  sf.write(listening/(name+'-80bpm.flac'),actual,sr,subtype='PCM_24')
  results.append(dict(taal=name,cycles=4,bpm=80,onsets=len(events),maximumWaveformError=error,peak=float(np.max(abs(actual))),seconds=len(actual)/sr))
+first,sr=sf.read(out/'pause-first.wav',always_2d=True)
+second,sr=sf.read(out/'pause-second.wav',always_2d=True)
+silence,sr=sf.read(out/'pause-silence.wav',always_2d=True)
+baseline,sr=sf.read(out/'dadra-80bpm.wav',always_2d=True)
+joined=np.concatenate([first,second]);assert np.max(abs(joined-baseline[:len(joined)]))<2e-5
+assert np.max(abs(silence))<1e-7
 a,sr=sf.read(out/'all-three-max-faders.wav',always_2d=True);sf.write(listening/'all-three-max-faders.flac',a,sr,subtype='PCM_24')
 (out/'waveform-validation.json').write_text(json.dumps(results,indent=2)+'\n')
 print('PASS: all six native renders match independent absolute-frame sample sums (<2e-5); complete attacks, round robins, subdivisions, multi-cycle tails, no waveform clipping. Musical acceptance still requires listening.')
