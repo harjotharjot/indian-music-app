@@ -10,6 +10,10 @@ on:
         description: Run only the offline-sampler comparison experiment
         type: boolean
         default: false
+      package_only:
+        description: Package the same app source while simulator validation runs separately
+        type: boolean
+        default: false
       reuse_verified_audio:
         description: Reuse the passing audio checks from run 42869026998 only if audio source is unchanged
         type: boolean
@@ -96,6 +100,7 @@ jobs:
         id: package
         run: bash scripts/package-ipa.sh
       - name: Launch app in iPhone simulator
+        if: ${{ !inputs.package_only }}
         run: bash scripts/simulator-smoke.sh
       - name: Upload unsigned IPA and validation report
         if: ${{ always() && steps.package.outcome == 'success' }}
