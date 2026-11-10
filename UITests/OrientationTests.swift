@@ -139,8 +139,9 @@ final class OrientationTests: XCTestCase {
         shot.name="portrait-speed-and-pinned-keyboard";shot.lifetime = .keepAlways;add(shot)
         app.buttons["harmonium.settings"].tap()
         let sheetSpeed=app.sliders["harmonium.speed.sheet"]
+        // Form rows are loaded lazily; reveal the row before requiring existence.
+        for _ in 0..<6 where !sheetSpeed.exists || !sheetSpeed.isHittable { app.swipeUp() }
         XCTAssertTrue(sheetSpeed.waitForExistence(timeout:10))
-        for _ in 0..<3 where !sheetSpeed.isHittable { app.swipeUp() }
         XCTAssertTrue(sheetSpeed.isHittable);sheetSpeed.adjust(toNormalizedSliderPosition:0.4)
         app.buttons["Done"].tap();XCTAssertTrue(keyboard.isHittable)
     }
@@ -232,9 +233,9 @@ final class OrientationTests: XCTestCase {
         let app=XCUIApplication();continueAfterFailure=false
         XCUIDevice.shared.orientation = .portrait;app.launch()
         app.buttons["harmonium.settings"].tap()
-        app.buttons["shared.sa"].tap();app.buttons["F"].firstMatch.tap()
-        app.buttons["shared.octave"].tap();app.buttons["2"].firstMatch.tap()
-        let cents=app.steppers["shared.cents"]
+        app.buttons["harmonium.sheet.sa"].tap();app.buttons["F"].firstMatch.tap()
+        app.buttons["harmonium.sheet.octave"].tap();app.buttons["2"].firstMatch.tap()
+        let cents=app.steppers["harmonium.sheet.cents"]
         cents.buttons.element(boundBy:1).tap()
         let tuning=cents.label
         app.buttons["Done"].tap();app.buttons["switch.tanpura"].tap()

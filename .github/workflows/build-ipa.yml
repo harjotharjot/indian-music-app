@@ -10,6 +10,10 @@ on:
         description: Run only the offline-sampler comparison experiment
         type: boolean
         default: false
+      reuse_verified_audio:
+        description: Reuse the passing audio checks from run 42869026998 only if audio source is unchanged
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -28,16 +32,27 @@ jobs:
           xcode-select -p
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
+      - name: Verify unchanged audio before reusing validated native results
+        if: ${{ inputs.reuse_verified_audio }}
+        run: |
+          git diff --exit-code 66c4d209b92a28ced0316bb75f0992e244e1f33b HEAD -- IndianMusic/AudioCoordinator.swift IndianMusic/PracticeAudioGraph.swift IndianMusic/TablaSequencer.swift IndianMusic/TablaSettings.swift IndianMusic/TanpuraSettings.swift IndianMusic/HarmoniumSettings.swift IndianMusic/HarmoniumKeyboard.swift IndianMusic/Sounds scripts/tests scripts/phase4 scripts/phase5 scripts/phase51 scripts/test-phase3.sh scripts/test-phase4.sh scripts/test-phase5.sh
+          mkdir -p build/tests
+          echo 'Native audio source unchanged from 66c4d209b92a28ced0316bb75f0992e244e1f33b. Reusing the successful Phase 3/4/5, loop, pitch and 24 tabla waveform checks in https://github.com/harjotharjot/indian-music-app/actions/runs/42869026998 (that run failed only UI automation).' > build/tests/audio-validation-reused.txt
       - name: Test six taals and native shared-engine tabla transport
+        if: ${{ !inputs.reuse_verified_audio }}
         run: bash scripts/test-phase5.sh
       - name: Test tuning and render both tanpuras across loop boundaries
+        if: ${{ !inputs.reuse_verified_audio }}
         run: bash scripts/test-phase3.sh
       - name: Test sampled harmonium and simultaneous audio
+        if: ${{ !inputs.reuse_verified_audio }}
         run: bash scripts/test-phase4.sh
       - uses: actions/setup-python@v5
+        if: ${{ !inputs.reuse_verified_audio }}
         with:
           python-version: '3.11'
       - name: Measure rendered pitch with existing aubio
+        if: ${{ !inputs.reuse_verified_audio }}
         shell: bash
         run: |
           python -m venv build/pitch-venv
@@ -47,14 +62,18 @@ jobs:
           PKG_CONFIG_LIBDIR="$PWD/build/empty-pkgconfig" PKG_CONFIG_PATH="$PWD/build/empty-pkgconfig" ARCHFLAGS="-arch arm64" CFLAGS="-Wno-error=incompatible-function-pointer-types" pip install --no-build-isolation -r feasibility/requirements.txt
           python scripts/phase4/check_rendered_audio.py build/tests/audio | tee build/tests/pitch-summary.txt
       - name: Check Phase 4.1 sampler lifecycle and attacks
+        if: ${{ !inputs.reuse_verified_audio }}
         run: |
           build/pitch-venv/bin/pip install pyloudnorm==0.1.1
           build/pitch-venv/bin/python scripts/phase4/check_phase41.py build/tests/audio
       - name: Audit actual loop boundaries and long three-bank comparisons
+        if: ${{ !inputs.reuse_verified_audio }}
         run: build/pitch-venv/bin/python scripts/phase4/check_phase42.py build/tests/comparisons
       - name: Verify isolated F sharp interpolation guard repair
+        if: ${{ !inputs.reuse_verified_audio }}
         run: build/pitch-venv/bin/python scripts/phase4/check_phase43.py build/tests
       - name: Verify actual tabla waveforms against independent reference patterns
+        if: ${{ !inputs.reuse_verified_audio }}
         run: |
           build/pitch-venv/bin/python -m pip install soundfile==0.13.1
           build/pitch-venv/bin/python scripts/phase5/check_renders.py build/tests/tabla
@@ -74,10 +93,12 @@ jobs:
             CODE_SIGN_IDENTITY='' \
             build | tee build.log
       - name: Validate and package IPA
+        id: package
         run: bash scripts/package-ipa.sh
       - name: Launch app in iPhone simulator
         run: bash scripts/simulator-smoke.sh
       - name: Upload unsigned IPA and validation report
+        if: ${{ always() && steps.package.outcome == 'success' }}
         uses: actions/upload-artifact@v4
         with:
           name: IndianMusic-unsigned-IPA
@@ -88,6 +109,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
       - name: Upload equal-loudness C, C sharp and D sharp audition files
+        if: ${{ !inputs.reuse_verified_audio }}
         uses: actions/upload-artifact@v4
         with:
           name: Harmonium-attack-and-loop-comparisons
@@ -95,6 +117,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
       - name: Upload F sharp click comparison
+        if: ${{ !inputs.reuse_verified_audio }}
         uses: actions/upload-artifact@v4
         with:
           name: Fsharp-click-before-and-after
@@ -111,6 +134,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload six tabla listening demonstrations
+        if: ${{ !inputs.reuse_verified_audio }}
         uses: actions/upload-artifact@v4
         with:
           name: Phase5-six-taals-and-three-instrument-mix

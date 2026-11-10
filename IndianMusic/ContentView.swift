@@ -128,19 +128,20 @@ struct ContentView: View {
 // Every instrument surface binds to the same persisted coordinator settings.
 // Harmonium keyboard MIDI notes remain independent of the tonic and octave.
 struct SharedTuningControls: View {
+    var identifierPrefix="shared"
     @EnvironmentObject private var audio:AudioCoordinator
     var body:some View {
         HStack {
             Picker("Sa",selection:$audio.settings.key) {
                 ForEach(0..<12,id:\.self) { Text(TanpuraSettings.noteNames[$0]).tag($0) }
-            }.pickerStyle(.menu).accessibilityIdentifier("shared.sa")
+            }.pickerStyle(.menu).accessibilityIdentifier("\(identifierPrefix).sa")
             Picker("Octave",selection:$audio.settings.octave) {
                 Text("2").tag(2);Text("3").tag(3)
-            }.pickerStyle(.menu).accessibilityIdentifier("shared.octave")
+            }.pickerStyle(.menu).accessibilityIdentifier("\(identifierPrefix).octave")
         }
         Stepper(value:$audio.settings.cents,in:-100...100,step:1) {
             Text("Fine tuning: \(audio.settings.cents,specifier:"%+.0f") cents").monospacedDigit()
-        }.accessibilityIdentifier("shared.cents")
+        }.accessibilityIdentifier("\(identifierPrefix).cents")
         Slider(value:$audio.settings.cents,in:-100...100,step:1)
             .accessibilityLabel("Fine tuning in cents")
     }

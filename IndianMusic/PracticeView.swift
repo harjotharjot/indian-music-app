@@ -216,7 +216,7 @@ struct PracticeView: View {
         NavigationStack {
             Form {
                 Section("Shared tuning") {
-                    SharedTuningControls()
+                    SharedTuningControls(identifierPrefix:"harmonium.sheet")
                 }
                 Section("Independent volumes") {
                     Text("Harmonium \(Int((audio.harmonium.volume*100).rounded()))%")
