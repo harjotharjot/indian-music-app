@@ -4,6 +4,7 @@ struct TablaView:View {
     @EnvironmentObject private var audio:AudioCoordinator
     @EnvironmentObject private var fullscreen:PracticeFullscreenController
     @State private var showCredits=false
+    @Environment(\.scenePhase) private var scenePhase
     // Display refresh only. Musical events are scheduled in audio sample frames.
     private let displayClock=Timer.publish(every:0.1,on:.main,in:.common).autoconnect()
     var body:some View {
@@ -88,7 +89,7 @@ struct TablaView:View {
                     }.navigationTitle("Tabla sources").toolbar { Button("Done") { showCredits=false } }
                 }
             }
-            .onReceive(displayClock) { _ in if audio.tablaState == .playing { audio.refreshTablaPosition() } }
+            .onReceive(displayClock) { _ in if scenePhase == .active && audio.tablaState == .playing { audio.refreshTablaPosition() } }
         }
     }
     private var positionText:String {

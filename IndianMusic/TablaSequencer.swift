@@ -86,13 +86,17 @@ final class TablaSequencer {
             state = .playing
             // Submit first strokes before starting the common player clock.
             pumpLocked(now:frozenFrame)
+            if !resuming {
+                sourceBus.outputVolume=1
+                sourceBus.auAudioUnit.reset()
+            }
             if engine.isInManualRenderingMode {
                 sourceBus.outputVolume=1
                 for voice in voices { voice.player.play() }
             } else {
                 // A fresh attack starts only after Apple's native fader has settled.
                 // Resume fades the frozen waveform in, rather than jumping into a tail.
-                let lead=resuming ? 0.025:0.060
+                let lead=0.025
                 sourceBus.outputVolume=resuming ? 0:1
                 let start=AVAudioTime(hostTime:mach_absolute_time()+AVAudioTime.hostTime(forSeconds:lead))
                 for voice in voices { voice.player.play(at:start) }
@@ -176,7 +180,7 @@ final class TablaSequencer {
         // before freezing/stopping a player, so a nonzero tail is never chopped.
         sourceBus.outputVolume=target
         if !engine.isInManualRenderingMode && engine.isRunning {
-            Thread.sleep(forTimeInterval:0.05)
+            Thread.sleep(forTimeInterval:0.06)
         }
     }
     deinit { timer?.cancel() }

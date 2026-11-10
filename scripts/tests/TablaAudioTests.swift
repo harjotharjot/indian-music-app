@@ -8,8 +8,8 @@ import Foundation
         let graph=try PracticeAudioGraph(resources:resources)
         let format=AVAudioFormat(standardFormatWithSampleRate:48000,channels:2)!
         try graph.engine.enableManualRenderingMode(.offline,format:format,maximumFrameCount:2048)
-        try graph.startEngine()
         graph.tablaMixer.outputVolume=1
+        try graph.startEngine()
         let buffer=AVAudioPCMBuffer(pcmFormat:format,frameCapacity:2048)!
         func render(_ frames:Int,file:String?=nil) throws -> Double {
             let out=try file.map { try AVAudioFile(forWriting:destination.appendingPathComponent($0),settings:format.settings) }
@@ -53,6 +53,9 @@ import Foundation
         graph.tabla.pause();_=try render(48000,file:"pause-silence.wav")
         graph.tabla.start(TablaSettings(taal:.dadra,bpm:80,volume:1),automatic:false)
         _=try render(144000,file:"pause-second.wav");graph.tabla.stop()
+        _=try render(48000)
+        graph.tabla.start(TablaSettings(taal:.dadra,bpm:80,volume:1),automatic:false)
+        _=try render(24000,file:"restart-attack.wav");graph.tabla.stop()
         // Native long-run scheduling at an awkward tempo, with every refill at audio-block boundaries.
         graph.tabla.start(TablaSettings(taal:.ektaal,bpm:137),automatic:false)
         precondition(tryCheckRender(300*48000)>0.005)
@@ -78,6 +81,14 @@ import Foundation
         graph.tabla.start(TablaSettings(taal:.ektaal,bpm:240,volume:1),automatic:false)
         let mixed=try render(8*48000,file:"all-three-max-faders.wav");precondition(mixed>0.01)
         graph.setGain(0,for:.pa);graph.setGain(1,for:.ma);_=try render(5*48000)
+        for pattern in TanpuraPattern.allCases {
+            graph.setGain(pattern == .pa ? 1:0,for:.pa);graph.setGain(pattern == .ma ? 1:0,for:.ma)
+            for taal in TablaTaal.allCases {
+                graph.tabla.setTaal(taal,bpm:240)
+                _=try render(4*48000)
+                precondition(graph.tabla.voiceExhaustions==0 && graph.tabla.lateEvents==0)
+            }
+        }
         graph.tablaMixer.outputVolume=0
         precondition(tryCheckRender(48000)>0.01,"Muting tabla must preserve the other buses")
         graph.allNotesOff();graph.setVolume(0);_=try render(48000)

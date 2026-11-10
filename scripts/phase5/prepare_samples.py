@@ -4,7 +4,9 @@ import numpy as np
 import soundfile as sf
 from scipy.signal import resample_poly
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-PIN=subprocess.check_output(['git','-C','/tmp/naad-source','rev-parse','HEAD'],text=True).strip() if pathlib.Path('/tmp/naad-source/.git').exists() else json.loads((ROOT/'IndianMusic/Sounds/tabla-sources.json').read_text())['revision']
+PIN='0e881b669f370b916efe429e4db79fd66bfb18b0'
+manifestPath=ROOT/'IndianMusic/Sounds/tabla-sources.json'
+expected={s['sourcePath']:s['sourceSHA256'] for s in json.loads(manifestPath.read_text())['samples']} if manifestPath.exists() else {}
 SELECT={'dha':('Dha',['01','02'],.30),'dhin':('Dhin',['01','03'],.29),'na':('Na',['01'],.22),'tin':('Tin',['01'],.22),'tun':('Tun',['01'],.22),'ge':('Ge',['01','03'],.25),'ke':('Ke',['07','09'],.16),'ti':('Ti',['09','10'],.14),'ta':('Ta',['05','06'],.14)}
 out=ROOT/'IndianMusic/Sounds/Tabla';out.mkdir(exist_ok=True)
 entries=[]
@@ -14,6 +16,7 @@ for bol,(folder,takes,target) in SELECT.items():
   path=f'Bol/{folder}/{folder}{take}.wav';url=f'https://raw.githubusercontent.com/oormicreations/naad/{PIN}/{path}'
   local=pathlib.Path('/tmp/naad-source')/path
   raw=local.read_bytes() if local.exists() else urllib.request.urlopen(url).read()
+  if path in expected:assert hashlib.sha256(raw).hexdigest()==expected[path],path
   import io
   a,sr=sf.read(io.BytesIO(raw),always_2d=True)
   group.append((path,url,raw,a,sr))

@@ -51,6 +51,8 @@ ratio=second[:2048,0][mask]/expected[:2048,0][mask]
 assert ratio.min()>-0.001 and ratio.max()<1.001
 assert np.all(np.diff(ratio)>-0.002)
 assert np.max(abs(silence))<1e-7
+restart,sr=sf.read(out/'restart-attack.wav',always_2d=True)
+assert np.max(abs(restart-baseline[:len(restart)]))<2e-5
 a,sr=sf.read(out/'all-three-max-faders.wav',always_2d=True);sf.write(listening/'all-three-max-faders.flac',a,sr,subtype='PCM_24')
 (out/'waveform-validation.json').write_text(json.dumps(results,indent=2)+'\n')
 print('PASS: all six native renders match independent absolute-frame sample sums (<2e-5); complete attacks, round robins, subdivisions, multi-cycle tails, no waveform clipping. Musical acceptance still requires listening.')
