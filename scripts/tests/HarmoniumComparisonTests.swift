@@ -31,6 +31,7 @@ struct HarmoniumComparisonTests {
                     }
                     if let file { try file.write(from:summed) }
                     remaining-=Int(buffer.frameLength)
+                    if CommandLine.arguments.contains("--paced") { Thread.sleep(forTimeInterval:0.001) }
                 case .cannotDoInCurrentContext,.insufficientDataFromInputNode:
                     stalled+=1;precondition(stalled<100)
                 default: fatalError("Comparison render failed")

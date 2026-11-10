@@ -1,0 +1,47 @@
+name: Phase 5.1 offline-render diagnosis
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile existing native comparison harness
+        run: |
+          mkdir -p build/diagnosis
+          xcrun swiftc -parse-as-library IndianMusic/TanpuraSettings.swift IndianMusic/HarmoniumSettings.swift IndianMusic/PracticeAudioGraph.swift IndianMusic/TablaSettings.swift IndianMusic/TablaSequencer.swift scripts/tests/HarmoniumComparisonTests.swift -o build/compare
+      - name: Compare fast and paced native holds, same unchanged bank
+        run: |
+          notes=$(seq -s, 36 72)
+          build/compare "$PWD/IndianMusic/Sounds" "$PWD/build/diagnosis/fast" "$notes"
+          build/compare "$PWD/IndianMusic/Sounds" "$PWD/build/diagnosis/paced" "$notes" --paced
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Measure long zero runs in sustained notes
+        run: |
+          python -m venv build/venv
+          build/venv/bin/pip install numpy==1.26.4 soundfile==0.13.1
+          build/venv/bin/python - <<'PY'
+          import json,pathlib,numpy as np,soundfile as sf
+          result={}
+          for mode in ['fast','paced']:
+              rows=[]
+              for p in sorted(pathlib.Path('build/diagnosis',mode).glob('note_*.wav')):
+                  a,sr=sf.read(p);silent=np.abs(a)<1/32768
+                  transitions=np.flatnonzero(np.diff(np.pad(silent,(1,1)).astype(int)))
+                  runs=[(int(b),int(e-b)) for b,e in transitions.reshape(-1,2) if b>sr and e-b>128]
+                  rows.append(dict(note=p.stem,runs=runs))
+              result[mode]=rows
+          pathlib.Path('build/diagnosis/results.json').write_text(json.dumps(result,indent=2))
+          print(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Phase51-render-diagnosis
+          path: build/diagnosis/
+          retention-days: 7
