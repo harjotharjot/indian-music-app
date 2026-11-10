@@ -41,7 +41,15 @@ first,sr=sf.read(out/'pause-first.wav',always_2d=True)
 second,sr=sf.read(out/'pause-second.wav',always_2d=True)
 silence,sr=sf.read(out/'pause-silence.wav',always_2d=True)
 baseline,sr=sf.read(out/'dadra-80bpm.wav',always_2d=True)
-joined=np.concatenate([first,second]);assert np.max(abs(joined-baseline[:len(joined)]))<2e-5
+assert np.max(abs(first-baseline[:len(first)]))<2e-5
+expected=baseline[len(first):len(first)+len(second)]
+# Apple's mixer smooths the resume fader for 2048 frames. Phase/tails must match
+# immediately after that native ramp, with no skipped or duplicated musical audio.
+assert np.max(abs(second[2048:]-expected[2048:]))<2e-5
+mask=abs(expected[:2048,0])>1e-4
+ratio=second[:2048,0][mask]/expected[:2048,0][mask]
+assert ratio.min()>-0.001 and ratio.max()<1.001
+assert np.all(np.diff(ratio)>-0.002)
 assert np.max(abs(silence))<1e-7
 a,sr=sf.read(out/'all-three-max-faders.wav',always_2d=True);sf.write(listening/'all-three-max-faders.flac',a,sr,subtype='PCM_24')
 (out/'waveform-validation.json').write_text(json.dumps(results,indent=2)+'\n')

@@ -20,6 +20,7 @@ final class TablaSequencer {
     private var state:TablaTransport = .stopped
     private var frozenFrame:Int64=0
     private var offlineOrigin:Int64=0
+    private var generation=0
     private(set) var lateEvents=0
     private(set) var voiceExhaustions=0
     private let rate:Double=48000
@@ -73,6 +74,8 @@ final class TablaSequencer {
     func start(_ settings:TablaSettings,automatic:Bool=true,endFrame:Int64?=nil) {
         queue.sync {
             guard state != .playing else { return }
+            let resuming=state == .paused
+            generation+=1;let token=generation
             self.endFrame=endFrame
             if state == .stopped {
                 timeline=TablaTimeline(taal:settings.taal,bpm:settings.bpm)
@@ -83,14 +86,23 @@ final class TablaSequencer {
             state = .playing
             // Submit first strokes before starting the common player clock.
             pumpLocked(now:frozenFrame)
-            sourceBus.outputVolume=0
             if engine.isInManualRenderingMode {
+                sourceBus.outputVolume=1
                 for voice in voices { voice.player.play() }
             } else {
-                let start=AVAudioTime(hostTime:mach_absolute_time()+AVAudioTime.hostTime(forSeconds:0.025))
+                // A fresh attack starts only after Apple's native fader has settled.
+                // Resume fades the frozen waveform in, rather than jumping into a tail.
+                let lead=resuming ? 0.025:0.060
+                sourceBus.outputVolume=resuming ? 0:1
+                let start=AVAudioTime(hostTime:mach_absolute_time()+AVAudioTime.hostTime(forSeconds:lead))
                 for voice in voices { voice.player.play(at:start) }
+                if resuming {
+                    queue.asyncAfter(deadline:.now()+lead) { [weak self] in
+                        guard let self,self.generation==token,self.state == .playing else { return }
+                        self.sourceBus.outputVolume=1
+                    }
+                }
             }
-            fadeLocked(to:1)
             if automatic {
                 let timer=DispatchSource.makeTimerSource(queue:queue)
                 timer.schedule(deadline:.now(),repeating:.milliseconds(20),leeway:.milliseconds(3))
@@ -141,6 +153,7 @@ final class TablaSequencer {
     func pause() {
         queue.sync {
             guard state == .playing else { return }
+            generation+=1
             timer?.cancel();timer=nil
             fadeLocked(to:0)
             frozenFrame=frameLocked()
@@ -150,6 +163,7 @@ final class TablaSequencer {
     }
     func stop() {
         queue.sync {
+            generation+=1
             timer?.cancel();timer=nil
             fadeLocked(to:0)
             for voice in voices { voice.player.stop() }
@@ -157,14 +171,13 @@ final class TablaSequencer {
         }
     }
     private func fadeLocked(to target:Float) {
-        let initial=sourceBus.outputVolume
-        if !engine.isInManualRenderingMode && engine.isRunning {
-            for step in 1...8 {
-                sourceBus.outputVolume=initial+(target-initial)*Float(step)/8
-                Thread.sleep(forTimeInterval:0.002)
-            }
-        }
+        // The mixer already supplies an audio-rate ramp (~2048 frames); avoid
+        // repeatedly restarting it with control-rate micro-steps. Let it finish
+        // before freezing/stopping a player, so a nonzero tail is never chopped.
         sourceBus.outputVolume=target
+        if !engine.isInManualRenderingMode && engine.isRunning {
+            Thread.sleep(forTimeInterval:0.05)
+        }
     }
     deinit { timer?.cancel() }
 }

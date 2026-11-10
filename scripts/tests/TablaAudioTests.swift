@@ -36,6 +36,7 @@ import Foundation
             return sqrt(energy/Double(frames*2))
         }
         func tryCheckRender(_ frames:Int) -> Double { try! render(frames) }
+        _=try render(4096) // Settle native monitor-fader smoothing before waveform comparisons.
         struct Reference:Codable { let taal:String;let bpm:Double;let cycles:Int;let frames:Int;let rms:Double }
         var results:[Reference]=[]
         for taal in TablaTaal.allCases {
