@@ -30,7 +30,11 @@ sleep 3
 xcrun simctl io "$simulator_id" screenshot build/tests/phase3-iphone.png
 xcrun simctl terminate "$simulator_id" com.harjotharjot.indianmusic
 trap 'xcrun xcresulttool export attachments --path build/tests/Orientation.xcresult --output-path build/tests/orientation-screenshots || true' EXIT
-xcodebuild test -project IndianMusic.xcodeproj -scheme IndianMusic -configuration Debug \
+test_selection=()
+if [[ -n "${UITEST_ONLY:-}" ]]; then
+  test_selection=("-only-testing:IndianMusicUITests/OrientationTests/$UITEST_ONLY")
+fi
+xcodebuild test "${test_selection[@]}" -project IndianMusic.xcodeproj -scheme IndianMusic -configuration Debug \
   -sdk iphonesimulator -destination "platform=iOS Simulator,id=$simulator_id" \
   -derivedDataPath build/Simulator -resultBundlePath build/tests/Orientation.xcresult \
   -parallel-testing-enabled NO -test-timeouts-enabled YES -maximum-test-execution-time-allowance 120 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual \

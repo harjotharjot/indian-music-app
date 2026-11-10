@@ -10,6 +10,10 @@ on:
         description: Run only the offline-sampler comparison experiment
         type: boolean
         default: false
+      ui_test_only:
+        description: Optional OrientationTests method for a focused UI-only rerun
+        type: string
+        default: ''
       package_only:
         description: Package the same app source while simulator validation runs separately
         type: boolean
@@ -101,6 +105,8 @@ jobs:
         run: bash scripts/package-ipa.sh
       - name: Launch app in iPhone simulator
         if: ${{ !inputs.package_only }}
+        env:
+          UITEST_ONLY: ${{ inputs.ui_test_only }}
         run: bash scripts/simulator-smoke.sh
       - name: Upload unsigned IPA and validation report
         if: ${{ always() && steps.package.outcome == 'success' }}
