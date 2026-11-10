@@ -41,24 +41,28 @@ struct IndianMusicApp: App {
     }
     @ViewBuilder private var instrument: some View {
         if activeInstrument == 0 { PracticeView() }
-        else { ContentView() }
+        else if activeInstrument == 1 { ContentView() }
+        else { TablaView() }
     }
     private func switcher(vertical: Bool) -> some View {
         Group {
             if vertical {
                 VStack(spacing:4) {
                     if orientation == .landscapeRight {
+                        switchButton(2,title:"Tabla",symbol:"drum.fill",vertical:true)
                         switchButton(1,title:"Tanpura",symbol:"tanpura",vertical:true)
                         switchButton(0,title:"Harmonium",symbol:"pianokeys",vertical:true)
                     } else {
                         switchButton(0,title:"Harmonium",symbol:"pianokeys",vertical:true)
                         switchButton(1,title:"Tanpura",symbol:"tanpura",vertical:true)
+                        switchButton(2,title:"Tabla",symbol:"drum.fill",vertical:true)
                     }
                 }.frame(width:50).frame(maxHeight:.infinity)
             } else {
                 HStack(spacing:16) {
                     switchButton(0,title:"Harmonium",symbol:"pianokeys")
                     switchButton(1,title:"Tanpura",symbol:"tanpura")
+                    switchButton(2,title:"Tabla",symbol:"drum.fill")
                 }.frame(height:52).padding(.horizontal,16)
             }
         }.background(.bar)
@@ -78,7 +82,7 @@ struct IndianMusicApp: App {
             .clipShape(RoundedRectangle(cornerRadius:8))
         }
         .accessibilityLabel(title)
-        .accessibilityIdentifier(value == 0 ? "switch.harmonium" : "switch.tanpura")
+        .accessibilityIdentifier(value == 0 ? "switch.harmonium" : (value == 1 ? "switch.tanpura":"switch.tabla"))
         .accessibilityValue(activeInstrument == value ? "Selected" : "")
     }
 }

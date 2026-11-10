@@ -46,6 +46,11 @@ jobs:
         run: build/pitch-venv/bin/python scripts/phase4/check_phase42.py build/tests/comparisons
       - name: Verify isolated F sharp interpolation guard repair
         run: build/pitch-venv/bin/python scripts/phase4/check_phase43.py build/tests
+      - name: Test six taals and native shared-engine tabla transport
+        run: |
+          bash scripts/test-phase5.sh
+          build/pitch-venv/bin/python -m pip install soundfile==0.13.1
+          build/pitch-venv/bin/python scripts/phase5/check_renders.py build/tests/tabla
       - name: Build arm64 iPhone application without signing
         shell: bash
         run: |
@@ -97,3 +102,11 @@ jobs:
           path: build/tests/
           retention-days: 30
           if-no-files-found: error
+
+      - name: Upload six tabla listening demonstrations
+        uses: actions/upload-artifact@v4
+        with:
+          name: Phase5-six-taals-and-three-instrument-mix
+          path: build/tests/tabla-listening/
+          if-no-files-found: error
+          retention-days: 30

@@ -13,6 +13,9 @@ final class PracticeAudioGraph {
     let engine = AVAudioEngine()
     // Dry buses are independent and share the engine clock. No taps/capture are installed.
     let tanpuraBus = AVAudioMixerNode()
+    let tablaBus = AVAudioMixerNode()
+    let tablaMixer = AVAudioMixerNode()
+    private(set) var tabla: TablaSequencer!
     let harmoniumBus = AVAudioMixerNode()
     let tanpuraMixer = AVAudioMixerNode() // monitor fader
     let harmoniumMixer = AVAudioMixerNode() // monitor fader
@@ -43,6 +46,8 @@ final class PracticeAudioGraph {
         guard sources.count == 2, Set(sources.map(\.pattern)) == Set(TanpuraPattern.allCases) else {
             throw GraphError.invalidResource("source list")
         }
+        engine.attach(tablaBus)
+        engine.attach(tablaMixer)
         engine.attach(tanpuraMixer)
         engine.attach(tanpuraBus)
         engine.attach(harmoniumBus)
@@ -56,6 +61,10 @@ final class PracticeAudioGraph {
         engine.connect(sampler, to: harmoniumBus, format: format)
         engine.connect(harmoniumBus, to: harmoniumMixer, format: format)
         engine.connect(harmoniumMixer, to: engine.mainMixerNode, format: format)
+        engine.connect(tablaBus,to:tablaMixer,format:format)
+        engine.connect(tablaMixer,to:engine.mainMixerNode,format:format)
+        tablaMixer.outputVolume=0.6
+        tabla=try TablaSequencer(engine:engine,bus:tablaBus,resources:resources)
         engine.mainMixerNode.outputVolume = 0.8
         try sampler.loadSoundBankInstrument(at: resources.appendingPathComponent("harmonium.sf2"),
                                            program: 0, bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB), bankLSB: 0)
@@ -122,6 +131,7 @@ final class PracticeAudioGraph {
         for voice in voices.values { voice.player.stop() }
     }
     func stop() {
+        tabla.stop()
         allNotesOff()
         stopTanpura()
         engine.stop()

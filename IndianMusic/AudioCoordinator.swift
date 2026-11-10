@@ -27,6 +27,22 @@ final class AudioCoordinator: ObservableObject {
             graph?.applyHarmonium(harmonium, cents: settings.cents)
         }
     }
+    @Published var tablaSettings: TablaSettings {
+        didSet {
+            let safe=tablaSettings.validated()
+            if safe != tablaSettings { tablaSettings=safe }
+            if let data=try? JSONEncoder().encode(tablaSettings) { UserDefaults.standard.set(data,forKey:"tabla.settings.v1") }
+            graph?.tablaMixer.outputVolume=Float(tablaSettings.volume)
+            if oldValue.taal != tablaSettings.taal { graph?.tabla.setTaal(tablaSettings.taal,bpm:tablaSettings.bpm) }
+            else if oldValue.bpm != tablaSettings.bpm { graph?.tabla.setTempo(tablaSettings.bpm) }
+            refreshTablaPosition();updateNowPlaying()
+        }
+    }
+    @Published private(set) var tablaState:TablaTransport = .stopped
+    @Published private(set) var tablaPosition=TablaPosition(taal:.teentaal,matra:0,cycle:0,state:.stopped)
+    private var resumeTablaAfterInterruption=false
+    private var remotePausedDrone=false
+    private var remotePausedTabla=false
     @Published private(set) var harmoniumEnabled = false
     @Published private(set) var keyboardEpoch = 0
     @Published private(set) var isPlaying = false
@@ -40,6 +56,10 @@ final class AudioCoordinator: ObservableObject {
     private var interrupted = false
 
     init() {
+        if let data=UserDefaults.standard.data(forKey:"tabla.settings.v1"),
+           let saved=try? JSONDecoder().decode(TablaSettings.self,from:data) { tablaSettings=saved.validated() }
+        else { tablaSettings=TablaSettings() }
+
         if let data = UserDefaults.standard.data(forKey: Self.settingsKey),
            let saved = try? JSONDecoder().decode(TanpuraSettings.self, from: data) {
             settings = saved.validated()
@@ -60,6 +80,7 @@ final class AudioCoordinator: ObservableObject {
                 throw PracticeAudioGraph.GraphError.invalidResource("bundle")
             }
             graph = try PracticeAudioGraph(resources: resources)
+            graph?.tablaMixer.outputVolume=Float(tablaSettings.volume)
             graph?.apply(settings)
             graph?.applyHarmonium(harmonium, cents: settings.cents)
             message = nil
@@ -112,6 +133,8 @@ final class AudioCoordinator: ObservableObject {
         gainTask?.cancel()
         graph?.setVolume(0)
         graph?.stop()
+        tablaState = .stopped
+        refreshTablaPosition()
         isPlaying = false
         updateNowPlaying()
     }
@@ -137,10 +160,7 @@ final class AudioCoordinator: ObservableObject {
             guard !Task.isCancelled, let self else { return }
             if !self.isPlaying {
                 self.graph?.stopTanpura()
-                if !self.harmoniumEnabled {
-                    self.graph?.engine.stop()
-                    try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-                }
+                self.idleEngineIfUnused()
             }
         }
     }
@@ -167,11 +187,44 @@ final class AudioCoordinator: ObservableObject {
     func disableHarmonium() {
         releaseKeys()
         harmoniumEnabled = false
-        if !isPlaying {
-            graph?.engine.stop()
-            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        }
+        idleEngineIfUnused()
     }
+    func startTabla() {
+        guard !interrupted,tablaState != .playing else { return }
+        if graph == nil { loadGraph() }
+        guard let graph else { return }
+        do {
+            try activateSession();try graph.startEngine()
+            graph.tablaMixer.outputVolume=Float(tablaSettings.volume)
+            graph.tabla.start(tablaSettings)
+            tablaState = .playing;message=nil
+            refreshTablaPosition();updateNowPlaying()
+        } catch { message="Tabla could not start: \(error.localizedDescription)" }
+    }
+    func pauseTabla() {
+        resumeTablaAfterInterruption=false
+        graph?.tabla.pause();tablaState = .paused
+        refreshTablaPosition();idleEngineIfUnused();updateNowPlaying()
+    }
+    func stopTabla() {
+        resumeTablaAfterInterruption=false
+        graph?.tabla.stop();tablaState = .stopped
+        refreshTablaPosition();idleEngineIfUnused();updateNowPlaying()
+    }
+    func refreshTablaPosition() {
+        let value=graph?.tabla.position()
+        tablaPosition=tablaState == .stopped
+            ? TablaPosition(taal:tablaSettings.taal,matra:0,cycle:0,state:.stopped)
+            : (value ?? TablaPosition(taal:tablaSettings.taal,matra:0,cycle:0,state:tablaState))
+    }
+    private func idleEngineIfUnused() {
+        guard !isPlaying,!harmoniumEnabled,tablaState != .playing else { return }
+        // Pause preserves queued tabla buffers and their musical phase for Resume.
+        if tablaState == .paused { graph?.engine.pause() }
+        else { graph?.engine.stop() }
+        try? AVAudioSession.sharedInstance().setActive(false,options:.notifyOthersOnDeactivation)
+    }
+
     func setHarmoniumKeys(_ notes: Set<Int>) {
         guard harmoniumEnabled, !interrupted else { return }
         graph?.setNotes(notes)
@@ -197,13 +250,16 @@ final class AudioCoordinator: ObservableObject {
                 if type == .began {
                     self.interrupted = true
                     self.resumeAfterInterruption = self.isPlaying
+                    self.resumeTablaAfterInterruption = self.tablaState == .playing
                     self.stopImmediately()
                     self.message = "Playback interrupted."
                 } else {
                     self.interrupted = false
                     let resume = self.resumeAfterInterruption && AVAudioSession.InterruptionOptions(rawValue: options).contains(.shouldResume)
-                    self.resumeAfterInterruption = false
+                    let resumeTabla=self.resumeTablaAfterInterruption && AVAudioSession.InterruptionOptions(rawValue: options).contains(.shouldResume)
+                    self.resumeAfterInterruption = false;self.resumeTablaAfterInterruption=false
                     if resume { self.play() }
+                    if resumeTabla { self.startTabla() }
                 }
             }
         })
@@ -214,6 +270,7 @@ final class AudioCoordinator: ObservableObject {
                 guard let self else { return }
                 if reason == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue {
                     self.resumeAfterInterruption = false
+                    self.resumeTablaAfterInterruption=false
                     self.stopImmediately()
                     try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
                     self.message = "Audio device disconnected. Tap Play to resume."
@@ -231,40 +288,44 @@ final class AudioCoordinator: ObservableObject {
             Task { @MainActor [weak self] in
                 guard let self else { return }
                 let resume = self.isPlaying
+                let resumeTabla=self.tablaState == .playing
                 self.interrupted = false
                 self.resumeAfterInterruption = false
                 self.stopImmediately()
                 self.loadGraph()
                 if resume { self.play() }
+                if resumeTabla { self.startTabla() }
             }
         })
     }
 
     private func recoverStoppedEngine() {
-        guard (isPlaying || harmoniumEnabled), !interrupted, graph?.engine.isRunning == false else { return }
+        guard (isPlaying || harmoniumEnabled || tablaState == .playing), !interrupted, graph?.engine.isRunning == false else { return }
         let drone = isPlaying
         let keyboard = harmoniumEnabled
+        let drums=tablaState == .playing
         stopImmediately()
         if drone { play() }
         if keyboard { enableHarmonium() }
+        if drums { startTabla() }
     }
 
     private func installRemoteCommands() {
         let center = MPRemoteCommandCenter.shared()
         commands.append((center.playCommand, center.playCommand.addTarget { [weak self] _ in
-            Task { @MainActor [weak self] in self?.play() }
+            Task { @MainActor [weak self] in self?.remotePlay() }
             return .success
         }))
         commands.append((center.pauseCommand, center.pauseCommand.addTarget { [weak self] _ in
-            Task { @MainActor [weak self] in self?.pause() }
+            Task { @MainActor [weak self] in self?.remotePause() }
             return .success
         }))
         commands.append((center.togglePlayPauseCommand, center.togglePlayPauseCommand.addTarget { [weak self] _ in
-            Task { @MainActor [weak self] in self?.toggle() }
+            Task { @MainActor [weak self] in guard let self else { return };(self.isPlaying || self.tablaState == .playing) ? self.remotePause():self.remotePlay() }
             return .success
         }))
         commands.append((center.stopCommand, center.stopCommand.addTarget { [weak self] _ in
-            Task { @MainActor [weak self] in self?.pause() }
+            Task { @MainActor [weak self] in self?.remotePause() }
             return .success
         }))
         center.nextTrackCommand.isEnabled = false
@@ -272,12 +333,25 @@ final class AudioCoordinator: ObservableObject {
         center.changePlaybackPositionCommand.isEnabled = false
     }
 
+    private func remotePause() {
+        remotePausedDrone=isPlaying;remotePausedTabla=tablaState == .playing
+        if remotePausedDrone { pause() }
+        if remotePausedTabla { pauseTabla() }
+    }
+    private func remotePlay() {
+        if remotePausedDrone || remotePausedTabla {
+            if remotePausedDrone { play() }
+            if remotePausedTabla { startTabla() }
+            remotePausedDrone=false;remotePausedTabla=false
+        } else if tablaState == .paused { startTabla() }
+        else { play() }
+    }
     private func updateNowPlaying() {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyTitle: "Tanpura · \(settings.saName)",
-            MPMediaItemPropertyArtist: settings.pattern.description,
+            MPMediaItemPropertyTitle: tablaState == .playing ? (isPlaying ? "Tanpura + Tabla":"Tabla · \(tablaSettings.taal.title)"):"Tanpura · \(settings.saName)",
+            MPMediaItemPropertyArtist: tablaState == .playing ? "\(tablaSettings.taal.title) · \(Int(tablaSettings.bpm)) BPM":settings.pattern.description,
             MPNowPlayingInfoPropertyIsLiveStream: true,
-            MPNowPlayingInfoPropertyPlaybackRate: isPlaying ? 1.0 : 0.0
+            MPNowPlayingInfoPropertyPlaybackRate: (isPlaying || tablaState == .playing) ? 1.0 : 0.0
         ]
     }
 

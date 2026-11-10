@@ -10,7 +10,7 @@ final class OrientationTests: XCTestCase {
         for deviceOrientation in [UIDeviceOrientation.portrait,.landscapeLeft,.landscapeRight] {
             XCUIDevice.shared.orientation=deviceOrientation
             sleep(2)
-            for instrument in ["harmonium","tanpura"] {
+            for instrument in ["harmonium","tanpura","tabla"] {
                 let button=app.buttons["switch.\(instrument)"]
                 XCTAssertTrue(button.waitForExistence(timeout:10))
                 XCTAssertTrue(button.isHittable)
@@ -31,6 +31,7 @@ final class OrientationTests: XCTestCase {
                     XCTAssertGreaterThan(frame.midY,window.maxY-window.height/3)
                 } else if deviceOrientation == .landscapeLeft {
                     XCTAssertLessThan(app.buttons["switch.tanpura"].frame.midY,app.buttons["switch.harmonium"].frame.midY)
+                    XCTAssertLessThan(app.buttons["switch.tabla"].frame.midY,app.buttons["switch.tanpura"].frame.midY)
                     XCTAssertLessThanOrEqual(frame.width,52)
                     // Device and interface landscape orientation names are opposite.
                     XCTAssertGreaterThan(frame.midX,window.maxX-window.width/3)
@@ -42,7 +43,10 @@ final class OrientationTests: XCTestCase {
                     XCTAssertLessThan(frame.minX-window.minX,4)
                 }
                 if instrument == "tanpura" { XCTAssertTrue(app.buttons["tanpura.playPause"].exists) }
-                else {
+                else if instrument == "tabla" {
+                    XCTAssertTrue(app.buttons["tabla.playPause"].isHittable)
+                    XCTAssertTrue(app.sliders["tabla.volume"].isHittable)
+                } else {
                     XCTAssertTrue(app.otherElements["harmonium.keyboard"].exists)
                     let enable=app.buttons["harmonium.enable"]
                     if enable.label.contains("Enable") { enable.tap() }
@@ -87,6 +91,10 @@ final class OrientationTests: XCTestCase {
         app.buttons["switch.tanpura"].tap();sleep(1)
         XCTAssertTrue(app.buttons["tanpura.exitFullscreen"].isHittable)
         XCTAssertTrue(landscape.evaluate(with:nil),"Full-screen mode persists across tabs while phone is upright")
+        app.buttons["switch.tabla"].tap()
+        XCTAssertTrue(app.buttons["tabla.exitFullscreen"].isHittable)
+        XCTAssertTrue(landscape.evaluate(with:nil))
+        app.buttons["switch.tanpura"].tap()
         XCUIDevice.shared.orientation = .landscapeLeft;sleep(2)
         XCUIDevice.shared.orientation = .portrait
         let portrait=NSPredicate { _,_ in app.windows.firstMatch.frame.height>app.windows.firstMatch.frame.width }
@@ -130,6 +138,34 @@ final class OrientationTests: XCTestCase {
         for _ in 0..<3 where !sheetSpeed.isHittable { app.swipeUp() }
         XCTAssertTrue(sheetSpeed.isHittable);sheetSpeed.adjust(toNormalizedSliderPosition:0.4)
         app.buttons["Done"].tap();XCTAssertTrue(keyboard.isHittable)
+    }
+    func testTablaTransportPersistenceAndBackground() {
+        let app=XCUIApplication();continueAfterFailure=false
+        XCUIDevice.shared.orientation = .portrait;app.launch()
+        app.buttons["switch.tabla"].tap()
+        let play=app.buttons["tabla.playPause"]
+        XCTAssertTrue(play.waitForExistence(timeout:10));play.tap()
+        XCTAssertTrue(play.label.contains("Pause"))
+        sleep(1)
+        let before=app.staticTexts["tabla.matra"].label
+        sleep(1)
+        XCTAssertNotEqual(app.staticTexts["tabla.matra"].label,before)
+        play.tap();XCTAssertTrue(play.label.contains("Resume"))
+        let paused=app.staticTexts["tabla.matra"].label;sleep(1)
+        XCTAssertEqual(app.staticTexts["tabla.matra"].label,paused)
+        play.tap();XCTAssertTrue(play.label.contains("Pause"))
+        app.sliders["tabla.tempo"].adjust(toNormalizedSliderPosition:0.5)
+        app.sliders["tabla.volume"].adjust(toNormalizedSliderPosition:0.35)
+        let tempo=app.staticTexts["tabla.bpmLabel"].label
+        let volume=app.sliders["tabla.volume"].value as? String
+        app.buttons["switch.tanpura"].tap();app.buttons["tanpura.playPause"].tap()
+        XCUIDevice.shared.press(.home);sleep(2);app.activate()
+        app.buttons["switch.tabla"].tap();XCTAssertTrue(play.label.contains("Pause"))
+        app.buttons["tabla.stop"].tap();XCTAssertTrue(play.label.contains("Start"))
+        app.terminate();app.launch();app.buttons["switch.tabla"].tap()
+        XCTAssertEqual(app.staticTexts["tabla.bpmLabel"].label,tempo)
+        XCTAssertEqual(app.sliders["tabla.volume"].value as? String,volume)
+        XCTAssertTrue(play.label.contains("Start"))
     }
     private func accentPixels(_ screenshot: XCUIScreenshot) -> Int {
         guard let cg=screenshot.image.cgImage else { return 0 }
