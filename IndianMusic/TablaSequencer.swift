@@ -167,6 +167,7 @@ final class TablaSequencer {
     }
     func stop() {
         queue.sync {
+            guard state != .stopped else { return }
             generation+=1
             timer?.cancel();timer=nil
             fadeLocked(to:0)

@@ -163,10 +163,19 @@ final class OrientationTests: XCTestCase {
         app.sliders["tabla.volume"].adjust(toNormalizedSliderPosition:0.35)
         let tempo=app.staticTexts["tabla.bpmLabel"].label
         let volume=app.sliders["tabla.volume"].value as? String
-        app.buttons["tabla.taal"].tap();app.buttons["Jhaptal · 10"].tap()
-        app.buttons["switch.tanpura"].tap();app.buttons["tanpura.playPause"].tap()
+        app.buttons["tabla.taal"].tap()
+        XCTAssertTrue(app.buttons["Jhaptal · 10"].waitForExistence(timeout:5))
+        app.buttons["Jhaptal · 10"].tap()
+        XCTAssertTrue(app.buttons["tabla.taal"].waitForExistence(timeout:5))
+        XCTAssertTrue(app.buttons["tabla.taal"].label.contains("Jhaptal"))
+        app.buttons["switch.tanpura"].tap()
+        XCTAssertTrue(app.buttons["tanpura.playPause"].waitForExistence(timeout:5))
+        app.buttons["tanpura.playPause"].tap()
         XCUIDevice.shared.press(.home);sleep(2);app.activate()
-        app.buttons["switch.tabla"].tap();XCTAssertTrue(play.label.contains("Pause"))
+        XCTAssertTrue(app.wait(for:.runningForeground,timeout:10))
+        sleep(1) // Allow the SpringBoard foreground transition to finish before tapping.
+        app.buttons["switch.tabla"].tap()
+        XCTAssertTrue(play.waitForExistence(timeout:10));XCTAssertTrue(play.label.contains("Pause"))
         app.buttons["tabla.stop"].tap();XCTAssertTrue(play.label.contains("Start"))
         app.terminate();app.launch();app.buttons["switch.tabla"].tap()
         XCTAssertEqual(app.staticTexts["tabla.bpmLabel"].label,tempo)

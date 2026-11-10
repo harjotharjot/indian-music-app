@@ -4,6 +4,7 @@ struct TablaView:View {
     @EnvironmentObject private var audio:AudioCoordinator
     @EnvironmentObject private var fullscreen:PracticeFullscreenController
     @State private var showCredits=false
+    @State private var showTaals=false
     @Environment(\.scenePhase) private var scenePhase
     // Display refresh only. Musical events are scheduled in audio sample frames.
     private let displayClock=Timer.publish(every:0.1,on:.main,in:.common).autoconnect()
@@ -77,13 +78,36 @@ struct TablaView:View {
                     }.navigationTitle("Tabla sources").toolbar { Button("Done") { showCredits=false } }
                 }
             }
-            .onReceive(displayClock) { _ in if scenePhase == .active && audio.tablaState == .playing { audio.refreshTablaPosition() } }
+            .sheet(isPresented:$showTaals) {
+                NavigationStack {
+                    List(TablaTaal.allCases) { taal in
+                        Button {
+                            audio.tablaSettings.taal=taal
+                            showTaals=false
+                        } label: {
+                            HStack {
+                                Text("\(taal.title) · \(taal.matras)")
+                                Spacer()
+                                if audio.tablaSettings.taal == taal { Image(systemName:"checkmark") }
+                            }
+                        }.accessibilityLabel("\(taal.title) · \(taal.matras)")
+                    }.navigationTitle("Choose taal").navigationBarTitleDisplayMode(.inline)
+                        .toolbar { Button("Done") { showTaals=false } }
+                }.presentationDetents([.medium,.large])
+            }
+            .onReceive(displayClock) { _ in
+                if scenePhase == .active && !showCredits && !showTaals && audio.tablaState == .playing { audio.refreshTablaPosition() }
+            }
         }
     }
     private var taalPicker:some View {
-        Picker("Taal",selection:$audio.tablaSettings.taal) {
-            ForEach(TablaTaal.allCases) { taal in Text("\(taal.title) · \(taal.matras)").tag(taal) }
-        }.pickerStyle(.menu).accessibilityIdentifier("tabla.taal")
+        Button { showTaals=true } label: {
+            HStack(spacing:5) {
+                Text("\(audio.tablaSettings.taal.title) · \(audio.tablaSettings.taal.matras)")
+                Image(systemName:"chevron.down").font(.caption)
+            }
+        }.accessibilityLabel("\(audio.tablaSettings.taal.title) · \(audio.tablaSettings.taal.matras)")
+            .accessibilityIdentifier("tabla.taal")
     }
     private var bpmLabel:some View {
         Text("\(Int(audio.tablaSettings.bpm)) BPM").font(.title3.monospacedDigit())
