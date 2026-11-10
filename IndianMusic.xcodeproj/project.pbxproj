@@ -95,7 +95,7 @@
         A00000000000000000000010 = {isa = XCConfigurationList; buildConfigurations = (A00000000000000000000013, A00000000000000000000014); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
         A00000000000000000000011 = {
             isa = XCBuildConfiguration;
-            buildSettings = {CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };
+            buildSettings = {CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; };
             name = Debug;
         };
         A00000000000000000000012 = {

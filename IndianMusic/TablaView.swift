@@ -11,42 +11,30 @@ struct TablaView:View {
         NavigationStack {
             GeometryReader { geometry in
                 ScrollView {
-                    VStack(spacing:16) {
-                        HStack {
-                            Picker("Taal",selection:$audio.tablaSettings.taal) {
-                                ForEach(TablaTaal.allCases) { taal in Text("\(taal.title) · \(taal.matras)").tag(taal) }
-                            }.pickerStyle(.menu).accessibilityIdentifier("tabla.taal")
-                            Spacer()
-                            Text("\(Int(audio.tablaSettings.bpm)) BPM").font(.title3.monospacedDigit()).accessibilityIdentifier("tabla.bpmLabel")
-                        }
-                        HStack(spacing:14) {
-                            Button(action:{ audio.tablaState == .playing ? audio.pauseTabla():audio.startTabla() }) {
-                                Label(audio.tablaState == .playing ? "Pause":(audio.tablaState == .paused ? "Resume":"Start"),systemImage:audio.tablaState == .playing ? "pause.fill":"play.fill")
-                                    .frame(minWidth:90,minHeight:34)
-                            }.buttonStyle(.borderedProminent).accessibilityIdentifier("tabla.playPause")
-                            Button("Stop",action:audio.stopTabla).buttonStyle(.bordered).accessibilityIdentifier("tabla.stop")
-                            Spacer()
-                            VStack(alignment:.trailing) {
-                                Text(positionText).font(.headline.monospacedDigit()).accessibilityIdentifier("tabla.matra")
-                                if audio.tablaPosition.matra==1 {
-                                    Text(audio.tablaSettings.taal.khali.contains(1) ? "SAM · KHALI":"SAM")
-                                        .font(.caption.bold()).foregroundStyle(.green).accessibilityIdentifier("tabla.sam")
-                                } else { Text(audio.tablaState.rawValue.capitalized).font(.caption).foregroundStyle(.secondary) }
+                    let compact=geometry.size.width>geometry.size.height
+                    VStack(spacing:compact ? 10:16) {
+                        if compact {
+                            HStack(spacing:12) {
+                                taalPicker
+                                Spacer(minLength:4)
+                                playbackControls
+                                Spacer(minLength:4)
+                                positionIndicator
                             }
-                        }
-                        VStack(spacing:6) {
-                            HStack {
-                                Text("Tempo")
-                                Spacer()
-                                Stepper("BPM",value:$audio.tablaSettings.bpm,in:30...240,step:1).labelsHidden().accessibilityLabel("BPM").accessibilityIdentifier("tabla.bpmStepper")
+                            HStack(spacing:10) {
+                                bpmLabel
+                                tempoSlider
+                                bpmStepper
+                                volumeControls.frame(width:geometry.size.width*0.3)
                             }
-                            Slider(value:$audio.tablaSettings.bpm,in:30...240,step:1)
-                                .accessibilityLabel("Tempo").accessibilityIdentifier("tabla.tempo")
-                        }
-                        HStack {
-                            Text("Volume")
-                            Slider(value:$audio.tablaSettings.volume,in:0...1)
-                                .accessibilityLabel("Tabla volume").accessibilityIdentifier("tabla.volume")
+                        } else {
+                            HStack { taalPicker;Spacer();bpmLabel }
+                            HStack(spacing:14) { playbackControls;Spacer();positionIndicator }
+                            VStack(spacing:6) {
+                                HStack { Text("Tempo");Spacer();bpmStepper }
+                                tempoSlider
+                            }
+                            volumeControls
                         }
                         beatGrid(width:geometry.size.width-32)
                         Text("Tempo and taal changes take effect at the next unscheduled matra. Stroke tails ring naturally across beats and cycles.")
@@ -90,6 +78,48 @@ struct TablaView:View {
                 }
             }
             .onReceive(displayClock) { _ in if scenePhase == .active && audio.tablaState == .playing { audio.refreshTablaPosition() } }
+        }
+    }
+    private var taalPicker:some View {
+        Picker("Taal",selection:$audio.tablaSettings.taal) {
+            ForEach(TablaTaal.allCases) { taal in Text("\(taal.title) · \(taal.matras)").tag(taal) }
+        }.pickerStyle(.menu).accessibilityIdentifier("tabla.taal")
+    }
+    private var bpmLabel:some View {
+        Text("\(Int(audio.tablaSettings.bpm)) BPM").font(.title3.monospacedDigit())
+            .fixedSize().accessibilityIdentifier("tabla.bpmLabel")
+    }
+    private var bpmStepper:some View {
+        Stepper("BPM",value:$audio.tablaSettings.bpm,in:30...240,step:1).labelsHidden()
+            .accessibilityLabel("BPM").accessibilityIdentifier("tabla.bpmStepper")
+    }
+    private var tempoSlider:some View {
+        Slider(value:$audio.tablaSettings.bpm,in:30...240,step:1)
+            .accessibilityLabel("Tempo").accessibilityIdentifier("tabla.tempo")
+    }
+    private var volumeControls:some View {
+        HStack {
+            Text("Volume")
+            Slider(value:$audio.tablaSettings.volume,in:0...1)
+                .accessibilityLabel("Tabla volume").accessibilityIdentifier("tabla.volume")
+        }
+    }
+    private var playbackControls:some View {
+        HStack(spacing:14) {
+            Button(action:{ audio.tablaState == .playing ? audio.pauseTabla():audio.startTabla() }) {
+                Label(audio.tablaState == .playing ? "Pause":(audio.tablaState == .paused ? "Resume":"Start"),systemImage:audio.tablaState == .playing ? "pause.fill":"play.fill")
+                    .frame(minWidth:90,minHeight:34)
+            }.buttonStyle(.borderedProminent).accessibilityIdentifier("tabla.playPause")
+            Button("Stop",action:audio.stopTabla).buttonStyle(.bordered).accessibilityIdentifier("tabla.stop")
+        }
+    }
+    private var positionIndicator:some View {
+        VStack(alignment:.trailing) {
+            Text(positionText).font(.headline.monospacedDigit()).fixedSize().accessibilityIdentifier("tabla.matra")
+            if audio.tablaPosition.matra==1 {
+                Text(audio.tablaSettings.taal.khali.contains(1) ? "SAM · KHALI":"SAM")
+                    .font(.caption.bold()).foregroundStyle(.green).accessibilityIdentifier("tabla.sam")
+            } else { Text(audio.tablaState.rawValue.capitalized).font(.caption).foregroundStyle(.secondary) }
         }
     }
     private var positionText:String {

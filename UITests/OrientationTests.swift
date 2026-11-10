@@ -46,6 +46,11 @@ final class OrientationTests: XCTestCase {
                 else if instrument == "tabla" {
                     XCTAssertTrue(app.buttons["tabla.playPause"].isHittable)
                     XCTAssertTrue(app.sliders["tabla.volume"].isHittable)
+                    if deviceOrientation != .portrait {
+                        let beat=app.descendants(matching:.any)["tabla.beat.16"].firstMatch
+                        XCTAssertTrue(beat.isHittable,"Complete Teentaal must fit beside its controls in landscape")
+                        XCTAssertLessThan(beat.frame.maxY,window.maxY-15)
+                    }
                 } else {
                     XCTAssertTrue(app.otherElements["harmonium.keyboard"].exists)
                     let enable=app.buttons["harmonium.enable"]
