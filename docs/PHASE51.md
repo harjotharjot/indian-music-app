@@ -1,10 +1,26 @@
-# Phase 5.1 — corrections prepared; native validation pending
+# Phase 5.1 — iPhone audition build 0.5.1 (11)
 
 Source baseline: `0df9d98` (Phase 5, accepted Phase 4 instruments retained).
-Version prepared: **0.5.1 (11)**. No CI workflow was dispatched; this work is on a
-feature branch to avoid the main-branch IPA workflow while minutes are exhausted.
-No new IPA or updated native screenshot has been produced. Do not treat the
-portable results below as an iPhone listening or visual acceptance result.
+Version: **0.5.1 (11)**. All native audio checks passed in
+[run 42869026998](https://github.com/harjotharjot/indian-music-app/actions/runs/42869026998).
+The unsigned iPhone build is available from source `2272b79`:
+
+**[Download the unsigned IPA ZIP](https://github.com/harjotharjot/indian-music-app/actions/runs/42874183491/artifacts/13793016213)**
+
+Extract the ZIP in Files and install `IndianMusic-unsigned.ipa` over the existing
+app through SideStore. The app remains unsigned until SideStore signs it for you.
+The downloaded IPA was independently checked for version/build, bundle identifier,
+absence of a signing envelope/provisioning profile, all 15 tabla sample hashes and
+onset metadata, and its published SHA-256:
+
+`80b49c5aa4d88782c821e589e913f4c1ec83ef13bb3a7434cfd059963dccf722`
+
+Native audio checks passed. Six of seven simulator tests passed in the build run;
+the remaining test's close-button identifier lookup was corrected and is being
+[rerun separately](https://github.com/harjotharjot/indian-music-app/actions/runs/42878338544).
+That correction changes UI automation/CI only; app source is identical to this IPA.
+Standard macOS runners are free for this public repository. Repository visibility
+was not changed.
 
 ## Tabla alignment
 
@@ -80,8 +96,8 @@ The full settings sheet and portrait harmonium settings now also include tabla.
 Only the tabla glyph is rotated 180 degrees. Tabla transport labels have fixed
 width/height; the position indicator reserves fixed space across stopped, playing,
 paused, sam and khali states to prevent its changing text from shifting buttons.
-Native visual verification is pending, particularly on the smallest iPhone and
-with accessibility text sizes.
+Native captures were reviewed in both landscape directions. Smaller iPhones and
+accessibility text sizes still need device review.
 
 ## Tabla tuning decision: deferred
 
@@ -101,45 +117,79 @@ dayan recorded at several tonic pitches (or complete matched banks per tonic),
 carefully limited interpolation and a shared onset-calibrated clock. Keep bayan
 at musically appropriate natural pitch. No tabla sample is pitch-shifted here.
 
-## Verification and remaining delivery work
+## Verification and delivery evidence
 
-Passed locally in Linux:
+Native macOS audio checks passed for source `66c4d20` in
+[run 42869026998](https://github.com/harjotharjot/indian-music-app/actions/runs/42869026998):
 
-- All 15 asset hashes, channel/sample lengths and onset metadata reproduce.
-- Isolated compensated reference buffers reach the chosen landmark exactly on
-  the grid and contain each complete stereo recording unchanged.
-- 24 reference renders: six taals × 30/80/137/240 BPM, four cycles each; finite,
-  unclipped samples, fewer than 24 overlapping voices. Twelve-hour absolute-frame
-  arithmetic stays within half a frame; piecewise tempo arithmetic remains
-  ordered and within half a frame. These are independent calculations, not tests
-  of the compiled Swift sequencer or a live audio device.
-- Swift tree-sitter syntax parsing, Python compilation, shell syntax and
-  `git diff --check` pass. Syntax parsing does not replace Swift type checking.
+- Six taals at 30/80/137/240 BPM: **24 actual AVAudioEngine renders** match
+  independent per-take compensated waveform sums. Maximum absolute error:
+  **5.091 × 10⁻⁸**. Full attacks, tails, alternate takes and subdivisions remain.
+- Five-minute native tabla scheduling, tempo/taal edits, pause/resume/restart,
+  independent bus mutes and maximum-fader simultaneous instruments passed.
+- Twelve-hour Swift timeline models stay within half a sample frame, including
+  the original tempo-segment checks and the new initial pre-roll checks.
+- Shared tuning/persistence models, both tanpura loop renders, 111 harmonium
+  tuning cases, **111 native 32-second held-note comparisons**, loop boundaries,
+  F♯ guard repair, attacks, lifecycle, chords and release checks passed.
+- The arm64 iPhone Release app compiled and packaging checks passed.
 
-The existing Phase 3/4/5 and simulator scripts were attempted and all stop with
-`xcrun: command not found`. This Linux environment has no Xcode, Apple audio
-frameworks or iOS Simulator. Native regression results from Phase 5 apply to
-that historical build only, not to these changes.
+[Native waveform measurements](phase51/native-waveform-validation.json) ·
+[Complete native evidence ZIP](https://github.com/harjotharjot/indian-music-app/actions/runs/42869026998/artifacts/13791106775)
 
-Prepared for the next available Apple environment:
+An initial unpaced offline run produced nondeterministic silent gaps. A focused
+same-bank experiment reproduced large gaps in several different notes when
+rendering as fast as possible; 1-ms sleeps between offline blocks removed those
+large gaps. Pacing was added **only to the native test harnesses**, allowing
+Core Audio's asynchronous sample workers to run. All waveform assertions and
+tolerances remain unchanged. Production rendering and the harmonium bank were
+not altered for this harness correction.
 
-- Expanded `TablaAudioTests` renders all six taals at four tempos. The independent
-  native-waveform checker accounts for per-take advance and initial pre-roll.
-  Existing pause/resume/restart, tempo/taal changes, five-minute scheduling,
-  mixing and accepted-instrument regressions remain in place.
-- Added UI tests for stable transport rectangles across all states, portrait,
-  both landscape directions and forced Full screen; shared note/octave/cents
-  across tabs, mini panels and relaunch; panel opening without transport-state or
-  keyboard-geometry changes. Tests retain native screenshot attachments.
+[Experiment](https://github.com/harjotharjot/indian-music-app/actions/runs/42868102347) ·
+[Paired native experiment audio](https://github.com/harjotharjot/indian-music-app/actions/runs/42868102347/artifacts/13787214169)
 
-Before delivery as an installable correction: run `scripts/test-phase5.sh`,
-`scripts/test-phase3.sh`, `scripts/test-phase4.sh`, the Phase 5 waveform checker,
-and `scripts/simulator-smoke.sh` on macOS; inspect the resulting native screenshots
-against the supplied arrangement, audition timing and transitions, then build
-and package **0.5.1 (11)** only when free capacity is confirmed. Real iPhone
-acceptance must verify natural attacks, simultaneity, tempo changes, long sessions,
-shared tuning and small-screen controls. No IPA link or fabricated screenshots
-are supplied. Stop at Phase 5.1 pending the user's iPhone approval.
+Six of seven simulator tests passed in
+[run 42874183491](https://github.com/harjotharjot/indian-music-app/actions/runs/42874183491):
+portrait scrolling with a pinned keyboard and reachable speed controls; stable
+tabla transport geometry in portrait, both landscapes and forced Full screen;
+switcher order/selection; background transport; interruptions/engine recovery;
+and physical-return/ordinary orientation behavior.
+
+The remaining shared-tuning test selected Sa/octave/cents, verified synchronization
+across portrait/landscape/tabs, opened the tanpura mini panel without pausing the
+drone and edited cents, then failed to look up the close button by identifier.
+The captured UI tree shows the button present with the correct accessible label,
+"Close mini settings": SwiftUI inherited its parent panel identifier. The test now
+uses that visible accessible label. A focused rerun is pending; **the full UI suite
+is not reported as green**. This test-only correction does not change the app.
+The rerun reuses completed native checks only after a Git diff guard confirms that
+all audio source, assets and harnesses remain identical to validated `66c4d20`.
+
+[Six passing UI tests and failure evidence](https://github.com/harjotharjot/indian-music-app/actions/runs/42874183491/artifacts/13792402783) ·
+[Focused shared-tuning/panel rerun](https://github.com/harjotharjot/indian-music-app/actions/runs/42878338544)
+
+Unmodified native iPhone 16 Pro captures from `66c4d20` (the subsequent app changes
+only disambiguate accessibility identifiers):
+
+- [Harmonium, port right](phase51/harmonium-landscape-port-right.png)
+- [Harmonium, port left](phase51/harmonium-landscape-port-left.png)
+- [Tabla portrait](phase51/tabla-portrait.png)
+- [Tabla forced Full screen](phase51/tabla-forced-fullscreen.png)
+
+Portable Linux checks also passed: all 15 WAV hashes, exact preservation of the
+complete stereo waveforms, onset-metadata reproduction, independent four-cycle
+reference sums across all 24 taal/tempo combinations, finite/unclipped output,
+voice-count bounds, twelve-hour arithmetic, Python/shell checks and Swift syntax
+parsing. The original portable before/after listening files remain reference sums;
+the native waveform evidence above provides the separate Core Audio verification.
+
+On iPhone, install over the existing app through SideStore. Audition all six taals
+at slow, medium and fast tempos and during tempo edits. Check natural attacks,
+combined strokes, longer practice sessions, shared Sa/octave/cents on every tab,
+both mini panels, portrait/landscape/Full screen, held notes and keyboard navigation.
+The objective onset landmark is not a claim of perceptual or musical acceptance.
+**Stop at Phase 5.1 for the user's iPhone approval.** No microphone tuner or other
+phase has begun.
 
 Reproduce the portable comparisons without CI:
 

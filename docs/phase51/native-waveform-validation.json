@@ -1,0 +1,218 @@
+[
+  {
+    "taal": "dadra",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 12,
+    "maximumWaveformError": 2.3007392879748068e-08,
+    "peak": 0.2276766151189804,
+    "seconds": 27.0
+  },
+  {
+    "taal": "dadra",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 24,
+    "maximumWaveformError": 2.992153169678602e-08,
+    "peak": 0.22690065205097198,
+    "seconds": 21.0
+  },
+  {
+    "taal": "dadra",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 12,
+    "maximumWaveformError": 3.528594971768939e-08,
+    "peak": 0.24178238213062286,
+    "seconds": 8.255479166666667
+  },
+  {
+    "taal": "dadra",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 12,
+    "maximumWaveformError": 4.339218143134538e-08,
+    "peak": 0.2481163740158081,
+    "seconds": 6.0
+  },
+  {
+    "taal": "rupak",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 14,
+    "maximumWaveformError": 2.682209016002801e-08,
+    "peak": 0.24607522785663605,
+    "seconds": 31.0
+  },
+  {
+    "taal": "rupak",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 28,
+    "maximumWaveformError": 3.528594971768939e-08,
+    "peak": 0.24666714668273926,
+    "seconds": 24.0
+  },
+  {
+    "taal": "rupak",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 14,
+    "maximumWaveformError": 3.60012054889669e-08,
+    "peak": 0.2455127239227295,
+    "seconds": 9.131395833333332
+  },
+  {
+    "taal": "rupak",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 14,
+    "maximumWaveformError": 3.6239624051637165e-08,
+    "peak": 0.26223716139793396,
+    "seconds": 6.5
+  },
+  {
+    "taal": "keherwa",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 16,
+    "maximumWaveformError": 2.491474151988804e-08,
+    "peak": 0.2567417025566101,
+    "seconds": 35.0
+  },
+  {
+    "taal": "keherwa",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 32,
+    "maximumWaveformError": 3.433227541149719e-08,
+    "peak": 0.2559657096862793,
+    "seconds": 27.0
+  },
+  {
+    "taal": "keherwa",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 16,
+    "maximumWaveformError": 2.9683113134115757e-08,
+    "peak": 0.2514537274837494,
+    "seconds": 10.007291666666667
+  },
+  {
+    "taal": "keherwa",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 16,
+    "maximumWaveformError": 4.48226928628781e-08,
+    "peak": 0.2504308223724365,
+    "seconds": 7.0
+  },
+  {
+    "taal": "teentaal",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 32,
+    "maximumWaveformError": 2.3007392879748068e-08,
+    "peak": 0.2276766151189804,
+    "seconds": 67.0
+  },
+  {
+    "taal": "teentaal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 64,
+    "maximumWaveformError": 3.3497810386640126e-08,
+    "peak": 0.23061804473400116,
+    "seconds": 51.0
+  },
+  {
+    "taal": "teentaal",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 32,
+    "maximumWaveformError": 3.826618197311227e-08,
+    "peak": 0.24960839748382568,
+    "seconds": 17.01460416666667
+  },
+  {
+    "taal": "teentaal",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 32,
+    "maximumWaveformError": 4.13656234821147e-08,
+    "peak": 0.24493558704853058,
+    "seconds": 11.0
+  },
+  {
+    "taal": "ektaal",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 40,
+    "maximumWaveformError": 2.682209016002801e-08,
+    "peak": 0.2567417025566101,
+    "seconds": 51.0
+  },
+  {
+    "taal": "ektaal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 80,
+    "maximumWaveformError": 3.814697269177714e-08,
+    "peak": 0.2559548020362854,
+    "seconds": 39.0
+  },
+  {
+    "taal": "ektaal",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 40,
+    "maximumWaveformError": 3.826618197311227e-08,
+    "peak": 0.25766512751579285,
+    "seconds": 13.510958333333333
+  },
+  {
+    "taal": "ektaal",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 40,
+    "maximumWaveformError": 5.090236659954783e-08,
+    "peak": 0.2755507528781891,
+    "seconds": 9.0
+  },
+  {
+    "taal": "jhaptal",
+    "cycles": 2,
+    "bpm": 30,
+    "onsets": 20,
+    "maximumWaveformError": 2.682209016002801e-08,
+    "peak": 0.24607522785663605,
+    "seconds": 43.0
+  },
+  {
+    "taal": "jhaptal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 40,
+    "maximumWaveformError": 3.731250766692007e-08,
+    "peak": 0.24772334098815918,
+    "seconds": 33.0
+  },
+  {
+    "taal": "jhaptal",
+    "cycles": 2,
+    "bpm": 137,
+    "onsets": 20,
+    "maximumWaveformError": 4.303455355958441e-08,
+    "peak": 0.24718128144741058,
+    "seconds": 11.759125
+  },
+  {
+    "taal": "jhaptal",
+    "cycles": 2,
+    "bpm": 240,
+    "onsets": 20,
+    "maximumWaveformError": 4.100799563810931e-08,
+    "peak": 0.277463436126709,
+    "seconds": 8.0
+  }
+]
