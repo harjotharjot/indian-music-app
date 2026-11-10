@@ -1,5 +1,7 @@
 """Reproducible Naad sample selection; no synthesis, pitch shifting or tail loops."""
-import pathlib,json,hashlib,subprocess,urllib.request,math
+import pathlib,json,hashlib,subprocess,urllib.request,math,sys
+sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/"phase51"))
+from onsets import onset
 import numpy as np
 import soundfile as sf
 from scipy.signal import resample_poly
@@ -31,8 +33,9 @@ for bol,(folder,takes,target) in SELECT.items():
   n=6;a[:n]*=np.linspace(0,1,n)[:,None]
   n=min(2160,len(a));a[-n:]*=(.5+.5*np.cos(np.linspace(0,np.pi,n)))[:,None]
   name=f'{bol}-{index+1}.wav';dest=out/name;sf.write(dest,a,48000,subtype='PCM_24')
-  entries.append(dict(bol=bol,file='Tabla/'+name,sourcePath=path,sourceURL=url,sourceSHA256=hashlib.sha256(raw).hexdigest(),sha256=hashlib.sha256(dest.read_bytes()).hexdigest(),frames=len(a),sourceSampleRate=sr,sourceChannels=group[index][3].shape[1],seconds=len(a)/48000,gain=gain,peak=float(np.max(abs(a))),tailFadeSeconds=.045))
+  entries.append(dict(bol=bol,file='Tabla/'+name,onsetFrame=onset(sf.read(dest,always_2d=True)[0]),sourcePath=path,sourceURL=url,sourceSHA256=hashlib.sha256(raw).hexdigest(),sha256=hashlib.sha256(dest.read_bytes()).hexdigest(),frames=len(a),sourceSampleRate=sr,sourceChannels=group[index][3].shape[1],seconds=len(a)/48000,gain=gain,peak=float(np.max(abs(a))),tailFadeSeconds=.045))
 manifest=dict(library='Naad recorded tabla bols',repository='https://github.com/oormicreations/naad',revision=PIN,creator='Oormi Creations and Contributors; individual recording performers not identified by upstream',license='MIT',processing='Whole recordings; 44.1 to 48 kHz polyphase resampling; mono duplicated to stereo; one gain per bol family; 0.125-ms initial de-click and 45-ms final cosine fade; no synthesis, pitch shift or repeated tails.',samples=entries)
+manifest['timing']='Complete unmodified recordings are scheduled onsetFrame frames early against a common 480-frame pre-roll. Landmark: first causal 48-frame RMS crossing of 8% of first-250-ms maximum; louder channel. No peak alignment, trimming or independent manipulation of combined Dha/Dhin.'
 (ROOT/'IndianMusic/Sounds/tabla-sources.json').write_text(json.dumps(manifest,indent=2)+'\n')
 licenseText=pathlib.Path('/tmp/naad-source/LICENSE.txt').read_text() if pathlib.Path('/tmp/naad-source/LICENSE.txt').exists() else urllib.request.urlopen(f'https://raw.githubusercontent.com/oormicreations/naad/{PIN}/LICENSE.txt').read().decode()
 (ROOT/'IndianMusic/Sounds/Tabla/LICENSE.txt').write_text(licenseText)

@@ -40,12 +40,15 @@ import Foundation
         struct Reference:Codable { let taal:String;let bpm:Double;let cycles:Int;let frames:Int;let rms:Double }
         var results:[Reference]=[]
         for taal in TablaTaal.allCases {
-            let end=Int64(Double(taal.matras*4)*48000*60/80)
-            graph.tabla.start(TablaSettings(taal:taal,bpm:80,volume:1),automatic:false,endFrame:end)
-            let rms=try render(Int(end)+3*48000,file:"\(taal.rawValue)-80bpm.wav")
-            precondition(rms>0.005 && graph.tabla.lateEvents==0 && graph.tabla.voiceExhaustions==0)
-            results.append(Reference(taal:taal.rawValue,bpm:80,cycles:4,frames:Int(end),rms:rms))
-            graph.tabla.stop()
+            for bpm in [30.0,80,137,240] {
+                let cycles=bpm==80 ? 4:2
+                let end=Int64((Double(taal.matras*cycles)*48000*60/bpm).rounded())
+                graph.tabla.start(TablaSettings(taal:taal,bpm:bpm,volume:1),automatic:false,endFrame:end)
+                let rms=try render(Int(end)+3*48000,file:"\(taal.rawValue)-\(Int(bpm))bpm.wav")
+                precondition(rms>0.005 && graph.tabla.lateEvents==0 && graph.tabla.voiceExhaustions==0)
+                results.append(Reference(taal:taal.rawValue,bpm:bpm,cycles:cycles,frames:Int(end),rms:rms))
+                graph.tabla.stop()
+            }
         }
         try JSONEncoder().encode(results).write(to:destination.appendingPathComponent("renders.json"))
         graph.tabla.start(TablaSettings(taal:.dadra,bpm:80,volume:1),automatic:false)
@@ -95,6 +98,6 @@ import Foundation
         precondition(tryCheckRender(48000)<1e-6,"Muted independent buses must be silent")
         graph.tablaMixer.outputVolume=1;precondition(tryCheckRender(48000)>0.005)
         graph.tabla.stop();graph.stop()
-        print("PASS: six native four-cycle demos plus full tails; five-minute native clock; pause/resume, tempo and six taal changes; no late events or voice stealing; maximum-fader all-three mix finite/unclipped; independent buses")
+        print("PASS: 24 native renders across six taals and four tempos plus full tails; five-minute native clock; pause/resume, tempo and six taal changes; no late events or voice stealing; maximum-fader all-three mix finite/unclipped; independent buses")
     }
 }

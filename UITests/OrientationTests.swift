@@ -199,6 +199,81 @@ final class OrientationTests: XCTestCase {
         app.buttons["switch.tanpura"].tap()
         XCTAssertTrue(app.buttons["tanpura.playPause"].label.contains("Pause"))
     }
+    func testTablaTransportGeometryAcrossOrientationsAndForcedFullscreen() {
+        let app=XCUIApplication();continueAfterFailure=false
+        XCUIDevice.shared.orientation = .portrait;app.launch()
+        for mode in 0..<4 {
+            if mode==1 { XCUIDevice.shared.orientation = .landscapeLeft }
+            if mode==2 { XCUIDevice.shared.orientation = .landscapeRight }
+            if mode==3 {
+                XCUIDevice.shared.orientation = .portrait;sleep(2)
+                app.buttons["switch.harmonium"].tap()
+                app.buttons["harmonium.fullscreen"].tap()
+            }
+            sleep(2);app.buttons["switch.tabla"].tap()
+            let play=app.buttons["tabla.playPause"],stop=app.buttons["tabla.stop"]
+            XCTAssertTrue(play.waitForExistence(timeout:5));stop.tap()
+            let playFrame=play.frame,stopFrame=stop.frame
+            for _ in 0..<2 {
+                play.tap();sleep(1) // playing
+                assertSameFrame(play.frame,playFrame);assertSameFrame(stop.frame,stopFrame)
+                play.tap();sleep(1) // paused
+                assertSameFrame(play.frame,playFrame);assertSameFrame(stop.frame,stopFrame)
+                play.tap();sleep(1) // resumed
+                assertSameFrame(play.frame,playFrame);assertSameFrame(stop.frame,stopFrame)
+                stop.tap();sleep(1)
+                assertSameFrame(play.frame,playFrame);assertSameFrame(stop.frame,stopFrame)
+            }
+            let shot=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+            shot.name="phase51-tabla-mode-\(mode)";shot.lifetime = .keepAlways;add(shot)
+        }
+    }
+    func testSharedTuningMiniPanelsAndPersistence() {
+        let app=XCUIApplication();continueAfterFailure=false
+        XCUIDevice.shared.orientation = .portrait;app.launch()
+        app.buttons["harmonium.settings"].tap()
+        app.buttons["shared.sa"].tap();app.buttons["F"].firstMatch.tap()
+        app.buttons["shared.octave"].tap();app.buttons["2"].firstMatch.tap()
+        let cents=app.steppers["shared.cents"]
+        cents.buttons.element(boundBy:1).tap()
+        let tuning=cents.label
+        app.buttons["Done"].tap();app.buttons["switch.tanpura"].tap()
+        XCTAssertTrue(app.buttons["shared.sa"].label.contains("F"))
+        XCTAssertTrue(app.buttons["shared.octave"].label.contains("2"))
+        XCTAssertEqual(app.steppers["shared.cents"].label,tuning)
+        app.buttons["tanpura.playPause"].tap()
+        XCUIDevice.shared.orientation = .landscapeLeft;sleep(2)
+        XCTAssertEqual(app.steppers["shared.cents"].label,tuning)
+        app.buttons["switch.harmonium"].tap()
+        let keyboard=app.otherElements["harmonium.keyboard"],frame=keyboard.frame
+        app.buttons["harmonium.tuningSummary"].tap()
+        XCTAssertEqual(app.steppers["shared.cents"].label,tuning)
+        XCTAssertEqual(app.buttons["harmonium.tanpuraPlayPause"].value as? String,"Playing")
+        app.steppers["shared.cents"].buttons.element(boundBy:0).tap()
+        let edited=app.steppers["shared.cents"].label
+        app.buttons["harmonium.miniClose"].tap();assertSameFrame(keyboard.frame,frame)
+        app.buttons["harmonium.tablaPlayPause"].tap()
+        app.buttons["harmonium.tablaSummary"].tap()
+        app.steppers["shared.bpm"].buttons.element(boundBy:1).tap()
+        app.buttons["harmonium.miniClose"].tap()
+        XCTAssertEqual(app.buttons["harmonium.tablaPlayPause"].value as? String,"Playing")
+        assertSameFrame(keyboard.frame,frame)
+        let shot=XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+        shot.name="phase51-harmonium-three-columns";shot.lifetime = .keepAlways;add(shot)
+        app.buttons["switch.tanpura"].tap()
+        XCTAssertEqual(app.steppers["shared.cents"].label,edited)
+        app.terminate();XCUIDevice.shared.orientation = .portrait;app.launch()
+        app.buttons["switch.tanpura"].tap()
+        XCTAssertEqual(app.steppers["shared.cents"].label,edited)
+        XCTAssertTrue(app.buttons["shared.sa"].label.contains("F"))
+        XCTAssertTrue(app.buttons["shared.octave"].label.contains("2"))
+    }
+    private func assertSameFrame(_ actual:CGRect,_ expected:CGRect,file:StaticString=#filePath,line:UInt=#line) {
+        XCTAssertEqual(actual.minX,expected.minX,accuracy:0.5,file:file,line:line)
+        XCTAssertEqual(actual.minY,expected.minY,accuracy:0.5,file:file,line:line)
+        XCTAssertEqual(actual.width,expected.width,accuracy:0.5,file:file,line:line)
+        XCTAssertEqual(actual.height,expected.height,accuracy:0.5,file:file,line:line)
+    }
     private func accentPixels(_ screenshot: XCUIScreenshot) -> Int {
         guard let cg=screenshot.image.cgImage else { return 0 }
         let width=cg.width, height=cg.height

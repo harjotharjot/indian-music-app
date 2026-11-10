@@ -76,7 +76,7 @@ struct IndianMusicApp: App {
                         HStack(alignment:.bottom,spacing:1) {
                             Image(systemName:"circle.circle.fill").font(.system(size:13))
                             Image(systemName:"circle.circle.fill").font(.system(size:18))
-                        }.frame(width:28,height:28)
+                        }.frame(width:28,height:28).rotationEffect(.degrees(180))
                     }
                     else { Image(systemName:symbol).font(.title3) }
                 }

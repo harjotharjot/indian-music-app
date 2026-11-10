@@ -21,7 +21,7 @@ assert info['CFBundleIdentifier'] == 'com.harjotharjot.indianmusic', info
 assert info['CFBundleSupportedPlatforms'] == ['iPhoneOS'], info
 assert info['UIDeviceFamily'] == [1], info
 assert info['MinimumOSVersion'] == '16.0', info
-assert info['CFBundleShortVersionString'] == '0.5.0', info
+assert info['CFBundleShortVersionString'] == '0.5.1', info
 assert 'audio' in info['UIBackgroundModes'], info
 for name in ['tanpura_pa.wav', 'tanpura_ma.wav', 'tanpura-sources.json', 'harmonium.sf2', 'harmonium-sources.json']:
     assert (app / 'Sounds' / name).is_file(), name
@@ -37,9 +37,10 @@ assert hashlib.sha256((app / 'Sounds' / 'harmonium.sf2').read_bytes()).hexdigest
 tabla=json.loads((app / 'Sounds' / 'tabla-sources.json').read_text())
 assert len(tabla['samples'])==15
 for sample in tabla['samples']:
+    assert 0 <= sample['onsetFrame'] < 480
     assert hashlib.sha256((app / 'Sounds' / sample['file']).read_bytes()).hexdigest()==sample['sha256']
 assert (app / 'Sounds' / 'Tabla' / 'LICENSE.txt').is_file()
-assert info['CFBundleVersion']=='10'
+assert info['CFBundleVersion']=='11'
 assert (app / info['CFBundleExecutable']).is_file(), info
 assert not (app / 'embedded.mobileprovision').exists()
 assert not (app / '_CodeSignature').exists()

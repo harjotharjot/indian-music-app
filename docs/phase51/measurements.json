@@ -1,0 +1,558 @@
+{
+  "method": "Portable independent reference sums; not AVAudioEngine output, listening approval, or native UI validation.",
+  "sampleRate": 48000,
+  "preRollFrames": 480,
+  "samples": [
+    {
+      "file": "Tabla/dha-1.wav",
+      "onsetFrame": 5,
+      "beforeMs": 0.10416666666666667,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.08333333333333333,
+        "0.08": 0.10416666666666667,
+        "0.12": 0.14583333333333334,
+        "0.2": 0.2916666666666667
+      }
+    },
+    {
+      "file": "Tabla/dha-2.wav",
+      "onsetFrame": 15,
+      "beforeMs": 0.3125,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.20833333333333334,
+        "0.08": 0.3125,
+        "0.12": 0.4375,
+        "0.2": 0.5
+      }
+    },
+    {
+      "file": "Tabla/dhin-1.wav",
+      "onsetFrame": 29,
+      "beforeMs": 0.6041666666666666,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.5625,
+        "0.08": 0.6041666666666666,
+        "0.12": 0.7083333333333334,
+        "0.2": 1.0625
+      }
+    },
+    {
+      "file": "Tabla/dhin-2.wav",
+      "onsetFrame": 53,
+      "beforeMs": 1.1041666666666667,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.9375,
+        "0.08": 1.1041666666666667,
+        "0.12": 1.125,
+        "0.2": 1.3333333333333333
+      }
+    },
+    {
+      "file": "Tabla/na-1.wav",
+      "onsetFrame": 4,
+      "beforeMs": 0.08333333333333333,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.0625,
+        "0.08": 0.08333333333333333,
+        "0.12": 0.10416666666666667,
+        "0.2": 0.1875
+      }
+    },
+    {
+      "file": "Tabla/tin-1.wav",
+      "onsetFrame": 29,
+      "beforeMs": 0.6041666666666666,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.5625,
+        "0.08": 0.6041666666666666,
+        "0.12": 0.6875,
+        "0.2": 1.0416666666666667
+      }
+    },
+    {
+      "file": "Tabla/tun-1.wav",
+      "onsetFrame": 44,
+      "beforeMs": 0.9166666666666666,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.6666666666666666,
+        "0.08": 0.9166666666666666,
+        "0.12": 1.2291666666666667,
+        "0.2": 2.1041666666666665
+      }
+    },
+    {
+      "file": "Tabla/ge-1.wav",
+      "onsetFrame": 120,
+      "beforeMs": 2.5,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 2.4791666666666665,
+        "0.08": 2.5,
+        "0.12": 2.5208333333333335,
+        "0.2": 2.5625
+      }
+    },
+    {
+      "file": "Tabla/ge-2.wav",
+      "onsetFrame": 88,
+      "beforeMs": 1.8333333333333333,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 1.8125,
+        "0.08": 1.8333333333333333,
+        "0.12": 1.875,
+        "0.2": 1.9583333333333333
+      }
+    },
+    {
+      "file": "Tabla/ke-1.wav",
+      "onsetFrame": 146,
+      "beforeMs": 3.0416666666666665,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 3.0,
+        "0.08": 3.0416666666666665,
+        "0.12": 3.0833333333333335,
+        "0.2": 3.2083333333333335
+      }
+    },
+    {
+      "file": "Tabla/ke-2.wav",
+      "onsetFrame": 124,
+      "beforeMs": 2.5833333333333335,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 2.5416666666666665,
+        "0.08": 2.5833333333333335,
+        "0.12": 2.625,
+        "0.2": 2.6666666666666665
+      }
+    },
+    {
+      "file": "Tabla/ti-1.wav",
+      "onsetFrame": 23,
+      "beforeMs": 0.4791666666666667,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.4583333333333333,
+        "0.08": 0.4791666666666667,
+        "0.12": 0.4791666666666667,
+        "0.2": 0.5
+      }
+    },
+    {
+      "file": "Tabla/ti-2.wav",
+      "onsetFrame": 51,
+      "beforeMs": 1.0625,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 0.3958333333333333,
+        "0.08": 1.0625,
+        "0.12": 1.2916666666666667,
+        "0.2": 1.4166666666666667
+      }
+    },
+    {
+      "file": "Tabla/ta-1.wav",
+      "onsetFrame": 218,
+      "beforeMs": 4.541666666666667,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 4.145833333333333,
+        "0.08": 4.541666666666667,
+        "0.12": 7.833333333333333,
+        "0.2": 10.479166666666666
+      }
+    },
+    {
+      "file": "Tabla/ta-2.wav",
+      "onsetFrame": 89,
+      "beforeMs": 1.8541666666666667,
+      "afterMs": 0.0,
+      "thresholdSensitivityMs": {
+        "0.05": 1.7708333333333333,
+        "0.08": 1.8541666666666667,
+        "0.12": 1.9583333333333333,
+        "0.2": 2.0833333333333335
+      }
+    }
+  ],
+  "taalChecks": [
+    {
+      "taal": "dadra",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 24,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 1,
+      "peakAfter": 0.22767659950256347
+    },
+    {
+      "taal": "dadra",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 24,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 3,
+      "peakAfter": 0.2269006290435791
+    },
+    {
+      "taal": "dadra",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 24,
+      "maximumGridErrorFrames": 0.48905109488987364,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 4,
+      "peakAfter": 0.24178239059448245
+    },
+    {
+      "taal": "dadra",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 24,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 7,
+      "peakAfter": 0.24811638259887694
+    },
+    {
+      "taal": "rupak",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 28,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 1,
+      "peakAfter": 0.2460752410888672
+    },
+    {
+      "taal": "rupak",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 28,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 3,
+      "peakAfter": 0.24666716957092286
+    },
+    {
+      "taal": "rupak",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 28,
+      "maximumGridErrorFrames": 0.48905109488987364,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 5,
+      "peakAfter": 0.2455879421234131
+    },
+    {
+      "taal": "rupak",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 28,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 7,
+      "peakAfter": 0.2622371463775635
+    },
+    {
+      "taal": "keherwa",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 32,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 1,
+      "peakAfter": 0.2567416973114014
+    },
+    {
+      "taal": "keherwa",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 32,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 3,
+      "peakAfter": 0.25596572685241703
+    },
+    {
+      "taal": "keherwa",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 32,
+      "maximumGridErrorFrames": 0.48905109488987364,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 4,
+      "peakAfter": 0.2514537448883057
+    },
+    {
+      "taal": "keherwa",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 32,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 5,
+      "peakAfter": 0.25043084144592287
+    },
+    {
+      "taal": "teentaal",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 64,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 1,
+      "peakAfter": 0.22767659950256347
+    },
+    {
+      "taal": "teentaal",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 64,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 3,
+      "peakAfter": 0.23061804389953616
+    },
+    {
+      "taal": "teentaal",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 64,
+      "maximumGridErrorFrames": 0.49635036499239504,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 5,
+      "peakAfter": 0.24993138885498045
+    },
+    {
+      "taal": "teentaal",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 64,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 7,
+      "peakAfter": 0.24493559265136716
+    },
+    {
+      "taal": "ektaal",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 80,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 2,
+      "peakAfter": 0.2567416973114014
+    },
+    {
+      "taal": "ektaal",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 80,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 4,
+      "peakAfter": 0.2559547901153565
+    },
+    {
+      "taal": "ektaal",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 80,
+      "maximumGridErrorFrames": 0.49635036499239504,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 6,
+      "peakAfter": 0.2576651077270508
+    },
+    {
+      "taal": "ektaal",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 80,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 9,
+      "peakAfter": 0.2755507564544678
+    },
+    {
+      "taal": "jhaptal",
+      "bpm": 30,
+      "cycles": 4,
+      "events": 40,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 1,
+      "peakAfter": 0.2460752410888672
+    },
+    {
+      "taal": "jhaptal",
+      "bpm": 80,
+      "cycles": 4,
+      "events": 40,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 3,
+      "peakAfter": 0.2477233715057373
+    },
+    {
+      "taal": "jhaptal",
+      "bpm": 137,
+      "cycles": 4,
+      "events": 40,
+      "maximumGridErrorFrames": 0.48905109488987364,
+      "twelveHourGridErrorFrames": 0.49635040760040283,
+      "maximumVoices": 4,
+      "peakAfter": 0.2471812858581543
+    },
+    {
+      "taal": "jhaptal",
+      "bpm": 240,
+      "cycles": 4,
+      "events": 40,
+      "maximumGridErrorFrames": 0.0,
+      "twelveHourGridErrorFrames": 0.0,
+      "maximumVoices": 7,
+      "peakAfter": 0.277463436126709
+    }
+  ],
+  "tempoArithmetic": [
+    {
+      "taal": "dadra",
+      "maximumGridErrorFrames": 0.4986375707667321
+    },
+    {
+      "taal": "rupak",
+      "maximumGridErrorFrames": 0.4986375707667321
+    },
+    {
+      "taal": "keherwa",
+      "maximumGridErrorFrames": 0.4986375707667321
+    },
+    {
+      "taal": "teentaal",
+      "maximumGridErrorFrames": 0.4986375707667321
+    },
+    {
+      "taal": "ektaal",
+      "maximumGridErrorFrames": 0.4986375707667321
+    },
+    {
+      "taal": "jhaptal",
+      "maximumGridErrorFrames": 0.4986375707667321
+    }
+  ],
+  "resonances": [
+    {
+      "bol": "na",
+      "take": 1,
+      "dominantResonancesHz": [
+        786.25,
+        1318.36,
+        525.7,
+        1326.42,
+        1056.88
+      ]
+    },
+    {
+      "bol": "tin",
+      "take": 1,
+      "dominantResonancesHz": [
+        525.33,
+        785.16,
+        1326.42,
+        1318.18,
+        531.74
+      ]
+    },
+    {
+      "bol": "tun",
+      "take": 1,
+      "dominantResonancesHz": [
+        285.1,
+        525.15,
+        291.5,
+        278.5,
+        294.43
+      ]
+    },
+    {
+      "bol": "dha",
+      "take": 1,
+      "dominantResonancesHz": [
+        112.79,
+        95.76,
+        786.25,
+        1318.36,
+        525.7
+      ]
+    },
+    {
+      "bol": "dha",
+      "take": 2,
+      "dominantResonancesHz": [
+        113.34,
+        96.31,
+        786.25,
+        1318.36,
+        525.7
+      ]
+    },
+    {
+      "bol": "dhin",
+      "take": 1,
+      "dominantResonancesHz": [
+        112.24,
+        95.58,
+        525.33,
+        785.16,
+        1326.42
+      ]
+    },
+    {
+      "bol": "dhin",
+      "take": 2,
+      "dominantResonancesHz": [
+        112.79,
+        95.95,
+        525.33,
+        785.16,
+        1326.42
+      ]
+    },
+    {
+      "bol": "ge",
+      "take": 1,
+      "dominantResonancesHz": [
+        95.03,
+        111.69,
+        102.54,
+        176.88,
+        346.8
+      ]
+    },
+    {
+      "bol": "ge",
+      "take": 2,
+      "dominantResonancesHz": [
+        92.29,
+        98.33,
+        104.55,
+        110.96,
+        113.34
+      ]
+    }
+  ],
+  "maximumBeforeMs": 4.541666666666667,
+  "maximumAfterMs": 0.0
+}

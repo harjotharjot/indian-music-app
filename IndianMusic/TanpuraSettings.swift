@@ -20,7 +20,7 @@ struct TanpuraSettings: Codable, Equatable {
         let midi = (octave + 1) * 12 + key
         return 440 * pow(2, (Double(midi - 69) + cents / 100) / 12)
     }
-    var saName: String { "\(Self.noteNames[key])\(octave)" }
+    var saName: String { "\(Self.noteNames[key]) \(octave)" }
     func pitchShiftCents(referenceHz: Double) -> Float {
         Float(1200 * log2(frequency / referenceHz))
     }

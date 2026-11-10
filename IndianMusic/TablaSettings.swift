@@ -98,6 +98,7 @@ struct TablaPosition {
 // Absolute sample positions are rounded once, never accumulated as rounded durations.
 // Piecewise tempo segments retain the phase of all events already submitted to Core Audio.
 struct TablaTimeline {
+    static let attackLeadFrames:Int64 = 480 // full-recording pre-roll, 10 ms at 48 kHz
     struct Segment { let beat: Double; let frame: Double; let bpm: Double }
     struct Event { let frame: Int64; let stroke: TablaStroke; let beat: Double }
     private(set) var taal: TablaTaal

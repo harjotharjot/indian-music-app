@@ -66,25 +66,10 @@ struct ContentView: View {
                 }
 
                 Section("Sa") {
-                    Picker("Key", selection: $audio.settings.key) {
-                        ForEach(0..<12, id: \.self) { key in
-                            Text(TanpuraSettings.noteNames[key]).tag(key)
-                        }
-                    }
-                    Picker("Octave", selection: $audio.settings.octave) {
-                        Text("Lower · 2").tag(2)
-                        Text("Higher · 3").tag(3)
-                    }
+                    SharedTuningControls()
                     Text("\(audio.settings.frequency, specifier: "%.2f") Hz")
-                        .monospacedDigit()
-                        .foregroundStyle(.secondary)
-                    Stepper(value: $audio.settings.cents, in: -100...100, step: 1) {
-                        Text("Fine tuning: \(audio.settings.cents, specifier: "%+.0f") cents")
-                            .monospacedDigit()
-                    }
-                    Slider(value: $audio.settings.cents, in: -100...100, step: 1)
-                        .accessibilityLabel("Fine tuning in cents")
-                    Button("Reset fine tuning") { audio.settings.cents = 0 }
+                        .monospacedDigit().foregroundStyle(.secondary)
+                    Button("Reset fine tuning") { audio.settings.cents=0 }
                 }
 
                 Section("Playback") {
@@ -97,7 +82,7 @@ struct ContentView: View {
                 }
                 Section {
                     Button("Sound credits") { showCredits = true }
-                    Text("Version 0.5.0 · Practice instruments")
+                    Text("Version 0.5.1 · Practice instruments")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }
@@ -125,19 +110,8 @@ struct ContentView: View {
             }
             Divider()
             VStack(spacing:10) {
-                HStack {
-                    Picker("Sa",selection:$audio.settings.key) {
-                        ForEach(0..<12,id:\.self) { Text(TanpuraSettings.noteNames[$0]).tag($0) }
-                    }
-                    Picker("Octave",selection:$audio.settings.octave) {
-                        Text("2").tag(2); Text("3").tag(3)
-                    }
-                }
+                SharedTuningControls()
                 Text("\(audio.settings.frequency,specifier:"%.2f") Hz").monospacedDigit()
-                Stepper(value:$audio.settings.cents,in:-100...100,step:1) {
-                    Text("\(audio.settings.cents,specifier:"%+.0f") cents").monospacedDigit()
-                }
-                Slider(value:$audio.settings.cents,in:-100...100,step:1).accessibilityLabel("Fine tuning in cents")
                 HStack {
                     Button("Reset tuning") { audio.settings.cents=0 }
                     Spacer()
@@ -149,4 +123,42 @@ struct ContentView: View {
         }.padding(.horizontal,20).padding(.vertical,4)
     }
 
+}
+
+// Every instrument surface binds to the same persisted coordinator settings.
+// Harmonium keyboard MIDI notes remain independent of the tonic and octave.
+struct SharedTuningControls: View {
+    @EnvironmentObject private var audio:AudioCoordinator
+    var body:some View {
+        HStack {
+            Picker("Sa",selection:$audio.settings.key) {
+                ForEach(0..<12,id:\.self) { Text(TanpuraSettings.noteNames[$0]).tag($0) }
+            }.pickerStyle(.menu).accessibilityIdentifier("shared.sa")
+            Picker("Octave",selection:$audio.settings.octave) {
+                Text("2").tag(2);Text("3").tag(3)
+            }.pickerStyle(.menu).accessibilityIdentifier("shared.octave")
+        }
+        Stepper(value:$audio.settings.cents,in:-100...100,step:1) {
+            Text("Fine tuning: \(audio.settings.cents,specifier:"%+.0f") cents").monospacedDigit()
+        }.accessibilityIdentifier("shared.cents")
+        Slider(value:$audio.settings.cents,in:-100...100,step:1)
+            .accessibilityLabel("Fine tuning in cents")
+    }
+}
+
+struct TablaSettingsControls:View {
+    @EnvironmentObject private var audio:AudioCoordinator
+    var body:some View {
+        Picker("Taal",selection:$audio.tablaSettings.taal) {
+            ForEach(TablaTaal.allCases) { Text($0.title).tag($0) }
+        }.accessibilityIdentifier("shared.taal")
+        Stepper(value:$audio.tablaSettings.bpm,in:30...240,step:1) {
+            Text("\(Int(audio.tablaSettings.bpm)) BPM").monospacedDigit()
+        }.accessibilityIdentifier("shared.bpm")
+        Slider(value:$audio.tablaSettings.bpm,in:30...240,step:1).accessibilityLabel("Tempo")
+        HStack {
+            Text("Volume")
+            Slider(value:$audio.tablaSettings.volume,in:0...1).accessibilityLabel("Tabla volume")
+        }
+    }
 }

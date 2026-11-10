@@ -5,7 +5,7 @@ import Darwin
 // AVAudioPlayerNode performs sample playback and overlap. The dispatch timer merely
 // replenishes a look-ahead queue; every musical onset has an absolute audio frame.
 final class TablaSequencer {
-    private struct Source: Decodable { let bol: TablaBol; let file: String }
+    private struct Source: Decodable { let bol: TablaBol; let file: String; let onsetFrame: Int64 }
     private struct Manifest: Decodable { let samples: [Source] }
     private struct Voice { let player: AVAudioPlayerNode; var freeAt: Int64 = 0 }
     private let engine: AVAudioEngine
@@ -15,6 +15,7 @@ final class TablaSequencer {
     private var voices:[Voice]=[]
     // [bol][take][dynamic layer], all decoded and allocated before playback.
     private var buffers:[TablaBol:[[AVAudioPCMBuffer]]]=[:]
+    private var onsets:[TablaBol:[Int64]]=[:]
     private var takes:[TablaBol:Int]=[:]
     private var timeline=TablaTimeline(taal:.teentaal,bpm:80)
     private var state:TablaTransport = .stopped
@@ -32,6 +33,9 @@ final class TablaSequencer {
         let format=AVAudioFormat(standardFormatWithSampleRate:48000,channels:2)!
         let manifest=try JSONDecoder().decode(Manifest.self,from:Data(contentsOf:resources.appendingPathComponent("tabla-sources.json")))
         for entry in manifest.samples {
+            guard entry.onsetFrame>=0,entry.onsetFrame<TablaTimeline.attackLeadFrames else {
+                throw PracticeAudioGraph.GraphError.invalidResource("tabla onset: \(entry.file)")
+            }
             let file=try AVAudioFile(forReading:resources.appendingPathComponent(entry.file))
             guard file.processingFormat.sampleRate==rate,file.processingFormat.channelCount==2,
                   file.length>0,file.length<240000,
@@ -50,6 +54,7 @@ final class TablaSequencer {
                 return buffer
             }
             buffers[entry.bol,default:[]].append(layers)
+            onsets[entry.bol,default:[]].append(entry.onsetFrame)
         }
         guard TablaBol.allCases.allSatisfy({buffers[$0]?.isEmpty==false}) else {
             throw PracticeAudioGraph.GraphError.invalidResource("tabla stroke list")
@@ -76,9 +81,9 @@ final class TablaSequencer {
             guard state != .playing else { return }
             let resuming=state == .paused
             generation+=1;let token=generation
-            self.endFrame=endFrame
+            self.endFrame=endFrame.map { $0+TablaTimeline.attackLeadFrames }
             if state == .stopped {
-                timeline=TablaTimeline(taal:settings.taal,bpm:settings.bpm)
+                timeline=TablaTimeline(taal:settings.taal,bpm:settings.bpm,startFrame:TablaTimeline.attackLeadFrames)
                 takes=[:];frozenFrame=0;lateEvents=0;voiceExhaustions=0
                 for index in voices.indices { voices[index].freeAt=0 }
             }
@@ -121,16 +126,19 @@ final class TablaSequencer {
     func pump() { queue.sync { if state == .playing { pumpLocked(now:frameLocked()) } } }
     private func submitLocked(_ events:[TablaTimeline.Event],now:Int64) {
         for event in events {
-            if event.frame<now { lateEvents+=1;continue } // never burst stale bols after a stall
             let group=buffers[event.stroke.bol]!
             let take=takes[event.stroke.bol,default:0]%group.count
             takes[event.stroke.bol,default:0]+=1
+            // Musical grid describes audible attacks, not file starts. Preserve the
+            // complete waveform (including quiet pre-attack audio and stereo timing).
+            let start=event.frame-onsets[event.stroke.bol]![take]
+            if start<now { lateEvents+=1;continue } // never burst stale bols after a stall
             let buffer=group[take][event.stroke.strength]
-            guard let index=voices.firstIndex(where:{$0.freeAt<=event.frame}) else {
+            guard let index=voices.firstIndex(where:{$0.freeAt<=start}) else {
                 voiceExhaustions+=1;continue
             }
-            voices[index].player.scheduleBuffer(buffer,at:AVAudioTime(sampleTime:event.frame,atRate:rate),options:[])
-            voices[index].freeAt=event.frame+Int64(buffer.frameLength)
+            voices[index].player.scheduleBuffer(buffer,at:AVAudioTime(sampleTime:start,atRate:rate),options:[])
+            voices[index].freeAt=start+Int64(buffer.frameLength)
         }
     }
     private func pumpLocked(now:Int64) {

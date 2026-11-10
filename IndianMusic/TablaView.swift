@@ -129,22 +129,24 @@ struct TablaView:View {
         }
     }
     private var playbackControls:some View {
-        HStack(spacing:14) {
+        HStack(spacing:8) {
             Button(action:{ audio.tablaState == .playing ? audio.pauseTabla():audio.startTabla() }) {
                 Label(audio.tablaState == .playing ? "Pause":(audio.tablaState == .paused ? "Resume":"Start"),systemImage:audio.tablaState == .playing ? "pause.fill":"play.fill")
-                    .frame(minWidth:90,minHeight:34)
+                    .frame(width:90,height:34)
             }.buttonStyle(.borderedProminent).accessibilityIdentifier("tabla.playPause")
-            Button("Stop",action:audio.stopTabla).buttonStyle(.bordered).accessibilityIdentifier("tabla.stop")
+            Button(action:audio.stopTabla) {
+                Text("Stop").frame(width:44,height:34)
+            }.buttonStyle(.bordered).accessibilityIdentifier("tabla.stop")
         }
     }
     private var positionIndicator:some View {
-        VStack(alignment:.trailing) {
-            Text(positionText).font(.headline.monospacedDigit()).fixedSize().accessibilityIdentifier("tabla.matra")
+        VStack(alignment:.trailing,spacing:4) {
+            Text(positionText).font(.headline.monospacedDigit()).lineLimit(1).minimumScaleFactor(0.8).accessibilityIdentifier("tabla.matra")
             if audio.tablaPosition.matra==1 {
                 Text(audio.tablaSettings.taal.khali.contains(1) ? "SAM · KHALI":"SAM")
                     .font(.caption.bold()).foregroundStyle(.green).accessibilityIdentifier("tabla.sam")
             } else { Text(audio.tablaState.rawValue.capitalized).font(.caption).foregroundStyle(.secondary) }
-        }
+        }.frame(width:120,height:48,alignment:.trailing)
     }
     private var positionText:String {
         let n=audio.tablaPosition.matra

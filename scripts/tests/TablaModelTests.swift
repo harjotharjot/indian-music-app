@@ -39,6 +39,13 @@ import Foundation
             let expected=event.beat<boundary ? event.beat*36000:at+(event.beat-boundary)*48000*60/141
             return abs(Double(event.frame)-expected)<=0.5001
         })
+        var led=TablaTimeline(taal:.ektaal,bpm:137,startFrame:TablaTimeline.attackLeadFrames)
+        precondition(led.position(at:0,state:.playing).matra==0)
+        precondition(led.position(at:TablaTimeline.attackLeadFrames,state:.playing).matra==1)
+        led.setTempo(240)
+        let attacks=led.events(through:48000)
+        precondition(attacks.first!.frame==TablaTimeline.attackLeadFrames)
+        precondition(attacks.allSatisfy { $0.frame>=TablaTimeline.attackLeadFrames })
         var settings=TablaSettings();settings.bpm = .nan;settings.volume=4
         precondition(settings.validated().bpm==80 && settings.validated().volume==1)
         let data=try JSONEncoder().encode(TablaSettings(taal:.jhaptal,bpm:137,volume:0.37))

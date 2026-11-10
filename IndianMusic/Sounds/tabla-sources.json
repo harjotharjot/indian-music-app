@@ -19,7 +19,8 @@
       "seconds": 1.5001041666666666,
       "gain": 0.36655977328659856,
       "peak": 0.25970928420186046,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 5
     },
     {
       "bol": "dha",
@@ -34,7 +35,8 @@
       "seconds": 1.5001041666666666,
       "gain": 0.36655977328659856,
       "peak": 0.3027613457863999,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 15
     },
     {
       "bol": "dhin",
@@ -49,7 +51,8 @@
       "seconds": 1.5048333333333332,
       "gain": 0.39913978494623653,
       "peak": 0.2821167861596645,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 29
     },
     {
       "bol": "dhin",
@@ -64,7 +67,8 @@
       "seconds": 1.5048333333333332,
       "gain": 0.39913978494623653,
       "peak": 0.29018312057563395,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 53
     },
     {
       "bol": "na",
@@ -79,7 +83,8 @@
       "seconds": 0.904,
       "gain": 0.31078461803759266,
       "peak": 0.22019569341979614,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 4
     },
     {
       "bol": "tin",
@@ -94,7 +99,8 @@
       "seconds": 2.0,
       "gain": 0.31078461803759266,
       "peak": 0.2199783111815417,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 29
     },
     {
       "bol": "tun",
@@ -109,7 +115,8 @@
       "seconds": 2.0006666666666666,
       "gain": 0.31078461803759266,
       "peak": 0.22022063533945455,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 44
     },
     {
       "bol": "ge",
@@ -124,7 +131,8 @@
       "seconds": 1.4978541666666667,
       "gain": 0.3531643386790826,
       "peak": 0.2501001406899243,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 120
     },
     {
       "bol": "ge",
@@ -139,7 +147,8 @@
       "seconds": 1.1557083333333333,
       "gain": 0.3531643386790826,
       "peak": 0.22175279790594743,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 88
     },
     {
       "bol": "ke",
@@ -154,7 +163,8 @@
       "seconds": 0.2900625,
       "gain": 0.22079932617393136,
       "peak": 0.1599440943570928,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 146
     },
     {
       "bol": "ke",
@@ -169,7 +179,8 @@
       "seconds": 0.25133333333333335,
       "gain": 0.22079932617393136,
       "peak": 0.14643800381097166,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 124
     },
     {
       "bol": "ti",
@@ -184,7 +195,8 @@
       "seconds": 0.199375,
       "gain": 0.6108548601864182,
       "peak": 0.13918228406165806,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 23
     },
     {
       "bol": "ti",
@@ -199,7 +211,8 @@
       "seconds": 0.17922916666666666,
       "gain": 0.6108548601864182,
       "peak": 0.0932853922622012,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 51
     },
     {
       "bol": "ta",
@@ -214,7 +227,8 @@
       "seconds": 0.16825,
       "gain": 0.19377064413938755,
       "peak": 0.14379687864606577,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 218
     },
     {
       "bol": "ta",
@@ -229,7 +243,9 @@
       "seconds": 0.22185416666666666,
       "gain": 0.19377064413938755,
       "peak": 0.1425856011059956,
-      "tailFadeSeconds": 0.045
+      "tailFadeSeconds": 0.045,
+      "onsetFrame": 89
     }
-  ]
+  ],
+  "timing": "Complete unmodified recordings are scheduled onsetFrame frames early against a common 480-frame pre-roll. Landmark: first causal 48-frame RMS crossing of 8% of first-250-ms maximum; louder channel. No peak alignment, trimming or independent manipulation of combined Dha/Dhin."
 }

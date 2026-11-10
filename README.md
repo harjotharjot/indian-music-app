@@ -1,7 +1,9 @@
 # Indian Music for iPhone
 
 Private native SwiftUI app built with GitHub Actions and installed with SideStore.
-Requires **iOS 16+**. Current version: **0.5.0 — harmonium, tanpura and tabla**.
+Requires **iOS 16+**. Last built version: **0.5.0 — harmonium, tanpura and tabla**.
+Phase 5.1 source corrections are prepared as **0.5.1 (11)**; native validation and
+a new IPA remain pending. [Changes, comparisons and limitations](docs/PHASE51.md).
 
 ## Features
 
