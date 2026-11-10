@@ -1,0 +1,1 @@
+PASS: six reference thekas/vibhags; Rupak khali sam; Ektaal subdivisions; 12-hour absolute-frame drift <=0.5 frame at 30/80/137/240 BPM; phase-continuous tempo edits; settings round-trip

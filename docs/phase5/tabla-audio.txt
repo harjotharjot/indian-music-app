@@ -1,0 +1,1 @@
+PASS: six native four-cycle demos plus full tails; five-minute native clock; pause/resume, tempo and six taal changes; no late events or voice stealing; maximum-fader all-three mix finite/unclipped; independent buses

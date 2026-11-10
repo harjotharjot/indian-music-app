@@ -1,0 +1,56 @@
+[
+  {
+    "taal": "dadra",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 24,
+    "maximumWaveformError": 3.314018248712358e-08,
+    "peak": 0.22695103287696838,
+    "seconds": 21.0
+  },
+  {
+    "taal": "rupak",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 28,
+    "maximumWaveformError": 3.731250766692007e-08,
+    "peak": 0.2469930201768875,
+    "seconds": 24.0
+  },
+  {
+    "taal": "keherwa",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 32,
+    "maximumWaveformError": 3.445148466507675e-08,
+    "peak": 0.2560160160064697,
+    "seconds": 27.0
+  },
+  {
+    "taal": "teentaal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 64,
+    "maximumWaveformError": 3.337860107754942e-08,
+    "peak": 0.23192310333251953,
+    "seconds": 51.0
+  },
+  {
+    "taal": "ektaal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 80,
+    "maximumWaveformError": 3.9219856279304466e-08,
+    "peak": 0.25600212812423706,
+    "seconds": 39.0
+  },
+  {
+    "taal": "jhaptal",
+    "cycles": 4,
+    "bpm": 80,
+    "onsets": 40,
+    "maximumWaveformError": 4.5895576478161004e-08,
+    "peak": 0.24804913997650146,
+    "seconds": 33.0
+  }
+]

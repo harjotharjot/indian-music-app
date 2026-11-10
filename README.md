@@ -1,11 +1,13 @@
 # Indian Music for iPhone
 
 Private native SwiftUI app built with GitHub Actions and installed with SideStore.
-Requires **iOS 16+**. Current version: **0.4.4 — sampled harmonium and tanpura**.
+Requires **iOS 16+**. Current version: **0.5.0 — harmonium, tanpura and tabla**.
 
 ## Features
 
 - Recorded harmonium, multitouch chords, continuous C2–C5 keyboard navigation and enlarged black-key touch regions.
+- Six recorded tabla thekas: Dadra, Rupak, Keherwa, Teentaal, Ektaal and Jhaptal;
+  independent Start/Pause/Resume/Stop, BPM, volume, matra and sam.
 - Portrait and landscape layouts; instrument switcher follows the charging-port edge.
 - All 12 Sa references, optional sargam and shared one-cent fine tuning.
 - User-supplied C-scale Pa/Ma tanpuras, independent speed and volume, saved settings,
@@ -34,9 +36,9 @@ See SideStore's current [installation guide](https://docs.sidestore.io/docs/inst
 if initial setup is needed; Windows/Linux can do it. Free-account refresh rules
 still apply. Artifacts expire after 30 days and can be rebuilt via Run workflow.
 
-[Portrait access, rotation and keyboard finish](docs/PHASE44.md) · [F♯ correction and midpoint hit regions](docs/PHASE43.md) · [Phase 4 architecture and sources](docs/PHASE4.md)
+[Phase 5 samples, thekas, audio demos and iPhone checklist](docs/PHASE5.md) · [Accepted portrait/rotation correction](docs/PHASE44.md) · [F♯ correction and midpoint hit regions](docs/PHASE43.md) · [Phase 4 architecture and sources](docs/PHASE4.md)
 
 Historical research: [Phase 2](feasibility/RESULTS.md), [Phase 3](docs/PHASE3.md).
-Phase 3 passed the user's phone tests. Phase 4 performance and sound quality still
-need real-iPhone testing. No tabla, microphone tuner, recording or library features
-are included in this phase.
+Phase 4 v0.4.4 (9) passed the user's real-iPhone tests. Phase 5 tabla is an
+audition build pending device and musical approval. No microphone tuner,
+recording library, pitch shifter or multitrack recording is implemented.
