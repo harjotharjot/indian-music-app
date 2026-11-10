@@ -2,7 +2,7 @@ name: Build unsigned iPhone IPA
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/phase-5-1-corrections]
     paths: ['IndianMusic/**', 'IndianMusic.xcodeproj/**', 'UITests/**', 'App.xcconfig', 'scripts/**', '.github/workflows/build-ipa.yml']
   workflow_dispatch:
     inputs:
@@ -18,7 +18,7 @@ jobs:
   build:
     if: ${{ !inputs.diagnose }}
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -131,7 +131,7 @@ jobs:
       - name: Compare fast and paced native holds, same unchanged bank
         run: |
           notes=$(seq -s, 36 72)
-          build/compare "$PWD/IndianMusic/Sounds" "$PWD/build/diagnosis/fast" "$notes"
+          build/compare "$PWD/IndianMusic/Sounds" "$PWD/build/diagnosis/fast" "$notes" --unpaced
           build/compare "$PWD/IndianMusic/Sounds" "$PWD/build/diagnosis/paced" "$notes" --paced
       - uses: actions/setup-python@v5
         with:

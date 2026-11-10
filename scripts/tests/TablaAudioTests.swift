@@ -20,6 +20,8 @@ import Foundation
                 switch try graph.engine.renderOffline(n,to:buffer) {
                 case .success:
                     stalls=0;count+=Int(n)
+                    // Offline-only: yield to AVAudioPlayerNode's asynchronous workers.
+                    Thread.sleep(forTimeInterval:0.001)
                     if let out { try out.write(from:buffer) }
                     for ch in 0..<2 {
                         for i in 0..<Int(n) {
